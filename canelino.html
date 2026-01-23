@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> CANELINO S.A. | Servicios de Remodelación | Electricidad & Plomería</title>
+  <meta name="description" content="Remodelaciones, electricidad, plomería, gypsum y mantenimiento general. Cotiza gratis.">
+<link rel="icon" type="image/png" href="img/favicon.png">
+
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Estilos extra -->
+  <style>
+    /* ANIMACIONES REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* IMÁGENES GALERÍA */
+    .img-galeria {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .img-galeria.hidden {
+      opacity: 0;
+      transform: translateY(30px);
+      pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    /* Hide only on mobile (below md breakpoint) */
+    @media (max-width: 767px) {
+      .img-galeria.mobile-hidden {
+        opacity: 0;
+        transform: translateY(30px);
+        pointer-events: none;
+        display: none;
+      }
+    }
+
+    @media (hover: hover) {
+      .img-galeria:hover {
+        transform: scale(1.08);
+        box-shadow: 0 20px 40px rgba(250, 204, 21, 0.2);
+      }
+    }
+
+    /* INSTAGRAM GRADIENT */
+    .instagram-gradient {
+      background: radial-gradient(
+        circle at 30% 107%,
+        #fdf497 0%,
+        #fdf497 5%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285AEB 90%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* SMOOTH SCROLL */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* BOTONES MEJORADOS */
+    button, a {
+      transition: all 0.3s ease;
+    }
+
+    /* EFECTOS HOVER EN SERVICIOS */
+    .group {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .group::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(250, 204, 21, 0.1) 0%, transparent 100%);
+      left: -100%;
+      transition: left 0.35s ease;
+      pointer-events: none;
+    }
+
+    .group:hover::before {
+      left: 100%;
+    }
+
+    /* FOCUS STATES */
+    input:focus, textarea:focus {
+      box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.1);
+    }
+
+    /* MOBILE MENU */
+    #mobile-menu {
+      animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* SCROLL SHADOW */
+    header {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* LINK HOVER */
+    a {
+      text-decoration: none;
+    }
+
+    /* LIGHTBOX / MODAL PARA IMÁGENES */
+    #lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.75);
+      z-index: 60;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms ease;
+    }
+
+    #lightbox-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-content {
+      max-width: 95%;
+      max-height: 90%;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      transform: scale(0.96);
+      opacity: 0;
+      transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 260ms ease;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    }
+
+    #lightbox-overlay.show .lightbox-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .lightbox-content img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 90vh;
+      object-fit: contain;
+      background: #000;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 140ms ease, background 140ms ease;
+    }
+
+    .lightbox-close:hover { transform: scale(1.08); background: rgba(0,0,0,0.6); }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-200">
+
+<!-- NAVBAR -->
+<header class="fixed w-full z-50 bg-gray-950/90 backdrop-blur border-b border-gray-800">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+    <h1 class="text-xl font-bold text-yellow-400">CANELINO <span class="text-white">S.A.</span></h1>
+    <nav class="hidden md:flex gap-8 text-sm font-medium">
+      <a href="#servicios" class="hover:text-yellow-400 transition">Servicios</a>
+      <a href="#trabajos" class="hover:text-yellow-400 transition">Trabajos</a>
+      <a href="#ventajas" class="hover:text-yellow-400 transition">¿Por qué nosotros?</a>
+      <a href="#faq" class="hover:text-yellow-400 transition">FAQ</a>
+      <a href="#contacto" class="hover:text-yellow-400 transition">Contacto</a>
+    </nav>
+    <button id="menu-mobile" class="md:hidden text-yellow-400 text-2xl">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+  
+  <!-- Menú móvil -->
+  <nav id="mobile-menu" class="hidden md:hidden bg-gray-900 border-t border-gray-800">
+    <a href="#servicios" class="block px-6 py-3 hover:bg-gray-800 border-b border-gray-800">Servicios</a>
+    <a href="#trabajos" class="block px-6 py-3 hover:bg-gray-800 border-b border-gray-800">Trabajos</a>
+    <a href="#faq" class="block px-6 py-3 hover:bg-gray-800 border-b border-gray-800">FAQ</a>
+    <a href="#ventajas" class="block px-6 py-3 hover:bg-gray-800 border-b border-gray-800">¿Por qué nosotros?</a>
+    <a href="#contacto" class="block px-6 py-3 hover:bg-gray-800">Contacto</a>
+  </nav>
+</header>
+
+<a
+  href="https://wa.me/50762606889"
+  target="_blank"
+  class="fixed bottom-6 right-6 flex items-center gap-3
+         bg-green-500 hover:bg-green-600
+         text-white px-5 py-3 rounded-full shadow-xl
+         transition-all duration-300 ease-out
+         hover:scale-105 active:scale-95 z-50"
+>
+  <i class="fab fa-whatsapp text-xl"></i>
+  <span class="text-sm font-semibold hidden sm:block">
+    WhatsApp
+  </span>
+</a>
+<!-- HERO -->
+<section class="min-h-screen flex items-center bg-[url('https://images.unsplash.com/photo-1503387762-592deb58ef4e')] bg-cover bg-center">
+  <div class="bg-black/70 w-full min-h-screen flex items-center">
+    <div class="max-w-7xl mx-auto px-6 reveal">
+      <h2 class="text-4xl md:text-6xl font-black text-white mb-4">
+        Remodelaciones & Servicios Técnicos Profesionales
+      </h2>
+      <p class="text-gray-300 max-w-xl mb-8 text-lg">
+        Con más de 10 años de experiencia. Electricidad, plomería, gypsum, pintura, instalación de puertas y ventanas. Trabajo garantizado.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#contacto"
+           class="bg-yellow-400 text-black px-8 py-4 rounded font-bold hover:bg-yellow-300 transition text-center">
+          Solicitar Cotización
+        </a>
+        <a href="https://wa.me/50762606889" target="_blank"
+           class="border-2 border-yellow-400 text-yellow-400 px-8 py-4 rounded font-bold hover:bg-yellow-400 hover:text-black transition text-center flex items-center justify-center gap-2">
+          <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="py-20 bg-gray-900">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-black text-center mb-4 reveal">Nuestros Servicios</h2>
+    <p class="text-gray-400 text-center max-w-2xl mx-auto mb-12">Soluciones integrales para tu hogar y negocio</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+      <div class="bg-gray-800 p-5 md:p-8 rounded-lg reveal hover:bg-gray-700 transition group text-center">
+        <i class="fas fa-bolt text-yellow-400 text-3xl md:text-4xl mb-4 group-hover:scale-110 transition"></i>
+        <h3 class="font-bold text-xl mb-2">Electricidad</h3>
+        <p class="text-gray-400">Instalaciones, reparaciones, mantenimiento eléctrico residencial y comercial con seguridad garantizada.</p>
+      </div>
+
+      <div class="bg-gray-800 p-5 md:p-8 rounded-lg reveal hover:bg-gray-700 transition group text-center">
+        <i class="fas fa-faucet text-yellow-400 text-3xl md:text-4xl mb-4 group-hover:scale-110 transition"></i>
+        <h3 class="font-bold text-xl mb-2">Plomería</h3>
+        <p class="text-gray-400">Instalación y reparación de sistemas sanitarios, tuberías, fugas, baños y cocinas.</p>
+      </div>
+
+      <div class="bg-gray-800 p-5 md:p-8 rounded-lg reveal hover:bg-gray-700 transition group text-center">
+        <i class="fas fa-door-open text-yellow-400 text-3xl md:text-4xl mb-4 group-hover:scale-110 transition"></i>
+        <h3 class="font-bold text-xl mb-2">Puertas & Ventanas</h3>
+        <p class="text-gray-400">Instalación profesional de puertas y ventanas de vidrio, aluminio y PVC.</p>
+      </div>
+
+      <div class="bg-gray-800 p-5 md:p-8 rounded-lg reveal hover:bg-gray-700 transition group text-center">
+        <i class="fas fa-border-all text-yellow-400 text-3xl md:text-4xl mb-4 group-hover:scale-110 transition"></i>
+        <h3 class="font-bold text-xl mb-2">Gypsum / Yeso</h3>
+        <p class="text-gray-400">Divisiones, cielos rasos, acabados modernos y trabajos en seco profesionales.</p>
+      </div>
+
+      <div class="bg-gray-800 p-5 md:p-8 rounded-lg reveal hover:bg-gray-700 transition group text-center">
+        <i class="fas fa-paint-roller text-yellow-400 text-3xl md:text-4xl mb-4 group-hover:scale-110 transition"></i>
+        <h3 class="font-bold text-xl mb-2">Pintura</h3>
+        <p class="text-gray-400">Interiores, exteriores, acabados profesionales con pinturas de calidad premium.</p>
+      </div>
+
+      <div class="bg-gray-800 p-5 md:p-8 rounded-lg reveal hover:bg-gray-700 transition group text-center">
+        <i class="fas fa-tools text-yellow-400 text-3xl md:text-4xl mb-4 group-hover:scale-110 transition"></i>
+        <h3 class="font-bold text-xl mb-2">Remodelaciones</h3>
+        <p class="text-gray-400">Proyectos completos para casas, oficinas y locales comerciales con diseño integral.</p>
+      </div>
+
+      <div class="bg-gray-800 p-5 md:p-8 rounded-lg reveal hover:bg-gray-700 transition group text-center">
+        <i class="fas fa-wrench text-yellow-400 text-3xl md:text-4xl mb-4 group-hover:scale-110 transition"></i>
+        <h3 class="font-bold text-xl mb-2">Mantenimiento</h3>
+        <p class="text-gray-400">Soluciones rápidas y eficientes para todo tipo de emergencias técnicas.</p>
+      </div>
+
+      <div class="bg-gray-800 p-5 md:p-8 rounded-lg reveal hover:bg-gray-700 transition group text-center">
+        <i class="fas fa-fire-extinguisher text-yellow-400 text-3xl md:text-4xl mb-4 group-hover:scale-110 transition"></i>
+        <h3 class="font-bold text-xl mb-2">Sistemas de Seguridad</h3>
+        <p class="text-gray-400">Sistemas de gas, protección contra incendios y puesta en marcha profesional.</p>
+      </div>
+
+      <div class="bg-gray-800 p-5 md:p-8 rounded-lg reveal hover:bg-gray-700 transition group text-center">
+        <i class="fas fa-check-circle text-yellow-400 text-3xl md:text-4xl mb-4 group-hover:scale-110 transition"></i>
+        <h3 class="font-bold text-xl mb-2">Inspección & Pruebas</h3>
+        <p class="text-gray-400">Verificación profesional de presión, funcionamiento y seguridad de sistemas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTENEDOR -->
+<main class="max-w-7xl mx-auto px-6 space-y-24 py-20">
+
+<!-- ================= VENTAJAS ================= -->
+<section id="ventajas" class="py-20 bg-gray-900 -mx-6">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-black text-center mb-12 reveal">¿Por qué elegirnos?</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="flex gap-4 reveal">
+        <i class="fas fa-award text-yellow-400 text-3xl flex-shrink-0 mt-1"></i>
+        <div>
+          <h3 class="font-bold text-lg mb-2">Experiencia Probada</h3>
+          <p class="text-gray-400">Más de 10 años en la industria de servicios técnicos y remodelaciones.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 reveal">
+        <i class="fas fa-shield-alt text-yellow-400 text-3xl flex-shrink-0 mt-1"></i>
+        <div>
+          <h3 class="font-bold text-lg mb-2">Garantía Completa</h3>
+          <p class="text-gray-400">Todos nuestros trabajos cuentan con garantía y respaldo profesional.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 reveal">
+        <i class="fas fa-users text-yellow-400 text-3xl flex-shrink-0 mt-1"></i>
+        <div>
+          <h3 class="font-bold text-lg mb-2">Equipo Profesional</h3>
+          <p class="text-gray-400">Técnicos certificados y capacitados en las mejores prácticas.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 reveal">
+        <i class="fas fa-clock text-yellow-400 text-3xl flex-shrink-0 mt-1"></i>
+        <div>
+          <h3 class="font-bold text-lg mb-2">Puntualidad</h3>
+          <p class="text-gray-400">Cumplimos los plazos acordados sin comprometer la calidad.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 reveal">
+        <i class="fas fa-dollar-sign text-yellow-400 text-3xl flex-shrink-0 mt-1"></i>
+        <div>
+          <h3 class="font-bold text-lg mb-2">Precios Competitivos</h3>
+          <p class="text-gray-400">Cotizaciones justas sin comprometer la excelencia en el servicio.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-4 reveal">
+        <i class="fas fa-headset text-yellow-400 text-3xl flex-shrink-0 mt-1"></i>
+        <div>
+          <h3 class="font-bold text-lg mb-2">Atención 24/7</h3>
+          <p class="text-gray-400">Disponibles para emergencias y consultas en cualquier momento.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENEDOR -->
+
+<!-- ====id="trabajos" ============= 1. PLOMERÍA ================= -->
+<section class="galeria">
+  <h2 class="text-3xl font-black text-yellow-400 mb-4">
+    Plomería e Instalaciones Sanitarias
+  </h2>
+  <p class="text-gray-400 mb-10 max-w-2xl">
+    Instalación de tuberías, sanitarios y sistemas de agua potable.
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-center">
+    <img src="img/plomeria1.jpg" class="img-galeria visible">
+    <img src="img/plomeria2.jpeg" class="img-galeria visible">
+    <img src="img/plomeria3.jpeg" class="img-galeria visible mobile-hidden">
+
+    <img src="img/plomeria4.jpeg" class="img-galeria hidden">
+    <img src="img/plomeria5.jpeg" class="img-galeria hidden">
+  </div>
+
+  <div class="text-center mt-10">
+    <button class="toggle-galeria bg-yellow-400 text-black px-6 py-3 rounded font-bold">
+      Ver más
+    </button>
+  </div>
+</section>
+
+<!-- ================= 2. SISTEMAS ESPECIALES ================= -->
+<section class="galeria">
+  <h2 class="text-3xl font-black text-yellow-400 mb-4">
+    Sistemas Especiales
+  </h2>
+  <p class="text-gray-400 mb-10 max-w-2xl">
+    Sistemas de gas y protección contra incendios.
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-center">
+    <img src="img/extintor4.jpeg" class="img-galeria visible">
+    <img src="img/extintor1.jpeg" class="img-galeria visible">
+    <img src="img/extintor2.jpeg" class="img-galeria visible mobile-hidden">
+
+    <img src="img/extintor.jpeg" class="img-galeria hidden">
+    <img src="img/extintor3.jpeg" class="img-galeria hidden">
+  </div>
+
+  <div class="text-center mt-10">
+    <button class="toggle-galeria bg-yellow-400 text-black px-6 py-3 rounded font-bold">
+      Ver más
+    </button>
+  </div>
+</section>
+
+<!-- ================= 3. PRUEBAS ================= -->
+
+
+<!-- ================= 4. VIDRIOS ================= -->
+<section class="galeria">
+  <h2 class="text-3xl font-black text-yellow-400 mb-4">
+    Puertas y Ventanas de Vidrio
+  </h2>
+  <p class="text-gray-400 mb-10 max-w-2xl">
+    Instalaciones residenciales y comerciales.
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-center">
+    <img src="img/vidrio1.jpeg" class="img-galeria visible">
+    <img src="img/vidrio2.jpeg" class="img-galeria visible">
+    <img src="img/vidrio3.jpeg" class="img-galeria visible mobile-hidden">
+
+    <img src="img/vidrio4.jpeg" class="img-galeria hidden">
+  </div>
+
+  <div class="text-center mt-10">
+    <button class="toggle-galeria bg-yellow-400 text-black px-6 py-3 rounded font-bold">
+      Ver más
+    </button>
+  </div>
+</section>
+
+<!-- ================= 5. TRABAJOS REALIZADOS ================= -->
+
+
+</main>
+
+<!-- FAQ -->
+<section id="faq" class="py-20 bg-gray-950">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-black text-center mb-12 reveal text-white">Preguntas Frecuentes</h2>
+    <div class="space-y-4">
+      <!-- Q1 -->
+      <details class="group bg-gray-900 rounded-lg open:bg-gray-800 transition-all duration-300">
+        <summary class="flex justify-between items-center cursor-pointer p-6 font-bold text-lg list-none">
+          <span>¿Realizan visitas técnicas sin costo?</span>
+          <span class="transition group-open:rotate-180">
+            <i class="fas fa-chevron-down text-yellow-400"></i>
+          </span>
+        </summary>
+        <div class="px-6 pb-6 text-gray-400">
+          Sí, realizamos visitas técnicas y cotizaciones totalmente gratuitas dentro del área metropolitana de Panamá. Para áreas más alejadas, consúltanos.
+        </div>
+      </details>
+      <!-- Q2 -->
+      <details class="group bg-gray-900 rounded-lg open:bg-gray-800 transition-all duration-300">
+        <summary class="flex justify-between items-center cursor-pointer p-6 font-bold text-lg list-none">
+          <span>¿Ofrecen garantía en sus trabajos?</span>
+          <span class="transition group-open:rotate-180">
+            <i class="fas fa-chevron-down text-yellow-400"></i>
+          </span>
+        </summary>
+        <div class="px-6 pb-6 text-gray-400">
+          Absolutamente. Todos nuestros trabajos de plomería, electricidad y remodelación cuentan con una garantía por escrito de 3 a 12 meses, dependiendo del tipo de servicio.
+        </div>
+      </details>
+       <!-- Q3 -->
+      <details class="group bg-gray-900 rounded-lg open:bg-gray-800 transition-all duration-300">
+        <summary class="flex justify-between items-center cursor-pointer p-6 font-bold text-lg list-none">
+          <span>¿Atienden emergencias fines de semana?</span>
+          <span class="transition group-open:rotate-180">
+            <i class="fas fa-chevron-down text-yellow-400"></i>
+          </span>
+        </summary>
+        <div class="px-6 pb-6 text-gray-400">
+          Sí, contamos con un equipo de guardia para emergencias de electricidad y plomería 24/7, incluyendo sábados, domingos y feriados.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<!-- LIGHTBOX MARKUP -->
+<div id="lightbox-overlay" class="hidden" aria-hidden="true">
+  <div class="relative lightbox-content">
+    <button class="lightbox-close" aria-label="Cerrar imagen">&times;</button>
+    <img id="lightbox-img" src="" alt="Imagen ampliada">
+  </div>
+</div>
+<section id="contacto" class="py-20 bg-gray-900">
+  <div class="max-w-4xl mx-auto px-6 reveal">
+    <h2 class="text-3xl md:text-4xl font-black text-center mb-4">Contáctanos Hoy</h2>
+    <p class="text-gray-400 text-center max-w-2xl mx-auto mb-12">Solicita tu cotización gratuita y sin compromiso. Nuestro equipo te responderá en menos de 24 horas.</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      <!-- Info Contacto -->
+      <div class="space-y-6">
+        <div class="flex gap-4">
+          <i class="fas fa-phone text-yellow-400 text-2xl flex-shrink-0 mt-1"></i>
+          <div>
+            <h3 class="font-bold mb-1">Teléfono</h3>
+            <a href="tel:+50762606889" class="text-gray-400 hover:text-yellow-400">+507 6260 6889</a>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <i class="fas fa-envelope text-yellow-400 text-2xl flex-shrink-0 mt-1"></i>
+          <div>
+            <h3 class="font-bold mb-1">Email</h3>
+            <a href="mailto:info@canelino.com" class="text-gray-400 hover:text-yellow-400">info@canelino.com</a>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <i class="fas fa-map-marker-alt text-yellow-400 text-2xl flex-shrink-0 mt-1"></i>
+          <div>
+            <h3 class="font-bold mb-1">Ubicación</h3>
+            <p class="text-gray-400">Ciudad de Panamá, Panamá</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <i class="fas fa-clock text-yellow-400 text-2xl flex-shrink-0 mt-1"></i>
+          <div>
+            <h3 class="font-bold mb-1">Horario</h3>
+            <p class="text-gray-400">Lunes a Viernes: 7:00 AM - 6:00 PM<br>Sábados: 8:00 AM - 2:00 PM<br>Emergencias: 24/7</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <form id="contactForm" class="bg-gray-800 p-6 rounded-lg space-y-4">
+        <input type="text" id="nombre" placeholder="Tu nombre" required
+               class="w-full p-3 rounded bg-gray-900 border border-gray-700 focus:border-yellow-400 focus:outline-none transition">
+        <input type="tel" id="telefono" placeholder="Tu teléfono" required
+               class="w-full p-3 rounded bg-gray-900 border border-gray-700 focus:border-yellow-400 focus:outline-none transition">
+        <input type="email" id="email" placeholder="Tu email" 
+               class="w-full p-3 rounded bg-gray-900 border border-gray-700 focus:border-yellow-400 focus:outline-none transition">
+        <textarea id="mensaje" placeholder="Describe tu proyecto o consulta..." required rows="4"
+                  class="w-full p-3 rounded bg-gray-900 border border-gray-700 focus:border-yellow-400 focus:outline-none transition resize-none"></textarea>
+        <button type="submit" class="w-full bg-yellow-400 text-black py-3 rounded font-bold hover:bg-yellow-300 transition">
+          Enviar Cotización
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+                                 <!-- ===================== -->
+                                 <!--         FOOTER        -->
+                                 <!-- ===================== -->
+<section id="redes">
+  <footer class="py-16 border-t border-zinc-900 text-center bg-black">
+
+    <h2 class="text-2xl font-black text-white mb-6">CANELINO S.A.</h2>
+    <p class="text-gray-400 mb-8 max-w-2xl mx-auto">Tus soluciones técnicas de confianza en Ciudad de Panamá</p>
+
+    <h4 class="text-zinc-600 font-black uppercase text-[9px] tracking-[0.5em] mb-8 italic">
+      Síguenos en Redes Sociales
+    </h4>
+
+    <div class="flex justify-center gap-8 mb-8 text-3xl">
+
+      <!-- Instagram -->
+      <a 
+        href="https://instagram.com/tecnocorepty" 
+        class="red-social transition transform hover:scale-125 hover:opacity-100 opacity-70"
+        aria-label="Instagram Canelino"
+        target="_blank"
+      >
+        <i class="fa-brands fa-instagram instagram-gradient"></i>
+      </a>
+
+      <!-- Facebook -->
+      <a 
+        href="https://www.facebook.com/profile.php?id=61585861377272" 
+        class="red-social transition transform hover:scale-125 hover:opacity-100 opacity-70"
+        aria-label="Facebook Canelino"
+        target="_blank"
+      >
+        <i class="fa-brands fa-facebook-f text-blue-600"></i>
+      </a>
+
+      <!-- WhatsApp -->
+      <a 
+        href="https://wa.me/50762606889" 
+        class="red-social transition transform hover:scale-125 hover:opacity-100 opacity-70"
+        aria-label="WhatsApp Canelino"
+        target="_blank"
+      >
+        <i class="fa-brands fa-whatsapp text-green-500"></i>
+      </a>
+
+      <!-- Email -->
+      <a 
+        href="mailto:info@canelino.com" 
+        class="red-social transition transform hover:scale-125 hover:opacity-100 opacity-70"
+        aria-label="Email Canelino"
+      >
+        <i class="fa-solid fa-envelope text-yellow-400"></i>
+      </a>
+
+    </div>
+
+    <div class="border-t border-zinc-800 pt-8 space-y-4 text-center">
+      <div class="mb-6">
+        <h3 class="text-zinc-500 font-bold uppercase tracking-widest text-xs mb-2">Desarrollado por Carlos Mc Taggart</h3>
+        <div class="flex justify-center gap-6 text-xs text-zinc-600">
+            <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-yellow-400 transition-colors">mctaggart.dev@gmail.com</a>
+            <span class="text-zinc-800">|</span>
+            <a href="https://wa.me/50762049480" class="hover:text-yellow-400 transition-colors">+507 6204-9480</a>
+        </div>
+      </div>
+      
+      <p class="text-zinc-600 text-[10px] uppercase tracking-wider">
+        Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+      </p>
+      
+      <p class="text-zinc-700 text-[10px] pt-4">© 2026 CANELINO S.A. Todos los derechos reservados.</p>
+    </div>
+    </div>
+  </footer>
+</section>
+
+<!-- JS ANIMACIONES -->
+<script>
+  // MENÚ MÓVIL
+  const menuButton = document.getElementById("menu-mobile");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuButton?.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+
+  // Cerrar menú al hacer clic en un enlace
+  document.querySelectorAll("#mobile-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+    });
+  });
+
+  // ANIMACIONES SCROLL
+  const reveals = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+      }
+    });
+  }, {threshold: 0.1});
+
+  reveals.forEach(el => observer.observe(el));
+
+  // FORMULARIO WHATSAPP
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    
+    const nombre = document.getElementById("nombre").value;
+    const telefono = document.getElementById("telefono").value;
+    const email = document.getElementById("email").value;
+    const mensaje = document.getElementById("mensaje").value;
+    
+    let textoWhatsApp = `Hola, mi nombre es ${nombre}. Mi teléfono es ${telefono}. `;
+    if (email) textoWhatsApp += `Mi email es ${email}. `;
+    textoWhatsApp += `${mensaje}`;
+    
+    const numeroWhatsApp = "50762606889";
+    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoWhatsApp)}`;
+    
+    window.open(urlWhatsApp, "_blank");
+    
+    // Limpiar formulario
+    this.reset();
+  });
+
+ // TOGGLE GALERIA
+document.querySelectorAll(".galeria").forEach(galeria => {
+  const boton = galeria.querySelector(".toggle-galeria");
+  const ocultas = galeria.querySelectorAll(".img-galeria.hidden");
+
+  if (!ocultas.length) {
+    boton.style.display = "none";
+    return;
+  }
+
+  let abierto = false;
+
+  boton.addEventListener("click", () => {
+    abierto = !abierto;
+
+    ocultas.forEach(img => img.classList.toggle("hidden"));
+    boton.textContent = abierto ? "Ver menos" : "Ver más";  
+  });
+});
+
+// LIGHTBOX / AMPLIAR IMÁGENES
+(() => {
+  const overlay = document.getElementById('lightbox-overlay');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = overlay?.querySelector('.lightbox-close');
+
+  if (!overlay || !lightboxImg) return;
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    overlay.classList.remove('hidden');
+    // Allow next paint then show (for transition)
+    requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('show')));
+    overlay.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeLightbox() {
+    overlay.classList.remove('show');
+    overlay.setAttribute('aria-hidden', 'true');
+    const once = () => {
+      overlay.classList.add('hidden');
+      overlay.removeEventListener('transitionend', once);
+    };
+    overlay.addEventListener('transitionend', once);
+  }
+
+  // Click en cualquier imagen de galería
+  document.querySelectorAll('.img-galeria').forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', (e) => {
+      const target = e.currentTarget;
+      openLightbox(target.src || target.getAttribute('data-src'), target.alt || '');
+    });
+  });
+
+  // Cerrar al hacer clic fuera del contenido
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeLightbox();
+  });
+
+  closeBtn?.addEventListener('click', closeLightbox);
+
+  // Cerrar con ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('show')) closeLightbox();
+  });
+
+})();
+
+</script>
+</body>
+</html>

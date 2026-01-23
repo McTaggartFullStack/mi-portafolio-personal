@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechStore | Celulares y Accesorios</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+    :root { color-scheme: light; }
+    body { background: #f8fafc; }
+    
+    .product-card {
+      background: white;
+      border-radius: 16px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid #e2e8f0;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+      border-color: #3b82f6;
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .badge-sale {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      animation: pulse-sale 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-sale {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .cart-badge {
+      animation: bounce-in 0.5s ease;
+    }
+    
+    @keyframes bounce-in {
+      0% { transform: scale(0); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+    }
+    
+    .category-chip {
+      transition: all 0.3s ease;
+    }
+    
+    .category-chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+    
+    .category-chip.active {
+      background: #3b82f6;
+      color: white;
+    }
+    
+    .cart-sidebar {
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .cart-sidebar.open {
+      transform: translateX(0);
+    }
+    
+    .overlay {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body class="text-gray-900">
+  <!-- Overlay -->
+  <div id="overlay" class="overlay fixed inset-0 bg-black/50 z-40"></div>
+
+  <!-- Cart Sidebar -->
+  <aside id="cartSidebar" class="cart-sidebar fixed top-0 right-0 h-full w-full sm:w-96 bg-white shadow-2xl z-50 flex flex-col">
+    <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+      <h3 class="text-xl font-bold">🛒 Tu Carrito</h3>
+      <button id="closeCart" class="p-2 hover:bg-gray-100 rounded-full">✕</button>
+    </div>
+    <div id="cartItems" class="flex-1 overflow-y-auto p-4">
+      <!-- Cart items will be inserted here -->
+    </div>
+    <div class="p-4 border-t border-gray-200 space-y-3">
+      <div class="flex justify-between text-lg font-bold">
+        <span>Total:</span>
+        <span id="cartTotal" class="text-blue-600">$0</span>
+      </div>
+      <button class="w-full py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition">
+        Proceder al Pago 💳
+      </button>
+    </div>
+  </aside>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-4">
+          <a href="./index.html" class="px-3 py-1.5 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition text-sm flex items-center gap-1">
+            ← <span class="hidden xs:inline">Portafolio</span>
+          </a>
+          <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white text-xl font-bold">
+              📱
+            </div>
+            <span class="font-black text-xl text-gray-900">TechStore</span>
+          </div>
+        </div>
+        
+        <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-700">
+          <a href="#inicio" class="hover:text-blue-600 transition">Inicio</a>
+          <a href="#productos" class="hover:text-blue-600 transition">Productos</a>
+          <a href="#ofertas" class="hover:text-blue-600 transition">Ofertas</a>
+          <a href="#contacto" class="hover:text-blue-600 transition">Contacto</a>
+        </nav>
+        
+        <div class="flex items-center gap-3">
+          <button class="hidden sm:flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+            🔍
+          </button>
+          <button id="cartBtn" class="relative flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold">
+            🛒
+            <span id="cartCount" class="hidden absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center cart-badge">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="inicio" class="hero-gradient py-16 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-8 items-center">
+        <div class="text-white space-y-6 fade-in">
+          <span class="inline-block px-4 py-2 bg-white/20 backdrop-blur rounded-full text-sm font-bold">
+            ⚡ OFERTAS EXCLUSIVAS
+          </span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
+            Los mejores celulares y accesorios
+          </h1>
+          <p class="text-lg sm:text-xl text-blue-100">
+            iPhone, Samsung, Xiaomi y más. Envío gratis en compras superiores a $50.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#productos" class="px-6 py-3 bg-white text-blue-600 font-bold rounded-xl hover:bg-blue-50 transition shadow-lg">
+              Ver Productos 🛍️
+            </a>
+            <a href="#ofertas" class="px-6 py-3 bg-blue-500 text-white font-bold rounded-xl hover:bg-blue-400 transition">
+              Ofertas del Día 🔥
+            </a>
+          </div>
+        </div>
+        <div class="relative fade-in" style="transition-delay: 0.2s;">
+          <div class="absolute -inset-4 bg-white/10 rounded-3xl blur-2xl"></div>
+          <div class="relative bg-white/10 backdrop-blur rounded-3xl p-6 border border-white/20">
+            <img src="img/iphone.png" 
+                 alt="iPhone 17 Pro Max" 
+                 class="w-full h-auto rounded-2xl"
+                 loading="lazy">
+            <div class="mt-4 text-white">
+              <div class="badge-sale inline-block px-4 py-2 rounded-full text-white text-sm font-bold mb-2">
+                🔥 -20% HOY
+              </div>
+              <h3 class="text-2xl font-bold">iPhone 17 Pro Max</h3>
+              <p class="text-blue-100">Desde $999</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categorías -->
+  <section class="py-8 bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-3 overflow-x-auto pb-2" id="categories">
+        <button class="category-chip active px-4 py-2 bg-gray-100 rounded-full font-semibold text-sm whitespace-nowrap" data-category="todos">
+          🌟 Todos
+        </button>
+        <button class="category-chip px-4 py-2 bg-gray-100 rounded-full font-semibold text-sm whitespace-nowrap" data-category="celulares">
+          📱 Celulares
+        </button>
+        <button class="category-chip px-4 py-2 bg-gray-100 rounded-full font-semibold text-sm whitespace-nowrap" data-category="accesorios">
+          🎧 Accesorios
+        </button>
+        <button class="category-chip px-4 py-2 bg-gray-100 rounded-full font-semibold text-sm whitespace-nowrap" data-category="fundas">
+          🛡️ Fundas
+        </button>
+        <button class="category-chip px-4 py-2 bg-gray-100 rounded-full font-semibold text-sm whitespace-nowrap" data-category="cargadores">
+          ⚡ Cargadores
+        </button>
+        <button class="category-chip px-4 py-2 bg-gray-100 rounded-full font-semibold text-sm whitespace-nowrap" data-category="smartwatch">
+          ⌚ Smartwatch
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Productos -->
+  <section id="productos" class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 fade-in">
+        <h2 class="text-3xl sm:text-4xl font-black mb-3">Productos Destacados</h2>
+        <p class="text-gray-600">Los mejores precios y la más alta calidad</p>
+      </div>
+
+      <div id="productsGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Products will be inserted here by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner Ofertas -->
+  <section id="ofertas" class="py-16 bg-gradient-to-r from-purple-600 to-pink-600">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white fade-in">
+      <div class="text-5xl mb-4">🎉</div>
+      <h2 class="text-3xl sm:text-4xl font-black mb-4">¡Super Ofertas de Temporada!</h2>
+      <p class="text-lg sm:text-xl mb-6 text-purple-100">Hasta 30% de descuento en productos seleccionados</p>
+      <a href="#productos" class="inline-block px-8 py-4 bg-white text-purple-600 font-bold rounded-xl hover:bg-purple-50 transition shadow-xl">
+        Ver Ofertas 🔥
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-xl">📱</div>
+            <span class="font-black text-xl">TechStore</span>
+          </div>
+          <p class="text-gray-400 text-sm">Tu tienda de confianza para celulares y accesorios.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Productos</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="#" class="hover:text-white transition">Celulares</a></li>
+            <li><a href="#" class="hover:text-white transition">Accesorios</a></li>
+            <li><a href="#" class="hover:text-white transition">Fundas</a></li>
+            <li><a href="#" class="hover:text-white transition">Smartwatch</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Ayuda</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="#" class="hover:text-white transition">Envíos</a></li>
+            <li><a href="#" class="hover:text-white transition">Devoluciones</a></li>
+            <li><a href="#" class="hover:text-white transition">Garantía</a></li>
+            <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Contacto</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition">📧 Soporte</a></li>
+            <li><a href="https://wa.me/50762049480" class="hover:text-white transition">📞 Ventas</a></li>
+            <li>📍 Ciudad de Panamá</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
+        <h3 class="text-lg font-bold mb-2 text-white">Carlos Mc Taggart</h3>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 mb-4">
+            <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-blue-400 transition-colors flex items-center gap-2">
+                <span>✉️</span> mctaggart.dev@gmail.com
+            </a>
+            <a href="https://wa.me/50762049480" class="hover:text-blue-400 transition-colors flex items-center gap-2">
+                <span>📱</span> +507 6204-9480
+            </a>
+        </div>
+        <p class="mt-2 text-xs">Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Products data
+    const products = [
+      { id: 1, name: 'iPhone 17 Pro Max', price: 1199, category: 'celulares', image: 'img/iphone.png', sale: true, discount: 20 },
+      { id: 2, name: 'Samsung Galaxy S25 Ultra', price: 1099, category: 'celulares', image: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=400&q=80', sale: true, discount: 15 },
+      { id: 3, name: 'Xiaomi 15 Ultra', price: 799, category: 'celulares', image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400&q=80', sale: false },
+      { id: 4, name: 'AirPods Pro 3', price: 249, category: 'accesorios', image: 'https://images.unsplash.com/photo-1606841837239-c5a1a4a07af7?w=400&q=80', sale: true, discount: 10 },
+      { id: 5, name: 'Funda MagSafe iPhone 17', price: 49, category: 'fundas', image: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=400&q=80', sale: false },
+      { id: 6, name: 'Cargador Rápido 100W', price: 59, category: 'cargadores', image: 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=400&q=80', sale: true, discount: 25 },
+      { id: 7, name: 'Apple Watch Series 10', price: 429, category: 'smartwatch', image: 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=400&q=80', sale: false },
+      { id: 8, name: 'Samsung Buds 3 Pro', price: 219, category: 'accesorios', image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&q=80', sale: true, discount: 30 },
+      { id: 9, name: 'Google Pixel 9 Pro', price: 999, category: 'celulares', image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80', sale: false },
+      { id: 10, name: 'Protector Pantalla Titanio', price: 29, category: 'accesorios', image: 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=400&q=80', sale: true, discount: 20 },
+      { id: 11, name: 'PowerBank 30000mAh', price: 65, category: 'cargadores', image: 'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=400&q=80', sale: false },
+      { id: 12, name: 'Funda Silicona Galaxy S25', price: 29, category: 'fundas', image: 'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=400&q=80', sale: true, discount: 15 },
+    ];
+
+    let cart = [];
+    let currentCategory = 'todos';
+
+    // Render products
+    function renderProducts(category = 'todos') {
+      const grid = document.getElementById('productsGrid');
+      const filtered = category === 'todos' ? products : products.filter(p => p.category === category);
+      
+      grid.innerHTML = filtered.map(product => {
+        const finalPrice = product.sale ? product.price - (product.price * product.discount / 100) : product.price;
+        return `
+          <div class="product-card p-4 fade-in" data-category="${product.category}">
+            <div class="relative mb-4">
+              ${product.sale ? `<div class="badge-sale absolute top-2 left-2 px-3 py-1 text-white text-xs font-bold rounded-full z-10">-${product.discount}%</div>` : ''}
+              <img src="${product.image}" alt="${product.name}" class="w-full h-40 sm:h-48 object-cover rounded-xl" loading="lazy">
+            </div>
+            <h3 class="font-bold text-sm sm:text-base mb-2 line-clamp-2">${product.name}</h3>
+            <div class="mb-3">
+              ${product.sale ? `<span class="text-gray-400 text-sm line-through mr-2">$${product.price}</span>` : ''}
+              <span class="text-lg sm:text-xl font-black text-blue-600">$${Math.round(finalPrice)}</span>
+            </div>
+            <button onclick="addToCart(${product.id})" class="w-full py-2 sm:py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition text-sm sm:text-base">
+              Agregar 🛒
+            </button>
+          </div>
+        `;
+      }).join('');
+
+      // Trigger animations
+      setTimeout(() => {
+        document.querySelectorAll('.fade-in').forEach((el, i) => {
+          setTimeout(() => el.classList.add('visible'), i * 50);
+        });
+      }, 100);
+    }
+
+    // Category filter
+    document.querySelectorAll('.category-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.category-chip').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCategory = btn.dataset.category;
+        renderProducts(currentCategory);
+      });
+    });
+
+    // Add to cart
+    window.addToCart = function(productId) {
+      const product = products.find(p => p.id === productId);
+      const existingItem = cart.find(item => item.id === productId);
+      
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        const finalPrice = product.sale ? product.price - (product.price * product.discount / 100) : product.price;
+        cart.push({ ...product, price: Math.round(finalPrice), quantity: 1 });
+      }
+      
+      updateCart();
+    };
+
+    // Update cart
+    function updateCart() {
+      const cartItems = document.getElementById('cartItems');
+      const cartCount = document.getElementById('cartCount');
+      const cartTotal = document.getElementById('cartTotal');
+      
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<div class="text-center text-gray-400 py-10">Tu carrito está vacío</div>';
+        cartCount.classList.add('hidden');
+      } else {
+        cartCount.classList.remove('hidden');
+        cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+        
+        cartItems.innerHTML = cart.map(item => `
+          <div class="flex gap-3 mb-4 p-3 bg-gray-50 rounded-lg">
+            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg">
+            <div class="flex-1">
+              <h4 class="font-semibold text-sm">${item.name}</h4>
+              <p class="text-blue-600 font-bold">$${item.price}</p>
+              <div class="flex items-center gap-2 mt-1">
+                <button onclick="changeQuantity(${item.id}, -1)" class="w-6 h-6 bg-gray-200 rounded flex items-center justify-center font-bold">-</button>
+                <span class="font-semibold">${item.quantity}</span>
+                <button onclick="changeQuantity(${item.id}, 1)" class="w-6 h-6 bg-gray-200 rounded flex items-center justify-center font-bold">+</button>
+                <button onclick="removeFromCart(${item.id})" class="ml-auto text-red-500 text-sm">🗑️</button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+        
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        cartTotal.textContent = `$${total}`;
+      }
+    }
+
+    // Change quantity
+    window.changeQuantity = function(productId, change) {
+      const item = cart.find(item => item.id === productId);
+      if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+          removeFromCart(productId);
+        } else {
+          updateCart();
+        }
+      }
+    };
+
+    // Remove from cart
+    window.removeFromCart = function(productId) {
+      cart = cart.filter(item => item.id !== productId);
+      updateCart();
+    };
+
+    // Cart sidebar
+    const cartBtn = document.getElementById('cartBtn');
+    const cartSidebar = document.getElementById('cartSidebar');
+    const closeCart = document.getElementById('closeCart');
+    const overlay = document.getElementById('overlay');
+
+    cartBtn.addEventListener('click', () => {
+      cartSidebar.classList.add('open');
+      overlay.classList.add('show');
+    });
+
+    closeCart.addEventListener('click', () => {
+      cartSidebar.classList.remove('open');
+      overlay.classList.remove('show');
+    });
+
+    overlay.addEventListener('click', () => {
+      cartSidebar.classList.remove('open');
+      overlay.classList.remove('show');
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Initial render
+    renderProducts();
+
+    // Fade in animations on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

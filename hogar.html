@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA LIVING | Diseño Interior Consciente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Jost"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        'sand': '#F5F5F0',
+                        'clay': '#C9ADA7',
+                        'sage': '#A4AC86',
+                        'charcoal': '#22223B',
+                        'warm-white': '#FAFAF9'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .product-card {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+        .category-btn {
+            transition: all 0.3s ease;
+        }
+        .category-btn.active {
+            background-color: #22223B;
+            color: white;
+            border-color: #22223B;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Staggered animation delays */
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.1s; }
+        .product-card:nth-child(6) { animation-delay: 0.2s; }
+        .product-card:nth-child(7) { animation-delay: 0.3s; }
+        .product-card:nth-child(8) { animation-delay: 0.4s; }
+
+        .hero-grain {
+            background-color: #F5F5F0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-sand text-charcoal">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-sand/90 backdrop-blur-md border-b border-charcoal/5">
+        <div class="container mx-auto px-4 sm:px-6 py-5">
+            <div class="flex items-center justify-between">
+                <a href="./index.html" class="text-xs tracking-widest hover:text-clay transition-colors uppercase">
+                    ← Portafolio
+                </a>
+                <h1 class="font-serif text-2xl sm:text-3xl tracking-wide text-center flex-1 italic">AURA LIVING</h1>
+                <button class="md:hidden p-2" id="menu-toggle">
+                    <div class="w-6 h-px bg-charcoal mb-2"></div>
+                    <div class="w-6 h-px bg-charcoal"></div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-sand z-40 transform translate-x-full transition-transform duration-500 ease-in-out">
+        <div class="p-8 h-full flex flex-col justify-center items-center">
+            <button id="close-menu" class="absolute top-6 right-6 text-2xl font-light">✕</button>
+            <nav class="space-y-8 text-3xl font-serif italic text-center">
+                <a href="#living" class="block hover:text-clay transition-colors">Sala de Estar</a>
+                <a href="#bedroom" class="block hover:text-clay transition-colors">Dormitorio</a>
+                <a href="#kitchen" class="block hover:text-clay transition-colors">Cocina</a>
+                <a href="#bathroom" class="block hover:text-clay transition-colors">Baño</a>
+                <a href="#decor" class="block hover:text-clay transition-colors">Decoración</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-grain py-20 sm:py-32 px-4 border-b border-charcoal/5">
+        <div class="container mx-auto text-center max-w-4xl">
+            <p class="text-xs font-sans tracking-[0.3em] text-gray-500 mb-6 uppercase">Colección 2026</p>
+            <h2 class="font-serif text-5xl sm:text-6xl md:text-7xl mb-8 leading-tight">
+                Espacios que <br>
+                <span class="italic text-clay">respiran calma</span>
+            </h2>
+            <p class="text-base sm:text-lg text-gray-500 mb-12 max-w-xl mx-auto font-light leading-relaxed">
+                Una selección curada de piezas que celebran la belleza de la imperfección y los materiales naturales. Diseño para una vida más lenta.
+            </p>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4">
+                <a href="#all" class="category-btn active px-8 py-3 rounded-none text-xs tracking-widest border border-charcoal hover:bg-charcoal hover:text-white uppercase">
+                    Todo
+                </a>
+                <a href="#living" class="category-btn px-8 py-3 rounded-none text-xs tracking-widest border border-charcoal/20 hover:border-charcoal hover:bg-charcoal hover:text-white uppercase">
+                    Sala
+                </a>
+                <a href="#bedroom" class="category-btn px-8 py-3 rounded-none text-xs tracking-widest border border-charcoal/20 hover:border-charcoal hover:bg-charcoal hover:text-white uppercase">
+                    Dormitorio
+                </a>
+                <a href="#kitchen" class="category-btn px-8 py-3 rounded-none text-xs tracking-widest border border-charcoal/20 hover:border-charcoal hover:bg-charcoal hover:text-white uppercase">
+                    Cocina
+                </a>
+                <a href="#bathroom" class="category-btn px-8 py-3 rounded-none text-xs tracking-widest border border-charcoal/20 hover:border-charcoal hover:bg-charcoal hover:text-white uppercase">
+                    Baño
+                </a>
+                <a href="#decor" class="category-btn px-8 py-3 rounded-none text-xs tracking-widest border border-charcoal/20 hover:border-charcoal hover:bg-charcoal hover:text-white uppercase">
+                    Decoración
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <main class="container mx-auto px-4 sm:px-6 py-16 sm:py-24">
+        
+        <!-- Living Room Section -->
+        <section id="living" class="mb-24">
+            <div class="flex items-end justify-between mb-12 px-2 border-b border-charcoal/10 pb-4">
+                <h3 class="font-serif text-3xl sm:text-4xl italic">Sala de Estar</h3>
+                <span class="text-xs tracking-widest text-gray-400">08 ARTÍCULOS</span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+                
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80" 
+                             alt="Sofá AURA" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                        <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Sofá Kyoto</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Lino lavado &bull; Beige</p>
+                    </div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1532372576444-dda954194ad0?w=800&q=80" 
+                             alt="Mesa Centro" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Mesa Wabi</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Roble Macizo &bull; Natural</p>
+                    </div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80" 
+                             alt="Sillón" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Butaca Lounge</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Tejido Bouclé &bull; Crema</p>
+                    </div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1594620302200-9a762244a156?w=800&q=80" 
+                             alt="Estantería" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Estantería Nook</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Madera Oscura &bull; Modular</p>
+                    </div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800&q=80" 
+                             alt="Lámpara" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Lámpara Akari</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Papel de Arroz &bull; Luz Cálida</p>
+                    </div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1600494603989-9650cf6ddd3d?w=800&q=80" 
+                             alt="Alfombra" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Alfombra Yute</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Fibra Natural &bull; Tejida a Mano</p>
+                    </div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=800&q=80" 
+                             alt="Mesa Auxiliar" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Mesa Block</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Travertino &bull; Escultural</p>
+                    </div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80" 
+                             alt="Cojines" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Cojines Lino</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Set de 2 &bull; Tonos Tierra</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Bedroom Section -->
+        <section id="bedroom" class="mb-24">
+            <div class="flex items-end justify-between mb-12 px-2 border-b border-charcoal/10 pb-4">
+                <h3 class="font-serif text-3xl sm:text-4xl italic">Dormitorio</h3>
+                <span class="text-xs tracking-widest text-gray-400">08 ARTÍCULOS</span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+                
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c?w=800&q=80" 
+                             alt="Cama" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Cama Zen</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Plataforma Baja &bull; Fresno</p>
+                    </div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" 
+                             alt="Mesita" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Mesita Noche</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Minimalista &bull; Con Cajón</p>
+                    </div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80" 
+                             alt="Ropa Cama" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Funda Nórdica</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Algodón Percal &bull; Blanco</p>
+                    </div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&q=80" 
+                             alt="Cómoda" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Cómoda 6 Cajones</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Roble Claro &bull; Espaciosa</p>
+                    </div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1519710889408-a73e843-6904?w=800&q=80" 
+                             alt="Banco" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Banco Pie de Cama</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Madera y Tejido &bull; Versátil</p>
+                    </div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?w=800&q=80" 
+                             alt="Espejo" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Espejo Cuerpo Entero</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Marco Fino &bull; Latón</p>
+                    </div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800&q=80" 
+                             alt="Cortinas" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Cortinas Lino</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Semi-opacas &bull; Caída Natural</p>
+                    </div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?w=800&q=80" 
+                             alt="Alfombra Piel" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg mb-1">Piel de Oveja</h4>
+                        <p class="text-xs text-gray-500 tracking-wide uppercase">Origen Ético &bull; Suavidad</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Kitchen Section -->
+        <section id="kitchen" class="mb-24">
+            <div class="flex items-end justify-between mb-12 px-2 border-b border-charcoal/10 pb-4">
+                <h3 class="font-serif text-3xl sm:text-4xl italic">Cocina & Mesa</h3>
+                <span class="text-xs tracking-widest text-gray-400">12 ARTÍCULOS</span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+               
+               <div class="product-card group cursor-pointer fade-in">
+                   <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                       <img src="https://images.unsplash.com/photo-1574871786991-f9a0c9a16a33?w=800&q=80" 
+                            alt="Cerámica" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                   </div>
+                   <div><h4 class="font-serif text-lg mb-1">Vajilla Gres</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Hecha a Mano &bull; Gris Moteado</p></div>
+               </div>
+
+               <div class="product-card group cursor-pointer fade-in">
+                   <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                       <img src="https://images.unsplash.com/photo-1516684732162-798a0062be99?w=800&q=80" 
+                            alt="Tablas" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                   </div>
+                   <div><h4 class="font-serif text-lg mb-1">Set Tablas</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Madera de Olivo &bull; Curada</p></div>
+               </div>
+               
+               <div class="product-card group cursor-pointer fade-in">
+                   <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                       <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&q=80" 
+                            alt="Cuencos" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                   </div>
+                   <div><h4 class="font-serif text-lg mb-1">Cuencos Ramen</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Cerámica Oscura &bull; Profundos</p></div>
+               </div>
+
+               <div class="product-card group cursor-pointer fade-in">
+                   <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                       <img src="https://images.unsplash.com/photo-1577968897966-3d694b507f67?w=800&q=80" 
+                            alt="Tetera" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                   </div>
+                   <div><h4 class="font-serif text-lg mb-1">Tetera Hierro</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Estilo Japonés &bull; Térmica</p></div>
+               </div>
+
+               <div class="product-card group cursor-pointer fade-in">
+                   <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                       <img src="https://images.unsplash.com/photo-1600335895229-6e75511892c8?w=800&q=80" 
+                            alt="Cubiertos" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                   </div>
+                   <div><h4 class="font-serif text-lg mb-1">Cubiertos Oro</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Acero Mate &bull; 24 Piezas</p></div>
+               </div>
+
+               <div class="product-card group cursor-pointer fade-in">
+                   <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                       <img src="https://images.unsplash.com/photo-1572635148818-ef6fd45eb394?w=800&q=80" 
+                            alt="Jarra" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                   </div>
+                   <div><h4 class="font-serif text-lg mb-1">Decantador</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Vidrio Soplado &bull; Diseño Puro</p></div>
+               </div>
+
+               <div class="product-card group cursor-pointer fade-in">
+                   <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                       <img src="https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=800&q=80" 
+                            alt="Molinillo" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                   </div>
+                   <div><h4 class="font-serif text-lg mb-1">Molinillos</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Set Sal y Pimienta &bull; Roble</p></div>
+               </div>
+
+               <div class="product-card group cursor-pointer fade-in">
+                   <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                       <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=800&q=80" 
+                            alt="Tazas" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                   </div>
+                   <div><h4 class="font-serif text-lg mb-1">Tazas Café</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Porcelana Fina &bull; Apilables</p></div>
+               </div>
+
+               <div class="product-card group cursor-pointer fade-in">
+                   <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                       <img src="https://images.unsplash.com/photo-1577234286642-fc512a5f8f11?w=800&q=80" 
+                            alt="Tarros" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                   </div>
+                   <div><h4 class="font-serif text-lg mb-1">Tarros Herméticos</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Cristal y Bambú &bull; Organización</p></div>
+               </div>
+
+               <div class="product-card group cursor-pointer fade-in">
+                   <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                       <img src="https://images.unsplash.com/photo-1629481168937-1a1eb04622f8?w=800&q=80" 
+                            alt="Servilletas" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                   </div>
+                   <div><h4 class="font-serif text-lg mb-1">Servilletas Lino</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Lavado a Piedra &bull; Suaves</p></div>
+               </div>
+
+               <div class="product-card group cursor-pointer fade-in">
+                   <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                       <img src="https://images.unsplash.com/photo-1559911815-ccdb8a5b2c90?w=800&q=80" 
+                            alt="Mortero" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                   </div>
+                   <div><h4 class="font-serif text-lg mb-1">Mortero Granito</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Piedra Sólida &bull; Robusto</p></div>
+               </div>
+
+               <div class="product-card group cursor-pointer fade-in">
+                   <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                       <img src="https://images.unsplash.com/photo-1606401543773-54a97e314226?w=800&q=80" 
+                            alt="Mantel" 
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                   </div>
+                   <div><h4 class="font-serif text-lg mb-1">Mantel Algodón</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Rayas Sutiles &bull; Grande</p></div>
+               </div>
+
+            </div>
+        </section>
+
+        <!-- Bathroom Section -->
+        <section id="bathroom" class="mb-24">
+            <div class="flex items-end justify-between mb-12 px-2 border-b border-charcoal/10 pb-4">
+                <h3 class="font-serif text-3xl sm:text-4xl italic">Baño & Bienestar</h3>
+                <span class="text-xs tracking-widest text-gray-400">08 ARTÍCULOS</span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+                
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1620412650927-c2c0bb2e9c94?w=800&q=80" 
+                             alt="Toallas" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Toallas Waffle</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Algodón Orgánico &bull; Secado Rápido</p></div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80" 
+                             alt="Jabonera" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Set Baño Piedra</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Dispensador & Vaso &bull; Arenisca</p></div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&q=80" 
+                             alt="Albornoz" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Albornoz Spa</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Lino Premium &bull; Unisex</p></div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?w=800&q=80" 
+                             alt="Espejo Baño" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Espejo Orbital</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Sin Marco &bull; Retroiluminado</p></div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80" 
+                             alt="Cesta" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Cesto Ropa</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Yute Trenzado &bull; Gran Capacidad</p></div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1584622781867-f25f2a4e7899?w=800&q=80" 
+                             alt="Alfombra Baño" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Alfombrilla Madera</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Teca &bull; Antideslizante</p></div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=800&q=80" 
+                             alt="Cepillo" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Cepillo Corporal</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Cerdas Naturales &bull; Exfoliante</p></div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1600857062241-98e5e6b3b08b?w=800&q=80" 
+                             alt="Jabones" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Jabones Artesanos</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Aceites Esenciales &bull; Pack x3</p></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Decoration Section -->
+        <section id="decor" class="mb-24">
+            <div class="flex items-end justify-between mb-12 px-2 border-b border-charcoal/10 pb-4">
+                <h3 class="font-serif text-3xl sm:text-4xl italic">Decoración</h3>
+                <span class="text-xs tracking-widest text-gray-400">12 ARTÍCULOS</span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+                
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=800&q=80" 
+                             alt="Jarrón" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Jarrón Terra</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Terracota &bull; Hecho a Torno</p></div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=800&q=80" 
+                             alt="Maceta" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Maceta Pie</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Cemento Blanco &bull; Interior</p></div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1602874801006-52c87677d350?w=800&q=80" 
+                             alt="Vela" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Vela Soja</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Aroma Higuera &bull; Vaso Ámbar</p></div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?w=800&q=80" 
+                             alt="Reloj" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Reloj Muro</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Sin Números &bull; Madera</p></div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=800&q=80" 
+                             alt="Lámina" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Print Botánico</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Papel Algodón &bull; A3</p></div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1610701596061-2ecf227e85b2?w=800&q=80" 
+                             alt="Escultura" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Objeto Deco</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Forma Orgánica &bull; Yeso</p></div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?w=800&q=80" 
+                             alt="Marcos" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Marco Flotante</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Roble Fino &bull; Doble Vidrio</p></div>
+                </div>
+
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=800&q=80" 
+                             alt="Difusor" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Difusor Stone</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Cerámica &bull; Ultrasónico</p></div>
+                </div>
+                
+                 <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1615486511484-92e172cc4fe0?w=800&q=80" 
+                             alt="Bandeja" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Bandeja Mármol</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Carrara &bull; Versátil</p></div>
+                </div>
+                
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=800&q=80" 
+                             alt="Cesta" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Cesto Bajo</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Jacinto de Agua &bull; Mesa</p></div>
+                </div>
+                
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80" 
+                             alt="Libros" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Libro Diseño</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Edición Coleccionista &bull; Hardcover</p></div>
+                </div>
+                
+                <div class="product-card group cursor-pointer fade-in">
+                    <div class="relative overflow-hidden aspect-[4/5] bg-gray-100 mb-4">
+                            <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=800&q=80" 
+                             alt="Portavelas" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
+                    </div>
+                    <div><h4 class="font-serif text-lg mb-1">Candelabro</h4><p class="text-xs text-gray-500 tracking-wide uppercase">Minimalista &bull; Hierro Negro</p></div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal text-warm-white py-16 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 border-b border-white/10 pb-12">
+                <div class="md:col-span-1">
+                    <h4 class="font-serif text-2xl italic mb-6">Aura Living</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Curaduría de objetos que elevan lo cotidiano a través de la simplicidad y la honestidad material.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-xs font-bold tracking-widest mb-6 uppercase">Ayuda</h5>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Envíos y Devoluciones</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Guía de Tamaños</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-xs font-bold tracking-widest mb-6 uppercase">Legal</h5>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Términos del Servicio</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Política de Privacidad</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Política de Cookies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-xs font-bold tracking-widest mb-6 uppercase">Social</h5>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Instagram</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Pinterest</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Spotify</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-white/10 text-center">
+                <h3 class="text-lg font-serif italic mb-2 text-warm-white">Carlos Mc Taggart</h3>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4 text-sm">
+                    <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+                        <span>✉️</span> mctaggart.dev@gmail.com
+                    </a>
+                    <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+                        <span>📱</span> +507 6204-9480
+                    </a>
+                </div>
+                <p class="text-xs text-gray-500">
+                    Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu functionality
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+        mobileMenuLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Category active state
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Smooth scroll for anchors
+         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
