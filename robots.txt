@@ -1,0 +1,54 @@
+# Permite que todos los buscadores convencionales (Google, Bing) vean todo
+User-agent: *
+Allow: /
+
+# PERMISOS PARA IAs (Modelos de Lenguaje y Recomendadores)
+
+# OpenAI (ChatGPT, SearchGPT)
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: anthropic-ai
+Allow: /
+User-agent: Claude-Web
+Allow: /
+
+# Google Gemini / Google AI
+User-agent: Google-Extended
+Allow: /
+
+# Meta (Llama, Meta AI en Instagram/WhatsApp)
+User-agent: FacebookBot
+Allow: /
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# xAI (Grok - Twitter/X)
+User-agent: xai-bot
+Allow: /
+
+# DeepSeek
+User-agent: DeepSeek-Bot
+Allow: /
+
+# Microsoft (Copilot / Bing AI)
+User-agent: Bingbot
+Allow: /
+User-agent: AdIdxBot
+Allow: /
+
+# Apple (Apple Intelligence)
+User-agent: Applebot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+# MAPA DEL SITIO
+Sitemap: https://www.webspty.dev/sitemap.xml
