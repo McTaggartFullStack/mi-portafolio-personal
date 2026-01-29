@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helados del Trópico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Quicksand', 'sans-serif'],
+                    },
+                    colors: {
+                        'ice-mint': '#DFFFF5',
+                        'ice-pink': '#FFEBEB',
+                        'ice-peach': '#FFF0DB',
+                        'ice-blue': '#E0F7FA',
+                        'tropical-green': '#00BFA5',
+                        'berry': '#FF4081',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .blob-shape {
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            transition: all 0.5s ease;
+        }
+        .blob-shape:hover {
+            border-radius: 60% 40% 30% 70% / 50% 40% 50% 60%;
+            transform: scale(1.05);
+        }
+        .scrolling-text {
+            animation: scroll 20s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body class="bg-ice-pink font-sans text-gray-700">
+
+    <!-- Minimal Navbar -->
+    <nav class="p-6 flex justify-between items-center max-w-6xl mx-auto">
+        <div class="font-bold text-2xl text-tropical-green tracking-tight">
+            Helados.<span class="text-berry">Trópico</span>
+        </div>
+        <div class="hidden md:flex gap-8 font-medium text-gray-500">
+            <a href="#" class="hover:text-tropical-green transition-colors">Sabores</a>
+            <a href="#" class="hover:text-tropical-green transition-colors">Toppings</a>
+            <a href="#" class="hover:text-tropical-green transition-colors">Nosotros</a>
+        </div>
+        <button class="bg-tropical-green text-white px-6 py-2 rounded-full font-bold hover:shadow-lg hover:shadow-tropical-green/30 transition-all">
+            Pedir
+        </button>
+    </nav>
+
+    <!-- Main Hero -->
+    <header class="min-h-[80vh] flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto px-6 py-12 relative overflow-hidden">
+        
+        <!-- Background Decor -->
+        <div class="absolute top-20 left-10 w-32 h-32 bg-ice-mint rounded-full -z-10 blur-3xl opacity-60"></div>
+        <div class="absolute bottom-10 right-20 w-64 h-64 bg-ice-peach rounded-full -z-10 blur-3xl opacity-60"></div>
+
+        <div class="md:w-1/2 space-y-6 z-10">
+            <span class="inline-block px-4 py-1 bg-white rounded-full text-sm font-bold text-berry shadow-sm mb-2">Nuevo Sabor: Maracuyá Crunch</span>
+            <h1 class="text-5xl md:text-7xl font-bold leading-tight text-gray-800">
+                Felicidad <br>
+                <span class="text-tropical-green">Bajo Cero.</span>
+            </h1>
+            <p class="text-xl text-gray-500 font-medium max-w-md">
+                Helados artesanales hechos con frutas tropicales reales. Sin conservantes. Pura frescura minimalista.
+            </p>
+            <div class="flex gap-4 pt-4">
+                <button class="bg-gray-900 text-white hover:bg-berry px-8 py-3 rounded-full font-bold transition-colors">
+                    Ver Menú
+                </button>
+                <div class="flex items-center gap-2">
+                   <span class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center text-xl">🍌</span>
+                   <span class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-xl">🍓</span>
+                   <span class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-xl">🥭</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="md:w-1/2 relative mt-12 md:mt-0 flex justify-center">
+             <div class="relative w-[300px] h-[400px]">
+                 <!-- Abstract Ice Cream Composition -->
+                 <div class="absolute inset-0 bg-ice-blue blob-shape"></div>
+                 <img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?q=80&w=2070&auto=format&fit=crop" class="absolute inset-4 w-full h-full object-cover rounded-[3rem] shadow-2xl z-10 transform -rotate-3 hover:rotate-0 transition-transform duration-500" alt="Ice Cream">
+                 <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl z-20">
+                     <p class="font-bold text-lg">4.9/5 ⭐</p>
+                     <p class="text-xs text-gray-400">Sweet Reviews</p>
+                 </div>
+             </div>
+        </div>
+    </header>
+
+    <!-- Marquee -->
+    <div class="bg-tropical-green overflow-hidden py-3 mb-20 whitespace-nowrap">
+        <div class="inline-block animate-[scroll_20s_linear_infinite] text-white font-bold text-lg px-4">
+             PIÑA • COCO • SANDÍA • MANGO • FRESAS • GUAYABA • MARACUYÁ • LIMÓN •  PIÑA • COCO • SANDÍA • MANGO • FRESAS • GUAYABA • MARACUYÁ • LIMÓN •
+        </div>
+    </div>
+
+    <!-- Menu Sections -->
+    <div class="space-y-20 max-w-6xl mx-auto px-6 mb-24">
+        
+        <!-- Section: Sabores -->
+        <section id="sabores">
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <h2 class="text-4xl font-bold mb-2 text-gray-800">Helados Artesanales</h2>
+                    <div class="h-1 w-20 bg-berry rounded-full"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Item 1 -->
+                <div class="bg-white p-6 rounded-3xl hover:shadow-xl transition-shadow cursor-pointer group">
+                    <div class="h-40 bg-ice-pink rounded-2xl mb-4 overflow-hidden relative">
+                        <img src="img/fresa.avif" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-lg">Fresa Real</h3>
+                    <p class="text-gray-400 text-sm mb-3">Con trozos de fruta</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-tropical-green">$4.50</span>
+                        <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-berry hover:text-white transition-colors">+</button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-white p-6 rounded-3xl hover:shadow-xl transition-shadow cursor-pointer group">
+                    <div class="h-40 bg-ice-blue rounded-2xl mb-4 overflow-hidden relative">
+                        <img src="img/vainilla" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-lg">Vainilla Blue</h3>
+                    <p class="text-gray-400 text-sm mb-3">Vainilla de Madagascar</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-tropical-green">$4.50</span>
+                        <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-berry hover:text-white transition-colors">+</button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-white p-6 rounded-3xl hover:shadow-xl transition-shadow cursor-pointer group">
+                    <div class="h-40 bg-ice-peach rounded-2xl mb-4 overflow-hidden relative">
+                        <img src="img/mango.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-lg">Mango Tango</h3>
+                    <p class="text-gray-400 text-sm mb-3">Sorbet refrescante</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-tropical-green">$4.00</span>
+                        <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-berry hover:text-white transition-colors">+</button>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="bg-white p-6 rounded-3xl hover:shadow-xl transition-shadow cursor-pointer group">
+                    <div class="h-40 bg-ice-mint rounded-2xl mb-4 overflow-hidden relative">
+                        <img src="img/chocomenta.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-lg">Choco Menta</h3>
+                    <p class="text-gray-400 text-sm mb-3">Con chips oscuros</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-tropical-green">$5.00</span>
+                        <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-berry hover:text-white transition-colors">+</button>
+                    </div>
+                </div>
+                
+                <!-- Item 5 (New) -->
+                <div class="bg-white p-6 rounded-3xl hover:shadow-xl transition-shadow cursor-pointer group">
+                    <div class="h-40 bg-purple-100 rounded-2xl mb-4 overflow-hidden relative">
+                        <img src="img/coco.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-lg">Taro Coco</h3>
+                    <p class="text-gray-400 text-sm mb-3">Vegano & Cremoso</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-tropical-green">$5.50</span>
+                        <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-berry hover:text-white transition-colors">+</button>
+                    </div>
+                </div>
+
+                <!-- Item 6 (New) -->
+                <div class="bg-white p-6 rounded-3xl hover:shadow-xl transition-shadow cursor-pointer group">
+                    <div class="h-40 bg-yellow-100 rounded-2xl mb-4 overflow-hidden relative">
+                        <img src="img/pistacho.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-lg">Pistacho Puro</h3>
+                    <p class="text-gray-400 text-sm mb-3">Siciliano auténtico</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-tropical-green">$5.50</span>
+                        <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-berry hover:text-white transition-colors">+</button>
+                    </div>
+                </div>
+
+                <!-- Item 7 (New) -->
+                <div class="bg-white p-6 rounded-3xl hover:shadow-xl transition-shadow cursor-pointer group">
+                    <div class="h-40 bg-orange-100 rounded-2xl mb-4 overflow-hidden relative">
+                        <img src="img/dulcedeleche.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-lg">Dulce de Leche</h3>
+                    <p class="text-gray-400 text-sm mb-3">Con remolinos</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-tropical-green">$4.50</span>
+                        <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-berry hover:text-white transition-colors">+</button>
+                    </div>
+                </div>
+
+                <!-- Item 8 (New) -->
+                <div class="bg-white p-6 rounded-3xl hover:shadow-xl transition-shadow cursor-pointer group">
+                    <div class="h-40 bg-red-50 rounded-2xl mb-4 overflow-hidden relative">
+                        <img src="img/fb.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform">
+                    </div>
+                    <h3 class="font-bold text-lg">Frutos Rojos</h3>
+                    <p class="text-gray-400 text-sm mb-3">Yogurt Griego</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-tropical-green">$5.00</span>
+                        <button class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-berry hover:text-white transition-colors">+</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Conos -->
+        <section id="conos">
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2 text-gray-800">Conos Crujientes</h2>
+                    <div class="h-1 w-20 bg-orange-400 rounded-full"></div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Cone 1 -->
+                <div class="bg-orange-50 p-4 rounded-3xl border-2 border-orange-100 hover:border-orange-300 transition-colors text-center">
+                    <div class="w-24 h-24 mx-auto mb-4 bg-white rounded-full flex items-center justify-center text-4xl shadow-md">🍦</div>
+                    <h3 class="font-bold text-lg text-gray-800">Waffle Clásico</h3>
+                    <p class="text-sm text-gray-500 mb-2">Mantequilla y Vainilla</p>
+                    <span class="text-tropical-green font-bold text-lg">$1.00</span>
+                </div>
+                <!-- Cone 2 -->
+                <div class="bg-orange-50 p-4 rounded-3xl border-2 border-orange-100 hover:border-orange-300 transition-colors text-center">
+                    <div class="w-24 h-24 mx-auto mb-4 bg-white rounded-full flex items-center justify-center text-4xl shadow-md">🍫</div>
+                    <h3 class="font-bold text-lg text-gray-800">Choco Dipped</h3>
+                    <p class="text-sm text-gray-500 mb-2">Bañado en Chocolate</p>
+                    <span class="text-tropical-green font-bold text-lg">$1.50</span>
+                </div>
+                <!-- Cone 3 -->
+                <div class="bg-orange-50 p-4 rounded-3xl border-2 border-orange-100 hover:border-orange-300 transition-colors text-center">
+                    <div class="w-24 h-24 mx-auto mb-4 bg-white rounded-full flex items-center justify-center text-4xl shadow-md">🥜</div>
+                    <h3 class="font-bold text-lg text-gray-800">Nutty Crunch</h3>
+                    <p class="text-sm text-gray-500 mb-2">Con Maní Tostado</p>
+                    <span class="text-tropical-green font-bold text-lg">$1.75</span>
+                </div>
+                <!-- Cone 4 -->
+                <div class="bg-orange-50 p-4 rounded-3xl border-2 border-orange-100 hover:border-orange-300 transition-colors text-center">
+                    <div class="w-24 h-24 mx-auto mb-4 bg-white rounded-full flex items-center justify-center text-4xl shadow-md">🌈</div>
+                    <h3 class="font-bold text-lg text-gray-800">Rainbow Magic</h3>
+                    <p class="text-sm text-gray-500 mb-2">Con Sprinkles</p>
+                    <span class="text-tropical-green font-bold text-lg">$1.50</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Batidos -->
+        <section id="batidos">
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2 text-gray-800">Batidos Premium</h2>
+                    <div class="h-1 w-20 bg-blue-400 rounded-full"></div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-blue-50 rounded-3xl p-6 flex items-center gap-6 hover:shadow-lg transition-all group">
+                    <img src="img/fresam.png" class="w-48 h-27 rounded-2xl object-cover shadow-md group-hover:scale-105 transition-transform">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Súper Fresa Shake</h3>
+                        <p class="text-gray-500 text-sm mb-2">Helado de fresa, leche fresca y crema batida.</p>
+                        <span class="bg-white px-3 py-1 rounded-full text-blue-500 font-bold text-sm">$6.50</span>
+                    </div>
+                </div>
+                <div class="bg-yellow-50 rounded-3xl p-6 flex items-center gap-6 hover:shadow-lg transition-all group">
+                    <img src="img/chocom.png" class="w-48 h-27 rounded-2xl object-cover shadow-md group-hover:scale-105 transition-transform">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Chocolate Extremo</h3>
+                        <p class="text-gray-500 text-sm mb-2">Triple chocolate, brownie y sirope.</p>
+                        <span class="bg-white px-3 py-1 rounded-full text-yellow-600 font-bold text-sm">$7.00</span>
+                    </div>
+                </div>
+                <div class="bg-green-50 rounded-3xl p-6 flex items-center gap-6 hover:shadow-lg transition-all group">
+                    <img src="img/piñam.png" class="w-48 h-27 rounded-2xl object-cover shadow-md group-hover:scale-105 transition-transform">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Tropical Paradise</h3>
+                        <p class="text-gray-500 text-sm mb-2">Mango, piña, coco y maracuyá fresco.</p>
+                        <span class="bg-white px-3 py-1 rounded-full text-green-600 font-bold text-sm">$6.75</span>
+                    </div>
+                </div>
+                <div class="bg-purple-50 rounded-3xl p-6 flex items-center gap-6 hover:shadow-lg transition-all group">
+                    <img src="img/fbm.png" class="w-48 h-27 rounded-2xl object-cover shadow-md group-hover:scale-105 transition-transform">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Berry Blast</h3>
+                        <p class="text-gray-500 text-sm mb-2">Mezcla de frutos rojos con yogurt.</p>
+                        <span class="bg-white px-3 py-1 rounded-full text-purple-600 font-bold text-sm">$6.50</span>
+                    </div>
+                </div>
+                <div class="bg-pink-50 rounded-3xl p-6 flex items-center gap-6 hover:shadow-lg transition-all group">
+                    <img src="img/oreom.png" class="w-48 h-27 rounded-2xl object-cover shadow-md group-hover:scale-105 transition-transform">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Oreo Monster</h3>
+                        <p class="text-gray-500 text-sm mb-2">Galletas Oreo, vainilla y crema.</p>
+                        <span class="bg-white px-3 py-1 rounded-full text-pink-600 font-bold text-sm">$7.25</span>
+                    </div>
+                </div>
+                <div class="bg-orange-50 rounded-3xl p-6 flex items-center gap-6 hover:shadow-lg transition-all group">
+                    <img src="img/bananom.png" class="w-48 h-27 rounded-2xl object-cover shadow-md group-hover:scale-105 transition-transform">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800">Peanut Power</h3>
+                        <p class="text-gray-500 text-sm mb-2">Mantequilla de maní, banana y proteína.</p>
+                        <span class="bg-white px-3 py-1 rounded-full text-orange-600 font-bold text-sm">$7.50</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Copas -->
+         <section id="copas">
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2 text-gray-800">Copas Especiales</h2>
+                    <div class="h-1 w-20 bg-purple-400 rounded-full"></div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Copa 1 -->
+                <div class="relative bg-white rounded-[2rem] overflow-hidden shadow-lg group">
+                    <div class="h-64 overflow-hidden">
+                        <img src="img/bananas.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-20">
+                        <h3 class="text-white text-xl font-bold">Banana Split Royal</h3>
+                        <p class="text-gray-300 text-sm mb-2">3 Bolas, Banana, Nueces</p>
+                        <span class="text-yellow-400 font-bold text-lg">$8.50</span>
+                    </div>
+                </div>
+                <!-- Copa 2 -->
+                <div class="relative bg-white rounded-[2rem] overflow-hidden shadow-lg group">
+                     <div class="h-64 overflow-hidden">
+                        <img src="img/bw.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-20">
+                        <h3 class="text-white text-xl font-bold">Brownie Explosion</h3>
+                        <p class="text-gray-300 text-sm mb-2">Brownie caliente, vainilla</p>
+                        <span class="text-yellow-400 font-bold text-lg">$7.95</span>
+                    </div>
+                </div>
+                 <!-- Copa 3 -->
+                <div class="relative bg-white rounded-[2rem] overflow-hidden shadow-lg group">
+                     <div class="h-64 overflow-hidden">
+                        <img src="img/dulces.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-20">
+                        <h3 class="text-white text-xl font-bold">Unicorn Fantasy</h3>
+                        <p class="text-gray-300 text-sm mb-2">Algodón de azúcar, chispas</p>
+                        <span class="text-yellow-400 font-bold text-lg">$6.50</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Toppings Builder (Visual) -->
+    <section class="max-w-6xl mx-auto px-6 mb-24">
+        <div class="flex flex-col md:flex-row items-center gap-12 bg-white rounded-[3rem] p-12">
+        <div class="md:w-1/2">
+            <h2 class="text-3xl font-bold mb-6">Personaliza tu <span class="text-berry">Experiencia</span></h2>
+            <p class="text-gray-500 mb-8">Elige entre más de 15 toppings orgánicos. Desde nueces caramelizadas hasta trozos de brownie casero.</p>
+            
+            <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+                <span class="px-4 py-2 border rounded-full hover:bg-black hover:text-white cursor-pointer transition-colors">🍪 Galleta</span>
+                <span class="px-4 py-2 border rounded-full hover:bg-black hover:text-white cursor-pointer transition-colors">🥜 Maní</span>
+                <span class="px-4 py-2 border rounded-full hover:bg-black hover:text-white cursor-pointer transition-colors">🍫 Choco-Chips</span>
+                <span class="px-4 py-2 border rounded-full hover:bg-black hover:text-white cursor-pointer transition-colors">🫐 Arándanos</span>
+                <span class="px-4 py-2 border rounded-full hover:bg-black hover:text-white cursor-pointer transition-colors">🍯 Miel</span>
+                <span class="px-4 py-2 border rounded-full hover:bg-black hover:text-white cursor-pointer transition-colors">🌈 Sprinkles</span>
+            </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center items-center">
+            <img src="img/toppings.png" class="rounded-3xl shadow-2xl rotate-2 hover:-rotate-2 transition-transform duration-500 mx-auto" alt="Toppings">
+        </div>
+        </div>
+    </section>
+
+    <!-- Promo Section -->
+    <section class="max-w-6xl mx-auto px-6 mb-24">
+        <div class="bg-gradient-to-br from-tropical-green to-teal-400 rounded-[3rem] p-12 text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-48 h-48 bg-berry/20 rounded-full -ml-24 -mb-24 blur-3xl"></div>
+            
+            <div class="relative z-10 text-center max-w-2xl mx-auto">
+                <div class="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-bold mb-4">🎉 OFERTA ESPECIAL</div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Tarjeta de Cliente Frecuente</h2>
+                <p class="text-xl text-white/90 mb-8">Compra 5 helados y obtén el 6to <span class="font-bold underline">GRATIS</span>. Además, 10% de descuento en batidos todos los viernes.</p>
+                <button class="bg-white text-tropical-green px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all shadow-xl hover:scale-105">
+                    Obtener Tarjeta
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+         <h3 class="text-xl font-bold mb-2">
+          Carlos Mc Taggart
+         </h3>
+         <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+          <a class="hover:text-purple-400 transition-colors flex items-center gap-2" href="mailto:mctaggart.dev@gmail.com">
+           <span>
+            ✉️
+           </span>
+           mctaggart.dev@gmail.com
+          </a>
+          <a class="hover:text-purple-400 transition-colors flex items-center gap-2" href="https://wa.me/50762049480">
+           <span>
+            📱
+           </span>
+           +507 6204-9480
+          </a>
+         </div>
+         <p class="text-gray-500 text-sm">
+          © 2026 Portafolio Personal. Desarrollado con ❤️ y Tailwind CSS
+         </p>
+         <div class="mt-4">
+            <a href="index.html" class="text-sm font-bold text-gray-400 hover:text-tropical-green transition-colors">← Volver al Portafolio</a>
+         </div>
+        </div>
+       </footer>
+
+</body>
+</html>

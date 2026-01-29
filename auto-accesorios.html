@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoPro Shop - Accesorios Premium para Vehículos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #dc2626 0%, #1f2937 100%);
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cart-badge {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .filter-btn.active {
+            background: #dc2626;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <span class="text-2xl">🏎️</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">AutoPro Shop</h1>
+                        <p class="text-xs text-red-200">Premium Auto Accessories</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="relative hover:scale-110 transition-transform">
+                        <span class="text-2xl">🛒</span>
+                        <span class="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center cart-badge" id="cart-count">0</span>
+                    </button>
+                    <a href="index.html" class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-sm font-semibold transition-colors">
+                        Volver al Portafolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-5xl font-bold mb-4">Accesorios Premium para Tu Vehículo</h2>
+            <p class="text-xl text-red-100 mb-8">Calidad garantizada | Envío nacional | Instalación disponible</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
+                    <p class="text-3xl font-bold">500+</p>
+                    <p class="text-sm">Productos</p>
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
+                    <p class="text-3xl font-bold">98%</p>
+                    <p class="text-sm">Satisfacción</p>
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
+                    <p class="text-3xl font-bold">24/7</p>
+                    <p class="text-sm">Soporte</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filters -->
+    <section class="py-8 bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                <div class="flex-1 w-full md:w-auto">
+                    <input type="text" placeholder="🔍 Buscar productos..." class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-red-500 focus:outline-none">
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button class="filter-btn active px-4 py-2 rounded-full bg-gray-200 hover:bg-red-500 hover:text-white transition-colors font-semibold" data-category="todos">
+                        Todos
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-red-500 hover:text-white transition-colors font-semibold" data-category="iluminacion">
+                        Iluminación
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-red-500 hover:text-white transition-colors font-semibold" data-category="exterior">
+                        Exterior
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-red-500 hover:text-white transition-colors font-semibold" data-category="interior">
+                        Interior
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-red-500 hover:text-white transition-colors font-semibold" data-category="performance">
+                        Performance
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-3xl font-bold text-gray-900 mb-8">Productos Destacados</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="products-container">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg" data-category="iluminacion">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/leds.jpg" alt="Kit LED Faros" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold">NUEVO</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Kit LED Faros Delanteros</h4>
+                        <p class="text-gray-600 text-sm mb-4">Luz blanca intensa 6000K, instalación plug & play</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-red-600">$89.99</span>
+                            <button class="add-to-cart bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full font-semibold transition-colors">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg" data-category="exterior">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/spoiler.jpeg" alt="Spoiler Carbono" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Spoiler Universal Carbono</h4>
+                        <p class="text-gray-600 text-sm mb-4">Fibra de carbono real, diseño aerodinámico</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-red-600">$249.99</span>
+                            <button class="add-to-cart bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full font-semibold transition-colors">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg" data-category="interior">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/fundacarro.jpg" alt="Fundas Asientos" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Fundas Asientos Premium</h4>
+                        <p class="text-gray-600 text-sm mb-4">Cuero sintético, ajuste universal</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-red-600">$129.99</span>
+                            <button class="add-to-cart bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full font-semibold transition-colors">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg" data-category="performance">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/tubo.webp" alt="Escape Deportivo" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">HOT</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Escape Deportivo Inoxidable</h4>
+                        <p class="text-gray-600 text-sm mb-4">Acero inoxidable T304, sonido profundo</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-red-600">$399.99</span>
+                            <button class="add-to-cart bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full font-semibold transition-colors">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg" data-category="iluminacion">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/leds.avif" alt="LED RGB Interior" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Tira LED RGB Interior</h4>
+                        <p class="text-gray-600 text-sm mb-4">Control remoto, 16 millones de colores</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-red-600">$45.99</span>
+                            <button class="add-to-cart bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full font-semibold transition-colors">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg" data-category="exterior">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/protector.jpg" alt="Protector Parachoques" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Protector Parachoques</h4>
+                        <p class="text-gray-600 text-sm mb-4">Caucho resistente, instalación adhesiva</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-red-600">$34.99</span>
+                            <button class="add-to-cart bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full font-semibold transition-colors">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg" data-category="interior">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/bocinas.webp" alt="Sistema Audio Premium" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Sistema Audio Premium</h4>
+                        <p class="text-gray-600 text-sm mb-4">Subwoofer 12", amplificador 1000W</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-red-600">$549.99</span>
+                            <button class="add-to-cart bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full font-semibold transition-colors">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card bg-white rounded-2xl overflow-hidden shadow-lg" data-category="performance">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="img/admision.jpg" alt="Kit Admisión Fría" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Kit Admisión Fría</h4>
+                        <p class="text-gray-600 text-sm mb-4">Filtro K&N lavable, +15 HP garantizado</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-red-600">$279.99</span>
+                            <button class="add-to-cart bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full font-semibold transition-colors">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-5xl mb-4">🚚</div>
+                    <h4 class="font-bold text-lg mb-2">Envío Gratis</h4>
+                    <p class="text-gray-400 text-sm">En compras mayores a $100</p>
+                </div>
+                <div>
+                    <div class="text-5xl mb-4">🔒</div>
+                    <h4 class="font-bold text-lg mb-2">Pago Seguro</h4>
+                    <p class="text-gray-400 text-sm">Protección SSL certificada</p>
+                </div>
+                <div>
+                    <div class="text-5xl mb-4">↩️</div>
+                    <h4 class="font-bold text-lg mb-2">Devolución 30 días</h4>
+                    <p class="text-gray-400 text-sm">Sin preguntas, garantizado</p>
+                </div>
+                <div>
+                    <div class="text-5xl mb-4">🛠️</div>
+                    <h4 class="font-bold text-lg mb-2">Instalación Pro</h4>
+                    <p class="text-gray-400 text-sm">Servicio técnico disponible</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="text-3xl">🏎️</span>
+                <h3 class="text-2xl font-bold">AutoPro Shop</h3>
+            </div>
+            <p class="text-red-200 mb-6">Tu destino para accesorios automotrices premium</p>
+            <div class="flex justify-center gap-6 mb-6">
+                <a href="#" class="hover:text-yellow-400 transition-colors">📧 Email</a>
+                <a href="#" class="hover:text-yellow-400 transition-colors">📱 WhatsApp</a>
+                <a href="#" class="hover:text-yellow-400 transition-colors">📷 Instagram</a>
+                <a href="#" class="hover:text-yellow-400 transition-colors">📘 Facebook</a>
+            </div>
+            <p class="text-sm text-red-300">© 2026 AutoPro Shop - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Cart functionality
+        let cartCount = 0;
+        const cartBadge = document.getElementById('cart-count');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                cartCount++;
+                cartBadge.textContent = cartCount;
+                
+                // Visual feedback
+                this.textContent = '✓ Agregado';
+                this.classList.add('bg-green-600');
+                this.classList.remove('bg-red-600');
+                
+                setTimeout(() => {
+                    this.textContent = 'Agregar';
+                    this.classList.add('bg-red-600');
+                    this.classList.remove('bg-green-600');
+                }, 1500);
+            });
+        });
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                const category = this.dataset.category;
+
+                productCards.forEach(card => {
+                    if (category === 'todos' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

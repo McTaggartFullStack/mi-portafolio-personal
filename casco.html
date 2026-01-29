@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Fogón del Casco - Auténtica Comida Panameña</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Merriweather', 'serif'],
+                        sans: ['Open Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        clay: {
+                            50: '#fbf7f4',
+                            100: '#f5ebe3',
+                            200: '#eddccf',
+                            300: '#e3c6b0',
+                            400: '#d7a788',
+                            500: '#cc8662',
+                            600: '#bf6a4b',
+                            700: '#9f513a',
+                            800: '#844434',
+                            900: '#6b3a2e',
+                        },
+                        maize: {
+                            500: '#eab308',
+                            600: '#ca8a04',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .parallax-hero {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop');
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .pattern-bg {
+            background-color: #fbf7f4;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d7a788' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .card-shadow {
+            box-shadow: 0 10px 15px -3px rgba(159, 81, 58, 0.1), 0 4px 6px -2px rgba(159, 81, 58, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-clay-50 font-sans text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white/95 backdrop-blur-sm fixed w-full z-50 shadow-sm border-b border-clay-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <span class="font-serif text-2xl font-bold text-clay-800 flex items-center gap-2">
+                        <span class="text-3xl">🍲</span> El Fogón del Casco
+                    </span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-600 hover:text-clay-600 font-semibold transition-colors">Inicio</a>
+                    <a href="#menu" class="text-gray-600 hover:text-clay-600 font-semibold transition-colors">Menú</a>
+                    <a href="#historia" class="text-gray-600 hover:text-clay-600 font-semibold transition-colors">Nuestra Historia</a>
+                    <a href="#contacto" class="text-gray-600 hover:text-clay-600 font-semibold transition-colors">Contacto</a>
+                    <a href="#" class="bg-clay-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-clay-700 transition-colors shadow-md">Pedir Online</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-600 hover:text-clay-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="parallax-hero h-screen flex items-center justify-center text-center px-4">
+        <div class="max-w-4xl mx-auto">
+            <span class="block text-maize-500 font-serif italic text-2xl md:text-3xl mb-4 text-shadow animate-[fadeIn_1s_ease-out]">Sabor auténtico panameño</span>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-8 font-serif leading-tight text-shadow">
+                Donde la tradición<br>se sirve caliente
+            </h1>
+            <p class="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl mx-auto font-light">
+                Recetas de la abuela, ingredientes locales y el calor del fogón en el corazón del Casco Viejo.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#menu" class="bg-maize-500 text-clay-900 px-8 py-4 rounded-full font-bold text-lg hover:bg-maize-600 transition-all transform hover:scale-105 shadow-lg">
+                    Ver Menú del Día
+                </a>
+                <a href="#reservas" class="bg-white/10 backdrop-blur-md border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all">
+                    Reservar Mesa
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                <div class="p-6">
+                    <div class="w-16 h-16 bg-clay-100 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">🌿</div>
+                    <h3 class="text-xl font-serif font-bold text-clay-800 mb-3">Ingredientes Frescos</h3>
+                    <p class="text-gray-600">Directo del productor nacional a tu mesa. Apoyamos a nuestros agricultores locales.</p>
+                </div>
+                <div class="p-6">
+                    <div class="w-16 h-16 bg-clay-100 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">🔥</div>
+                    <h3 class="text-xl font-serif font-bold text-clay-800 mb-3">Cocina a Leña</h3>
+                    <p class="text-gray-600">Ese sabor ahumado inconfundible que solo el verdadero fogón puede dar a tus comidas.</p>
+                </div>
+                <div class="p-6">
+                    <div class="w-16 h-16 bg-clay-100 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">🏠</div>
+                    <h3 class="text-xl font-serif font-bold text-clay-800 mb-3">Ambiente Casero</h3>
+                    <p class="text-gray-600">Siéntete como en casa. Un espacio acogedor para compartir con familia y amigos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 pattern-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold text-clay-800 mb-4">Nuestros Platos Estrella</h2>
+                <div class="w-24 h-1 bg-maize-500 mx-auto rounded-full"></div>
+                <p class="mt-4 text-xl text-gray-600">Lo mejor de la gastronomía criolla</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Sancocho -->
+                <div class="bg-white rounded-2xl overflow-hidden card-shadow hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row">
+                    <div class="md:w-2/5 h-64 md:h-auto overflow-hidden relative group">
+                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=2070&auto=format&fit=crop" alt="Sancocho" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-8 md:w-3/5 flex flex-col justify-center">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-2xl font-serif font-bold text-clay-800">Sancocho Interiorano</h3>
+                            <span class="text-xl font-bold text-maize-600">$8.50</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">El clásico de siempre. Pollo de patio, ñame baboso, culantro y oregano. Acompañado de arroz blanco.</p>
+                        <button class="text-clay-600 font-semibold hover:text-clay-800 transition-colors self-start border-b-2 border-clay-200 hover:border-clay-600">Agregar al pedido</button>
+                    </div>
+                </div>
+
+                <!-- Arroz con Pollo -->
+                <div class="bg-white rounded-2xl overflow-hidden card-shadow hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row">
+                    <div class="md:w-2/5 h-64 md:h-auto overflow-hidden relative group">
+                        <img src="img/pollo.png" alt="Arroz con Pollo" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-maize-500 text-clay-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Popular</div>
+                    </div>
+                    <div class="p-8 md:w-3/5 flex flex-col justify-center">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-2xl font-serif font-bold text-clay-800">Arroz con Pollo</h3>
+                            <span class="text-xl font-bold text-maize-600">$9.00</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Receta de fiesta. Arroz desgranado con pollo desmenuzado, aceitunas, guisantes y la sazón de la casa.</p>
+                        <button class="text-clay-600 font-semibold hover:text-clay-800 transition-colors self-start border-b-2 border-clay-200 hover:border-clay-600">Agregar al pedido</button>
+                    </div>
+                </div>
+
+                <!-- Ropa Vieja -->
+                <div class="bg-white rounded-2xl overflow-hidden card-shadow hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row">
+                    <div class="md:w-2/5 h-64 md:h-auto overflow-hidden relative group">
+                        <img src="img/ropavieja.jpg" alt="Ropa Vieja" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-8 md:w-3/5 flex flex-col justify-center">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-2xl font-serif font-bold text-clay-800">Ropa Vieja</h3>
+                            <span class="text-xl font-bold text-maize-600">$10.50</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Carne deshilachada en salsa criolla de tomates y pimientos. Servida con patacones crujientes o arroz con coco.</p>
+                        <button class="text-clay-600 font-semibold hover:text-clay-800 transition-colors self-start border-b-2 border-clay-200 hover:border-clay-600">Agregar al pedido</button>
+                    </div>
+                </div>
+
+                <!-- Pescado Frito -->
+                <div class="bg-white rounded-2xl overflow-hidden card-shadow hover:shadow-xl transition-shadow duration-300 flex flex-col md:flex-row">
+                    <div class="md:w-2/5 h-64 md:h-auto overflow-hidden relative group">
+                        <img src="img/pescadito.webp" alt="Pescado Frito" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-8 md:w-3/5 flex flex-col justify-center">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-2xl font-serif font-bold text-clay-800">Pescado Frito</h3>
+                            <span class="text-xl font-bold text-maize-600">$14.00</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Pargo rojo entero, frito a la perfección. Acompañado de patacones, ensalada fresca y limón.</p>
+                        <button class="text-clay-600 font-semibold hover:text-clay-800 transition-colors self-start border-b-2 border-clay-200 hover:border-clay-600">Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-clay-600 text-clay-600 font-bold px-8 py-3 rounded-full hover:bg-clay-600 hover:text-white transition-colors uppercase tracking-wider">Ver Menú Completo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="historia" class="py-20 flex flex-col md:flex-row items-center bg-white overflow-hidden">
+        <div class="md:w-1/2 px-4 md:px-12 lg:px-20 mb-10 md:mb-0">
+            <h2 class="text-4xl font-serif font-bold text-clay-800 mb-6">Nuestra Historia</h2>
+            <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                El Fogón del Casco nació del sueño de Doña Carmen, quien creció viendo a su abuela cocinar en fogón de leña en el interior del país. 
+                Queriendo traer esos sabores nostálgicos a la ciudad, abrió este pequeño rincón en el Casco Antiguo en 1998.
+            </p>
+            <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                Hoy, mantenemos vivas esas tradiciones, cocinando lento, con paciencia y mucho amor. Cada plato cuenta una historia de nuestro Panamá.
+            </p>
+            <img src="https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=2070&auto=format&fit=crop" alt="Firma" class="h-20 opacity-70">
+        </div>
+        <div class="md:w-1/2 relative h-[500px] w-full">
+            <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop" alt="Interior Restaurante" class="w-full h-full object-cover">
+            <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-maize-500 rounded-full hidden md:block z-0"></div>
+            <div class="absolute top-10 right-10 w-20 h-20 border-4 border-white rounded-full z-10"></div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-clay-600 text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="text-6xl text-maize-500 font-serif mb-6">"</div>
+            <p class="text-2xl md:text-3xl font-serif italic mb-8">
+                El mejor sancocho que he probado en la ciudad. Me transportó directito a la casa de mi abuela en Las Tablas. ¡Recomendadísimo!
+            </p>
+            <div class="flex items-center justify-center gap-4">
+                <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=200&auto=format&fit=crop" alt="Cliente" class="w-16 h-16 rounded-full border-2 border-maize-500 object-cover">
+                <div class="text-left">
+                    <div class="font-bold text-lg">Ricardo Martíneli</div>
+                    <div class="text-clay-200 text-sm">Cliente frecuente</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Strip -->
+    <div class="flex flex-wrap">
+        <div class="w-1/2 md:w-1/4 h-64 relative group overflow-hidden">
+            <img src="img/ceviche.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Comida">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+        </div>
+        <div class="w-1/2 md:w-1/4 h-64 relative group overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?q=80&w=1935&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Comida">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+        </div>
+        <div class="w-1/2 md:w-1/4 h-64 relative group overflow-hidden">
+            <img src="img/panama.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Comida">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+        </div>
+        <div class="w-1/2 md:w-1/4 h-64 relative group overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=2071&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Comida">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+        </div>
+    </div>
+
+    <!-- Contact & Footer -->
+    <footer id="contacto" class="bg-clay-900 text-clay-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                    <span class="font-serif text-2xl font-bold text-white flex items-center gap-2 mb-6">
+                        <span class="text-3xl">🍲</span> El Fogón del Casco
+                    </span>
+                    <p class="mb-6 text-clay-300">
+                        Auténtica comida panameña en el corazón del centro histórico. Tradición, sabor y cultura en cada bocado.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-maize-500 transition-colors text-xl">📸</a>
+                        <a href="#" class="text-white hover:text-maize-500 transition-colors text-xl">📘</a>
+                        <a href="#" class="text-white hover:text-maize-500 transition-colors text-xl">🐦</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Horarios</h4>
+                    <ul class="space-y-3 text-clay-300">
+                        <li class="flex justify-between">
+                            <span>Lunes - Jueves:</span>
+                            <span>11:00 AM - 10:00 PM</span>
+                        </li>
+                        <li class="flex justify-between text-white font-medium">
+                            <span>Viernes - Sábado:</span>
+                            <span>11:00 AM - 11:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Domingo:</span>
+                            <span>10:00 AM - 9:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Contacto</h4>
+                    <ul class="space-y-4 text-clay-300">
+                        <li class="flex items-start gap-3">
+                            <span class="text-maize-500">📍</span>
+                            <span>Calle 4ta y Avenida A, Casco Antiguo, Ciudad de Panamá</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-maize-500">📞</span>
+                            <span>+507 222-5555</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-maize-500">✉️</span>
+                            <span>hola@elfogondelcasco.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-clay-800 mt-16 pt-8 text-center text-sm text-clay-400">
+                <p>&copy; 2026 El Fogón del Casco. Todos los derechos reservados. Diseño de demostración.</p>
+                <div class="mt-4">
+                  <a href="index.html" class="text-maize-500 hover:text-maize-400 underline">← Volver al Portafolio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio - Desarrollador Frontend</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        * {
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Portafolio - Desarrollador Frontend
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <style>
+   * {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
         }
         
@@ -32,6 +35,14 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Mobile Fix: Ensure content is visible on small screens */
+        @media (max-width: 768px) {
+            .fade-in {
+                opacity: 1 !important;
+                transform: none !important;
+            }
         }
         
         .floating {
@@ -158,9 +169,9 @@
             transform: rotate(-3deg) translateY(-15px) scale(1.04);
             box-shadow: 0 30px 60px -12px rgba(245, 158, 11, 0.5);
         }
-    </style>
-<script type="application/ld+json">
-{
+  </style>
+  <script type="application/ld+json">
+   {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Carlos Alberto Mc Taggart Montes",
@@ -180,480 +191,836 @@
     "https://github.com/McTaggartFullStack"
   ]
 }
-</script>
-</head>
-<body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0">
-                    <h1 class="text-2xl font-bold text-gradient">Mi Portafolio</h1>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#inicio" class="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium">Inicio</a>
-                        <a href="#proyectos" class="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium">Proyectos</a>
-                        <a href="#contacto" class="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium">Contacto</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+  </script>
+ </head>
+ <body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50 transition-all duration-300" id="navbar">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+     <div class="flex-shrink-0">
+      <h1 class="text-2xl font-bold text-gradient">
+       Mi Portafolio
+      </h1>
+     </div>
+     <div class="hidden md:block">
+      <div class="ml-10 flex items-baseline space-x-8">
+       <a class="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium" href="#inicio">
+        Inicio
+       </a>
+       <a class="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium" href="#proyectos">
+        Proyectos
+       </a>
+       <a class="text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium" href="#contacto">
+        Contacto
+       </a>
+      </div>
+     </div>
+     <div class="-mr-2 flex md:hidden">
+      <!-- Mobile menu button -->
+      <button class="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-purple-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500" type="button" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-btn">
+       <span class="sr-only">Open main menu</span>
+       <!-- Icon when menu is closed. -->
+       <!-- Heroicon name: outline/menu -->
+       <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" id="menu-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg>
+       <!-- Icon when menu is open. -->
+       <!-- Heroicon name: outline/x -->
+       <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" id="close-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+       </svg>
+      </button>
+     </div>
+    </div>
+   </div>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <!-- Animated Background Blobs -->
-        <div class="blob w-72 h-72 bg-purple-400 top-20 left-10"></div>
-        <div class="blob w-96 h-96 bg-blue-400 bottom-20 right-10" style="animation-delay: 2s;"></div>
-        <div class="blob w-80 h-80 bg-indigo-400 top-1/2 left-1/2" style="animation-delay: 4s;"></div>
-        
-        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-            <div class="floating">
-                <div class="inline-block p-4 bg-white/20 backdrop-blur-sm rounded-full mb-6">
-                    <div class="text-6xl">💻</div>
-                </div>
-            </div>
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-6 fade-in">
-                Desarrollador
-                <span class="text-gradient block mt-2">Frontend</span>
-            </h1>
-            <p class="text-xl sm:text-2xl text-gray-600 mb-8 fade-in max-w-3xl mx-auto" style="transition-delay: 0.2s;">
-                Creando experiencias web modernas, interactivas y visualmente impactantes
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="transition-delay: 0.4s;">
-                <a href="#proyectos" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-full hover:from-purple-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-                    Ver Proyectos ↓
-                </a>
-                <a href="#contacto" class="inline-flex items-center px-8 py-4 bg-white text-purple-600 font-semibold rounded-full hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-purple-200">
-                    Contáctame ✉️
-                </a>
-            </div>
-            
-            <!-- Tech Stack Icons -->
-            <div class="mt-16 flex justify-center gap-6 flex-wrap fade-in" style="transition-delay: 0.6s;">
-                <div class="p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="text-4xl">🌐</div>
-                </div>
-                <div class="p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="text-4xl">🎨</div>
-                </div>
-                <div class="p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="text-4xl">⚡</div>
-                </div>
-                <div class="p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="text-4xl">⚛️</div>
-                </div>
-                <div class="p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="text-4xl">🚀</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="proyectos" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-                    Mis <span class="text-gradient">Proyectos</span>
-                </h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                    Una colección de mis trabajos más destacados en desarrollo web
-                </p>
-                <div class="mt-4 w-24 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                <!-- Project 1 - TecnoCorepty -->
-                <div class="fade-in card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
-                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-purple-500 to-indigo-600">
-                            <img src="img/tecnocore.png" 
-                                alt="TecnoCorePTY" 
-                                class="w-full h-full object-cover project-img"
-                                loading="lazy" decoding="async" fetchpriority="high">
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-green-500 text-white text-sm font-semibold rounded-full flex items-center gap-1">
-                                <span class="w-2 h-2 bg-white rounded-full pulse-slow"></span>
-                                Live
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">TecnoCorePTY</h3>
-                        <p class="text-gray-600 mb-4">
-                            Sitio web profesional con diseño moderno y funcionalidades avanzadas.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">HTML5</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Tailwind CSS</span>
-                            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">JavaScript</span>
-                            <span class="px-3 py-1 bg-gray-800 text-white text-sm rounded-full flex items-center gap-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                </svg>
-                                Sitio Externo
-                            </span>
-                        </div>
-                        <a href="https://tecnocorepty.com" 
-                           target="_blank" 
-                           class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group">
-                            Ver Proyecto
+   <!-- Mobile menu, show/hide based on menu state. -->
+   <div class="md:hidden hidden bg-white border-t border-gray-200 shadow-lg absolute w-full left-0 z-50 transition-all duration-300 ease-in-out transform origin-top" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+     <a class="text-gray-700 hover:text-purple-600 hover:bg-purple-50 block px-3 py-2 rounded-md text-base font-medium transition-colors" href="#inicio">
+      Inicio
+     </a>
+     <a class="text-gray-700 hover:text-purple-600 hover:bg-purple-50 block px-3 py-2 rounded-md text-base font-medium transition-colors" href="#proyectos">
+      Proyectos
+     </a>
+     <a class="text-gray-700 hover:text-purple-600 hover:bg-purple-50 block px-3 py-2 rounded-md text-base font-medium transition-colors" href="#contacto">
+      Contacto
+     </a>
+    </div>
+   </div>
+  </nav>
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16" id="inicio">
+   <!-- Animated Background Blobs -->
+   <div class="blob w-72 h-72 bg-purple-400 top-20 left-10">
+   </div>
+   <div class="blob w-96 h-96 bg-blue-400 bottom-20 right-10" style="animation-delay: 2s;">
+   </div>
+   <div class="blob w-80 h-80 bg-indigo-400 top-1/2 left-1/2" style="animation-delay: 4s;">
+   </div>
+   <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="floating">
+     <div class="inline-block p-4 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+      <div class="text-6xl">
+       💻
+      </div>
+     </div>
+    </div>
+    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-6 fade-in">
+     Desarrollador
+     <span class="text-gradient block mt-2">
+      Frontend
+     </span>
+    </h1>
+    <p class="text-xl sm:text-2xl text-gray-600 mb-8 fade-in max-w-3xl mx-auto" style="transition-delay: 0.2s;">
+     Creando experiencias web modernas, interactivas y visualmente impactantes
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="transition-delay: 0.4s;">
+     <a class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-full hover:from-purple-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl" href="#proyectos">
+      Ver Proyectos ↓
+     </a>
+     <a class="inline-flex items-center px-8 py-4 bg-white text-purple-600 font-semibold rounded-full hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-purple-200" href="#contacto">
+      Contáctame ✉️
+     </a>
+    </div>
+    <!-- Tech Stack Icons -->
+    <div class="mt-16 flex justify-center gap-6 flex-wrap fade-in" style="transition-delay: 0.6s;">
+     <div class="p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+      <div class="text-4xl">
+       🌐
+      </div>
+     </div>
+     <div class="p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+      <div class="text-4xl">
+       🎨
+      </div>
+     </div>
+     <div class="p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+      <div class="text-4xl">
+       ⚡
+      </div>
+     </div>
+     <div class="p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+      <div class="text-4xl">
+       ⚛️
+      </div>
+     </div>
+     <div class="p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+      <div class="text-4xl">
+       🚀
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Projects Section -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white" id="proyectos">
+   <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+     <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+      Mis
+      <span class="text-gradient">
+       Proyectos
+      </span>
+     </h2>
+     <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+      Una colección de mis trabajos más destacados en desarrollo web
+     </p>
+     <div class="mt-4 w-24 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 mx-auto rounded-full">
+     </div>
+    </div>
+    <h3 class="text-3xl font-bold text-gray-800 mb-8 mt-12 pl-4 border-l-4 border-purple-600">
+     Servicios Profesionales
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+     <div class="fade-in card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+      <div class="relative overflow-hidden h-64 bg-gray-100">
+       <img alt="TecnoCorePTY" class="w-full h-full object-cover project-img" decoding="async" fetchpriority="high" loading="lazy" src="img/tecnocore.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-green-500 text-white text-sm font-semibold rounded-full flex items-center gap-1">
+         <span class="w-2 h-2 bg-white rounded-full pulse-slow">
+         </span>
+         Live
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">
+        TecnoCorePTY
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Sitio web profesional con diseño moderno y funcionalidades avanzadas.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+        <span class="px-3 py-1 bg-gray-800 text-white text-sm rounded-full flex items-center gap-1">
+         <svg class="h-3 w-3" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          </path>
+         </svg>
+         Sitio Externo
+        </span>
+       </div>
+       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="https://tecnocorepty.com" target="_blank">
+        Ver Proyecto
                             →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 2 - Sitio Educativo -->
-                <div class="fade-in hover-zoom bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
-                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-blue-500 to-cyan-600">
-                            <img src="img/educativo.png" 
-                                alt="Proyecto 2" 
-                                class="w-full h-full object-cover project-img"
-                                loading="lazy" decoding="async">
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
-                                Demostración
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Sitio Educativo</h3>
-                        <p class="text-gray-600 mb-4">
-                            Plataforma de cursos online con rutas guiadas, mentorías y planes flexibles.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">HTML5</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Tailwind CSS</span>
-                            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">JavaScript</span>
-                        </div>
-                        <a href="./educacion.html" 
-                           class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group">
-                            Ver Proyecto
+       </a>
+      </div>
+     </div>
+     <div class="fade-in hover-skew bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-gray-100">
+       <img alt="Canelino S.A" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/canelino.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">
+        Canelino S.A
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Descripción del proyecto. Agrega tus trabajos aquí con sus características principales.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="canelino.html">
+        Ver Proyecto
                             →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="fade-in hover-tilt-left bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
-                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-green-500 to-teal-600">
-                            <img src="img/futbol.png" 
-                                alt="Futbol total" 
-                                class="w-full h-full object-cover project-img"
-                                loading="lazy" decoding="async">
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
-                                Demostración
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Futbol total</h3>
-                        <p class="text-gray-600 mb-4">
-                            Descripción del proyecto. Agrega tus trabajos aquí con sus características principales.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">HTML5</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Tailwind CSS</span>
-                            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">JavaScript</span>
-                        </div>
-                        <a href="./revista.html" 
-                           class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group">
-                            Ver Proyecto
+       </a>
+      </div>
+     </div>
+    </div>
+    <h3 class="text-3xl font-bold text-gray-800 mb-8 mt-12 pl-4 border-l-4 border-blue-600">
+     Tiendas en Línea
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+     <div class="fade-in hover-glow bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-gray-100">
+       <img alt="TechStore" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/tienda.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">
+        TechStore
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Tienda online de celulares y accesorios con carrito funcional, filtros por categoría y diseño mobile-first.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="./tienda.html">
+        Ver Proyecto
                             →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="fade-in hover-tilt-right bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
-                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-pink-500 to-rose-600">
-                            <img src="img/eventos.png"  
-                                alt="Proyecto 4" 
-                                class="w-full h-full object-cover project-img"
-                                loading="lazy" decoding="async">
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
-                                Demostración
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">NEON FEST 2026</h3>
-                        <p class="text-gray-600 mb-4">
-                            Landing page para festival de música electrónica con cuenta regresiva, line-up de artistas y sistema de registro.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">HTML5</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Tailwind CSS</span>
-                            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">JavaScript</span>
-                        </div>
-                        <a href="./evento.html" 
-                           class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group">
-                            Ver Proyecto
+       </a>
+      </div>
+     </div>
+     <div class="fade-in hover-flip bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-gray-100">
+       <img alt="Lumière" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/moda.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">
+        LUMIÈRE Fashion
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Boutique de moda minimalista con efectos parallax, transiciones suaves y estética editorial de alta gama.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-stone-100 text-stone-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-orange-50 text-orange-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="./moda.html">
+        Ver Proyecto
                             →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="fade-in hover-glow bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
-                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-orange-500 to-red-600">
-                            <img src="img/tienda.png" 
-                                alt="TechStore" 
-                                class="w-full h-full object-cover project-img"
-                                loading="lazy" decoding="async">
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
-                                Demostración
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">TechStore</h3>
-                        <p class="text-gray-600 mb-4">
-                            Tienda online de celulares y accesorios con carrito funcional, filtros por categoría y diseño mobile-first.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">HTML5</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Tailwind CSS</span>
-                            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">JavaScript</span>
-                        </div>
-                        <a href="./tienda.html" 
-                           class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group">
-                            Ver Proyecto
+       </a>
+      </div>
+     </div>
+     <div class="fade-in hover-pulse-grow bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-gray-100">
+       <img alt="Aura Living" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/hogar.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">
+        AURA LIVING
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Concept Store de diseño interior consciente con catálogo inmersivo, filtrado dinámico y estética Wabi-Sabi.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-stone-100 text-stone-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-orange-50 text-orange-800 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-amber-50 text-amber-800 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <a class="inline-flex items-center text-stone-600 font-semibold hover:text-stone-900 transition-colors duration-300 group" href="./hogar.html">
+        Ver Proyecto
                             →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="fade-in hover-bounce bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
-                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-stone-800 to-black">
-                            <img src="img/restaurante.png" 
-                                alt="La Hacienda" 
-                                class="w-full h-full object-cover project-img"
-                                loading="lazy" decoding="async">
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
-                                Demostración
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">La Hacienda</h3>
-                        <p class="text-gray-600 mb-4">
-                            Sitio web premium para restaurante de alta cocina con reservas online, menú interactivo y diseño elegante dark-mode.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">HTML5</span>
-                            <span class="px-3 py-1 bg-stone-100 text-stone-800 text-sm rounded-full">Tailwind CSS</span>
-                            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">JavaScript</span>
-                        </div>
-                        <a href="./restaurante.html" 
-                           class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group">
-                            Ver Proyecto
+       </a>
+      </div>
+     </div>
+     <div class="fade-in hover-tilt bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-gradient-to-br from-red-500 to-black">
+       <img alt="AutoPro Shop" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/autos.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">
+        AutoPro Shop 🏎️
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Tienda online de accesorios premium para vehículos. Incluye filtros por marca, modelo y categoría con carrito de compras funcional.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-gray-800 text-white text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <a class="inline-flex items-center text-red-600 font-semibold hover:text-red-800 transition-colors duration-300 group" href="./auto-accesorios.html">
+        Ver Proyecto
                             →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 7 -->
-                <div class="fade-in hover-flip bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
-                    <div class="relative overflow-hidden h-64 bg-[#F5F5F0]">
-                            <img src="img/moda.png" 
-                                alt="Lumière" 
-                                class="w-full h-full object-cover project-img opacity-90 hover:opacity-100 transition-opacity"
-                                loading="lazy" decoding="async">
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
-                                Demostración
-                            </span>
-                        </div>
-                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-500">
-                             <span class="font-serif italic text-3xl text-white drop-shadow-lg">Lumière</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">LUMIÈRE Fashion</h3>
-                        <p class="text-gray-600 mb-4">
-                            Boutique de moda minimalista con efectos parallax, transiciones suaves y estética editorial de alta gama.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-stone-100 text-stone-700 text-sm rounded-full">HTML5</span>
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">Tailwind CSS</span>
-                            <span class="px-3 py-1 bg-orange-50 text-orange-700 text-sm rounded-full">JavaScript</span>
-                        </div>
-                        <a href="./moda.html" 
-                           class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group">
-                            Ver Proyecto
+       </a>
+      </div>
+     </div>
+    </div>
+    <h3 class="text-3xl font-bold text-gray-800 mb-8 mt-12 pl-4 border-l-4 border-orange-600">
+     Restaurantes y Gastronomía
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+     <div class="fade-in hover-bounce bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-gray-100">
+       <img alt="La Hacienda" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/restaurante.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">
+        La Hacienda
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Sitio web premium para restaurante de alta cocina con reservas online, menú interactivo y diseño elegante dark-mode.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-stone-100 text-stone-800 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="./restaurante.html">
+        Ver Proyecto
                             →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 8 -->
-                <div class="fade-in hover-pulse-grow bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
-                    <div class="relative overflow-hidden h-64 bg-sand">
-                            <img src="img/hogar.png" 
-                                alt="Aura Living" 
-                                class="w-full h-full object-cover project-img"
-                                loading="lazy" decoding="async">
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
-                                Demostración
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">AURA LIVING</h3>
-                        <p class="text-gray-600 mb-4">
-                            Concept Store de diseño interior consciente con catálogo inmersivo, filtrado dinámico y estética Wabi-Sabi.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-stone-100 text-stone-700 text-sm rounded-full">HTML5</span>
-                            <span class="px-3 py-1 bg-orange-50 text-orange-800 text-sm rounded-full">Tailwind CSS</span>
-                            <span class="px-3 py-1 bg-amber-50 text-amber-800 text-sm rounded-full">JavaScript</span>
-                        </div>
-                        <a href="./hogar.html" 
-                           class="inline-flex items-center text-stone-600 font-semibold hover:text-stone-900 transition-colors duration-300 group">
-                            Ver Proyecto
+       </a>
+      </div>
+     </div>
+     <div class="fade-in hover-rotate bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-gray-100">
+       <img alt="El Fogón del Casco" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/fogon.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">
+        El Fogón del Casco
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Restaurante casual de comida típica panameña con menú del día, ambiente familiar y pedidos online. Sabor auténtico.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-amber-100 text-amber-800 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <a class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-800 transition-colors duration-300 group" href="casco.html">
+        Ver Proyecto
                             →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 9 -->
-                <div class="fade-in hover-skew bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
-                    <div class="relative overflow-hidden h-64 bg-gradient-to-br from-violet-500 to-fuchsia-600">
-                            <img src="img/canelino.png" 
-                                alt="Canelino S.A" 
-                                class="w-full h-full object-cover project-img"
-                                loading="lazy" decoding="async">
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
-                                Demostración
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Canelino S.A</h3>
-                        <p class="text-gray-600 mb-4">
-                            Descripción del proyecto. Agrega tus trabajos aquí con sus características principales.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">HTML5</span>
-                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">Tailwind CSS</span>
-                            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">JavaScript</span>
-                        </div>
-                        <a href="canelino.html" 
-                           class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group">
-                            Ver Proyecto
+       </a>
+      </div>
+     </div>
+     <div class="fade-in hover-rotate bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-gray-100">
+       <img alt="La Esquina Napolitana" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/pizzeria.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">
+        La Esquina Napolitana
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Pizzería premium con horno de leña. Menú de 10 pizzas auténticas, pastas frescas y ambiente rústico italiano.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-stone-100 text-stone-800 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full">
+         Parallax
+        </span>
+       </div>
+       <a class="inline-flex items-center text-red-600 font-semibold hover:text-red-800 transition-colors duration-300 group" href="pizzeria.html">
+        Ver Proyecto
                             →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 10 -->
-                <div class="fade-in hover-rotate bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
-                    <div class="relative overflow-hidden h-64 bg-black">
-                            <img src="img/lab.png" 
-                                alt="Experimental Lab" 
-                                class="w-full h-full object-cover project-img opacity-80 hover:opacity-100 transition-opacity"
-                                loading="lazy" decoding="async">
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
-                                Demostración
-                            </span>
-                        </div>
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                            <span class="text-neon-lime text-3xl font-bold" style="color: #ccff00; text-shadow: 0 0 10px rgba(0,0,0,0.5);">LAB.010</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Experimental Lab</h3>
-                        <p class="text-gray-600 mb-4">
-                            Playground creativo de UI/UX con animaciones avanzadas, micro-interacciones y estética futurista experimental.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-black text-white text-sm rounded-full">HTML5</span>
-                            <span class="px-3 py-1 bg-lime-100 text-lime-800 text-sm rounded-full">Tailwind CSS</span>
-                            <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">JavaScript</span>
-                        </div>
-                        <a href="./experimental.html" 
-                           class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group">
-                            Ver Proyecto
+       </a>
+      </div>
+     </div>
+     <div class="fade-in hover-tilt bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-gray-100">
+       <img alt="Helados del Trópico" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/heladeria.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">
+        Helados del Trópico
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Heladería minimalista y colorida. Visualizador de toppings interactivo y galería de sabores tropicales.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-teal-100 text-teal-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         Minimalist
+        </span>
+       </div>
+       <a class="inline-flex items-center text-pink-500 font-semibold hover:text-pink-700 transition-colors duration-300 group" href="heladeria.html">
+        Ver Proyecto
                             →
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contacto" class="py-20 px-4 sm:px-6 lg:px-8 gradient-bg">
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="fade-in">
-                <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
-                    ¿Listo para trabajar juntos?
-                </h2>
-                <p class="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
-                    Estoy disponible para nuevos proyectos y oportunidades. ¡Conectemos!
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                    <a href="mailto:mctaggart.dev@gmail.com" 
-                       class="inline-flex items-center px-8 py-4 bg-white text-purple-600 font-semibold rounded-full hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg">
-                        📧
+       </a>
+      </div>
+     </div>
+     <div class="fade-in hover-tilt-left bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-gray-100">
+       <img alt="La Tribu Food" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/tribu.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">
+        La Tribu Food
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Restaurante y bar con ambiente vibrante, ideal para previas. Incluye ruleta interactiva para decidir quién paga la cuenta.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="tribu.html">
+        Ver Proyecto
+                            →
+       </a>
+      </div>
+     </div>
+     <div class="fade-in hover-rotate bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-red-900 border-b-4 border-yellow-500">
+       <img alt="Palacio del Dragón" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/chino.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6 bg-red-50">
+       <h3 class="text-2xl font-bold text-red-900 mb-3" style="font-family: serif;">
+        Palacio del Dragón 🐲
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Restaurante chino tradicional. Incluye una <strong>Galleta de la Fortuna Interactiva</strong> con más de 40 frases de sabiduría.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-red-200 text-red-800 text-sm rounded-full">
+         Interactive JS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-sm rounded-full">
+         Culture Design
+        </span>
+       </div>
+       <a class="inline-flex items-center text-red-700 font-bold hover:text-red-900 transition-colors duration-300 group" href="chino.html">
+        Ver Proyecto
+                            →
+       </a>
+      </div>
+     </div>
+     <div class="fade-in hover-rotate bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-[#FAEDCD]">
+       <img alt="Miel & Pan" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/cafeteria.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-green-500 text-white text-sm font-semibold rounded-full"> 
+         Nuevo
+        </span>
+       </div>
+      </div>
+      <div class="p-6 bg-[#FDFBF7]">
+       <h3 class="text-2xl font-bold text-[#D4A373] mb-3" style="font-family: 'Times New Roman', serif;">
+        Miel & Pan ☕
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Cafetería Aesthetic de especialidad. Animaciones de vapor y un diseño minimalista "Slow Living".
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-[#CCD5AE] text-white text-sm rounded-full">
+         Pastel UI
+        </span>
+        <span class="px-3 py-1 bg-[#D4A373] text-white text-sm rounded-full">
+         Steam FX
+        </span>
+       </div>
+       <a class="inline-flex items-center text-[#D4A373] font-bold hover:text-[#b08558] transition-colors duration-300 group" href="miel-pan.html">
+        Ver Proyecto
+                            →
+       </a>
+      </div>
+     </div>
+     <div class="fade-in hover-tilt bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-gray-100">
+       <img alt="Marea Alta" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/mariscos.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-cyan-900 mb-3">
+        Marea Alta ⚓
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Elegante restaurante de mariscos y grill. Diseño fresco con tonos oceánicos y menú de "Pesca del Día".
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-cyan-100 text-cyan-800 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+       </div>
+       <a class="inline-flex items-center text-cyan-600 font-bold hover:text-cyan-800 transition-colors duration-300 group" href="mariscos.html">
+        Ver Proyecto
+                            →
+       </a>
+      </div>
+     </div>
+    </div>
+    <h3 class="text-3xl font-bold text-gray-800 mb-8 mt-12 pl-4 border-l-4 border-pink-600">
+     Educación y Eventos
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+     <div class="fade-in hover-zoom bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-gray-100">
+       <img alt="Proyecto 2" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/educativo.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">
+        Sitio Educativo
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Plataforma de cursos online con rutas guiadas, mentorías y planes flexibles.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="./educacion.html">
+        Ver Proyecto
+                            →
+       </a>
+      </div>
+     </div>
+     <div class="fade-in hover-tilt-right bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-gray-100">
+       <img alt="Proyecto 4" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/eventos.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">
+        NEON FEST 2026
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Landing page para festival de música electrónica con cuenta regresiva, line-up de artistas y sistema de registro.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="./evento.html">
+        Ver Proyecto
+                            →
+       </a>
+      </div>
+     </div>
+    </div>
+    <h3 class="text-3xl font-bold text-gray-800 mb-8 mt-12 pl-4 border-l-4 border-lime-600">
+     Servicios y Recursos
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+     <div class="fade-in hover-rotate bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-gray-100">
+       <img alt="Experimental Lab" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/lab.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+       <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+        <span class="text-neon-lime text-3xl font-bold" style="color: #ccff00; text-shadow: 0 0 10px rgba(0,0,0,0.5);">
+         LAB.010
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">
+        Experimental Lab
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Playground creativo de UI/UX con animaciones avanzadas, micro-interacciones y estética futurista experimental.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-black text-white text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-lime-100 text-lime-800 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="./experimental.html">
+        Ver Proyecto
+                            →
+       </a>
+      </div>
+     </div>
+     <div class="fade-in hover-zoom bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+      <div class="relative overflow-hidden h-64 bg-gray-100">
+       <img alt="Precios y Servicios" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/precios.png"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-green-500 text-white text-sm font-semibold rounded-full">
+         Servicios
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">
+        Mis Precios y Servicios
+       </h3>
+       <p class="text-gray-600 mb-4">
+        Consulta mis planes de desarrollo web, landing pages y tiendas online. Soluciones a medida para tu negocio.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         Web Design
+        </span>
+        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-sm rounded-full">
+         E-commerce
+        </span>
+        <span class="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full">
+         Consultoría
+        </span>
+       </div>
+       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="./precios.html">
+        Ver Precios
+                            →
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Contact Section -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 gradient-bg" id="contacto">
+   <div class="max-w-4xl mx-auto text-center">
+    <div class="fade-in">
+     <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+      ¿Listo para trabajar juntos?
+     </h2>
+     <p class="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
+      Estoy disponible para nuevos proyectos y oportunidades. ¡Conectemos!
+     </p>
+     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+      <a class="inline-flex items-center px-8 py-4 bg-white text-purple-600 font-semibold rounded-full hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg" href="mailto:mctaggart.dev@gmail.com">
+       📧
                         Enviar Email
-                    </a>
-                    <a href="https://linkedin.com" 
-                       target="_blank"
-                       class="inline-flex items-center px-8 py-4 bg-purple-500/30 backdrop-blur-sm text-white font-semibold rounded-full hover:bg-purple-500/40 transform hover:scale-105 transition-all duration-300 shadow-lg border-2 border-white/30">
-                        💼
+      </a>
+      <a class="inline-flex items-center px-8 py-4 bg-purple-500/30 backdrop-blur-sm text-white font-semibold rounded-full hover:bg-purple-500/40 transform hover:scale-105 transition-all duration-300 shadow-lg border-2 border-white/30" href="https://linkedin.com" target="_blank">
+       💼
                         LinkedIn
-                    </a>
-                </div>
-                
-                <!-- Social Links -->
-                <div class="flex justify-center gap-6">
-                    <a href="#" class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transform hover:scale-110 transition-all duration-300 text-xl">
-                        💻
-                    </a>
-                    <a href="#" class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transform hover:scale-110 transition-all duration-300 text-xl">
-                        🐦
-                    </a>
-                    <a href="#" class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transform hover:scale-110 transition-all duration-300 text-xl">
-                        ✏️
-                    </a>
-                    <a href="#" class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transform hover:scale-110 transition-all duration-300 text-xl">
-                        🎨
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
-                <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-purple-400 transition-colors flex items-center gap-2">
-                    <span>✉️</span> mctaggart.dev@gmail.com
-                </a>
-                <a href="https://wa.me/50762049480" class="hover:text-purple-400 transition-colors flex items-center gap-2">
-                    <span>📱</span> +507 6204-9480
-                </a>
-            </div>
-            <p class="text-gray-500 text-sm">
-                © 2026 Portafolio Personal. Desarrollado con ❤️ y Tailwind CSS
-            </p>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="script.js"></script>
-</body>
+      </a>
+     </div>
+     <!-- Social Links -->
+     <div class="flex justify-center gap-6">
+      <a class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transform hover:scale-110 transition-all duration-300 text-xl" href="#">
+       💻
+      </a>
+      <a class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transform hover:scale-110 transition-all duration-300 text-xl" href="#">
+       🐦
+      </a>
+      <a class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transform hover:scale-110 transition-all duration-300 text-xl" href="#">
+       ✏️
+      </a>
+      <a class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transform hover:scale-110 transition-all duration-300 text-xl" href="#">
+       🎨
+      </a>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">
+     Carlos Mc Taggart
+    </h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+     <a class="hover:text-purple-400 transition-colors flex items-center gap-2" href="mailto:mctaggart.dev@gmail.com">
+      <span>
+       ✉️
+      </span>
+      mctaggart.dev@gmail.com
+     </a>
+     <a class="hover:text-purple-400 transition-colors flex items-center gap-2" href="https://wa.me/50762049480">
+      <span>
+       📱
+      </span>
+      +507 6204-9480
+     </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+     © 2026 Portafolio Personal. Desarrollado con ❤️ y Tailwind CSS
+    </p>
+   </div>
+  </footer>
+  <!-- JavaScript -->
+  <script src="script.js">
+  </script>
+ </body>
 </html>

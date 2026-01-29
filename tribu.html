@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tribu Food & Drinks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        marker: ['Permanent Marker', 'cursive'],
+                    },
+                    colors: {
+                        neon: {
+                            purple: '#b026ff',
+                            pink: '#ff2a6d',
+                            blue: '#05d9e8',
+                            yellow: '#ffd300'
+                        },
+                        dark: {
+                            900: '#0b0c10',
+                            800: '#1f2833',
+                            700: '#c5c6c7',
+                        }
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'spin-slow': 'spin 3s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b0c10;
+            color: #c5c6c7;
+        }
+        .neon-text {
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #b026ff, 0 0 30px #b026ff, 0 0 40px #b026ff;
+        }
+        .neon-text-pink {
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff2a6d, 0 0 30px #ff2a6d, 0 0 40px #ff2a6d;
+        }
+        .neon-border {
+            box-shadow: 0 0 5px #fff, 0 0 10px #b026ff, 0 0 20px #b026ff;
+        }
+        .neon-box-blue {
+            box-shadow: 0 0 5px #05d9e8, 0 0 15px #05d9e8; 
+        }
+        canvas {
+            border: 2px solid #ffd300;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 211, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-neon-purple/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <span class="font-marker text-3xl text-white tracking-wider transform -rotate-2 inline-block">LA TRIBU</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-white hover:text-neon-blue transition-colors font-bold uppercase tracking-wider">Inicio</a>
+                        <a href="#menu" class="text-white hover:text-neon-pink transition-colors font-bold uppercase tracking-wider">Menú</a>
+                        <a href="#vibra" class="text-white hover:text-neon-yellow transition-colors font-bold uppercase tracking-wider">La Vibra</a>
+                        <!-- Botón Tócame -->
+                        <button onclick="openRoulette()" class="bg-gradient-to-r from-neon-pink to-neon-purple text-white px-6 py-2 rounded-full font-bold uppercase tracking-widest hover:scale-110 transition-transform shadow-[0_0_15px_rgba(255,42,109,0.5)] animate-pulse">
+                            Tócame 👇
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover opacity-40" alt="Party Vibe">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-dark-900"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4">
+            <h1 class="font-marker text-6xl md:text-8xl text-white mb-6 transform -rotate-3 neon-text">
+                LA TRIBU
+            </h1>
+            <p class="text-xl md:text-3xl text-neon-blue font-bold mb-8 uppercase tracking-[0.2em]">
+                Food • Drinks • Music
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center">
+                <button onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})" class="px-8 py-4 border-2 border-neon-pink text-white font-bold text-lg rounded hover:bg-neon-pink hover:text-black transition-all duration-300 uppercase tracking-wider neon-box-blue">
+                    Ver Menú
+                </button>
+                <button onclick="openRoulette()" class="px-8 py-4 bg-neon-yellow text-black font-black text-lg rounded hover:bg-white transition-all duration-300 uppercase tracking-wider transform hover:-translate-y-1">
+                    ¿Quién Paga? 🎲
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Highlights -->
+    <section id="menu" class="py-20 bg-dark-900 relative">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-neon-purple/20 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-neon-blue/20 rounded-full blur-[100px]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-12 text-center uppercase">
+                <span class="text-neon-pink font-marker">Favoritos</span> de la Tribu
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="bg-dark-800 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 group border border-gray-800 hover:border-neon-blue">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1998&auto=format&fit=crop" class="w-full h-full object-cover group-hover:rotate-3 group-hover:scale-110 transition-transform duration-500" alt="Burger">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold text-white">Neon Burger</h3>
+                            <span class="text-neon-yellow font-bold text-xl">$12.00</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Doble carne smash, queso cheddar líquido, bacon crujiente y nuestra salsa secreta "Tribu".</p>
+                        <button class="w-full py-2 bg-dark-700 text-white hover:bg-neon-blue hover:text-black font-bold rounded transition-colors">PEDIR AHORA</button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-dark-800 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 group border border-gray-800 hover:border-neon-pink">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:rotate-3 group-hover:scale-110 transition-transform duration-500" alt="Cocktail">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold text-white">Electric Blue</h3>
+                            <span class="text-neon-yellow font-bold text-xl">$9.00</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Gin, curaçao azul, limón fresco y un toque de tónica. Brilla bajo luz negra.</p>
+                        <button class="w-full py-2 bg-dark-700 text-white hover:bg-neon-pink hover:text-black font-bold rounded transition-colors">PEDIR AHORA</button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-dark-800 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 group border border-gray-800 hover:border-neon-purple">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=1971&auto=format&fit=crop" class="w-full h-full object-cover group-hover:rotate-3 group-hover:scale-110 transition-transform duration-500" alt="Nachos">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-bold text-white">Nachos Volcano</h3>
+                            <span class="text-neon-yellow font-bold text-xl">$14.00</span>
+                        </div>
+                        <p class="text-gray-400 mb-4">Montaña de nachos con chilli con carne, jalapeños, guacamole y pico de gallo explosivo.</p>
+                        <button class="w-full py-2 bg-dark-700 text-white hover:bg-neon-purple hover:text-white font-bold rounded transition-colors">PEDIR AHORA</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- La Vibra (Atmosphere) -->
+    <section id="vibra" class="py-16 bg-black">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-8">NO ES SOLO COMIDA, ES LA <span class="text-neon-blue font-marker neon-text-pink">VIBRA</span></h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop" class="rounded-lg opacity-60 hover:opacity-100 transition-opacity duration-300">
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2070&auto=format&fit=crop" class="rounded-lg opacity-60 hover:opacity-100 transition-opacity duration-300">
+                <img src="https://images.unsplash.com/photo-1570572223126-40742cdcb443?q=80&w=3227&auto=format&fit=crop" class="rounded-lg opacity-60 hover:opacity-100 transition-opacity duration-300">
+                <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=2069&auto=format&fit=crop" class="rounded-lg opacity-60 hover:opacity-100 transition-opacity duration-300">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+         <h3 class="text-xl font-bold mb-2">
+          Carlos Mc Taggart
+         </h3>
+         <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+          <a class="hover:text-purple-400 transition-colors flex items-center gap-2" href="mailto:mctaggart.dev@gmail.com">
+           <span>
+            ✉️
+           </span>
+           mctaggart.dev@gmail.com
+          </a>
+          <a class="hover:text-purple-400 transition-colors flex items-center gap-2" href="https://wa.me/50762049480">
+           <span>
+            📱
+           </span>
+           +507 6204-9480
+          </a>
+         </div>
+         <p class="text-gray-500 text-sm">
+          © 2026 Portafolio Personal. Desarrollado con ❤️ y Tailwind CSS
+         </p>
+         <div class="mt-4">
+            <a href="index.html" class="text-neon-yellow hover:text-white underline">← Volver al Portafolio</a>
+      </div>
+        </div>
+       </footer>
+
+    <!-- ROULETTE MODAL -->
+    <div id="rouletteModal" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex items-center justify-center">
+        <div class="bg-dark-800 p-8 rounded-2xl w-full max-w-2xl border border-neon-purple relative mx-4">
+            <button onclick="closeRoulette()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
+            
+            <!-- Setup Step -->
+            <div id="setupStep" class="text-center">
+                <h3 class="text-3xl font-marker text-neon-pink mb-2">¿Quién Paga Hoy?</h3>
+                <p class="text-gray-400 mb-6">Agrega a los participantes de la Tribu</p>
+                
+                <div class="flex gap-2 mb-4">
+                    <input type="text" id="nameInput" placeholder="Nombre..." class="flex-1 bg-dark-900 border border-gray-700 rounded px-4 py-2 text-white focus:outline-none focus:border-neon-blue" onkeypress="handleKeyPress(event)">
+                    <button onclick="addName()" class="bg-neon-blue text-black font-bold px-4 py-2 rounded hover:bg-white transition-colors">+</button>
+                </div>
+                
+                <div id="namesList" class="flex flex-wrap gap-2 mb-8 min-h-[50px]">
+                    <!-- Name tags will go here -->
+                </div>
+                
+                <button onclick="startRoulette()" class="w-full bg-gradient-to-r from-neon-purple to-neon-pink text-white font-bold py-3 rounded-lg text-xl hover:scale-[1.02] transition-transform disabled:opacity-50 disabled:cursor-not-allowed" id="spinBtn">
+                    GIRAR LA RULETA 🎡
+                </button>
+            </div>
+
+            <!-- Spin Step -->
+            <div id="spinStep" class="hidden text-center flex flex-col items-center">
+                <h3 class="text-3xl font-marker text-neon-yellow mb-6">GIRANDO...</h3>
+                <div class="relative w-[300px] h-[300px] mb-6">
+                    <canvas id="wheelCanvas" width="300" height="300"></canvas>
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -mt-4 text-neon-pink text-4xl  z-10">▼</div>
+                </div>
+                
+                <div id="winnerDisplay" class="hidden animate-bounce text-center">
+                    <p class="text-gray-400 text-lg">El que paga hoy es...</p>
+                    <h2 id="winnerText" class="text-5xl font-marker text-neon-pink mt-2 neon-text-pink">NOMBRE</h2>
+                    <button onclick="resetRoulette()" class="mt-6 text-gray-400 hover:text-white underline">Jugar de nuevo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Logic
+        const modal = document.getElementById('rouletteModal');
+        const setupStep = document.getElementById('setupStep');
+        const spinStep = document.getElementById('spinStep');
+        const nameInput = document.getElementById('nameInput');
+        const namesList = document.getElementById('namesList');
+        const spinBtn = document.getElementById('spinBtn');
+        const winnerDisplay = document.getElementById('winnerDisplay');
+        const winnerText = document.getElementById('winnerText');
+        
+        let participants = [];
+        let wheelCtx;
+        let wheelCanvas;
+        let currentRotation = 0;
+        let isSpinning = false;
+
+        function openRoulette() {
+            modal.classList.remove('hidden');
+            checkParticipants();
+        }
+
+        function closeRoulette() {
+            modal.classList.add('hidden');
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') addName();
+        }
+
+        function addName() {
+            const name = nameInput.value.trim();
+            if (name) {
+                participants.push(name);
+                renderNames();
+                nameInput.value = '';
+                nameInput.focus();
+                checkParticipants();
+            }
+        }
+
+        function removeName(index) {
+            participants.splice(index, 1);
+            renderNames();
+            checkParticipants();
+        }
+
+        function renderNames() {
+            namesList.innerHTML = participants.map((name, index) => `
+                <span class="bg-gray-700 text-white px-3 py-1 rounded-full flex items-center gap-2">
+                    ${name}
+                    <button onclick="removeName(${index})" class="text-red-400 hover:text-red-200 font-bold">×</button>
+                </span>
+            `).join('');
+        }
+
+        function checkParticipants() {
+            spinBtn.disabled = participants.length < 2;
+            if(participants.length < 2) {
+                spinBtn.innerText = "Agrega al menos 2 personas";
+            } else {
+                spinBtn.innerText = "GIRAR LA RULETA 🎡";
+            }
+        }
+
+        function startRoulette() {
+            setupStep.classList.add('hidden');
+            spinStep.classList.remove('hidden');
+            drawWheel();
+            spinWheel();
+        }
+
+        function resetRoulette() {
+            participants = [];
+            renderNames();
+            checkParticipants();
+            setupStep.classList.remove('hidden');
+            spinStep.classList.add('hidden');
+            winnerDisplay.classList.add('hidden');
+            currentRotation = 0;
+        }
+
+        // Wheel Logic
+        function drawWheel() {
+            wheelCanvas = document.getElementById('wheelCanvas');
+            wheelCtx = wheelCanvas.getContext('2d');
+            const centerX = wheelCanvas.width / 2;
+            const centerY = wheelCanvas.height / 2;
+            const radius = wheelCanvas.width / 2 - 10;
+            const step = (2 * Math.PI) / participants.length;
+            const colors = ['#b026ff', '#ff2a6d', '#05d9e8', '#ffd300', '#c5c6c7'];
+
+            participants.forEach((name, i) => {
+                const startAngle = i * step;
+                const endAngle = startAngle + step;
+                
+                // Slice
+                wheelCtx.beginPath();
+                wheelCtx.arc(centerX, centerY, radius, startAngle, endAngle);
+                wheelCtx.lineTo(centerX, centerY);
+                wheelCtx.fillStyle = colors[i % colors.length];
+                wheelCtx.fill();
+                wheelCtx.stroke();
+
+                // Text
+                wheelCtx.save();
+                wheelCtx.translate(centerX, centerY);
+                wheelCtx.rotate(startAngle + step / 2);
+                wheelCtx.textAlign = 'right';
+                wheelCtx.fillStyle = '#000';
+                wheelCtx.font = 'bold 14px Montserrat';
+                wheelCtx.fillText(name, radius - 20, 5);
+                wheelCtx.restore();
+            });
+        }
+
+        function spinWheel() {
+            if (isSpinning) return;
+            isSpinning = true;
+            
+            // Random spin amount (min 5 full rotations + random offset)
+            const spinAmount = (360 * 5) + Math.random() * 360; 
+            const duration = 5000; // 5 seconds
+            const start = performance.now();
+            
+            function animate(now) {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function (easeOutCubic)
+                const ease = 1 - Math.pow(1 - progress, 3);
+                
+                const currentAngle = currentRotation + (spinAmount * ease);
+                
+                wheelCanvas.style.transform = `rotate(${currentAngle}deg)`;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    isSpinning = false;
+                    currentRotation += spinAmount;
+                    determineWinner(currentRotation % 360);
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
+
+        function determineWinner(finalAngle) {
+            // Because the pointer is at the top (270 degrees or -90 degrees visually)
+            // We need to calculate which slice is at that position.
+            // Since we rotate the canvas clockwise, the slice at the top changes.
+            // Let's rely on math. 
+            // 0 degrees is at 3 o'clock. 270 degrees is at 12 o'clock.
+            
+            // Normalize angle to [0, 360)
+            const normalizedAngle = (360 - (finalAngle % 360) + 270) % 360;
+            
+            const sliceAngle = 360 / participants.length;
+            const winnerIndex = Math.floor(normalizedAngle / sliceAngle);
+            
+            const winner = participants[winnerIndex];
+            
+            winnerText.innerText = winner;
+            winnerDisplay.classList.remove('hidden');
+            
+            // Celebration confetti (simple css animation class trigger or manual)
+        }
+    </script>
+</body>
+</html>

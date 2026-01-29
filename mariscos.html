@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marea Alta | Mariscos & Grill</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'head': ['Cinzel', 'serif'],
+                        'body': ['Raleway', 'sans-serif'],
+                    },
+                    colors: {
+                        'ocean-dark': '#002B36',
+                        'ocean-blue': '#006994',
+                        'sand': '#F4E0C3',
+                        'coral': '#FF7F50'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'swim': 'swim 120s linear infinite',
+                        'spin-slow': 'spin 15s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        swim: {
+                            '0%': { transform: 'translateX(100vw)' },
+                            '100%': { transform: 'translateX(-200px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .wave-bg {
+            background: linear-gradient(180deg, rgba(0,43,54,0.9) 0%, rgba(0,105,148,0.8) 100%), url('https://www.transparenttextures.com/patterns/cubes.png');
+        }
+        .fish {
+            position: absolute;
+            font-size: 2rem;
+            line-height: 1;
+            user-select: none;
+            text-shadow: 0 0 0 rgba(255, 255, 255, 0.4);
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="font-body text-gray-800 bg-gray-50">
+
+    <!-- Navbar -->
+    <nav class="absolute w-full z-50 px-8 py-6 flex justify-between items-center text-white">
+        <div class="flex items-center gap-3">
+             <!-- Ship Wheel Icon Small -->
+            <svg class="w-10 h-10 animate-spin-slow text-coral opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 2v3m0 14v3M2 12h3m14 0h3m-2.929-7.071l-2.121 2.121M7.05 16.95l-2.121 2.121M19.071 19.071l-2.121-2.121M7.05 7.05L4.929 4.929"></path>
+            </svg>
+            <div class="text-2xl font-head font-bold tracking-widest border-2 border-white px-4 py-2">
+                MAREA ALTA
+            </div>
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-semibold tracking-wider">
+            <a href="#" class="hover:text-sand transition-colors">LA PESCA</a>
+            <a href="#" class="hover:text-sand transition-colors">MENÚ</a>
+            <a href="#" class="hover:text-sand transition-colors">VINOS</a>
+            <a href="#" class="bg-coral hover:bg-white hover:text-ocean-blue px-6 py-2 transition-all">RESERVAR</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden bg-ocean-dark">
+        <!-- Fish Background Pattern -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none z-0 opacity-60">
+             <div class="fish text-6xl top-[10%] animate-swim" style="animation-duration: 140s; animation-delay: -10s;">🐟</div>
+             <div class="fish text-4xl top-[25%] animate-swim" style="animation-duration: 110s; animation-delay: -50s;">🐡</div>
+             <div class="fish text-8xl top-[40%] animate-swim" style="animation-duration: 160s; animation-delay: -20s;">🐠</div>
+             <div class="fish text-3xl top-[60%] animate-swim" style="animation-duration: 130s; animation-delay: -80s;">🐟</div>
+             <div class="fish text-5xl top-[80%] animate-swim" style="animation-duration: 150s; animation-delay: -40s;">🐠</div>
+             <div class="fish text-2xl top-[15%] animate-swim" style="animation-duration: 120s; animation-delay: -100s;">🐡</div>
+        </div>
+        
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0 opacity-30 mix-blend-overlay">
+             <img src="https://images.unsplash.com/photo-1582967788606-a171f1080ca8?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="relative z-10 text-center text-white px-4">
+            
+            <p class="text-coral tracking-[0.5em] text-sm mb-4 animate-fadeIn">DEL OCÉANO A TU MESA</p>
+            <h1 class="font-head text-6xl md:text-8xl mb-6 shadow-xl relative">Pesca Fresca</h1>
+            <div class="w-24 h-1 bg-white mx-auto mb-8 relative"></div>
+            <p class="text-xl font-light italic text-sand max-w-lg mx-auto mb-10 relative">
+                "La simplicidad es la clave de la verdadera elegancia, especialmente cuando se trata del mar."
+            </p>
+            <a href="#menu" class="inline-block animate-bounce text-2xl text-white opacity-80 decoration-0 relative">↓</a>
+        </div>
+    </header>
+
+    <!-- Catch of the day -->
+    <section id="menu" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row gap-16 items-center">
+            <div class="md:w-1/2 relative h-[400px]">
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-sand rounded-full opacity-50 z-0"></div>
+                <!-- Automatic Gallery -->
+                <div class="relative z-10 w-full h-full overflow-hidden shadow-2xl rounded-lg group">
+                    <img id="galleryImage" src="img/mixto.jpg" class="w-full h-full object-cover transition-transform duration-1000 transform group-hover:scale-110">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                         <p id="imageCaption" class="text-white font-head text-xl">Camarones al Ajillo</p>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="font-head text-4xl text-ocean-dark mb-6">La Pesca del Día</h2>
+                <p class="text-gray-600 mb-8 leading-relaxed">
+                    Nuestro compromiso es servir solo lo que el mar nos ofrece hoy. Trabajamos directamente con pescadores artesanales locales para garantizar la frescura absoluta en cada plato.
+                </p>
+                <ul class="space-y-4 mb-10 h-[500px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-ocean-blue scrollbar-track-gray-200">
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span class="font-bold text-ocean-blue">Ceviche Clásico</span>
+                        <span class="text-gray-500">$16</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span class="font-bold text-ocean-blue">Pulpo al Carbón</span>
+                        <span class="text-gray-500">$24</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span class="font-bold text-ocean-blue">Langosta Thermidor</span>
+                        <span class="text-gray-500">$45</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span class="font-bold text-ocean-blue">Pargo Rojo Entero</span>
+                        <span class="text-gray-500">$30</span>
+                    </li>
+                    <!-- New Dishes Start -->
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span class="font-bold text-ocean-blue">Tiradito de Atún Nikkei</span>
+                        <span class="text-gray-500">$22</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span class="font-bold text-ocean-blue">Sopa de Mariscos 7 Mares</span>
+                        <span class="text-gray-500">$26</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span class="font-bold text-ocean-blue">Calamares Fritos con Tártara</span>
+                        <span class="text-gray-500">$18</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span class="font-bold text-ocean-blue">Risotto de Camarones y Azafrán</span>
+                        <span class="text-gray-500">$28</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span class="font-bold text-ocean-blue">Ostras Frescas (Docena)</span>
+                        <span class="text-gray-500">$35</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span class="font-bold text-ocean-blue">Paella Marinera (Para 2)</span>
+                        <span class="text-gray-500">$55</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span class="font-bold text-ocean-blue">Filete de Robalo al Ajillo</span>
+                        <span class="text-gray-500">$25</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span class="font-bold text-ocean-blue">Tacos de Pescado Baja Style</span>
+                        <span class="text-gray-500">$16</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span class="font-bold text-ocean-blue">Carpaccio de Pulpo</span>
+                        <span class="text-gray-500">$20</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-200 pb-2">
+                        <span class="font-bold text-ocean-blue">Mejillones al Vino Blanco</span>
+                        <span class="text-gray-500">$22</span>
+                    </li>
+                    <!-- New Dishes End -->
+                </ul>
+                <button onclick="toggleBottomMenu()" class="border-2 border-ocean-dark text-ocean-dark px-8 py-3 hover:bg-ocean-dark hover:text-white transition-colors font-bold uppercase text-sm tracking-widest w-full md:w-auto">
+                    Ver Menú Completo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlight -->
+    <section class="bg-ocean-dark text-white py-24 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/fish-net.png');"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10 px-6">
+            <span class="text-coral font-bold tracking-widest text-sm block mb-4">EXPERIENCIA VIP</span>
+            <h2 class="font-head text-5xl mb-8">La Mesa del Capitán</h2>
+            <p class="text-sand text-lg mb-12">
+                Una cena privada de 7 tiempos marinada con nuestra selección exclusiva de vinos blancos y espumosos.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop" class="h-40 w-full object-cover opacity-60 hover:opacity-100 transition-opacity">
+                <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=2070&auto=format&fit=crop" class="h-40 w-full object-cover opacity-60 hover:opacity-100 transition-opacity">
+                <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=1925&auto=format&fit=crop" class="h-40 w-full object-cover opacity-60 hover:opacity-100 transition-opacity">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop" class="h-40 w-full object-cover opacity-60 hover:opacity-100 transition-opacity">
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+                <a class="hover:text-ocean-blue transition-colors flex items-center gap-2" href="mailto:mctaggart.dev@gmail.com">
+                    <span>✉️</span> mctaggart.dev@gmail.com
+                </a>
+                <a class="hover:text-ocean-blue transition-colors flex items-center gap-2" href="https://wa.me/50762049480">
+                    <span>📱</span> +507 6204-9480
+                </a>
+            </div>
+            <p class="text-gray-500 text-sm">© 2026 Portafolio Personal. Desarrollado con ❤️ y Tailwind CSS</p>
+            <div class="mt-4">
+                <a href="index.html" class="text-coral hover:text-white transition-colors">← Volver al Portafolio</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bottom Sheet Menu -->
+    <div id="bottomMenu" class="fixed inset-x-0 bottom-0 z-50 transform translate-y-full transition-transform duration-500 ease-in-out">
+        <!-- Handle for dragging/visual cue -->
+        <div class="flex justify-center -mb-4 relative z-10">
+             <button onclick="toggleBottomMenu()" class="bg-ocean-dark text-white rounded-t-xl px-6 py-2 shadow-lg text-sm font-bold uppercase tracking-widest hover:bg-ocean-blue transition-colors">
+                Cerrar Menú
+             </button>
+        </div>
+        
+        <div class="bg-white h-[60vh] md:h-[50vh] shadow-[0_-10px_40px_rgba(0,0,0,0.5)] rounded-t-3xl overflow-hidden border-t-4 border-ocean-blue relative">
+            <div class="h-full overflow-y-auto p-8 scrollbar-thin scrollbar-thumb-ocean-blue scrollbar-track-gray-100">
+                <h3 class="text-center font-head text-4xl text-ocean-dark mb-8 tracking-wider">Carta del Mar</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Item 1 -->
+                    <div class="flex gap-4 items-start p-4 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-200">
+                        <img src="img/camaronesajillo.jpg" class="w-24 h-24 object-cover rounded-lg shadow-md">
+                        <div>
+                            <h4 class="font-bold text-ocean-dark font-head">Camarones al Ajillo</h4>
+                            <p class="text-xs text-gray-500 mt-2 leading-tight">Salteados en mantequilla de ajo y vino blanco, con perejil fresco.</p>
+                            <span class="text-coral font-bold text-sm block mt-2">$24.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="flex gap-4 items-start p-4 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-200">
+                        <img src="img/pargo.avif" class="w-24 h-24 object-cover rounded-lg shadow-md">
+                        <div>
+                            <h4 class="font-bold text-ocean-dark font-head">Pargo Entero</h4>
+                            <p class="text-xs text-gray-500 mt-2 leading-tight">Frito a la perfección, servido con patacones y ensalada criolla.</p>
+                            <span class="text-coral font-bold text-sm block mt-2">$30.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="flex gap-4 items-start p-4 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-200">
+                        <img src="img/langostaa.webp" class="w-24 h-24 object-cover rounded-lg shadow-md">
+                        <div>
+                            <h4 class="font-bold text-ocean-dark font-head">Langosta Thermidor</h4>
+                            <p class="text-xs text-gray-500 mt-2 leading-tight">Gratinada con queso gruyere, mostaza dijon y champiñones.</p>
+                            <span class="text-coral font-bold text-sm block mt-2">$45.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="flex gap-4 items-start p-4 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-200">
+                        <img src="img/atum.jpg" class="w-24 h-24 object-cover rounded-lg shadow-md">
+                        <div>
+                            <h4 class="font-bold text-ocean-dark font-head">Atún Sellado</h4>
+                            <p class="text-xs text-gray-500 mt-2 leading-tight">Costra de ajonjolí, salsa ponzu y vegetales salteados.</p>
+                            <span class="text-coral font-bold text-sm block mt-2">$28.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="flex gap-4 items-start p-4 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-200">
+                        <img src="img/cazuela.avif" class="w-24 h-24 object-cover rounded-lg shadow-md">
+                        <div>
+                            <h4 class="font-bold text-ocean-dark font-head">Cazuela de Mariscos</h4>
+                            <p class="text-xs text-gray-500 mt-2 leading-tight">Guiso cremoso de coco con camarones, calamares y mejillones.</p>
+                            <span class="text-coral font-bold text-sm block mt-2">$32.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="flex gap-4 items-start p-4 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-200">
+                        <img src="img/ceviche.png" class="w-24 h-24 object-cover rounded-lg shadow-md">
+                        <div>
+                            <h4 class="font-bold text-ocean-dark font-head">Ceviche Clásico</h4>
+                            <p class="text-xs text-gray-500 mt-2 leading-tight">Corvina marinada en limón, cebolla morada y cilantro.</p>
+                            <span class="text-coral font-bold text-sm block mt-2">$16.00</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función del menú desplegable aislada para asegurar su funcionamiento
+        window.toggleBottomMenu = function() {
+            const menu = document.getElementById('bottomMenu');
+            // Si tiene la clase de oculto (translate-y-full), la quitamos. Si no, la ponemos.
+            if (menu.classList.contains('translate-y-full')) {
+                menu.classList.remove('translate-y-full');
+            } else {
+                menu.classList.add('translate-y-full');
+            }
+        };
+    </script>
+    <script>
+        const images = [
+            {
+                url: "img/camaronesajillo.jpg",
+                caption: "Camarones Jumbo al Ajillo"
+            },
+            {
+                url: "img/pargo.avif",
+                caption: "Pargo Frito Entero" 
+            },
+            {
+                url: "img/cazuela.avif",
+                caption: "Cazuela de Mariscos"
+            },
+            {
+                url: "img/langostaa.webp",
+                caption: "Langosta del Caribe a la Mantequilla"
+            },
+            {
+                url: "img/atum.jpg",
+                caption: "Atún Sellado con Sésamo"
+            },
+           
+            {
+                url: "img/mixto.jpg",
+                caption: "MIXTO DE MARISCOS A LA PARRILLA"
+            },
+         
+
+        ];
+
+        let currentImageIndex = 0;
+        const galleryImage = document.getElementById('galleryImage');
+        const imageCaption = document.getElementById('imageCaption');
+
+        function changeImage() {
+            // Fade out
+            galleryImage.style.opacity = '0';
+            
+            setTimeout(() => {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                galleryImage.src = images[currentImageIndex].url;
+                imageCaption.innerText = images[currentImageIndex].caption;
+                
+                // Fade in
+                galleryImage.style.opacity = '1';
+            }, 500); // Wait for half the transition time
+        }
+
+        // Initialize transition style specifically for JS manipulation
+        galleryImage.style.transition = "opacity 0.5s ease-in-out, transform 1s ease-in-out";
+
+        setInterval(changeImage, 5000); // 5000ms = 5 seconds
+    </script>
+</body>
+</html>
