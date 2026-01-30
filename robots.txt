@@ -20,6 +20,9 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+Sitemap: https://www.webspty.dev/sitemap.xml
+Allow: /
+
 # Meta (Llama, Meta AI en Instagram/WhatsApp)
 User-agent: FacebookBot
 Allow: /

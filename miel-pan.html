@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <title>Miel & Pan | Café & Bakery</title>
+  <meta name="description" content="Esta es una página de demostración del portafolio de Carlos Mc Taggart. Ejemplo de diseño web adaptable y moderno.">
+  <link rel="canonical" href="https://www.webspty.dev/miel-pan.html">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <script>
@@ -23,17 +26,12 @@
                     },
                     animation: {
                         'float': 'float 3s ease-in-out infinite',
-                        'steam': 'steam 2s infinite',
                         'fade-in': 'fadeIn 1.5s ease-out forwards',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-10px)' },
-                        },
-                        steam: {
-                            '0%': { transform: 'translateY(0) scale(1)', opacity: 0.4 },
-                            '100%': { transform: 'translateY(-15px) scale(1.2)', opacity: 0 },
                         },
                          fadeIn: {
                             '0%': { opacity: '0', transform: 'translateY(20px)' },
@@ -45,9 +43,6 @@
         }
     </script>
     <style>
-        .steam-effect {
-            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
-        }
         html {
             scroll-behavior: smooth;
         }
@@ -99,11 +94,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <!-- Visual Coffee -->
                  <div class="relative h-96 rounded-2xl overflow-hidden shadow-xl order-2 md:order-1 group">
-                    <img id="coffeeCarouselImg" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition-opacity duration-500">
-                    <!-- Steam Animation Overlay - Optimized -->
-                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                         <div class="w-24 h-24 steam-effect rounded-full animate-steam"></div>
-                    </div>
+                    <img id="coffeeCarouselImg" src="img/latte.jpg" class="w-full h-full object-cover transition-opacity duration-500 scale-90" style="object-position: center 30%;">
                     <!-- Carousel Indicators -->
                      <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2" id="carouselIndicators">
                         <!-- JS creates dots here -->
@@ -165,11 +156,7 @@
                 <!-- Item 1 -->
                 <div class="bg-cream rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
                     <div class="h-48 rounded-lg overflow-hidden mb-4 relative">
-                        <img src="img/almendras.JPG" class="w-full h-full object-cover">
-                        <!-- Steam Animation Overlay - Optimized -->
-                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-60">
-                             <div class="w-20 h-20 steam-effect rounded-full animate-steam" style="animation-duration: 3s;"></div>
-                        </div>
+                        <img src="img/almendras.JPG" class="w-full h-full object-cover scale-90">
                     </div>
                     <h3 class="font-bold text-lg mb-2">Croissant de Almendra</h3>
                     <p class="text-gray-500 text-xs leading-relaxed">Mantequilla francesa laminada a mano, relleno de crema de almendras y tostado a la perfección.</p>
@@ -178,11 +165,7 @@
                 <!-- Item 2 -->
                 <div class="bg-cream rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
                     <div class="h-48 rounded-lg overflow-hidden mb-4 relative">
-                        <img src="img/tostada.jpg" class="w-full h-full object-cover">
-                        <!-- Steam Animation Overlay - Optimized -->
-                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-60">
-                             <div class="w-20 h-20 steam-effect rounded-full animate-steam" style="animation-duration: 4s; animation-delay: 1s;"></div>
-                        </div>
+                        <img src="img/tostada.jpg" class="w-full h-full object-cover scale-90">
                     </div>
                     <h3 class="font-bold text-lg mb-2">Tostada de Aguacate</h3>
                     <p class="text-gray-500 text-xs leading-relaxed">Pan de masa madre, aguacate smash, rabanitos, semillas de girasol y aceite de oliva.</p>
@@ -191,11 +174,7 @@
                 <!-- Item 3 -->
                 <div class="bg-cream rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
                     <div class="h-48 rounded-lg overflow-hidden mb-4 relative">
-                         <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover">
-                         <!-- Steam Animation Overlay - Optimized -->
-                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-60">
-                             <div class="w-20 h-20 steam-effect rounded-full animate-steam" style="animation-duration: 3.5s; animation-delay: 0.5s;"></div>
-                        </div>
+                         <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover scale-90">
                     </div>
                     <h3 class="font-bold text-lg mb-2">Cupcake de Zanahoria</h3>
                     <p class="text-gray-500 text-xs leading-relaxed">Húmedo, especiado y cubierto con nuestro frosting especial de queso crema y nueces.</p>
@@ -225,21 +204,20 @@
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white py-8 border-t border-gray-700 mt-auto">
+    <footer class="bg-gray-900 text-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
             <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
-                <a class="hover:text-honey transition-colors flex items-center gap-2" href="mailto:mctaggart.dev@gmail.com">
+                <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
                     <span>✉️</span> mctaggart.dev@gmail.com
                 </a>
-                <a class="hover:text-honey transition-colors flex items-center gap-2" href="https://wa.me/50762049480">
+                <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
                     <span>📱</span> +507 6204-9480
                 </a>
             </div>
-            <p class="text-gray-500 text-sm">© 2026 Portafolio Personal. Desarrollado con ❤️ y Tailwind CSS</p>
-            <div class="mt-4">
-                <a href="index.html" class="text-honey hover:text-white transition-colors">← Volver al Portafolio</a>
-            </div>
+            <p class="text-gray-500 text-sm">
+                Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+            </p>
         </div>
     </footer>
 
@@ -261,7 +239,7 @@
                     
                     <!-- Café -->
                     <div class="flex gap-4 items-start p-4 hover:bg-cream rounded-xl transition-colors">
-                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=200&auto=format&fit=crop" class="w-20 h-20 object-cover rounded-lg">
+                        <img src="img/latte.jpg" class="w-20 h-20 object-cover rounded-lg">
                         <div>
                             <h4 class="font-bold text-gray-800">Latte de Lavanda</h4>
                             <p class="text-xs text-gray-500 mt-1">Espresso, leche vaporizada, sirope de lavanda.</p>
@@ -269,7 +247,7 @@
                         </div>
                     </div>
                      <div class="flex gap-4 items-start p-4 hover:bg-cream rounded-xl transition-colors">
-                        <img src="https://images.unsplash.com/photo-1517701604599-bb29b5c7dd90?q=80&w=200&auto=format&fit=crop" class="w-20 h-20 object-cover rounded-lg">
+                        <img src="img/te.webp" class="w-20 h-20 object-cover rounded-lg">
                         <div>
                             <h4 class="font-bold text-gray-800">Cold Brew Tonic</h4>
                             <p class="text-xs text-gray-500 mt-1">Café macerado en frío 12h, tónica premium, limón.</p>
@@ -277,7 +255,7 @@
                         </div>
                     </div>
                      <div class="flex gap-4 items-start p-4 hover:bg-cream rounded-xl transition-colors">
-                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e569?q=80&w=200&auto=format&fit=crop" class="w-20 h-20 object-cover rounded-lg">
+                        <img src="img/moca.webp" class="w-20 h-20 object-cover rounded-lg">
                         <div>
                             <h4 class="font-bold text-gray-800">Mocha Blanco</h4>
                             <p class="text-xs text-gray-500 mt-1">Chocolate blanco suizo, espresso doble, crema.</p>
@@ -287,7 +265,7 @@
 
                     <!-- Bakery -->
                      <div class="flex gap-4 items-start p-4 hover:bg-cream rounded-xl transition-colors">
-                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=200&auto=format&fit=crop" class="w-20 h-20 object-cover rounded-lg">
+                        <img src="img/almendras.JPG" class="w-20 h-20 object-cover rounded-lg">
                         <div>
                             <h4 class="font-bold text-gray-800">Croissant Almendra</h4>
                             <p class="text-xs text-gray-500 mt-1">Mantequilla DOP, almendras tostadas.</p>
@@ -295,7 +273,7 @@
                         </div>
                     </div>
                      <div class="flex gap-4 items-start p-4 hover:bg-cream rounded-xl transition-colors">
-                        <img src="https://images.unsplash.com/photo-1586968193510-318e847c25fc?q=80&w=200&auto=format&fit=crop" class="w-20 h-20 object-cover rounded-lg">
+                        <img src="img/tostada.jpg" class="w-20 h-20 object-cover rounded-lg">
                         <div>
                             <h4 class="font-bold text-gray-800">Tostada Aguacate</h4>
                             <p class="text-xs text-gray-500 mt-1">Masa madre, aguacate, aceite oliva virgen.</p>

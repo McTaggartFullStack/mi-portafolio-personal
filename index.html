@@ -3,9 +3,29 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Portafolio - Desarrollador Frontend
-  </title>
+    <link rel="icon" type="image/png" href="img/favicon.png" sizes="32x32"/>
+    <link rel="apple-touch-icon" href="img/favicon.png"/>
+    <link rel="icon" sizes="192x192" href="img/favicon.png">
+  <title>Portafolio | Carlos Mc Taggart - Desarrollador Frontend</title>
+  <meta name="description" content="Portafolio de Carlos Mc Taggart. Desarrollador Web Frontend en Panamá especializado en crear experiencias digitales modernas, rápidas y funcionales.">
+  <meta name="keywords" content="Desarrollador Web, Frontend, Panamá, HTML, CSS, JavaScript, Portafolio, Carlos Mc Taggart, Diseño Web">
+  <meta name="author" content="Carlos Mc Taggart">
+  <link rel="canonical" href="https://www.webspty.dev/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.webspty.dev/">
+  <meta property="og:title" content="Portafolio | Carlos Mc Taggart - Desarrollador Frontend">
+  <meta property="og:description" content="Portafolio de Carlos Mc Taggart. Desarrollador Web Frontend en Panamá especializado en crear experiencias digitales modernas, rápidas y funcionales.">
+  <meta property="og:image" content="https://www.webspty.dev/img/favicon.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.webspty.dev/">
+  <meta property="twitter:title" content="Portafolio | Carlos Mc Taggart - Desarrollador Frontend">
+  <meta property="twitter:description" content="Portafolio de Carlos Mc Taggart. Desarrollador Web Frontend en Panamá especializado en crear experiencias digitales modernas, rápidas y funcionales.">
+  <meta property="twitter:image" content="https://www.webspty.dev/img/favicon.png">
+
   <script src="https://cdn.tailwindcss.com">
   </script>
   <style>
@@ -60,6 +80,28 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
+        /* Unified Card Animation */
+        .card-zoom {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent; 
+        }
+        
+        .card-zoom:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Colors */
+        .card-service:hover { border-color: #3b82f6; } /* Blue */
+        .card-restaurant:hover { border-color: #ef4444; } /* Red */
+        .card-store:hover { border-color: #8b5cf6; } /* Purple/Default */
+        .card-fashion:hover { border-color: #ec4899; } /* Pink */
+        .card-home:hover { border-color: #f59e0b; } /* Amber */
+        .card-auto:hover { border-color: #dc2626; } /* Red */
+        .card-tech:hover { border-color: #06b6d4; } /* Cyan */
+        .card-education:hover { border-color: #10b981; } /* Emerald */
+        .card-event:hover { border-color: #8b5cf6; } /* Violet */
         
         .shimmer {
             background: linear-gradient(
@@ -198,7 +240,8 @@
   <nav class="fixed w-full bg-white/80 backdrop-blur-md shadow-sm z-50 transition-all duration-300" id="navbar">
    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
-     <div class="flex-shrink-0">
+     <div class="flex-shrink-0 flex items-center gap-3">
+      <img src="img/favicon.png" alt="Logo" class="h-10 w-10 hover:scale-110 transition-transform duration-300">
       <h1 class="text-2xl font-bold text-gradient">
        Mi Portafolio
       </h1>
@@ -280,6 +323,9 @@
      <a class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-full hover:from-purple-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl" href="#proyectos">
       Ver Proyectos ↓
      </a>
+     <a class="inline-flex items-center px-8 py-4 bg-white text-purple-600 font-semibold rounded-full hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-purple-200" href="precios.html">
+      Ver Precios 💲
+     </a>
      <a class="inline-flex items-center px-8 py-4 bg-white text-purple-600 font-semibold rounded-full hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-purple-200" href="#contacto">
       Contáctame ✉️
      </a>
@@ -334,7 +380,7 @@
      Servicios Profesionales
     </h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
-     <div class="fade-in card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+     <a href="https://tecnocorepty.com" class="block fade-in card-zoom card-service bg-white rounded-2xl overflow-hidden shadow-lg group" target="_blank">
       <div class="relative overflow-hidden h-64 bg-gray-100">
        <img alt="TecnoCorePTY" class="w-full h-full object-cover project-img" decoding="async" fetchpriority="high" loading="lazy" src="img/tecnocore.png"/>
        <div class="absolute top-4 right-4">
@@ -370,15 +416,15 @@
          Sitio Externo
         </span>
        </div>
-       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="https://tecnocorepty.com" target="_blank">
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group"  >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
-     <div class="fade-in hover-skew bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
-      <div class="relative overflow-hidden h-64 bg-gray-100">
-       <img alt="Canelino S.A" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/canelino.png"/>
+     </a>
+     <a href="canelino.html" class="block fade-in card-zoom card-service bg-white rounded-2xl overflow-hidden shadow-lg group">
+    <div class="relative overflow-hidden h-64 bg-gray-100">
+     <img alt="Servicios Técnicos" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/canelino.png"/>
        <div class="absolute top-4 right-4">
         <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
          Demostración
@@ -386,9 +432,9 @@
        </div>
       </div>
       <div class="p-6">
-       <h3 class="text-2xl font-bold text-gray-900 mb-3">
-        Canelino S.A
-       </h3>
+    <h3 class="text-2xl font-bold text-gray-900 mb-3">
+     Servicios Técnicos
+    </h3>
        <p class="text-gray-600 mb-4">
         Descripción del proyecto. Agrega tus trabajos aquí con sus características principales.
        </p>
@@ -403,18 +449,18 @@
          JavaScript
         </span>
        </div>
-       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="canelino.html">
+    <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
+     </a>
     </div>
     <h3 class="text-3xl font-bold text-gray-800 mb-8 mt-12 pl-4 border-l-4 border-blue-600">
      Tiendas en Línea
     </h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
-     <div class="fade-in hover-glow bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+     <a href="./tienda.html" class="block fade-in card-zoom card-tech bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-gray-100">
        <img alt="TechStore" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/tienda.png"/>
        <div class="absolute top-4 right-4">
@@ -441,13 +487,13 @@
          JavaScript
         </span>
        </div>
-       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="./tienda.html">
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
-     <div class="fade-in hover-flip bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+     </a>
+     <a href="./moda.html" class="block fade-in card-zoom card-fashion bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-gray-100">
        <img alt="Lumière" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/moda.png"/>
        <div class="absolute top-4 right-4">
@@ -474,13 +520,13 @@
          JavaScript
         </span>
        </div>
-       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="./moda.html">
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
-     <div class="fade-in hover-pulse-grow bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
+     </a>
+     <a href="./hogar.html" class="block fade-in card-zoom card-home bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-gray-100">
        <img alt="Aura Living" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/hogar.png"/>
        <div class="absolute top-4 right-4">
@@ -507,13 +553,13 @@
          JavaScript
         </span>
        </div>
-       <a class="inline-flex items-center text-stone-600 font-semibold hover:text-stone-900 transition-colors duration-300 group" href="./hogar.html">
+       <div class="inline-flex items-center text-stone-600 font-semibold group-hover:text-stone-900 transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
-     <div class="fade-in hover-tilt bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+     </a>
+     <a href="./auto-accesorios.html" class="block fade-in card-zoom card-auto bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-gradient-to-br from-red-500 to-black">
        <img alt="AutoPro Shop" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/autos.png"/>
        <div class="absolute top-4 right-4">
@@ -540,18 +586,18 @@
          JavaScript
         </span>
        </div>
-       <a class="inline-flex items-center text-red-600 font-semibold hover:text-red-800 transition-colors duration-300 group" href="./auto-accesorios.html">
+       <div class="inline-flex items-center text-red-600 font-semibold group-hover:text-red-800 transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
+     </a>
     </div>
     <h3 class="text-3xl font-bold text-gray-800 mb-8 mt-12 pl-4 border-l-4 border-orange-600">
      Restaurantes y Gastronomía
     </h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
-     <div class="fade-in hover-bounce bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
+     <a href="./restaurante.html" class="block fade-in card-zoom card-restaurant bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-gray-100">
        <img alt="La Hacienda" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/restaurante.png"/>
        <div class="absolute top-4 right-4">
@@ -578,13 +624,13 @@
          JavaScript
         </span>
        </div>
-       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="./restaurante.html">
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
-     <div class="fade-in hover-rotate bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+     </a>
+     <a href="casco.html" class="block fade-in card-zoom card-restaurant bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-gray-100">
        <img alt="El Fogón del Casco" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/fogon.png"/>
        <div class="absolute top-4 right-4">
@@ -611,13 +657,13 @@
          JavaScript
         </span>
        </div>
-       <a class="inline-flex items-center text-orange-600 font-semibold hover:text-orange-800 transition-colors duration-300 group" href="casco.html">
+       <div class="inline-flex items-center text-orange-600 font-semibold group-hover:text-orange-800 transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
-     <div class="fade-in hover-rotate bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+     </a>
+     <a href="pizzeria.html" class="block fade-in card-zoom card-restaurant bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-gray-100">
        <img alt="La Esquina Napolitana" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/pizzeria.png"/>
        <div class="absolute top-4 right-4">
@@ -644,13 +690,13 @@
          Parallax
         </span>
        </div>
-       <a class="inline-flex items-center text-red-600 font-semibold hover:text-red-800 transition-colors duration-300 group" href="pizzeria.html">
+       <div class="inline-flex items-center text-red-600 font-semibold group-hover:text-red-800 transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
-     <div class="fade-in hover-tilt bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+     </a>
+     <a href="heladeria.html" class="block fade-in card-zoom card-restaurant bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-gray-100">
        <img alt="Helados del Trópico" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/heladeria.png"/>
        <div class="absolute top-4 right-4">
@@ -677,13 +723,13 @@
          Minimalist
         </span>
        </div>
-       <a class="inline-flex items-center text-pink-500 font-semibold hover:text-pink-700 transition-colors duration-300 group" href="heladeria.html">
+       <div class="inline-flex items-center text-pink-500 font-semibold group-hover:text-pink-700 transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
-     <div class="fade-in hover-tilt-left bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+     </a>
+     <a href="tribu.html" class="block fade-in card-zoom card-restaurant bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-gray-100">
        <img alt="La Tribu Food" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/tribu.png"/>
        <div class="absolute top-4 right-4">
@@ -710,13 +756,13 @@
          JavaScript
         </span>
        </div>
-       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="tribu.html">
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
-     <div class="fade-in hover-rotate bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+     </a>
+     <a href="chino.html" class="block fade-in card-zoom card-restaurant bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-red-900 border-b-4 border-yellow-500">
        <img alt="Palacio del Dragón" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/chino.png"/>
        <div class="absolute top-4 right-4">
@@ -740,13 +786,13 @@
          Culture Design
         </span>
        </div>
-       <a class="inline-flex items-center text-red-700 font-bold hover:text-red-900 transition-colors duration-300 group" href="chino.html">
+       <div class="inline-flex items-center text-red-700 font-bold group-hover:text-red-900 transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
-     <div class="fade-in hover-rotate bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+     </a>
+     <a href="miel-pan.html" class="block fade-in card-zoom card-restaurant bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-[#FAEDCD]">
        <img alt="Miel & Pan" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/cafeteria.png"/>
        <div class="absolute top-4 right-4">
@@ -770,13 +816,13 @@
          Steam FX
         </span>
        </div>
-       <a class="inline-flex items-center text-[#D4A373] font-bold hover:text-[#b08558] transition-colors duration-300 group" href="miel-pan.html">
+       <div class="inline-flex items-center text-[#D4A373] font-bold group-hover:text-[#b08558] transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
-     <div class="fade-in hover-tilt bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+     </a>
+     <a href="mariscos.html" class="block fade-in card-zoom card-restaurant bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-gray-100">
        <img alt="Marea Alta" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/mariscos.png"/>
        <div class="absolute top-4 right-4">
@@ -800,18 +846,18 @@
          Tailwind CSS
         </span>
        </div>
-       <a class="inline-flex items-center text-cyan-600 font-bold hover:text-cyan-800 transition-colors duration-300 group" href="mariscos.html">
+       <div class="inline-flex items-center text-cyan-600 font-bold group-hover:text-cyan-800 transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
+     </a>
     </div>
     <h3 class="text-3xl font-bold text-gray-800 mb-8 mt-12 pl-4 border-l-4 border-pink-600">
      Educación y Eventos
     </h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
-     <div class="fade-in hover-zoom bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+     <a href="./educacion.html" class="block fade-in card-zoom card-education bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-gray-100">
        <img alt="Proyecto 2" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/educativo.png"/>
        <div class="absolute top-4 right-4">
@@ -838,13 +884,13 @@
          JavaScript
         </span>
        </div>
-       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="./educacion.html">
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
-     <div class="fade-in hover-tilt-right bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+     </a>
+     <a href="./evento.html" class="block fade-in card-zoom card-event bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-gray-100">
        <img alt="Proyecto 4" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/eventos.png"/>
        <div class="absolute top-4 right-4">
@@ -871,18 +917,18 @@
          JavaScript
         </span>
        </div>
-       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="./evento.html">
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
+     </a>
     </div>
     <h3 class="text-3xl font-bold text-gray-800 mb-8 mt-12 pl-4 border-l-4 border-lime-600">
-     Servicios y Recursos
+     Laboratorio Experimental
     </h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
-     <div class="fade-in hover-rotate bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+     <a href="./experimental.html" class="block fade-in card-zoom card-tech bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-gray-100">
        <img alt="Experimental Lab" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/lab.png"/>
        <div class="absolute top-4 right-4">
@@ -914,13 +960,20 @@
          JavaScript
         </span>
        </div>
-       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="./experimental.html">
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
         Ver Proyecto
                             →
-       </a>
+       </div>
       </div>
-     </div>
-     <div class="fade-in hover-zoom bg-white rounded-2xl overflow-hidden shadow-lg" style="transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+     </a>
+    </div>
+
+    <!-- Pricing Section -->
+    <h3 class="text-3xl font-bold text-gray-800 mb-8 mt-12 pl-4 border-l-4 border-green-600">
+        Planes y Servicios
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+     <a href="./precios.html" class="block fade-in card-zoom card-service bg-white rounded-2xl overflow-hidden shadow-lg group">
       <div class="relative overflow-hidden h-64 bg-gray-100">
        <img alt="Precios y Servicios" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/precios.png"/>
        <div class="absolute top-4 right-4">
@@ -947,12 +1000,12 @@
          Consultoría
         </span>
        </div>
-       <a class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-800 transition-colors duration-300 group" href="./precios.html">
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
         Ver Precios
                             →
-       </a>
+       </div>
       </div>
-     </div>
+     </a>
     </div>
    </div>
   </section>
@@ -971,54 +1024,47 @@
        📧
                         Enviar Email
       </a>
-      <a class="inline-flex items-center px-8 py-4 bg-purple-500/30 backdrop-blur-sm text-white font-semibold rounded-full hover:bg-purple-500/40 transform hover:scale-105 transition-all duration-300 shadow-lg border-2 border-white/30" href="https://linkedin.com" target="_blank">
-       💼
-                        LinkedIn
+      <a class="inline-flex items-center px-8 py-4 bg-purple-500/30 backdrop-blur-sm text-white font-semibold rounded-full hover:bg-purple-500/40 transform hover:scale-105 transition-all duration-300 shadow-lg border-2 border-white/30" href="https://github.com/McTaggartFullStack" target="_blank">
+       🐱
+                        GitHub
+      </a>
+      <a class="inline-flex items-center px-8 py-4 bg-green-500/30 backdrop-blur-sm text-white font-semibold rounded-full hover:bg-green-500/40 transform hover:scale-105 transition-all duration-300 shadow-lg border-2 border-white/30" href="https://wa.me/50762049480" target="_blank">
+       💬
+                        WhatsApp
       </a>
      </div>
      <!-- Social Links -->
      <div class="flex justify-center gap-6">
-      <a class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transform hover:scale-110 transition-all duration-300 text-xl" href="#">
-       💻
-      </a>
-      <a class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transform hover:scale-110 transition-all duration-300 text-xl" href="#">
-       🐦
-      </a>
-      <a class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transform hover:scale-110 transition-all duration-300 text-xl" href="#">
-       ✏️
-      </a>
-      <a class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transform hover:scale-110 transition-all duration-300 text-xl" href="#">
-       🎨
-      </a>
+
      </div>
     </div>
    </div>
   </section>
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-8">
-   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h3 class="text-xl font-bold mb-2">
-     Carlos Mc Taggart
-    </h3>
-    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
-     <a class="hover:text-purple-400 transition-colors flex items-center gap-2" href="mailto:mctaggart.dev@gmail.com">
-      <span>
-       ✉️
-      </span>
-      mctaggart.dev@gmail.com
-     </a>
-     <a class="hover:text-purple-400 transition-colors flex items-center gap-2" href="https://wa.me/50762049480">
-      <span>
-       📱
-      </span>
-      +507 6204-9480
-     </a>
-    </div>
-    <p class="text-gray-500 text-sm">
-     © 2026 Portafolio Personal. Desarrollado con ❤️ y Tailwind CSS
-    </p>
-   </div>
-  </footer>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h3 class="text-2xl font-bold mb-2">
+         Carlos Mc Taggart
+        </h3>
+        <p class="text-gray-400 mb-6">
+         Portafolio personal de diseño y desarrollo web. Aquí encontrarás proyectos, servicios y formas de contacto.
+        </p>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400">
+         <a class="hover:text-white transition-colors flex items-center gap-2" href="mailto:mctaggart.dev@gmail.com">
+            <span>
+             ✉️
+            </span>
+            mctaggart.dev@gmail.com
+         </a>
+         <a class="hover:text-white transition-colors flex items-center gap-2" href="https://wa.me/50762049480">
+            <span>
+             📱
+            </span>
+            +507 6204-9480
+         </a>
+        </div>
+     </div>
+    </footer>
   <!-- JavaScript -->
   <script src="script.js">
   </script>
