@@ -8,7 +8,7 @@
   <meta name="description" content="Esta es una página de demostración del portafolio de Carlos Mc Taggart. Ejemplo de diseño web adaptable y moderno.">
   <link rel="canonical" href="https://www.webspty.dev/mariscos.html">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -54,6 +54,135 @@
             text-shadow: 0 0 0 rgba(255, 255, 255, 0.4);
             color: transparent;
         }
+        
+        /* Modal Lightbox para carrusel */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .lightbox-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 90vw;
+            max-height: 85vh;
+            animation: zoomIn 0.3s ease-out;
+        }
+        
+        .lightbox-content img {
+            max-height: 70vh;
+            width: auto;
+            max-width: 100%;
+        }
+        
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        
+        .lightbox-nav:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .lightbox-prev {
+            left: 20px;
+        }
+        
+        .lightbox-next {
+            right: 20px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,79,80,0.9);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-close:hover {
+            background: rgba(255,79,80,1);
+            transform: rotate(90deg) scale(1.1);
+        }
+        
+        .lightbox-caption {
+            margin-top: 20px;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .lightbox-caption {
+                font-size: 22px;
+                margin-top: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            #galleryImage {
+                aspect-ratio: 1/1;
+                object-fit: cover;
+            }
+        }
     </style>
 </head>
 <body class="font-body text-gray-800 bg-gray-50">
@@ -92,7 +221,7 @@
         
         <!-- Background Image -->
         <div class="absolute inset-0 z-0 opacity-30 mix-blend-overlay">
-             <img src="https://images.unsplash.com/photo-1582967788606-a171f1080ca8?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover">
+               <img src="https://images.unsplash.com/photo-1582967788606-a171f1080ca8?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="" aria-hidden="true">
         </div>
         
         <div class="relative z-10 text-center text-white px-4">
@@ -113,8 +242,8 @@
             <div class="md:w-1/2 relative h-[400px]">
                 <div class="absolute -top-10 -left-10 w-40 h-40 bg-sand rounded-full opacity-50 z-0"></div>
                 <!-- Automatic Gallery -->
-                <div class="relative z-10 w-full h-full overflow-hidden shadow-2xl rounded-lg group">
-                    <img id="galleryImage" src="img/mixto.jpg" class="w-full h-full object-cover transition-transform duration-1000 transform group-hover:scale-110">
+                <div class="relative z-10 w-full h-full overflow-hidden shadow-2xl rounded-lg group cursor-pointer" onclick="openLightbox(currentImageIndex)">
+                    <img id="galleryImage" src="img/mixto.jpg" class="w-full h-full object-cover transition-transform duration-1000 transform group-hover:scale-110" alt="Plato destacado del día">
                     <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                          <p id="imageCaption" class="text-white font-head text-xl">Camarones al Ajillo</p>
                     </div>
@@ -202,10 +331,10 @@
                 Una cena privada de 7 tiempos marinada con nuestra selección exclusiva de vinos blancos y espumosos.
             </p>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop" class="h-40 w-full object-cover opacity-60 hover:opacity-100 transition-opacity">
-                <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=2070&auto=format&fit=crop" class="h-40 w-full object-cover opacity-60 hover:opacity-100 transition-opacity">
-                <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=1925&auto=format&fit=crop" class="h-40 w-full object-cover opacity-60 hover:opacity-100 transition-opacity">
-                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop" class="h-40 w-full object-cover opacity-60 hover:opacity-100 transition-opacity">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop" class="h-40 w-full object-cover opacity-60 hover:opacity-100 transition-opacity" alt="Plato gourmet 1">
+                <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=2070&auto=format&fit=crop" class="h-40 w-full object-cover opacity-60 hover:opacity-100 transition-opacity" alt="Plato gourmet 2">
+                <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=1925&auto=format&fit=crop" class="h-40 w-full object-cover opacity-60 hover:opacity-100 transition-opacity" alt="Plato gourmet 3">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop" class="h-40 w-full object-cover opacity-60 hover:opacity-100 transition-opacity" alt="Plato gourmet 4">
             </div>
         </div>
     </section>
@@ -244,7 +373,7 @@
                     
                     <!-- Item 1 -->
                     <div class="flex gap-4 items-start p-4 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-200">
-                        <img src="img/camaronesajillo.jpg" class="w-24 h-24 object-cover rounded-lg shadow-md">
+                        <img src="img/camaronesajillo.jpg" class="w-24 h-24 object-cover rounded-lg shadow-md" alt="Camarones al ajillo">
                         <div>
                             <h4 class="font-bold text-ocean-dark font-head">Camarones al Ajillo</h4>
                             <p class="text-xs text-gray-500 mt-2 leading-tight">Salteados en mantequilla de ajo y vino blanco, con perejil fresco.</p>
@@ -254,7 +383,7 @@
 
                     <!-- Item 2 -->
                     <div class="flex gap-4 items-start p-4 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-200">
-                        <img src="img/pargo.avif" class="w-24 h-24 object-cover rounded-lg shadow-md">
+                        <img src="img/pargo.avif" class="w-24 h-24 object-cover rounded-lg shadow-md" alt="Pargo fresco">
                         <div>
                             <h4 class="font-bold text-ocean-dark font-head">Pargo Entero</h4>
                             <p class="text-xs text-gray-500 mt-2 leading-tight">Frito a la perfección, servido con patacones y ensalada criolla.</p>
@@ -264,7 +393,7 @@
 
                     <!-- Item 3 -->
                     <div class="flex gap-4 items-start p-4 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-200">
-                        <img src="img/langostaa.webp" class="w-24 h-24 object-cover rounded-lg shadow-md">
+                        <img src="img/langostaa.webp" class="w-24 h-24 object-cover rounded-lg shadow-md" alt="Langosta a la parrilla">
                         <div>
                             <h4 class="font-bold text-ocean-dark font-head">Langosta Thermidor</h4>
                             <p class="text-xs text-gray-500 mt-2 leading-tight">Gratinada con queso gruyere, mostaza dijon y champiñones.</p>
@@ -274,7 +403,7 @@
 
                     <!-- Item 4 -->
                     <div class="flex gap-4 items-start p-4 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-200">
-                        <img src="img/atum.jpg" class="w-24 h-24 object-cover rounded-lg shadow-md">
+                        <img src="img/atum.jpg" class="w-24 h-24 object-cover rounded-lg shadow-md" alt="Atún sellado">
                         <div>
                             <h4 class="font-bold text-ocean-dark font-head">Atún Sellado</h4>
                             <p class="text-xs text-gray-500 mt-2 leading-tight">Costra de ajonjolí, salsa ponzu y vegetales salteados.</p>
@@ -284,7 +413,7 @@
 
                     <!-- Item 5 -->
                     <div class="flex gap-4 items-start p-4 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-200">
-                        <img src="img/cazuela.avif" class="w-24 h-24 object-cover rounded-lg shadow-md">
+                        <img src="img/cazuela.avif" class="w-24 h-24 object-cover rounded-lg shadow-md" alt="Cazuela de mariscos">
                         <div>
                             <h4 class="font-bold text-ocean-dark font-head">Cazuela de Mariscos</h4>
                             <p class="text-xs text-gray-500 mt-2 leading-tight">Guiso cremoso de coco con camarones, calamares y mejillones.</p>
@@ -294,7 +423,7 @@
 
                     <!-- Item 6 -->
                     <div class="flex gap-4 items-start p-4 hover:bg-gray-50 rounded-xl transition-colors border border-transparent hover:border-gray-200">
-                        <img src="img/ceviche.png" class="w-24 h-24 object-cover rounded-lg shadow-md">
+                        <img src="img/ceviche.png" class="w-24 h-24 object-cover rounded-lg shadow-md" alt="Ceviche fresco">
                         <div>
                             <h4 class="font-bold text-ocean-dark font-head">Ceviche Clásico</h4>
                             <p class="text-xs text-gray-500 mt-2 leading-tight">Corvina marinada en limón, cebolla morada y cilantro.</p>
@@ -305,6 +434,17 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">‹</button>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" class="max-w-full max-h-full object-contain rounded-lg" alt="Vista ampliada del plato">
+            <div id="lightboxCaption" class="lightbox-caption"></div>
+        </div>
+        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">›</button>
     </div>
 
     <script>
@@ -372,6 +512,46 @@
         galleryImage.style.transition = "opacity 0.5s ease-in-out, transform 1s ease-in-out";
 
         setInterval(changeImage, 5000); // 5000ms = 5 seconds
+        
+        // Lightbox functionality usando las mismas imágenes del carrusel
+        let currentLightboxIndex = 0;
+        
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            const modal = document.getElementById('lightboxModal');
+            const img = document.getElementById('lightboxImage');
+            const caption = document.getElementById('lightboxCaption');
+            img.src = images[index].url;
+            caption.innerText = images[index].caption;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function navigateLightbox(direction) {
+            currentLightboxIndex = (currentLightboxIndex + direction + images.length) % images.length;
+            const img = document.getElementById('lightboxImage');
+            const caption = document.getElementById('lightboxCaption');
+            img.src = images[currentLightboxIndex].url;
+            caption.innerText = images[currentLightboxIndex].caption;
+        }
+        
+        // Cerrar con tecla ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+        
+        // Cerrar al hacer click fuera de la imagen
+        document.getElementById('lightboxModal').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
     </script>
 </body>
 </html>
