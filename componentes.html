@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UI Kit | WebsPTY</title>
+  <meta name="description" content="Componentes reutilizables estilo Bootstrap: tarjetas, listas y bloques listos para copiar y pegar en tus proyectos WebsPTY." />
+  <link rel="icon" type="image/png" href="img/favicon.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="img/favicon.png" />
+  <link rel="icon" sizes="192x192" href="img/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+    .fade-in { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    pre { overflow-x: auto; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <nav class="fixed w-full bg-white/85 backdrop-blur border-b border-gray-100 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-purple-600">
+        &larr; Volver al portafolio
+      </a>
+      <span class="text-base font-bold text-purple-700">UI Kit WebsPTY</span>
+    </div>
+  </nav>
+
+  <main class="pt-24 pb-16">
+    <header class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+      <p class="text-sm font-semibold text-purple-700 uppercase tracking-wide">Nuevo | Similar a Bootstrap</p>
+      <h1 class="text-4xl sm:text-5xl font-black mt-3 mb-4">Componentes rápidos para tus proyectos</h1>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">Tarjetas, listas y bloques listos para copiar y pegar. Usa estas piezas base que ya probamos en los proyectos de WebsPTY.</p>
+    </header>
+
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 grid gap-10">
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-purple-700 uppercase tracking-wide">Tarjetas</p>
+            <h2 class="text-2xl font-bold text-gray-900">Card de servicio</h2>
+            <p class="text-sm text-gray-600">Ideal para destacar un plan o proyecto. Incluye tags y CTA.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-2xl p-6 shadow-xl">
+            <div class="text-sm font-semibold uppercase tracking-wide mb-2">Plan Web Profesional</div>
+            <h3 class="text-2xl font-bold mb-3">Sitio Corporativo Completo</h3>
+            <p class="text-white/90 mb-4">Hasta 5 secciones, dominio .com, SSL, hosting NVMe y SEO técnico listo.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full bg-white/15 text-white text-xs">Hosting NVMe</span>
+              <span class="px-3 py-1 rounded-full bg-white/15 text-white text-xs">SSL</span>
+              <span class="px-3 py-1 rounded-full bg-white/15 text-white text-xs">SEO Técnico</span>
+            </div>
+            <a href="#" class="inline-flex items-center gap-2 px-4 py-2 bg-white text-purple-700 font-semibold rounded-full shadow hover:shadow-lg transition">Consultar precio</a>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;div class=&quot;bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-2xl p-6 shadow-xl&quot;&gt;
+  &lt;div class=&quot;text-sm font-semibold uppercase tracking-wide mb-2&quot;&gt;Plan Web Profesional&lt;/div&gt;
+  &lt;h3 class=&quot;text-2xl font-bold mb-3&quot;&gt;Sitio Corporativo Completo&lt;/h3&gt;
+  &lt;p class=&quot;text-white/90 mb-4&quot;&gt;Hasta 5 secciones, dominio .com, SSL, hosting NVMe y SEO t&amp;eacute;cnico listo.&lt;/p&gt;
+  &lt;div class=&quot;flex flex-wrap gap-2 mb-4&quot;&gt;
+    &lt;span class=&quot;px-3 py-1 rounded-full bg-white/15 text-white text-xs&quot;&gt;Hosting NVMe&lt;/span&gt;
+    &lt;span class=&quot;px-3 py-1 rounded-full bg-white/15 text-white text-xs&quot;&gt;SSL&lt;/span&gt;
+    &lt;span class=&quot;px-3 py-1 rounded-full bg-white/15 text-white text-xs&quot;&gt;SEO T&amp;eacute;cnico&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;a href=&quot;#&quot; class=&quot;inline-flex items-center gap-2 px-4 py-2 bg-white text-purple-700 font-semibold rounded-full shadow hover:shadow-lg transition&quot;&gt;Consultar precio&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-blue-700 uppercase tracking-wide">Listas</p>
+            <h2 class="text-2xl font-bold text-gray-900">Lista de beneficios</h2>
+            <p class="text-sm text-gray-600">Usada en planes y proyectos para enumerar lo que incluye cada paquete.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <ul class="bg-gray-900 text-gray-100 rounded-2xl p-5 space-y-3 shadow-lg">
+            <li class="flex items-start gap-3">
+              <span class="text-green-400">✓</span>
+              <div>
+                <p class="font-semibold">Dominio .com incluido</p>
+                <p class="text-gray-400 text-sm">Primer año cubierto en todos los planes profesionales.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-400">✓</span>
+              <div>
+                <p class="font-semibold">SSL y hosting NVMe</p>
+                <p class="text-gray-400 text-sm">Rendimiento alto y seguridad desde el día uno.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-400">✓</span>
+              <div>
+                <p class="font-semibold">Soporte prioritario</p>
+                <p class="text-gray-400 text-sm">Respuestas rápidas por WhatsApp y correo.</p>
+              </div>
+            </li>
+          </ul>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;ul class=&quot;bg-gray-900 text-gray-100 rounded-2xl p-5 space-y-3 shadow-lg&quot;&gt;
+  &lt;li class=&quot;flex items-start gap-3&quot;&gt;
+    &lt;span class=&quot;text-green-400&quot;&gt;✓&lt;/span&gt;
+    &lt;div&gt;
+      &lt;p class=&quot;font-semibold&quot;&gt;Dominio .com incluido&lt;/p&gt;
+      &lt;p class=&quot;text-gray-400 text-sm&quot;&gt;Primer año cubierto en todos los planes profesionales.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;flex items-start gap-3&quot;&gt;
+    &lt;span class=&quot;text-green-400&quot;&gt;✓&lt;/span&gt;
+    &lt;div&gt;
+      &lt;p class=&quot;font-semibold&quot;&gt;SSL y hosting NVMe&lt;/p&gt;
+      &lt;p class=&quot;text-gray-400 text-sm&quot;&gt;Rendimiento alto y seguridad desde el día uno.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;flex items-start gap-3&quot;&gt;
+    &lt;span class=&quot;text-green-400&quot;&gt;✓&lt;/span&gt;
+    &lt;div&gt;
+      &lt;p class=&quot;font-semibold&quot;&gt;Soporte prioritario&lt;/p&gt;
+      &lt;p class=&quot;text-gray-400 text-sm&quot;&gt;Respuestas rápidas por WhatsApp y correo.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-wide">CTA Contacto</p>
+            <h2 class="text-2xl font-bold text-gray-900">Listo para cerrar la venta</h2>
+            <p class="text-sm text-gray-600">Barra rápida con botones de email y WhatsApp, usada en varias landings.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 mt-4 items-center">
+          <div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-lg">
+            <div>
+              <p class="text-sm font-semibold">¿Listo para avanzar?</p>
+              <h3 class="text-xl font-bold">Hablemos hoy y agenda tu demo</h3>
+            </div>
+            <div class="flex gap-2 flex-wrap">
+              <a href="mailto:mctaggart.dev@gmail.com" class="px-4 py-2 bg-white text-emerald-700 font-semibold rounded-xl shadow hover:shadow-lg transition">Email</a>
+              <a href="https://wa.me/50762049480" class="px-4 py-2 bg-emerald-800/30 text-white font-semibold rounded-xl border border-white/40 hover:bg-emerald-800/50 transition">WhatsApp</a>
+            </div>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;div class=&quot;bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-lg&quot;&gt;
+  &lt;div&gt;
+    &lt;p class=&quot;text-sm font-semibold&quot;&gt;¿Listo para avanzar?&lt;/p&gt;
+    &lt;h3 class=&quot;text-xl font-bold&quot;&gt;Hablemos hoy y agenda tu demo&lt;/h3&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;flex gap-2 flex-wrap&quot;&gt;
+    &lt;a href=&quot;mailto:mctaggart.dev@gmail.com&quot; class=&quot;px-4 py-2 bg-white text-emerald-700 font-semibold rounded-xl shadow hover:shadow-lg transition&quot;&gt;Email&lt;/a&gt;
+    &lt;a href=&quot;https://wa.me/50762049480&quot; class=&quot;px-4 py-2 bg-emerald-800/30 text-white font-semibold rounded-xl border border-white/40 hover:bg-emerald-800/50 transition&quot;&gt;WhatsApp&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-orange-700 uppercase tracking-wide">Etiqueta</p>
+            <h2 class="text-2xl font-bold text-gray-900">Badge de precio</h2>
+            <p class="text-sm text-gray-600">Útil para resaltar planes (Landing, Web Pro, E-commerce).</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-orange-100 text-orange-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="inline-flex items-center gap-3 px-4 py-3 rounded-2xl bg-orange-50 border border-orange-200 shadow-sm">
+            <div>
+              <p class="text-xs font-semibold text-orange-700 uppercase">Landing Page</p>
+              <div class="text-2xl font-bold text-orange-700">$250 <span class="text-sm font-medium text-orange-500">/ proyecto</span></div>
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-orange-600 text-white">Más vendido</span>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;div class=&quot;inline-flex items-center gap-3 px-4 py-3 rounded-2xl bg-orange-50 border border-orange-200 shadow-sm&quot;&gt;
+  &lt;div&gt;
+    &lt;p class=&quot;text-xs font-semibold text-orange-700 uppercase&quot;&gt;Landing Page&lt;/p&gt;
+    &lt;div class=&quot;text-2xl font-bold text-orange-700&quot;&gt;$250 &lt;span class=&quot;text-sm font-medium text-orange-500&quot;&gt;/ proyecto&lt;/span&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;span class=&quot;px-3 py-1 rounded-full text-xs font-bold bg-orange-600 text-white&quot;&gt;Más vendido&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-indigo-700 uppercase tracking-wide">FAQ</p>
+            <h2 class="text-2xl font-bold text-gray-900">Acordeón de pregunta</h2>
+            <p class="text-sm text-gray-600">Usado en secciones de dudas frecuentes de WebsPTY.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <details class="bg-gray-900 text-gray-100 rounded-2xl p-5 shadow-lg group">
+            <summary class="cursor-pointer text-lg font-semibold flex items-center justify-between">
+              ¿Cuánto tarda la entrega?
+              <span class="text-sm text-gray-400 group-open:hidden">+</span>
+              <span class="text-sm text-gray-400 hidden group-open:inline">-</span>
+            </summary>
+            <p class="text-gray-300 mt-3 text-sm">Landing en 1-2 semanas, Web Profesional en 2-3 semanas, E-commerce en 3-4 semanas.</p>
+          </details>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;details class=&quot;bg-gray-900 text-gray-100 rounded-2xl p-5 shadow-lg group&quot;&gt;
+  &lt;summary class=&quot;cursor-pointer text-lg font-semibold flex items-center justify-between&quot;&gt;
+    ¿Cuánto tarda la entrega?
+    &lt;span class=&quot;text-sm text-gray-400 group-open:hidden&quot;&gt;+&lt;/span&gt;
+    &lt;span class=&quot;text-sm text-gray-400 hidden group-open:inline&quot;&gt;-&lt;/span&gt;
+  &lt;/summary&gt;
+  &lt;p class=&quot;text-gray-300 mt-3 text-sm&quot;&gt;Landing en 1-2 semanas, Web Profesional en 2-3 semanas, E-commerce en 3-4 semanas.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-pink-700 uppercase tracking-wide">Testimonios</p>
+            <h2 class="text-2xl font-bold text-gray-900">Card de testimonio</h2>
+            <p class="text-sm text-gray-600">Para mostrar opiniones y reseñas de clientes satisfechos.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-pink-100 text-pink-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-xl transition">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-14 h-14 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white text-xl font-bold">CM</div>
+              <div>
+                <p class="font-bold text-gray-900">Carlos Martínez</p>
+                <p class="text-sm text-gray-500">CEO, Restaurante El Buen Sabor</p>
+              </div>
+            </div>
+            <div class="flex gap-1 mb-3">
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+              <span class="text-yellow-400">★</span>
+            </div>
+            <p class="text-gray-700">"WebsPTY nos entregó una landing perfecta en tiempo récord. Las reservas aumentaron un 40% el primer mes."</p>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;div class=&quot;bg-white border-2 border-gray-100 rounded-2xl p-6 shadow-lg hover:shadow-xl transition&quot;&gt;
+  &lt;div class=&quot;flex items-center gap-4 mb-4&quot;&gt;
+    &lt;div class=&quot;w-14 h-14 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-white text-xl font-bold&quot;&gt;CM&lt;/div&gt;
+    &lt;div&gt;
+      &lt;p class=&quot;font-bold text-gray-900&quot;&gt;Carlos Martínez&lt;/p&gt;
+      &lt;p class=&quot;text-sm text-gray-500&quot;&gt;CEO, Restaurante El Buen Sabor&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;flex gap-1 mb-3&quot;&gt;
+    &lt;span class=&quot;text-yellow-400&quot;&gt;★&lt;/span&gt;
+    &lt;span class=&quot;text-yellow-400&quot;&gt;★&lt;/span&gt;
+    &lt;span class=&quot;text-yellow-400&quot;&gt;★&lt;/span&gt;
+    &lt;span class=&quot;text-yellow-400&quot;&gt;★&lt;/span&gt;
+    &lt;span class=&quot;text-yellow-400&quot;&gt;★&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;p class=&quot;text-gray-700&quot;&gt;&quot;WebsPTY nos entregó una landing perfecta en tiempo récord. Las reservas aumentaron un 40% el primer mes.&quot;&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-teal-700 uppercase tracking-wide">Formularios</p>
+            <h2 class="text-2xl font-bold text-gray-900">Input de contacto</h2>
+            <p class="text-sm text-gray-600">Campo de texto con etiqueta flotante y validación visual.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-teal-100 text-teal-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="space-y-4">
+            <div class="relative">
+              <input type="text" id="nombre" placeholder=" " class="peer w-full px-4 pt-6 pb-2 border-2 border-gray-200 rounded-xl focus:border-teal-600 focus:outline-none transition" />
+              <label for="nombre" class="absolute left-4 top-2 text-xs text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-xs peer-focus:text-teal-600 transition-all">Nombre completo</label>
+            </div>
+            <div class="relative">
+              <input type="email" id="email" placeholder=" " class="peer w-full px-4 pt-6 pb-2 border-2 border-gray-200 rounded-xl focus:border-teal-600 focus:outline-none transition" />
+              <label for="email" class="absolute left-4 top-2 text-xs text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-xs peer-focus:text-teal-600 transition-all">Correo electrónico</label>
+            </div>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;div class=&quot;relative&quot;&gt;
+  &lt;input type=&quot;text&quot; id=&quot;nombre&quot; placeholder=&quot; &quot; class=&quot;peer w-full px-4 pt-6 pb-2 border-2 border-gray-200 rounded-xl focus:border-teal-600 focus:outline-none transition&quot; /&gt;
+  &lt;label for=&quot;nombre&quot; class=&quot;absolute left-4 top-2 text-xs text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-xs peer-focus:text-teal-600 transition-all&quot;&gt;Nombre completo&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-red-700 uppercase tracking-wide">Alertas</p>
+            <h2 class="text-2xl font-bold text-gray-900">Banner de notificación</h2>
+            <p class="text-sm text-gray-600">Para mostrar avisos importantes o promociones temporales.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-600 rounded-xl p-4 shadow-md">
+            <div class="flex items-start gap-3">
+              <div class="flex-shrink-0">
+                <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-red-900 mb-1">Oferta por tiempo limitado</h3>
+                <p class="text-sm text-red-800">15% de descuento en todos los planes hasta el 15 de febrero. ¡No dejes pasar esta oportunidad!</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;div class=&quot;bg-gradient-to-r from-red-50 to-orange-50 border-l-4 border-red-600 rounded-xl p-4 shadow-md&quot;&gt;
+  &lt;div class=&quot;flex items-start gap-3&quot;&gt;
+    &lt;div class=&quot;flex-shrink-0&quot;&gt;
+      &lt;svg class=&quot;w-6 h-6 text-red-600&quot; fill=&quot;currentColor&quot; viewBox=&quot;0 0 20 20&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot; d=&quot;M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z&quot; clip-rule=&quot;evenodd&quot; /&gt;
+      &lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;h3 class=&quot;font-bold text-red-900 mb-1&quot;&gt;Oferta por tiempo limitado&lt;/h3&gt;
+      &lt;p class=&quot;text-sm text-red-800&quot;&gt;15% de descuento en todos los planes hasta el 15 de febrero. ¡No dejes pasar esta oportunidad!&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-cyan-700 uppercase tracking-wide">Stats</p>
+            <h2 class="text-2xl font-bold text-gray-900">Tarjeta de estadística</h2>
+            <p class="text-sm text-gray-600">Para destacar números clave como proyectos, clientes o años de experiencia.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-cyan-100 text-cyan-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="grid grid-cols-3 gap-4">
+            <div class="bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-2xl p-5 text-center shadow-lg">
+              <div class="text-4xl font-black mb-1">50+</div>
+              <div class="text-sm font-medium opacity-90">Proyectos</div>
+            </div>
+            <div class="bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-2xl p-5 text-center shadow-lg">
+              <div class="text-4xl font-black mb-1">98%</div>
+              <div class="text-sm font-medium opacity-90">Satisfacción</div>
+            </div>
+            <div class="bg-gradient-to-br from-orange-500 to-red-600 text-white rounded-2xl p-5 text-center shadow-lg">
+              <div class="text-4xl font-black mb-1">3+</div>
+              <div class="text-sm font-medium opacity-90">Años</div>
+            </div>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;div class=&quot;bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-2xl p-5 text-center shadow-lg&quot;&gt;
+  &lt;div class=&quot;text-4xl font-black mb-1&quot;&gt;50+&lt;/div&gt;
+  &lt;div class=&quot;text-sm font-medium opacity-90&quot;&gt;Proyectos&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-amber-700 uppercase tracking-wide">Hero</p>
+            <h2 class="text-2xl font-bold text-gray-900">Sección hero compacta</h2>
+            <p class="text-sm text-gray-600">Bloque de apertura con título, descripción y CTA principal.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white rounded-2xl p-10 text-center shadow-2xl">
+            <div class="inline-block px-3 py-1 bg-purple-500/20 border border-purple-400/30 rounded-full text-xs font-semibold mb-4">✨ Nuevo servicio disponible</div>
+            <h1 class="text-4xl font-black mb-4 leading-tight">Transforma tu negocio con una web profesional</h1>
+            <p class="text-white/80 mb-6 max-w-md mx-auto">Diseño moderno, hosting rápido y soporte dedicado. Todo incluido desde $250.</p>
+            <div class="flex gap-3 justify-center flex-wrap">
+              <a href="#" class="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-xl font-semibold shadow-lg transition">Ver planes</a>
+              <a href="#" class="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/30 rounded-xl font-semibold transition">Contactar</a>
+            </div>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;div class=&quot;bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white rounded-2xl p-10 text-center shadow-2xl&quot;&gt;
+  &lt;div class=&quot;inline-block px-3 py-1 bg-purple-500/20 border border-purple-400/30 rounded-full text-xs font-semibold mb-4&quot;&gt;✨ Nuevo servicio disponible&lt;/div&gt;
+  &lt;h1 class=&quot;text-4xl font-black mb-4 leading-tight&quot;&gt;Transforma tu negocio con una web profesional&lt;/h1&gt;
+  &lt;p class=&quot;text-white/80 mb-6 max-w-md mx-auto&quot;&gt;Diseño moderno, hosting rápido y soporte dedicado. Todo incluido desde $250.&lt;/p&gt;
+  &lt;div class=&quot;flex gap-3 justify-center flex-wrap&quot;&gt;
+    &lt;a href=&quot;#&quot; class=&quot;px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-xl font-semibold shadow-lg transition&quot;&gt;Ver planes&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/30 rounded-xl font-semibold transition&quot;&gt;Contactar&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-emerald-700 uppercase tracking-wide">Tabs</p>
+            <h2 class="text-2xl font-bold text-gray-900">Pestañas navegables</h2>
+            <p class="text-sm text-gray-600">Sistema de tabs CSS-only para organizar contenido sin JavaScript.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="bg-gray-50 rounded-2xl p-5 shadow-inner">
+            <div class="flex gap-2 mb-4 border-b border-gray-200 pb-2">
+              <button class="px-4 py-2 bg-emerald-600 text-white rounded-lg font-semibold text-sm shadow-md">Características</button>
+              <button class="px-4 py-2 text-gray-600 hover:bg-gray-200 rounded-lg font-semibold text-sm transition">Precios</button>
+              <button class="px-4 py-2 text-gray-600 hover:bg-gray-200 rounded-lg font-semibold text-sm transition">FAQ</button>
+            </div>
+            <div class="bg-white rounded-xl p-4 shadow-sm">
+              <h3 class="font-bold text-gray-900 mb-2">Todo lo que necesitas</h3>
+              <ul class="space-y-2 text-sm text-gray-700">
+                <li>✓ Diseño responsive</li>
+                <li>✓ Optimización SEO</li>
+                <li>✓ Hosting incluido</li>
+              </ul>
+            </div>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;div class=&quot;flex gap-2 mb-4 border-b border-gray-200 pb-2&quot;&gt;
+  &lt;button class=&quot;px-4 py-2 bg-emerald-600 text-white rounded-lg font-semibold text-sm shadow-md&quot;&gt;Características&lt;/button&gt;
+  &lt;button class=&quot;px-4 py-2 text-gray-600 hover:bg-gray-200 rounded-lg font-semibold text-sm transition&quot;&gt;Precios&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-violet-700 uppercase tracking-wide">Botones</p>
+            <h2 class="text-2xl font-bold text-gray-900">Grupo de botones</h2>
+            <p class="text-sm text-gray-600">Colección de estilos de botones primary, secondary y ghost.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-violet-100 text-violet-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="flex flex-wrap gap-3">
+            <button class="px-5 py-2.5 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition">Primary</button>
+            <button class="px-5 py-2.5 bg-gray-200 hover:bg-gray-300 text-gray-900 font-semibold rounded-xl transition">Secondary</button>
+            <button class="px-5 py-2.5 border-2 border-violet-600 text-violet-600 hover:bg-violet-50 font-semibold rounded-xl transition">Outline</button>
+            <button class="px-5 py-2.5 text-violet-600 hover:bg-violet-50 font-semibold rounded-xl transition">Ghost</button>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;button class=&quot;px-5 py-2.5 bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition&quot;&gt;Primary&lt;/button&gt;
+&lt;button class=&quot;px-5 py-2.5 bg-gray-200 hover:bg-gray-300 text-gray-900 font-semibold rounded-xl transition&quot;&gt;Secondary&lt;/button&gt;
+&lt;button class=&quot;px-5 py-2.5 border-2 border-violet-600 text-violet-600 hover:bg-violet-50 font-semibold rounded-xl transition&quot;&gt;Outline&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-fuchsia-700 uppercase tracking-wide">Modales</p>
+            <h2 class="text-2xl font-bold text-gray-900">Card modal compacta</h2>
+            <p class="text-sm text-gray-600">Ventana flotante para confirmaciones o formularios rápidos.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-fuchsia-100 text-fuchsia-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="bg-gray-900/50 rounded-2xl p-8 flex items-center justify-center min-h-[280px]">
+            <div class="bg-white rounded-2xl p-6 shadow-2xl max-w-sm w-full">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">¿Confirmar acción?</h3>
+              <p class="text-gray-600 text-sm mb-4">Esta acción no se puede deshacer. ¿Estás seguro de continuar?</p>
+              <div class="flex gap-3">
+                <button class="flex-1 px-4 py-2 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-semibold rounded-lg transition">Confirmar</button>
+                <button class="flex-1 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-900 font-semibold rounded-lg transition">Cancelar</button>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;div class=&quot;bg-white rounded-2xl p-6 shadow-2xl max-w-sm w-full&quot;&gt;
+  &lt;h3 class=&quot;text-xl font-bold text-gray-900 mb-2&quot;&gt;¿Confirmar acción?&lt;/h3&gt;
+  &lt;p class=&quot;text-gray-600 text-sm mb-4&quot;&gt;Esta acción no se puede deshacer. ¿Estás seguro de continuar?&lt;/p&gt;
+  &lt;div class=&quot;flex gap-3&quot;&gt;
+    &lt;button class=&quot;flex-1 px-4 py-2 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-semibold rounded-lg transition&quot;&gt;Confirmar&lt;/button&gt;
+    &lt;button class=&quot;flex-1 px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-900 font-semibold rounded-lg transition&quot;&gt;Cancelar&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-lime-700 uppercase tracking-wide">Footers</p>
+            <h2 class="text-2xl font-bold text-gray-900">Footer minimalista</h2>
+            <p class="text-sm text-gray-600">Pie de página simple con enlaces y copyright.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-lime-100 text-lime-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-6 shadow-lg">
+            <div class="flex flex-wrap gap-6 justify-between items-center mb-4 pb-4 border-b border-gray-700">
+              <div class="text-xl font-bold">WebsPTY</div>
+              <div class="flex gap-4 text-sm">
+                <a href="#" class="hover:text-lime-400 transition">Servicios</a>
+                <a href="#" class="hover:text-lime-400 transition">Proyectos</a>
+                <a href="#" class="hover:text-lime-400 transition">Contacto</a>
+              </div>
+            </div>
+            <div class="text-center text-sm text-gray-400">© 2026 WebsPTY. Todos los derechos reservados.</div>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;footer class=&quot;bg-gray-900 text-gray-100 p-6&quot;&gt;
+  &lt;div class=&quot;flex flex-wrap gap-6 justify-between items-center mb-4 pb-4 border-b border-gray-700&quot;&gt;
+    &lt;div class=&quot;text-xl font-bold&quot;&gt;WebsPTY&lt;/div&gt;
+    &lt;div class=&quot;flex gap-4 text-sm&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;hover:text-lime-400 transition&quot;&gt;Servicios&lt;/a&gt;
+      &lt;a href=&quot;#&quot; class=&quot;hover:text-lime-400 transition&quot;&gt;Proyectos&lt;/a&gt;
+      &lt;a href=&quot;#&quot; class=&quot;hover:text-lime-400 transition&quot;&gt;Contacto&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;text-center text-sm text-gray-400&quot;&gt;© 2026 WebsPTY. Todos los derechos reservados.&lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-sky-700 uppercase tracking-wide">Features</p>
+            <h2 class="text-2xl font-bold text-gray-900">Grid de características</h2>
+            <p class="text-sm text-gray-600">Cuadrícula 3x3 con íconos y descripciones cortas.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-gradient-to-br from-sky-50 to-blue-50 rounded-xl p-4 text-center border border-sky-100">
+              <div class="text-2xl mb-2">⚡</div>
+              <p class="text-xs font-semibold text-gray-900">Rápido</p>
+            </div>
+            <div class="bg-gradient-to-br from-sky-50 to-blue-50 rounded-xl p-4 text-center border border-sky-100">
+              <div class="text-2xl mb-2">🔒</div>
+              <p class="text-xs font-semibold text-gray-900">Seguro</p>
+            </div>
+            <div class="bg-gradient-to-br from-sky-50 to-blue-50 rounded-xl p-4 text-center border border-sky-100">
+              <div class="text-2xl mb-2">📱</div>
+              <p class="text-xs font-semibold text-gray-900">Responsive</p>
+            </div>
+            <div class="bg-gradient-to-br from-sky-50 to-blue-50 rounded-xl p-4 text-center border border-sky-100">
+              <div class="text-2xl mb-2">🎨</div>
+              <p class="text-xs font-semibold text-gray-900">Moderno</p>
+            </div>
+            <div class="bg-gradient-to-br from-sky-50 to-blue-50 rounded-xl p-4 text-center border border-sky-100">
+              <div class="text-2xl mb-2">🚀</div>
+              <p class="text-xs font-semibold text-gray-900">Optimizado</p>
+            </div>
+            <div class="bg-gradient-to-br from-sky-50 to-blue-50 rounded-xl p-4 text-center border border-sky-100">
+              <div class="text-2xl mb-2">💎</div>
+              <p class="text-xs font-semibold text-gray-900">Premium</p>
+            </div>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;div class=&quot;grid grid-cols-3 gap-3&quot;&gt;
+  &lt;div class=&quot;bg-gradient-to-br from-sky-50 to-blue-50 rounded-xl p-4 text-center border border-sky-100&quot;&gt;
+    &lt;div class=&quot;text-2xl mb-2&quot;&gt;⚡&lt;/div&gt;
+    &lt;p class=&quot;text-xs font-semibold text-gray-900&quot;&gt;Rápido&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-rose-700 uppercase tracking-wide">Navegación</p>
+            <h2 class="text-2xl font-bold text-gray-900">Breadcrumbs</h2>
+            <p class="text-sm text-gray-600">Migas de pan para indicar la ubicación actual en la jerarquía.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="bg-gray-50 rounded-xl p-4 border border-gray-200">
+            <nav class="flex items-center gap-2 text-sm">
+              <a href="#" class="text-gray-600 hover:text-rose-600 transition">Inicio</a>
+              <span class="text-gray-400">/</span>
+              <a href="#" class="text-gray-600 hover:text-rose-600 transition">Proyectos</a>
+              <span class="text-gray-400">/</span>
+              <span class="text-rose-600 font-semibold">Restaurante</span>
+            </nav>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;nav class=&quot;flex items-center gap-2 text-sm&quot;&gt;
+  &lt;a href=&quot;#&quot; class=&quot;text-gray-600 hover:text-rose-600 transition&quot;&gt;Inicio&lt;/a&gt;
+  &lt;span class=&quot;text-gray-400&quot;&gt;/&lt;/span&gt;
+  &lt;a href=&quot;#&quot; class=&quot;text-gray-600 hover:text-rose-600 transition&quot;&gt;Proyectos&lt;/a&gt;
+  &lt;span class=&quot;text-gray-400&quot;&gt;/&lt;/span&gt;
+  &lt;span class=&quot;text-rose-600 font-semibold&quot;&gt;Restaurante&lt;/span&gt;
+&lt;/nav&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-yellow-700 uppercase tracking-wide">Progreso</p>
+            <h2 class="text-2xl font-bold text-gray-900">Barra de progreso</h2>
+            <p class="text-sm text-gray-600">Indicador visual de completado o carga.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm font-semibold mb-2">
+                <span>Desarrollo</span>
+                <span class="text-yellow-600">75%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                <div class="bg-gradient-to-r from-yellow-500 to-orange-500 h-full rounded-full" style="width: 75%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm font-semibold mb-2">
+                <span>Testing</span>
+                <span class="text-green-600">100%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                <div class="bg-gradient-to-r from-green-500 to-emerald-500 h-full rounded-full" style="width: 100%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;div class=&quot;flex justify-between text-sm font-semibold mb-2&quot;&gt;
+  &lt;span&gt;Desarrollo&lt;/span&gt;
+  &lt;span class=&quot;text-yellow-600&quot;&gt;75%&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;w-full bg-gray-200 rounded-full h-3 overflow-hidden&quot;&gt;
+  &lt;div class=&quot;bg-gradient-to-r from-yellow-500 to-orange-500 h-full rounded-full&quot; style=&quot;width: 75%&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-slate-700 uppercase tracking-wide">Imágenes</p>
+            <h2 class="text-2xl font-bold text-gray-900">Card con imagen</h2>
+            <p class="text-sm text-gray-600">Tarjeta de proyecto o artículo con imagen destacada.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition">
+            <div class="h-40 bg-gradient-to-br from-slate-400 to-slate-600 flex items-center justify-center text-white text-4xl">🍕</div>
+            <div class="p-5">
+              <div class="text-xs font-semibold text-slate-600 uppercase mb-1">Restaurante</div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">Pizzería Bella Italia</h3>
+              <p class="text-sm text-gray-600 mb-4">Landing page con sistema de pedidos online y menú interactivo.</p>
+              <a href="#" class="inline-flex items-center text-sm font-semibold text-slate-600 hover:text-slate-800 transition">Ver proyecto →</a>
+            </div>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;div class=&quot;bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition&quot;&gt;
+  &lt;div class=&quot;h-40 bg-gradient-to-br from-slate-400 to-slate-600&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;p-5&quot;&gt;
+    &lt;div class=&quot;text-xs font-semibold text-slate-600 uppercase mb-1&quot;&gt;Restaurante&lt;/div&gt;
+    &lt;h3 class=&quot;text-lg font-bold text-gray-900 mb-2&quot;&gt;Pizzería Bella Italia&lt;/h3&gt;
+    &lt;p class=&quot;text-sm text-gray-600 mb-4&quot;&gt;Landing page con sistema de pedidos online y menú interactivo.&lt;/p&gt;
+    &lt;a href=&quot;#&quot; class=&quot;inline-flex items-center text-sm font-semibold text-slate-600 hover:text-slate-800 transition&quot;&gt;Ver proyecto →&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-stone-700 uppercase tracking-wide">Social</p>
+            <h2 class="text-2xl font-bold text-gray-900">Botones sociales</h2>
+            <p class="text-sm text-gray-600">Enlaces a redes sociales con iconos y hover effects.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-stone-100 text-stone-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="flex gap-3 flex-wrap">
+            <a href="#" class="w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center text-xl shadow-md hover:shadow-lg transition">f</a>
+            <a href="#" class="w-12 h-12 bg-pink-600 hover:bg-pink-700 text-white rounded-xl flex items-center justify-center text-xl shadow-md hover:shadow-lg transition">📷</a>
+            <a href="#" class="w-12 h-12 bg-cyan-500 hover:bg-cyan-600 text-white rounded-xl flex items-center justify-center text-xl shadow-md hover:shadow-lg transition">🐦</a>
+            <a href="#" class="w-12 h-12 bg-red-600 hover:bg-red-700 text-white rounded-xl flex items-center justify-center text-xl shadow-md hover:shadow-lg transition">▶</a>
+            <a href="#" class="w-12 h-12 bg-gray-900 hover:bg-gray-800 text-white rounded-xl flex items-center justify-center text-xl shadow-md hover:shadow-lg transition">in</a>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;a href=&quot;#&quot; class=&quot;w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center justify-center text-xl shadow-md hover:shadow-lg transition&quot;&gt;f&lt;/a&gt;
+&lt;a href=&quot;#&quot; class=&quot;w-12 h-12 bg-pink-600 hover:bg-pink-700 text-white rounded-xl flex items-center justify-center text-xl shadow-md hover:shadow-lg transition&quot;&gt;📷&lt;/a&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-zinc-700 uppercase tracking-wide">Tipografía</p>
+            <h2 class="text-2xl font-bold text-gray-900">Blockquote estilizado</h2>
+            <p class="text-sm text-gray-600">Cita destacada con borde lateral y autor.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-zinc-100 text-zinc-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <blockquote class="border-l-4 border-zinc-600 pl-5 py-3 bg-zinc-50 rounded-r-xl">
+            <p class="text-lg font-semibold text-gray-900 italic mb-2">"El mejor momento para crear tu web fue hace un año. El segundo mejor momento es hoy."</p>
+            <cite class="text-sm text-gray-600 not-italic">— WebsPTY Team</cite>
+          </blockquote>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;blockquote class=&quot;border-l-4 border-zinc-600 pl-5 py-3 bg-zinc-50 rounded-r-xl&quot;&gt;
+  &lt;p class=&quot;text-lg font-semibold text-gray-900 italic mb-2&quot;&gt;&quot;El mejor momento para crear tu web fue hace un año. El segundo mejor momento es hoy.&quot;&lt;/p&gt;
+  &lt;cite class=&quot;text-sm text-gray-600 not-italic&quot;&gt;— WebsPTY Team&lt;/cite&gt;
+&lt;/blockquote&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 fade-in">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-xs font-semibold text-neutral-700 uppercase tracking-wide">Calendarios</p>
+            <h2 class="text-2xl font-bold text-gray-900">Selector de fecha</h2>
+            <p class="text-sm text-gray-600">Input de fecha con ícono y estilo personalizado.</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-neutral-100 text-neutral-700">Listo para copiar</span>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 items-start">
+          <div class="space-y-3">
+            <label class="block text-sm font-semibold text-gray-900 mb-1">Fecha de entrega</label>
+            <div class="relative">
+              <input type="date" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-neutral-600 focus:outline-none transition" />
+              <div class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">📅</div>
+            </div>
+          </div>
+          <div class="bg-gray-900 text-gray-100 rounded-2xl p-4 text-sm font-mono">
+            <p class="text-xs uppercase text-gray-400 mb-2">Código para copiar</p>
+<pre class="text-xs bg-gray-800 rounded-lg p-3 text-gray-100"><code>&lt;label class=&quot;block text-sm font-semibold text-gray-900 mb-1&quot;&gt;Fecha de entrega&lt;/label&gt;
+&lt;div class=&quot;relative&quot;&gt;
+  &lt;input type=&quot;date&quot; class=&quot;w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-neutral-600 focus:outline-none transition&quot; /&gt;
+  &lt;div class=&quot;absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none&quot;&gt;📅&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('.fade-in').forEach((el, idx) => {
+      setTimeout(() => el.classList.add('visible'), 120 * idx);
+    });
+  </script>
+</body>
+</html>

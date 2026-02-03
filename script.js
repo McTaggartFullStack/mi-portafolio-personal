@@ -70,6 +70,7 @@ window.addEventListener('scroll', () => {
 const heroSection = document.querySelector('#inicio');
 if (heroSection) {
     window.addEventListener('scroll', () => {
+        if (window.innerWidth < 768) return; // Optimization: Disable on mobile
         const scrolled = window.pageYOffset;
         const parallaxElements = heroSection.querySelectorAll('.blob');
         
@@ -82,49 +83,53 @@ if (heroSection) {
 
 // Add shimmer effect to buttons on hover
 const buttons = document.querySelectorAll('a[class*="bg-gradient"], a[class*="bg-purple"], a[class*="bg-white"]');
-buttons.forEach(button => {
-    button.addEventListener('mouseenter', function() {
-        this.style.position = 'relative';
-        this.style.overflow = 'hidden';
-        
-        const shimmer = document.createElement('div');
-        shimmer.className = 'shimmer';
-        shimmer.style.position = 'absolute';
-        shimmer.style.top = '0';
-        shimmer.style.left = '-100%';
-        shimmer.style.width = '100%';
-        shimmer.style.height = '100%';
-        shimmer.style.pointerEvents = 'none';
-        
-        this.appendChild(shimmer);
-        
-        setTimeout(() => {
-            shimmer.remove();
-        }, 2000);
+if (window.matchMedia('(hover: hover)').matches) {
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            
+            const shimmer = document.createElement('div');
+            shimmer.className = 'shimmer';
+            shimmer.style.position = 'absolute';
+            shimmer.style.top = '0';
+            shimmer.style.left = '-100%';
+            shimmer.style.width = '100%';
+            shimmer.style.height = '100%';
+            shimmer.style.pointerEvents = 'none';
+            
+            this.appendChild(shimmer);
+            
+            setTimeout(() => {
+                shimmer.remove();
+            }, 2000);
+        });
     });
-});
+}
 
 // Card tilt effect on mouse move
 const cards = document.querySelectorAll('.card-hover');
-cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+if (window.matchMedia('(hover: hover)').matches) { // Optimization: Disable on touch devices
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px) scale(1.02)`;
+        });
         
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-        
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px) scale(1.02)`;
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
     });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-    });
-});
+}
 
 // Cursor trail effect (optional, can be enabled/disabled)
 let cursorTrail = false; // Set to true to enable
@@ -294,28 +299,77 @@ console.log('%c¿Interesado en cómo está hecho esto? ¡Contáctame!', 'color: 
 // Mobile menu functionality
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
+const mobileOverlay = document.getElementById('mobile-overlay');
 const menuIcon = document.getElementById('menu-icon');
 const closeIcon = document.getElementById('close-icon');
 
 if (mobileMenuBtn && mobileMenu) {
+    const openMenu = () => {
+        mobileMenu.classList.remove('hidden');
+        mobileOverlay.classList.remove('hidden');
+        setTimeout(() => {
+            mobileMenu.classList.remove('translate-x-full');
+        }, 10);
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('overflow-hidden');
+    };
+
+    const closeMenu = () => {
+        mobileMenu.classList.add('translate-x-full');
+        mobileOverlay.classList.add('hidden');
+        setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+        }, 300); // Wait for transition
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('overflow-hidden');
+    };
+
     mobileMenuBtn.addEventListener('click', () => {
         const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-        
-        mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
-        mobileMenu.classList.toggle('hidden');
-        
-        // Toggle icons
-        menuIcon.classList.toggle('hidden');
-        closeIcon.classList.toggle('hidden');
+        if (isExpanded) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
     });
 
     // Close menu when clicking a link
     mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            menuIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
-            mobileMenuBtn.setAttribute('aria-expanded', 'false');
-        });
+        link.addEventListener('click', closeMenu);
     });
+
+    // Close when tapping overlay
+    if (mobileOverlay) {
+        mobileOverlay.addEventListener('click', closeMenu);
+    }
+
+    // Close when tapping anywhere outside the menu (desktop/mobile safety)
+    document.addEventListener('click', (e) => {
+        const isMenuOpen = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+        if (!isMenuOpen) return;
+        const clickInsideMenu = mobileMenu.contains(e.target);
+        const clickOnButton = mobileMenuBtn.contains(e.target);
+        if (!clickInsideMenu && !clickOnButton) {
+            closeMenu();
+        }
+    }, true);
+
+    // Swipe to close (rightward swipe inside the menu)
+    let touchStartX = 0;
+    let touchEndX = 0;
+    mobileMenu.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+
+    mobileMenu.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].clientX;
+        const deltaX = touchEndX - touchStartX;
+        if (deltaX > 50) { // swipe to the right
+            closeMenu();
+        }
+    }, { passive: true });
 }

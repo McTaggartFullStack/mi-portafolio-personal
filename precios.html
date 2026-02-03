@@ -262,6 +262,9 @@
             transform: scale(1.1);
         }
 
+        .dark .shadow-lg, .dark .shadow-xl { box-shadow: 0 20px 50px -15px rgba(0,0,0,0.8); }
+        .dark .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #111827 100%); }
+
         @keyframes pulse-whatsapp {
             0%, 100% {
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
@@ -300,6 +303,66 @@
 
     <!-- Why Choose Me Section -->
     <section class="py-20 px-4 bg-white">
+        <!-- Work Process Section -->
+        <div class="max-w-7xl mx-auto mb-24">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-purple-600 font-bold tracking-wider uppercase text-sm">Metodología Comprobada</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2 mb-4">Mi Proceso de Trabajo</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Un flujo estructurado para garantizar resultados excepcionales sin estrés.</p>
+            </div>
+
+            <div class="relative">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-100 -translate-y-1/2 z-0"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-purple-50 transform hover:-translate-y-2 transition-transform duration-300 fade-in" style="animation-delay: 0.1s;">
+                        <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-3xl mb-6 mx-auto md:mx-0 text-purple-600 shadow-inner">
+                            🎯
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3 text-center md:text-left">1. Descubrimiento</h3>
+                        <p class="text-gray-600 text-center md:text-left text-sm leading-relaxed">
+                            Analizamos tu negocio, objetivos y competencia. Definimos el alcance exacto del proyecto y firmamos el acuerdo.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-blue-50 transform hover:-translate-y-2 transition-transform duration-300 fade-in" style="animation-delay: 0.2s;">
+                        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-3xl mb-6 mx-auto md:mx-0 text-blue-600 shadow-inner">
+                            🎨
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3 text-center md:text-left">2. Diseño UI/UX</h3>
+                        <p class="text-gray-600 text-center md:text-left text-sm leading-relaxed">
+                            Creo los bocetos y prototipos visuales. Ajustamos colores, tipografías y estructura hasta que te encante el look final.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-indigo-50 transform hover:-translate-y-2 transition-transform duration-300 fade-in" style="animation-delay: 0.3s;">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center text-3xl mb-6 mx-auto md:mx-0 text-indigo-600 shadow-inner">
+                            💻
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3 text-center md:text-left">3. Desarrollo</h3>
+                        <p class="text-gray-600 text-center md:text-left text-sm leading-relaxed">
+                            Convierto el diseño en código limpio y rápido. Integro funciones, optimizo para móviles y configuro el SEO técnico.
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-green-50 transform hover:-translate-y-2 transition-transform duration-300 fade-in" style="animation-delay: 0.4s;">
+                        <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-3xl mb-6 mx-auto md:mx-0 text-green-600 shadow-inner">
+                            🚀
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3 text-center md:text-left">4. Lanzamiento</h3>
+                        <p class="text-gray-600 text-center md:text-left text-sm leading-relaxed">
+                            Pruebas finales, publicación en tu dominio y entrega de credenciales. ¡Tu sitio está vivo y listo para vender!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">¿Por qué trabajar conmigo?</h2>
@@ -670,7 +733,11 @@
 
             <!-- Nota aclaratoria -->
             <div class="mt-12 text-center bg-blue-50 rounded-xl p-6 max-w-4xl mx-auto border border-blue-100 fade-in" style="animation-delay: 0.8s;">
-                <p class="text-sm text-gray-700"><strong>📌 Nota:</strong> Cada plan incluye <strong>toda la base técnica</strong> del plan anterior + funcionalidades nuevas. No pierdes características al elegir un plan superior.</p>
+                <p class="text-sm text-gray-700 mb-3"><strong>📌 Nota:</strong> Cada plan incluye <strong>toda la base técnica</strong> del plan anterior + funcionalidades nuevas. No pierdes características al elegir un plan superior.</p>
+                <div class="w-full h-px bg-blue-200 max-w-xs mx-auto mb-3"></div>
+                <p class="text-base text-gray-800 font-medium">
+                    📄 ¿Necesitas más contenido? <span class="bg-white px-2 py-1 rounded border border-blue-200 shadow-sm ml-1 text-blue-700">Cada página interna extra: $75 USD</span>
+                </p>
             </div>
         </div>
     </section>
