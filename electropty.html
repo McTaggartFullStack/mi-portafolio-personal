@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <title>ElectroPTY | Tienda de Tecnología</title>
+  <meta name="description" content="ElectroPTY, tienda de tecnología con celulares, laptops, audio y accesorios premium. Diseño editorial inspirado en galerías." />
+  <link rel="canonical" href="https://www.webspty.dev/electropty.html" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { font-family: "Times New Roman", Georgia, serif; }
+    body { background: #f3f5f9; color: #111827; }
+    .accent-line { width: 80px; height: 3px; background: #111827; }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .card-minimal { border: 1px solid #e5e7eb; background: #fff; }
+    .hero-image { filter: none; }
+  </style>
+</head>
+<body>
+  <header class="border-b border-gray-200 bg-white/80 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="text-sm tracking-[0.2em] uppercase">ElectroPTY</a>
+      <nav class="hidden md:flex items-center gap-8 text-sm uppercase tracking-[0.2em]">
+        <a href="#inicio" class="hover:text-gray-500">Inicio</a>
+        <a href="#productos" class="hover:text-gray-500">Productos</a>
+        <a href="#historia" class="hover:text-gray-500">Historia</a>
+        <a href="#showrooms" class="hover:text-gray-500">Showrooms</a>
+      </nav>
+      <a href="#contacto" class="text-sm uppercase tracking-[0.2em] border border-gray-900 px-4 py-2">Contacto</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="bg-gradient-to-r from-slate-50 via-white to-slate-100">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6 fade-up">
+          <p class="text-xs uppercase tracking-[0.4em]">Tecnología curada</p>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight">ElectroPTY</h1>
+          <div class="accent-line"></div>
+          <p class="text-lg text-gray-700 max-w-xl">Celulares, audio y accesorios con diseño atemporal. Seleccionamos tecnología que se ve, se siente y funciona mejor.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#productos" class="px-6 py-3 border border-gray-900 uppercase tracking-[0.2em] text-sm">Ver catálogo</a>
+            <a href="#showrooms" class="px-6 py-3 bg-gray-900 text-white uppercase tracking-[0.2em] text-sm">Visitar showroom</a>
+          </div>
+        </div>
+        <div class="fade-up" style="transition-delay: 0.2s;">
+          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=1200&q=80" alt="Tecnología premium" class="hero-image w-full h-[420px] object-cover" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section id="productos" class="bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="flex items-end justify-between flex-wrap gap-6 mb-10 fade-up">
+        <div>
+          <p class="text-xs uppercase tracking-[0.4em] text-gray-600">Selección</p>
+          <h2 class="text-3xl sm:text-4xl font-semibold">Productos destacados</h2>
+        </div>
+        <a href="#contacto" class="text-sm uppercase tracking-[0.2em] border-b border-gray-900">Consultar disponibilidad</a>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="card-minimal p-5 fade-up">
+          <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800&q=80" alt="Smartphone Aurora X" class="w-full h-48 object-cover mb-4" loading="lazy" />
+          <p class="text-xs uppercase tracking-[0.3em] text-gray-500">Smartphones</p>
+          <h3 class="text-xl font-semibold">Aurora X Pro</h3>
+          <p class="text-sm text-gray-600 mt-2">Pantalla OLED, cámara 108MP y carga rápida 120W.</p>
+        </article>
+        <article class="card-minimal p-5 fade-up" style="transition-delay: 0.1s;">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80" alt="Laptop Nova" class="w-full h-48 object-cover mb-4" loading="lazy" />
+          <p class="text-xs uppercase tracking-[0.3em] text-gray-500">Laptops</p>
+          <h3 class="text-xl font-semibold">Nova Studio 15</h3>
+          <p class="text-sm text-gray-600 mt-2">Procesador de última generación, diseño ultradelgado.</p>
+        </article>
+        <article class="card-minimal p-5 fade-up" style="transition-delay: 0.2s;">
+          <img src="https://images.unsplash.com/photo-1518444065439-e933c06ce9cd?w=800&q=80" alt="Audio premium" class="w-full h-48 object-cover mb-4" loading="lazy" />
+          <p class="text-xs uppercase tracking-[0.3em] text-gray-500">Audio</p>
+          <h3 class="text-xl font-semibold">Auriculares Vértigo</h3>
+          <p class="text-sm text-gray-600 mt-2">Cancelación activa y sonido espacial.</p>
+        </article>
+        <article class="card-minimal p-5 fade-up" style="transition-delay: 0.3s;">
+          <img src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?w=800&q=80" alt="Smartwatch" class="w-full h-48 object-cover mb-4" loading="lazy" />
+          <p class="text-xs uppercase tracking-[0.3em] text-gray-500">Wearables</p>
+          <h3 class="text-xl font-semibold">Pulse Ring</h3>
+          <p class="text-sm text-gray-600 mt-2">Seguimiento de salud, metal pulido y 7 días de batería.</p>
+        </article>
+        <article class="card-minimal p-5 fade-up" style="transition-delay: 0.4s;">
+          <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?w=800&q=80" alt="Tablet" class="w-full h-48 object-cover mb-4" loading="lazy" />
+          <p class="text-xs uppercase tracking-[0.3em] text-gray-500">Tablets</p>
+          <h3 class="text-xl font-semibold">SketchPad Air</h3>
+          <p class="text-sm text-gray-600 mt-2">Pantalla antirreflejo y stylus de precisión.</p>
+        </article>
+        <article class="card-minimal p-5 fade-up" style="transition-delay: 0.5s;">
+          <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800&q=80" alt="Accesorios" class="w-full h-48 object-cover mb-4" loading="lazy" />
+          <p class="text-xs uppercase tracking-[0.3em] text-gray-500">Accesorios</p>
+          <h3 class="text-xl font-semibold">Dock Zenith</h3>
+          <p class="text-sm text-gray-600 mt-2">Carga múltiple magnética con acabado premium.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="historia" class="bg-gradient-to-b from-slate-50 to-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div class="fade-up">
+          <p class="text-xs uppercase tracking-[0.4em] text-gray-600">Historia</p>
+          <h2 class="text-3xl sm:text-4xl font-semibold mt-3">Tecnología con curaduría editorial</h2>
+          <p class="text-gray-700 mt-4">ElectroPTY nace en Panamá para unir diseño, ingeniería y experiencia. Seleccionamos productos que combinan rendimiento y estética, con asesoría personalizada para cada cliente.</p>
+          <p class="text-gray-700 mt-3">Trabajamos con marcas globales y ediciones especiales, ofreciendo demostraciones privadas y soporte postventa premium.</p>
+          <a href="#contacto" class="inline-block mt-6 uppercase tracking-[0.2em] text-sm border-b border-gray-900">Conoce el equipo</a>
+        </div>
+        <div class="fade-up" style="transition-delay: 0.2s;">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80" alt="Showroom ElectroPTY" class="w-full h-[380px] object-cover" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section id="showrooms" class="bg-slate-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div class="fade-up">
+          <p class="text-xs uppercase tracking-[0.4em] text-gray-600">Showrooms</p>
+          <h2 class="text-3xl sm:text-4xl font-semibold mt-3">Experiencias presenciales</h2>
+          <p class="text-gray-700 mt-4">Prueba los dispositivos, compara acabados y vive demostraciones guiadas. Agenda tu visita para recibir recomendaciones personalizadas.</p>
+        </div>
+        <div class="space-y-6 fade-up" style="transition-delay: 0.2s;">
+          <div class="card-minimal p-5">
+            <p class="text-xs uppercase tracking-[0.3em] text-gray-500">Casco Antiguo</p>
+            <h3 class="text-xl font-semibold">Galería Central</h3>
+            <p class="text-sm text-gray-600">Panamá City — Lunes a sábado, 10:00 a.m. - 7:00 p.m.</p>
+          </div>
+          <div class="card-minimal p-5">
+            <p class="text-xs uppercase tracking-[0.3em] text-gray-500">Costa del Este</p>
+            <h3 class="text-xl font-semibold">Studio Electro</h3>
+            <p class="text-sm text-gray-600">Panamá City — Martes a domingo, 11:00 a.m. - 8:00 p.m.</p>
+          </div>
+          <div class="card-minimal p-5">
+            <p class="text-xs uppercase tracking-[0.3em] text-gray-500">Eventos</p>
+            <h3 class="text-xl font-semibold">Tech Nights</h3>
+            <p class="text-sm text-gray-600">Demostraciones privadas y lanzamientos, una vez al mes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="card-minimal p-8 fade-up bg-gradient-to-r from-white to-slate-50">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <p class="text-xs uppercase tracking-[0.4em] text-gray-500">Contacto</p>
+            <h2 class="text-3xl sm:text-4xl font-semibold mt-3">Agenda tu demo privada</h2>
+            <p class="text-gray-700 mt-4">Escríbenos para cotizar o reservar una experiencia guiada en nuestro showroom.</p>
+          </div>
+          <div class="space-y-3 text-sm text-gray-700">
+            <p><strong>Email:</strong> mctaggart.dev@gmail.com</p>
+            <p><strong>WhatsApp:</strong> +507 6204-9480</p>
+            <p><strong>Ubicación:</strong> Panamá City, Panamá</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-gray-200 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between gap-4 text-xs uppercase tracking-[0.3em]">
+      <span>© 2026 ElectroPTY</span>
+      <span>Diseño editorial de tecnología</span>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.fade-up').forEach((el, idx) => {
+      setTimeout(() => el.classList.add('visible'), 120 * idx);
+    });
+  </script>
+</body>
+</html>

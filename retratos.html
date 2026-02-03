@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <title>Retratos Studio | Personas, Animales y Objetos</title>
+  <meta name="description" content="Retratos artísticos de personas, animales y objetos. Sesiones personalizadas, iluminación cuidada y edición profesional." />
+  <link rel="canonical" href="https://www.webspty.dev/retratos.html" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+    body { background: #f8fafc; color: #0f172a; }
+    .fade-in { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .hero-bg { background: linear-gradient(120deg, #0f172a 0%, #1e293b 45%, #334155 100%); }
+  </style>
+</head>
+<body>
+  <header class="hero-bg text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div class="flex items-center justify-between mb-10">
+        <a href="index.html" class="text-sm font-semibold text-slate-200 hover:text-white">← Volver al portafolio</a>
+        <span class="text-xs uppercase tracking-[0.4em] text-slate-300">Retratos Studio</span>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div class="space-y-6 fade-in">
+          <p class="text-xs uppercase tracking-[0.4em] text-slate-300">Arte y detalle</p>
+          <h1 class="text-4xl sm:text-5xl font-black">Retratos de personas, animales y objetos</h1>
+          <p class="text-lg text-slate-200">Sesiones personalizadas con iluminación cinematográfica, edición fina y entrega digital en alta resolución.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#galeria" class="px-6 py-3 bg-white text-slate-900 font-semibold rounded-xl">Ver galería</a>
+            <a href="#contacto" class="px-6 py-3 border border-white/40 text-white font-semibold rounded-xl">Reservar sesión</a>
+          </div>
+        </div>
+        <div class="fade-in" style="transition-delay: .15s;">
+          <img src="img/cr7.jpg" alt="Retrato artístico" class="w-full h-80 sm:h-96 object-cover rounded-3xl shadow-2xl" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="galeria" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="text-center fade-in">
+        <p class="text-xs font-semibold uppercase tracking-[0.4em] text-slate-500">Galería</p>
+        <h2 class="text-3xl sm:text-4xl font-black mt-3">Muestras destacadas</h2>
+        <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Retratos en estudio y locación con estilo editorial y acabado premium.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 mt-12">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Retrato persona" class="w-full h-64 object-cover rounded-2xl shadow-lg fade-in" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800&q=80" alt="Retrato mascota" class="w-full h-64 object-cover rounded-2xl shadow-lg fade-in" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80" alt="Retrato objeto" class="w-full h-64 object-cover rounded-2xl shadow-lg fade-in" loading="lazy" />
+      </div>
+    </section>
+
+    <section class="bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid md:grid-cols-3 gap-6">
+        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 fade-in">
+          <h3 class="text-xl font-bold">Personas</h3>
+          <p class="text-sm text-slate-600 mt-2">Retratos corporativos, editoriales o personales con dirección de pose.</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 fade-in" style="transition-delay: .1s;">
+          <h3 class="text-xl font-bold">Animales</h3>
+          <p class="text-sm text-slate-600 mt-2">Sesiones para mascotas con paciencia, premios y enfoque natural.</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 fade-in" style="transition-delay: .2s;">
+          <h3 class="text-xl font-bold">Objetos</h3>
+          <p class="text-sm text-slate-600 mt-2">Fotografía de productos, piezas de colección y arte decorativo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div class="fade-in">
+          <p class="text-xs font-semibold uppercase tracking-[0.4em] text-slate-500">Proceso</p>
+          <h2 class="text-3xl sm:text-4xl font-black mt-3">Cuidado en cada detalle</h2>
+          <ul class="mt-6 space-y-3 text-slate-600">
+            <li>✓ Briefing y referencias visuales</li>
+            <li>✓ Iluminación profesional y dirección creativa</li>
+            <li>✓ Edición avanzada y entrega en alta resolución</li>
+          </ul>
+        </div>
+        <div class="bg-slate-900 text-white rounded-3xl p-8 shadow-xl fade-in" style="transition-delay: .1s;">
+          <p class="text-xs uppercase tracking-[0.3em] text-slate-300">Desde</p>
+          <div class="text-4xl font-black mt-2">$90</div>
+          <p class="text-slate-300 mt-3">Incluye 10 fotos editadas y 1 cambio de estilo.</p>
+          <a href="#contacto" class="inline-flex mt-6 px-5 py-3 bg-white text-slate-900 font-semibold rounded-xl">Cotizar sesión</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="bg-slate-900">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="text-white fade-in">
+            <p class="text-xs font-semibold uppercase tracking-[0.4em] text-slate-300">Contacto</p>
+            <h2 class="text-3xl sm:text-4xl font-black mt-3">Agenda tu sesión</h2>
+            <p class="text-slate-300 mt-4">Cuéntanos qué tipo de retrato necesitas y te enviamos propuesta.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-xl fade-in" style="transition-delay: .1s;">
+            <p class="text-sm text-slate-700 mb-2"><strong>Email:</strong> mctaggart.dev@gmail.com</p>
+            <p class="text-sm text-slate-700 mb-2"><strong>WhatsApp:</strong> +507 6204-9480</p>
+            <p class="text-sm text-slate-700"><strong>Horario:</strong> Lunes a sábado, 9:00 a.m. - 6:00 p.m.</p>
+            <a href="https://wa.me/50762049480" class="mt-4 inline-flex px-4 py-2 bg-slate-900 text-white rounded-lg text-sm font-semibold">Escribir por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-white border-t border-slate-100 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between gap-4 text-sm text-slate-500">
+      <span>© 2026 Retratos Studio</span>
+      <span>Retratos artísticos y fotografía de producto</span>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.fade-in').forEach((el, idx) => {
+      setTimeout(() => el.classList.add('visible'), 120 * idx);
+    });
+  </script>
+</body>
+</html>
