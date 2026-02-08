@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>FreshMarket | Tu Supermercado Online</title>
+  <meta name="description" content="Productos frescos, orgánicos y de calidad entregados directamente a tu puerta.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+    :root { color-scheme: light; }
+    body { background: #f0fdf4; }
+    
+    .product-card {
+      background: white;
+      border-radius: 16px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid #bbf7d0;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px -10px rgba(34, 197, 94, 0.2);
+      border-color: #22c55e; /* Green-500 */
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, #16a34a 0%, #22c55e 50%, #4ade80 100%);
+    }
+    
+    .category-chip {
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .category-chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+    }
+    
+    .category-chip.active {
+      background: #22c55e;
+      color: white;
+    }
+  </style>
+</head>
+<body class="text-gray-900">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+  
+  <!-- Navbar -->
+  <nav class="fixed w-full bg-white/95 backdrop-blur-md z-40 border-b border-green-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-emerald-600">FreshMarket</span>
+        </div>
+        
+        <div class="hidden md:flex flex-1 max-w-md mx-8">
+            <div class="relative w-full">
+                <input type="text" placeholder="¿Qué se te antoja hoy?" class="w-full pl-10 pr-4 py-2 rounded-full border border-green-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-green-50">
+                <div class="absolute left-3 top-2.5 text-green-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 text-green-700 hover:bg-green-100 transition-colors">
+             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+             <span class="text-sm font-semibold hidden sm:inline">Panamá</span>
+          </button>
+          
+          <button class="relative p-2 text-gray-400 hover:text-green-600 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            <span class="absolute top-0 right-0 w-4 h-4 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">3</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-green-50 to-white">
+    <div class="max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-cover bg-center h-80 relative flex items-center" style="background-image: url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80');">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
+      <div class="relative z-10 px-8 md:px-16 max-w-xl text-white">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+          Del Campo a tu Mesa
+        </h1>
+        <p class="text-lg text-green-100 mb-6">
+          Frutas y verduras cosechadas esta mañana. La frescura que tu familia merece.
+        </p>
+        <button class="bg-green-500 text-white px-6 py-3 rounded-full font-bold shadow-lg hover:bg-green-600 transition-all flex items-center gap-2 border-2 border-green-400">
+          Comprar Ahora
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Categories -->
+  <section class="py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="grid grid-cols-3 md:grid-cols-6 gap-4">
+        <a href="#" class="flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-green-50 transition-colors group">
+            <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🍎</div>
+            <span class="text-sm font-semibold text-gray-700">Frutas</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-green-50 transition-colors group">
+            <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🥦</div>
+            <span class="text-sm font-semibold text-gray-700">Verduras</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-green-50 transition-colors group">
+            <div class="w-16 h-16 rounded-full bg-yellow-100 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🧀</div>
+            <span class="text-sm font-semibold text-gray-700">Lácteos</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-green-50 transition-colors group">
+            <div class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🥐</div>
+            <span class="text-sm font-semibold text-gray-700">Panadería</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-green-50 transition-colors group">
+            <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🥩</div>
+            <span class="text-sm font-semibold text-gray-700">Carnicería</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-green-50 transition-colors group">
+            <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🐟</div>
+            <span class="text-sm font-semibold text-gray-700">Pescadería</span>
+        </a>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-20 bg-white rounded-3xl shadow-sm border border-gray-100">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-800">Ofertas de la Semana</h2>
+        <a href="#" class="text-green-600 font-semibold hover:underline">Ver todo</a>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Product 1 -->
+      <div class="product-card group fade-in p-3 relative">
+        <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md z-10">-30%</span>
+        <div class="h-40 flex items-center justify-center mb-4">
+             <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=500&q=80" alt="Naranjas" class="h-full object-contain">
+        </div>
+        <div class="space-y-1">
+          <p class="text-xs text-gray-500 font-medium">Frutas</p>
+          <h3 class="font-bold text-gray-800">Naranjas Valencia (Malla 2kg)</h3>
+          <div class="flex items-end gap-2">
+            <span class="text-lg font-bold text-green-600">$2.49</span>
+            <span class="text-sm text-gray-400 line-through mb-1">$3.55</span>
+          </div>
+          <button class="w-full mt-2 bg-green-600 text-white font-semibold py-2 rounded-lg hover:bg-green-700 transition-colors">
+              Agregar
+          </button>
+        </div>
+      </div>
+
+       <!-- Product 2 -->
+      <div class="product-card group fade-in p-3 relative">
+        <div class="h-40 flex items-center justify-center mb-4">
+             <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?w=500&q=80" alt="Leche" class="h-full object-contain">
+        </div>
+        <div class="space-y-1">
+          <p class="text-xs text-gray-500 font-medium">Lácteos</p>
+          <h3 class="font-bold text-gray-800">Leche Entera Fresca 1L</h3>
+          <div class="flex items-end gap-2">
+            <span class="text-lg font-bold text-green-600">$1.85</span>
+          </div>
+          <button class="w-full mt-2 border border-green-600 text-green-600 font-semibold py-2 rounded-lg hover:bg-green-50 transition-colors">
+              Agregar
+          </button>
+        </div>
+      </div>
+
+       <!-- Product 3 -->
+      <div class="product-card group fade-in p-3 relative">
+        <div class="h-40 flex items-center justify-center mb-4">
+             <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&q=80" alt="Pan" class="h-full object-contain">
+        </div>
+        <div class="space-y-1">
+          <p class="text-xs text-gray-500 font-medium">Panadería</p>
+          <h3 class="font-bold text-gray-800">Pan Artesanal de Masa Madre</h3>
+          <div class="flex items-end gap-2">
+            <span class="text-lg font-bold text-green-600">$3.50</span>
+          </div>
+          <button class="w-full mt-2 border border-green-600 text-green-600 font-semibold py-2 rounded-lg hover:bg-green-50 transition-colors">
+              Agregar
+          </button>
+        </div>
+      </div>
+      
+      <!-- Product 4 -->
+      <div class="product-card group fade-in p-3 relative">
+        <span class="absolute top-3 left-3 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-md z-10">2x1</span>
+        <div class="h-40 flex items-center justify-center mb-4">
+             <img src="https://images.unsplash.com/photo-1597362925123-77861d3fbac7?w=500&q=80" alt="Hortalizas" class="h-full object-contain">
+        </div>
+        <div class="space-y-1">
+          <p class="text-xs text-gray-500 font-medium">Verduras</p>
+          <h3 class="font-bold text-gray-800">Lechuga Romana Fresca</h3>
+          <div class="flex items-end gap-2">
+            <span class="text-lg font-bold text-green-600">$1.20</span>
+          </div>
+          <button class="w-full mt-2 border border-green-600 text-green-600 font-semibold py-2 rounded-lg hover:bg-green-50 transition-colors">
+              Agregar
+          </button>
+        </div>
+      </div>
+    
+    </div>
+  </section>
+
+  <script>
+    // Fade in animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+  </script>
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

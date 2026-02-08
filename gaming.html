@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>CyberZone | Gaming & Esports</title>
+  <meta name="description" content="El mejor equipamiento para gamers. PCs, periféricos y torneos de esports.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+    
+    * { font-family: 'Rajdhani', sans-serif; }
+    h1, h2, h3, .cyber-font { font-family: 'Orbitron', sans-serif; }
+    
+    :root { color-scheme: dark; }
+    body { background: #000205; color: #fff; }
+    
+    .glitch-effect {
+        text-shadow: 2px 0 #0ff, -2px 0 #f0f;
+    }
+    
+    .cyber-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cyber-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 2px;
+        background: linear-gradient(90deg, transparent, #00f0ff);
+        transition: 0.5s;
+    }
+    
+    .cyber-card:hover::before {
+        left: 100%;
+    }
+    
+    .cyber-card:hover {
+      border-color: #00f0ff;
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .neon-border {
+        box-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff, inset 0 0 5px #00f0ff;
+    }
+    
+    .btn-cyber {
+        background: transparent;
+        border: 2px solid #00f0ff;
+        color: #00f0ff;
+        position: relative;
+        overflow: hidden;
+        transition: 0.3s;
+    }
+    
+    .btn-cyber:hover {
+         background: #00f0ff;
+         color: #000;
+         box-shadow: 0 0 20px #00f0ff;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+  
+  <!-- Navbar -->
+  <nav class="fixed w-full bg-black/80 backdrop-blur-md z-50 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex items-center gap-2 cyber-font text-2xl tracking-widest text-white">
+          CYBER<span class="text-[#00f0ff]">ZONE</span>
+        </div>
+        
+        <div class="hidden md:flex items-center space-x-8 text-lg font-bold tracking-wide">
+          <a href="#" class="text-gray-400 hover:text-[#00f0ff] transition-colors">PC_BUILDS</a>
+          <a href="#" class="text-gray-400 hover:text-[#00f0ff] transition-colors">PERIPHERALS</a>
+          <a href="#" class="text-gray-400 hover:text-[#00f0ff] transition-colors">ESPORTS</a>
+          <a href="#" class="text-gray-400 hover:text-[#00f0ff] transition-colors">COMMUNITY</a>
+        </div>
+
+        <button class="btn-cyber px-6 py-2 font-bold uppercase tracking-widest clip-path-polygon">
+          Login
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative pt-20 h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600&q=80" alt="Gaming Setup" class="w-full h-full object-cover opacity-30">
+        <div class="absolute inset-0 bg-gradient-to-br from-black via-transparent to-black"></div>
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMCwgMjQwLCAyNTUsIDAuMSkiLz48L3N2Zz4=')] opacity-50"></div>
+    </div>
+    
+    <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+        <div class="inline-block border border-[#00f0ff] px-4 py-1 mb-6 text-[#00f0ff] text-sm tracking-[0.3em] fade-in cyber-font">
+            NEXT GEN GAMING
+        </div>
+        <h1 class="text-5xl md:text-8xl font-black mb-6 leading-none fade-in cyber-font">
+            LEVEL UP <br> YOUR <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f0ff] to-[#bd00ff] glitch-effect">REALITY</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto font-medium fade-in">
+            Experiencia inmersiva diseñada para campeones. Hardware de élite para dominación total.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center fade-in">
+            <button class="bg-[#bd00ff] hover:bg-[#d548ff] text-white font-bold py-4 px-10 text-xl cyber-font tracking-widest clip-path-polygon transition-all shadow-[0_0_20px_rgba(189,0,255,0.5)]">
+                SHOP NOW
+            </button>
+        </div>
+    </div>
+  </header>
+
+  <!-- Categories -->
+  <section class="py-20 bg-black relative">
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00f0ff] to-transparent opacity-50"></div>
+    
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-white mb-12 text-center cyber-font tracking-wider">GEAR <span class="text-[#00f0ff]">CATEGORIES</span></h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="cyber-card p-4 group fade-in">
+                <div class="relative aspect-video mb-4 overflow-hidden border border-gray-800">
+                    <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&q=80" alt="PC Builds" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-[#00f0ff]/10 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <div class="p-2">
+                    <h3 class="text-2xl font-bold text-white mb-2 cyber-font">CUSTOM PCs</h3>
+                    <p class="text-gray-400 text-sm mb-4">Rigs construidos a medida con las últimas RTX y refrigeración líquida.</p>
+                    <a href="#" class="text-[#00f0ff] text-sm font-bold tracking-widest hover:text-white transition-colors flex items-center justify-between">
+                        CONFIGURE <span class="text-lg">>></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+             <div class="cyber-card p-4 group fade-in">
+                <div class="relative aspect-video mb-4 overflow-hidden border border-gray-800">
+                    <img src="https://images.unsplash.com/photo-1612287230217-969b698eb886?w=500&q=80" alt="Peripherals" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                     <div class="absolute inset-0 bg-[#bd00ff]/10 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <div class="p-2">
+                    <h3 class="text-2xl font-bold text-white mb-2 cyber-font">PERIPHERALS</h3>
+                    <p class="text-gray-400 text-sm mb-4">Teclados mecánicos, ratones ultraligeros y headsets 7.1.</p>
+                    <a href="#" class="text-[#bd00ff] text-sm font-bold tracking-widest hover:text-white transition-colors flex items-center justify-between">
+                        UPGRADE <span class="text-lg">>></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+             <div class="cyber-card p-4 group fade-in">
+                <div class="relative aspect-video mb-4 overflow-hidden border border-gray-800">
+                    <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=500&q=80" alt="VR" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                     <div class="absolute inset-0 bg-[#00f0ff]/10 group-hover:bg-transparent transition-colors"></div>
+                </div>
+                <div class="p-2">
+                    <h3 class="text-2xl font-bold text-white mb-2 cyber-font">VR & SIM</h3>
+                    <p class="text-gray-400 text-sm mb-4">Entra en el metaverso con la tecnología de realidad virtual más avanzada.</p>
+                    <a href="#" class="text-[#00f0ff] text-sm font-bold tracking-widest hover:text-white transition-colors flex items-center justify-between">
+                        DIVE IN <span class="text-lg">>></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Featured Gear -->
+  <section class="py-24 bg-[#05070b] border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[#00f0ff] font-bold tracking-[0.3em] text-sm">FEATURED</span>
+        <h2 class="text-4xl md:text-5xl text-white mt-3 cyber-font">ELITE LOADOUT</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="cyber-card p-6 fade-in">
+          <div class="aspect-video overflow-hidden border border-gray-800 mb-4">
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80" alt="RTX Beast" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-2xl text-white cyber-font mb-2">RTX BEAST 4090</h3>
+          <p class="text-gray-400 text-sm mb-4">Render 4K+240Hz, DLSS 3.5 y ray tracing extremo.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-[#00f0ff] font-bold">$2,999</span>
+            <button class="btn-cyber px-4 py-2 text-sm font-bold">BUY</button>
+          </div>
+        </div>
+
+        <div class="cyber-card p-6 fade-in">
+          <div class="aspect-video overflow-hidden border border-gray-800 mb-4">
+            <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80" alt="Pro Keyboard" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-2xl text-white cyber-font mb-2">PRO KEYBOARD X</h3>
+          <p class="text-gray-400 text-sm mb-4">Switches hot-swap, RGB infinito y polling 8K.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-[#bd00ff] font-bold">$199</span>
+            <button class="btn-cyber px-4 py-2 text-sm font-bold">BUY</button>
+          </div>
+        </div>
+
+        <div class="cyber-card p-6 fade-in">
+          <div class="aspect-video overflow-hidden border border-gray-800 mb-4">
+            <img src="https://images.unsplash.com/photo-1511886929837-354d827aae26?w=800&q=80" alt="Ultra Headset" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-2xl text-white cyber-font mb-2">ULTRA 7.1 HEADSET</h3>
+          <p class="text-gray-400 text-sm mb-4">Audio espacial, cancelación activa y mic pro.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-[#00f0ff] font-bold">$159</span>
+            <button class="btn-cyber px-4 py-2 text-sm font-bold">BUY</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tournaments -->
+  <section class="py-24 bg-black border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+        <div>
+          <span class="text-[#bd00ff] font-bold tracking-[0.3em] text-sm">ESPORTS</span>
+          <h2 class="text-4xl md:text-5xl text-white mt-3 cyber-font">TOURNAMENTS</h2>
+        </div>
+        <p class="text-gray-400 max-w-xl">Compite por premios épicos y ranking mundial. Inscripciones abiertas.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="cyber-card p-6 fade-in">
+          <h3 class="text-white text-xl cyber-font mb-2">CYBER CUP</h3>
+          <p class="text-gray-400 text-sm mb-4">FPS 5v5 • Prize Pool $50K</p>
+          <div class="text-[#00f0ff] text-sm">15 MAR 2026</div>
+        </div>
+        <div class="cyber-card p-6 fade-in">
+          <h3 class="text-white text-xl cyber-font mb-2">NEON LEAGUE</h3>
+          <p class="text-gray-400 text-sm mb-4">MOBA • Prize Pool $30K</p>
+          <div class="text-[#bd00ff] text-sm">02 ABR 2026</div>
+        </div>
+        <div class="cyber-card p-6 fade-in">
+          <h3 class="text-white text-xl cyber-font mb-2">ARENA RUSH</h3>
+          <p class="text-gray-400 text-sm mb-4">Battle Royale • Prize Pool $40K</p>
+          <div class="text-[#00f0ff] text-sm">18 MAY 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News -->
+  <section class="py-24 bg-[#05070b] border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[#00f0ff] font-bold tracking-[0.3em] text-sm">NEWS</span>
+        <h2 class="text-4xl md:text-5xl text-white mt-3 cyber-font">PATCH NOTES</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="cyber-card p-6 fade-in">
+          <h3 class="text-2xl text-white cyber-font mb-3">RTX 50xx Rumors</h3>
+          <p class="text-gray-400 text-sm">Nuevos leaks apuntan a un salto de rendimiento del 40%. Te contamos todo.</p>
+        </div>
+        <div class="cyber-card p-6 fade-in">
+          <h3 class="text-2xl text-white cyber-font mb-3">Top 10 Teclados 2026</h3>
+          <p class="text-gray-400 text-sm">Ranking definitivo con switches ópticos, análisis y pruebas reales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-24 bg-black border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="text-[#bd00ff] font-bold tracking-[0.3em] text-sm">COMMUNITY</span>
+        <h2 class="text-4xl md:text-5xl text-white mt-3 cyber-font">PLAYER FEEDBACK</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="cyber-card p-6 fade-in">
+          <div class="text-[#00f0ff] mb-3">★★★★★</div>
+          <p class="text-gray-400 text-sm">“Mi FPS subió un 25%. Setup brutal y soporte top.”</p>
+          <div class="text-white mt-4">— NeoPlayer</div>
+        </div>
+        <div class="cyber-card p-6 fade-in">
+          <div class="text-[#00f0ff] mb-3">★★★★★</div>
+          <p class="text-gray-400 text-sm">“La comunidad es increíble. Torneos semanales y premios reales.”</p>
+          <div class="text-white mt-4">— LunaGG</div>
+        </div>
+        <div class="cyber-card p-6 fade-in">
+          <div class="text-[#00f0ff] mb-3">★★★★★</div>
+          <p class="text-gray-400 text-sm">“Compré periféricos y llegaron en 24h. 10/10.”</p>
+          <div class="text-white mt-4">— PhantomX</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+  </script>
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>Gentleman's Cut | Barbería Clásica</title>
+    <meta name="description" content="Barbería tradicional con estilo moderno. Cortes de cabello, afeitado con navaja y cuidado de barba.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        h1, h2, h3, .vintage-font { font-family: 'Rye', serif; }
+        body { font-family: 'Roboto Condensed', sans-serif; }
+        .barber-stripe {
+            background: repeating-linear-gradient(
+                45deg,
+                #ef4444,
+                #ef4444 20px,
+                #ffffff 20px,
+                #ffffff 40px,
+                #3b82f6 40px,
+                #3b82f6 60px,
+                #ffffff 60px,
+                #ffffff 80px
+            );
+        }
+    </style>
+</head>
+<body class="bg-[#1a1a1a] text-gray-100">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Navbar -->
+    <nav class="py-6 px-4 md:px-12 flex justify-between items-center border-b border-gray-800 bg-[#1a1a1a]">
+        <div class="text-2xl vintage-font text-white tracking-wider flex items-center gap-3">
+            <div class="h-8 w-8 rounded-full overflow-hidden border-2 border-white barber-stripe"></div>
+            GENTLEMAN'S CUT
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-bold tracking-widest uppercase text-gray-400">
+            <a href="#" class="hover:text-white transition-colors">Servicios</a>
+            <a href="#" class="hover:text-white transition-colors">Galeria</a>
+            <a href="#" class="hover:text-white transition-colors">Ubicación</a>
+            <a href="index.html" class="border border-white hover:bg-white hover:text-black px-4 py-1 transition-all">Volver</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative py-24 md:py-32 px-4 border-b border-gray-800 bg-[#151515]">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-red-500 font-bold uppercase tracking-[0.2em] mb-4 block">Est. 2015</span>
+                <h1 class="text-5xl md:text-7xl mb-6 leading-none">
+                    ESTILO CLÁSICO <br>
+                    <span class="text-gray-500">CORTE PERFECTO</span>
+                </h1>
+                <p class="text-gray-400 text-lg mb-8 max-w-md leading-relaxed">
+                    Recuperamos el arte de la barbería tradicional. Toallas calientes, navaja libre y la mejor conversación de la ciudad.
+                </p>
+                <button class="bg-white text-black font-bold uppercase tracking-widest py-4 px-10 hover:bg-gray-200 transition-colors">
+                    Reservar Cita
+                </button>
+            </div>
+            <div class="relative">
+                <div class="absolute -inset-4 border-2 border-white/10 z-0 transform rotate-2"></div>
+                <img src="img/barberia/corte.webp" class="w-full relative z-10 grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl">
+            </div>
+        </div>
+    </header>
+
+    <!-- Services / Pricing -->
+    <section class="py-24 bg-[#1a1a1a]">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h2 class="text-4xl vintage-font mb-16 text-white">NUESTROS SERVICIOS</h2>
+            
+            <div class="space-y-8">
+                <!-- Item -->
+                <div class="flex justify-between items-end border-b border-gray-800 pb-4">
+                    <div class="text-left">
+                        <h3 class="text-xl font-bold uppercase tracking-widest text-white">Corte Clásico</h3>
+                        <p class="text-gray-500 text-sm mt-1">Tijera y máquina, lavado incluido.</p>
+                    </div>
+                    <div class="text-2xl font-bold text-white">$25</div>
+                </div>
+                <!-- Item -->
+                <div class="flex justify-between items-end border-b border-gray-800 pb-4">
+                    <div class="text-left">
+                        <h3 class="text-xl font-bold uppercase tracking-widest text-white">Afeitado Real</h3>
+                        <p class="text-gray-500 text-sm mt-1">Toalla caliente, aceites esenciales y navaja.</p>
+                    </div>
+                    <div class="text-2xl font-bold text-white">$30</div>
+                </div>
+                <!-- Item -->
+                <div class="flex justify-between items-end border-b border-gray-800 pb-4">
+                    <div class="text-left">
+                        <h3 class="text-xl font-bold uppercase tracking-widest text-white">Barba Trim</h3>
+                        <p class="text-gray-500 text-sm mt-1">Perfilado y recorte con hidratación.</p>
+                    </div>
+                    <div class="text-2xl font-bold text-white">$20</div>
+                </div>
+                <!-- Item -->
+                <div class="flex justify-between items-end border-b border-gray-800 pb-4">
+                    <div class="text-left">
+                        <h3 class="text-xl font-bold uppercase tracking-widest text-white">Paquete Completo</h3>
+                        <p class="text-gray-500 text-sm mt-1">Corte + Barba + Masaje Facial.</p>
+                    </div>
+                    <div class="text-2xl font-bold text-white">$50</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours / Location -->
+    <section class="bg-white text-black py-20">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="bg-gray-100 p-10 text-center">
+                <h3 class="text-2xl font-bold uppercase tracking-widest mb-6 border-b-2 border-black inline-block pb-2">Horarios</h3>
+                <ul class="space-y-2 font-bold text-lg text-gray-600">
+                    <li>Lun - Vie: 9am - 8pm</li>
+                    <li>Sábado: 9am - 6pm</li>
+                    <li>Domingo: Cerrado</li>
+                </ul>
+            </div>
+            <div class="flex flex-col justify-center items-center text-center">
+                <h3 class="text-2xl font-bold uppercase tracking-widest mb-6">Ubicación</h3>
+                <p class="text-xl text-gray-600 mb-8 max-w-sm">
+                    Calle 50, Plaza New York<br>
+                    Local 4, Ciudad de Panamá
+                </p>
+                <div class="flex gap-4">
+                    <button class="bg-black text-white px-6 py-3 font-bold uppercase tracking-widest text-sm hover:bg-gray-800">
+                        Cómo Llegar
+                    </button>
+                    <button class="border-2 border-black text-black px-6 py-3 font-bold uppercase tracking-widest text-sm hover:bg-black hover:text-white transition-colors">
+                        Llamar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#0f0f0f] py-8 text-center text-gray-600 text-sm uppercase tracking-widest">
+        © 2026 Gentleman's Cut. Only for real men.
+    </footer>
+
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

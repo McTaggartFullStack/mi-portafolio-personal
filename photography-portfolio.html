@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>LUMINA - Photography Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Montserrat', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'studio-black': '#121212',
+                        'studio-gray': '#F5F5F5',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-studio-black text-white font-sans antialiased selection:bg-white selection:text-black">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Navigation (Minimal) -->
+    <nav class="fixed top-0 w-full z-50 mix-blend-difference px-8 py-6 flex justify-between items-center">
+        <a href="#" class="text-2xl font-serif italic tracking-wider">Lumina.</a>
+        <div class="hidden md:flex gap-8 text-sm tracking-widest uppercase">
+            <a href="#" class="hover:border-b border-white pb-1 transition-all">Portfolio</a>
+            <a href="#" class="hover:border-b border-white pb-1 transition-all">Series</a>
+            <a href="#" class="hover:border-b border-white pb-1 transition-all">About</a>
+            <a href="index.html" class="hover:border-b border-white pb-1 transition-all">Back to Hub</a>
+        </div>
+        <button class="md:hidden text-white text-2xl">☰</button>
+    </nav>
+
+    <!-- Hero Horizontal Scroll -->
+    <div class="h-screen w-full flex items-center overflow-x-auto hide-scrollbar whitespace-nowrap snap-x snap-mandatory">
+        <!-- Slide 1 -->
+        <div class="inline-block w-screen h-full relative snap-center flex-shrink-0">
+            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover filter brightness-75">
+            <div class="absolute inset-0 flex flex-col justify-end p-12 md:p-24 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                <p class="text-sm tracking-[0.3em] uppercase mb-4 text-gray-300">Collection 01</p>
+                <h1 class="text-5xl md:text-8xl font-serif font-thin italic">Mountain Soul</h1>
+            </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="inline-block w-screen h-full relative snap-center flex-shrink-0">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover filter brightness-75 grayscale">
+            <div class="absolute inset-0 flex flex-col justify-end p-12 md:p-24 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                <p class="text-sm tracking-[0.3em] uppercase mb-4 text-gray-300">Collection 02</p>
+                <h1 class="text-5xl md:text-8xl font-serif font-thin italic">Urban Portraits</h1>
+            </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="inline-block w-screen h-full relative snap-center flex-shrink-0">
+            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover filter brightness-75">
+            <div class="absolute inset-0 flex flex-col justify-end p-12 md:p-24 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                <p class="text-sm tracking-[0.3em] uppercase mb-4 text-gray-300">Collection 03</p>
+                <h1 class="text-5xl md:text-8xl font-serif font-thin italic">Analog Dreams</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <section class="max-w-[1600px] mx-auto px-4 py-24">
+        <div class="flex justify-between items-end mb-16 px-4">
+            <h2 class="text-4xl font-serif">Selected Works</h2>
+            <p class="text-gray-500 text-sm tracking-widest uppercase">2023 — 2026</p>
+        </div>
+
+        <div class="masonry-grid">
+            <!-- Item -->
+            <div class="masonry-item relative group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full grayscale group-hover:grayscale-0 transition duration-700 ease-out">
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 bg-black/40">
+                    <span class="font-serif italic text-2xl">Fashion Week</span>
+                </div>
+            </div>
+            <!-- Item -->
+            <div class="masonry-item relative group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full grayscale group-hover:grayscale-0 transition duration-700 ease-out">
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 bg-black/40">
+                    <span class="font-serif italic text-2xl">Cinque Terre</span>
+                </div>
+            </div>
+            <!-- Item -->
+            <div class="masonry-item relative group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1552168324-d612d77725e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full grayscale group-hover:grayscale-0 transition duration-700 ease-out">
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 bg-black/40">
+                    <span class="font-serif italic text-2xl">Deep Emotions</span>
+                </div>
+            </div>
+            <!-- Item -->
+            <div class="masonry-item relative group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full grayscale group-hover:grayscale-0 transition duration-700 ease-out">
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 bg-black/40">
+                    <span class="font-serif italic text-2xl">Neon Nights</span>
+                </div>
+            </div>
+             <!-- Item -->
+             <div class="masonry-item relative group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1531804055935-76f44d7c3621?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full grayscale group-hover:grayscale-0 transition duration-700 ease-out">
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 bg-black/40">
+                    <span class="font-serif italic text-2xl">Nature</span>
+                </div>
+            </div>
+             <!-- Item -->
+             <div class="masonry-item relative group overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1517423568366-eb980dd2d196?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full grayscale group-hover:grayscale-0 transition duration-700 ease-out">
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 bg-black/40">
+                    <span class="font-serif italic text-2xl">Studio Light</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="border-t border-white/10 py-24 bg-neutral-900">
+        <div class="max-w-[1200px] mx-auto px-6 grid md:grid-cols-3 gap-12">
+            <div>
+                <h3 class="text-xl font-serif italic mb-4">Editorial</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Fotografía para revistas y publicaciones digitales. Estilo narrativo que cuenta historias a través de la luz y la composición.
+                </p>
+            </div>
+            <div>
+                <h3 class="text-xl font-serif italic mb-4">Commercial</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Campañas publicitarias de alto impacto visual. Dirección de arte y producción completa para marcas líderes.
+                </p>
+            </div>
+            <div>
+                <h3 class="text-xl font-serif italic mb-4">Portrait</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Sesiones personales y corporativas. Capturando la esencia y personalidad de cada sujeto en un ambiente relajado.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center border-t border-white/10">
+        <h2 class="text-4xl md:text-6xl font-serif italic mb-8">Let's Create.</h2>
+        <a href="mailto:contact@lumina.com" class="text-sm tracking-widest border-b border-white hover:text-gray-300 transition pb-1">CONTACT ME</a>
+        <div class="mt-12 text-xs text-gray-600">
+            &copy; 2026 Lumina Photography. All rights reserved.
+        </div>
+    </footer>
+
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

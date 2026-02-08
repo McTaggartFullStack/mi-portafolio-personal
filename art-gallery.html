@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>KUNST | Modern Art Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Syncopate', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'gallery-black': '#050505',
+                        'gallery-red': '#E63946',
+                    },
+                    spacing: {
+                        '128': '32rem',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .blend-mode {
+            mix-blend-mode: exclusion;
+        }
+        .hover-img-zoom {
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .art-card:hover .hover-img-zoom {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-white text-gallery-black font-body selection:bg-gallery-black selection:text-white">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-6 mix-blend-difference text-white">
+        <a href="#" class="font-display font-bold text-xl tracking-widest">KUNST.</a>
+        <div class="hidden md:flex gap-12 font-display text-xs uppercase tracking-[0.2em]">
+            <a href="#" class="hover:line-through decoration-gallery-red decoration-2">Exhibitions</a>
+            <a href="#" class="hover:line-through decoration-gallery-red decoration-2">Artists</a>
+            <a href="#" class="hover:line-through decoration-gallery-red decoration-2">Visit</a>
+            <a href="index.html" class="hover:line-through decoration-gallery-red decoration-2">Exit</a>
+        </div>
+        <button class="font-display text-xs uppercase border border-white px-6 py-2 hover:bg-white hover:text-black transition">Tickets</button>
+    </header>
+
+    <!-- Hero -->
+    <section class="h-screen w-full flex flex-col justify-center px-6 pt-20">
+        <div class="max-w-7xl mx-auto w-full relative">
+            <h1 class="font-display font-bold text-6xl md:text-9xl leading-none uppercase mb-8">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-gallery-black to-yellow-600">
+                    Visual<br>Silence
+                </span>
+            </h1>
+            <div class="absolute right-0 top-0 w-64 md:w-96 aspect-[3/4] bg-gray-200 z-[-1] overflow-hidden rotate-3">
+                <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover opacity-80">
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-end pt-8">
+                <p class="max-w-md text-sm md:text-base leading-relaxed uppercase tracking-wide">
+                    Exploring the void between perception and reality. <br>
+                    Curated by H. Zimmerman.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="bg-gallery-black text-white py-4 marquee-container border-y border-white">
+        <div class="marquee font-display text-4xl uppercase tracking-widest">
+            Abstract Expressionism • Neo-Dada • Minimalism • Conceptual Art • Performance • Abstract Expressionism • Neo-Dada • Minimalism • Conceptual Art • Performance •
+        </div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <section class="max-w-[1400px] mx-auto px-6 py-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
+            
+            <!-- Art Piece 1 -->
+            <div class="art-card group cursor-pointer mt-0 md:mt-12">
+                <div class="overflow-hidden mb-6 aspect-[4/5] bg-gray-100 relative">
+                    <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         class="w-full h-full object-cover hover-img-zoom transition duration-700">
+                    <div class="absolute bottom-4 left-4 font-display text-xs bg-white text-black px-3 py-1 uppercase">
+                        Oil on Canvas
+                    </div>
+                </div>
+                <h3 class="font-display font-bold text-2xl mb-1 uppercase">The Red Shift</h3>
+                <p class="text-sm text-gray-500">Elena K., 2024</p>
+            </div>
+
+            <!-- Art Piece 2 -->
+            <div class="art-card group cursor-pointer">
+                <div class="overflow-hidden mb-6 aspect-[4/5] bg-gray-100 relative">
+                    <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         class="w-full h-full object-cover hover-img-zoom transition duration-700">
+                     <div class="absolute bottom-4 left-4 font-display text-xs bg-white text-black px-3 py-1 uppercase">
+                        Sculpture
+                    </div>
+                </div>
+                <h3 class="font-display font-bold text-2xl mb-1 uppercase">Vertical Form</h3>
+                <p class="text-sm text-gray-500">Marcus Wright, 2023</p>
+            </div>
+
+             <!-- Art Piece 3 -->
+             <div class="col-span-1 md:col-span-2 art-card group cursor-pointer gap-8 grid md:grid-cols-2 items-center">
+                <div class="overflow-hidden aspect-video bg-gray-100 relative order-2 md:order-1">
+                    <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                         class="w-full h-full object-cover hover-img-zoom transition duration-700">
+                </div>
+                <div class="order-1 md:order-2 px-8">
+                    <h3 class="font-display font-bold text-4xl mb-4 uppercase">Chaos Theory III</h3>
+                    <p class="text-sm text-gray-500 mb-6 font-mono">Mixed Media</p>
+                    <p class="leading-relaxed text-gray-800 mb-8 max-w-sm">
+                        An exploration of entropy within closed systems. The artist uses recycled industrial materials to challenge our perception of waste and value in the modern era.
+                    </p>
+                    <a href="#" class="inline-block border-b border-black pb-1 uppercase text-xs tracking-widest hover:text-gallery-red transition">View Collection</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Info -->
+    <section class="bg-gallery-black text-white py-32 px-6">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between gap-16">
+            <div>
+                <h4 class="font-display text-xl mb-8 border-b border-white/20 pb-4">Location</h4>
+                <address class="not-italic text-gray-400 leading-loose">
+                    1200 Arts District Blvd<br>
+                    Building C, Floor 4<br>
+                    New York, NY 10012
+                </address>
+            </div>
+            <div>
+                 <h4 class="font-display text-xl mb-8 border-b border-white/20 pb-4">Hours</h4>
+                 <ul class="text-gray-400 leading-loose">
+                    <li class="flex justify-between w-48"><span>Mon - Wed</span> <span>10am - 6pm</span></li>
+                    <li class="flex justify-between w-48 text-white"><span>Thu - Sat</span> <span>10am - 9pm</span></li>
+                    <li class="flex justify-between w-48"><span>Sunday</span> <span>Closed</span></li>
+                 </ul>
+            </div>
+            <div>
+                <h4 class="font-display text-xl mb-8 border-b border-white/20 pb-4">Social</h4>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 border border-white/30 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition">IG</a>
+                    <a href="#" class="w-10 h-10 border border-white/30 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition">X</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

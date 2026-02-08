@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>Stellar | Agencia Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Space Grotesk', sans-serif; }
+        
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.6;
+            animation: move 10s infinite alternate;
+        }
+        @keyframes move {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(20px, -20px) scale(1.1); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 overflow-x-hidden relative">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Blobs de fondo -->
+    <div class="blob bg-purple-300 w-96 h-96 rounded-full top-0 left-0 mix-blend-multiply"></div>
+    <div class="blob bg-yellow-300 w-96 h-96 rounded-full top-0 right-0 mix-blend-multiply animation-delay-2000"></div>
+    <div class="blob bg-pink-300 w-96 h-96 rounded-full -bottom-32 left-20 mix-blend-multiply animation-delay-4000"></div>
+
+    <!-- Nav -->
+    <nav class="flex justify-between items-center py-6 px-8 max-w-7xl mx-auto backdrop-blur-sm sticky top-0 z-50">
+        <div class="text-2xl font-bold tracking-tighter">STELLAR.</div>
+        <div class="hidden md:flex gap-8 font-medium">
+            <a href="#" class="hover:text-purple-600 transition-colors">Servicios</a>
+            <a href="#" class="hover:text-purple-600 transition-colors">Portafolio</a>
+            <a href="#" class="hover:text-purple-600 transition-colors">Acerca</a>
+            <a href="#" class="bg-black text-white px-5 py-2 rounded-full hover:scale-105 transition-transform">Hablemos</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="max-w-7xl mx-auto px-8 py-20 md:py-32 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+            <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-bold uppercase tracking-wide">Innovación Digital</span>
+            <h1 class="text-6xl md:text-8xl font-bold leading-none mt-6 mb-8 tracking-tighter">
+                Diseñamos el <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">futuro</span> de tu marca.
+            </h1>
+            <p class="text-xl text-gray-600 mb-10 max-w-md">
+                Ayudamos a startups y empresas visionarias a construir productos digitales que la gente ama usar.
+            </p>
+            <div class="flex gap-4">
+                <button class="bg-black text-white px-8 py-4 rounded-full font-bold hover:bg-gray-800 transition-colors flex items-center gap-2">
+                    Ver Proyectos 
+                    <svg class="w-4 h-4 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </button>
+                <button class="bg-white border border-gray-300 px-8 py-4 rounded-full font-bold hover:bg-gray-50 transition-colors">
+                    Nuestros Servicios
+                </button>
+            </div>
+        </div>
+        <div class="relative">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" class="rounded-3xl shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500 border-4 border-white object-cover h-[500px] w-full" alt="Team">
+            <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl max-w-xs animate-bounce" style="animation-duration: 3s;">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="flex -space-x-2">
+                        <img class="w-8 h-8 rounded-full border-2 border-white" src="https://i.pravatar.cc/100?img=1">
+                        <img class="w-8 h-8 rounded-full border-2 border-white" src="https://i.pravatar.cc/100?img=2">
+                        <img class="w-8 h-8 rounded-full border-2 border-white" src="https://i.pravatar.cc/100?img=3">
+                    </div>
+                    <span class="font-bold text-sm">+500 Clientes Felices</span>
+                </div>
+                <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-green-500 w-full animate-pulse"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Marquee -->
+    <div class="bg-black text-white py-6 overflow-hidden -rotate-1 border-y-4 border-purple-500">
+        <div class="whitespace-nowrap animate-marquee flex gap-12 font-bold text-2xl uppercase tracking-widest">
+            <span>Branding</span> • <span>Web Design</span> • <span>Development</span> • <span>SEO</span> • <span>Marketing</span> • <span>Branding</span> • <span>Web Design</span> • <span>Development</span> • <span>SEO</span> • <span>Marketing</span>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <section class="py-24 max-w-7xl mx-auto px-8">
+        <h2 class="text-4xl font-bold mb-16 text-center">Nuestra Experiencia</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-8 bg-white rounded-3xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all hover:-translate-y-2">
+                <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center text-3xl mb-6">🎨</div>
+                <h3 class="text-2xl font-bold mb-4">UI/UX Design</h3>
+                <p class="text-gray-600">Creamos interfaces intuitivas y hermosas que guían al usuario a través de una experiencia inolvidable centrada en la conversión.</p>
+            </div>
+            <div class="p-8 bg-white rounded-3xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all hover:-translate-y-2">
+                <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-3xl mb-6">💻</div>
+                <h3 class="text-2xl font-bold mb-4">Desarrollo Web</h3>
+                <p class="text-gray-600">Código limpio, rápido y escalable. Utilizamos las últimas tecnologías (React, Node, Tailwind) para construir el futuro.</p>
+            </div>
+            <div class="p-8 bg-white rounded-3xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all hover:-translate-y-2">
+                <div class="w-14 h-14 bg-pink-100 rounded-2xl flex items-center justify-center text-3xl mb-6">🚀</div>
+                <h3 class="text-2xl font-bold mb-4">Estrategia</h3>
+                <p class="text-gray-600">No solo hacemos cosas bonitas. Analizamos datos y creamos estrategias de crecimiento para escalar tu negocio.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section class="bg-gradient-to-br from-purple-600 to-pink-600 text-white py-20">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-5xl font-bold mb-2">500+</div>
+                    <div class="text-purple-100 font-medium">Proyectos Completados</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold mb-2">98%</div>
+                    <div class="text-purple-100 font-medium">Satisfacción del Cliente</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold mb-2">15+</div>
+                    <div class="text-purple-100 font-medium">Años de Experiencia</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold mb-2">50+</div>
+                    <div class="text-purple-100 font-medium">Premios Ganados</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portafolio Destacado -->
+    <section class="py-24 max-w-7xl mx-auto px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-bold mb-4">Proyectos Destacados</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Hemos trabajado con marcas innovadoras para crear experiencias digitales memorables.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+            <!-- Proyecto 1 -->
+            <div class="group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" 
+                     class="w-full h-[400px] object-cover group-hover:scale-110 transition-transform duration-500" 
+                     alt="Proyecto E-commerce">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span class="text-purple-300 font-bold mb-2">E-COMMERCE</span>
+                    <h3 class="text-3xl font-bold text-white mb-3">TechStore Pro</h3>
+                    <p class="text-gray-200 mb-4">Plataforma de comercio electrónico con +$5M en ventas anuales. Diseño moderno y checkout optimizado.</p>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">React</span>
+                        <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">Node.js</span>
+                        <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">Stripe</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyecto 2 -->
+            <div class="group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" 
+                     class="w-full h-[400px] object-cover group-hover:scale-110 transition-transform duration-500" 
+                     alt="Proyecto SaaS">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span class="text-blue-300 font-bold mb-2">SAAS PLATFORM</span>
+                    <h3 class="text-3xl font-bold text-white mb-3">CloudSync Analytics</h3>
+                    <p class="text-gray-200 mb-4">Dashboard de análisis en tiempo real para empresas. +10K usuarios activos mensuales.</p>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">Vue.js</span>
+                        <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">Python</span>
+                        <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">AWS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Mini Proyecto 1 -->
+            <div class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all group">
+                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1974&auto=format&fit=crop" 
+                     class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" 
+                     alt="App Móvil">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                    <span class="text-pink-300 text-sm font-bold mb-1">MOBILE APP</span>
+                    <h4 class="text-xl font-bold text-white">FitTrack Pro</h4>
+                </div>
+            </div>
+
+            <!-- Mini Proyecto 2 -->
+            <div class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all group">
+                <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?q=80&w=2076&auto=format&fit=crop" 
+                     class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" 
+                     alt="Branding">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                    <span class="text-yellow-300 text-sm font-bold mb-1">BRANDING</span>
+                    <h4 class="text-xl font-bold text-white">EcoWave Energy</h4>
+                </div>
+            </div>
+
+            <!-- Mini Proyecto 3 -->
+            <div class="relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all group">
+                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop" 
+                     class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" 
+                     alt="Marketing">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                    <span class="text-green-300 text-sm font-bold mb-1">DIGITAL MARKETING</span>
+                    <h4 class="text-xl font-bold text-white">GrowthHack Agency</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestro Proceso -->
+    <section class="py-24 bg-gradient-to-br from-gray-50 to-purple-50">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4">Nuestro Proceso</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Un método probado que convierte ideas en productos digitales exitosos.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <!-- Paso 1 -->
+                <div class="relative">
+                    <div class="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+                        <div class="absolute -top-4 -left-4 w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
+                            1
+                        </div>
+                        <div class="text-5xl mb-4">🔍</div>
+                        <h3 class="text-xl font-bold mb-3">Descubrimiento</h3>
+                        <p class="text-gray-600 text-sm">Investigamos tu negocio, competencia y audiencia para entender el desafío completo.</p>
+                    </div>
+                </div>
+
+                <!-- Paso 2 -->
+                <div class="relative">
+                    <div class="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+                        <div class="absolute -top-4 -left-4 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
+                            2
+                        </div>
+                        <div class="text-5xl mb-4">✏️</div>
+                        <h3 class="text-xl font-bold mb-3">Diseño</h3>
+                        <p class="text-gray-600 text-sm">Creamos wireframes y prototipos interactivos para validar la experiencia de usuario.</p>
+                    </div>
+                </div>
+
+                <!-- Paso 3 -->
+                <div class="relative">
+                    <div class="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+                        <div class="absolute -top-4 -left-4 w-12 h-12 bg-pink-600 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
+                            3
+                        </div>
+                        <div class="text-5xl mb-4">⚙️</div>
+                        <h3 class="text-xl font-bold mb-3">Desarrollo</h3>
+                        <p class="text-gray-600 text-sm">Código limpio y optimizado. Testing exhaustivo para garantizar calidad en cada línea.</p>
+                    </div>
+                </div>
+
+                <!-- Paso 4 -->
+                <div class="relative">
+                    <div class="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-2">
+                        <div class="absolute -top-4 -left-4 w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
+                            4
+                        </div>
+                        <div class="text-5xl mb-4">🚀</div>
+                        <h3 class="text-xl font-bold mb-3">Lanzamiento</h3>
+                        <p class="text-gray-600 text-sm">Deploy estratégico con monitoreo continuo y soporte post-lanzamiento incluido.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-24 max-w-7xl mx-auto px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-bold mb-4">Lo Que Dicen Nuestros Clientes</h2>
+            <p class="text-xl text-gray-600">No solo nos creas a nosotros, escucha a quienes ya trabajaron con STELLAR.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Testimonio 1 -->
+            <div class="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all">
+                <div class="flex mb-4 text-yellow-400">
+                    ⭐⭐⭐⭐⭐
+                </div>
+                <p class="text-gray-700 mb-6 italic">
+                    "STELLAR transformó completamente nuestra presencia digital. Las ventas aumentaron un 350% en solo 6 meses. Su equipo es profesional y siempre está disponible."
+                </p>
+                <div class="flex items-center gap-4">
+                    <img src="https://i.pravatar.cc/100?img=12" class="w-14 h-14 rounded-full" alt="Cliente">
+                    <div>
+                        <div class="font-bold">Sarah Johnson</div>
+                        <div class="text-sm text-gray-500">CEO, TechStart Inc.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonio 2 -->
+            <div class="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all">
+                <div class="flex mb-4 text-yellow-400">
+                    ⭐⭐⭐⭐⭐
+                </div>
+                <p class="text-gray-700 mb-6 italic">
+                    "El mejor equipo con el que he trabajado. Cumplieron todos los deadlines y el resultado superó nuestras expectativas. 100% recomendados."
+                </p>
+                <div class="flex items-center gap-4">
+                    <img src="https://i.pravatar.cc/100?img=33" class="w-14 h-14 rounded-full" alt="Cliente">
+                    <div>
+                        <div class="font-bold">Marcus Chen</div>
+                        <div class="text-sm text-gray-500">Founder, GrowthLabs</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonio 3 -->
+            <div class="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:shadow-xl transition-all">
+                <div class="flex mb-4 text-yellow-400">
+                    ⭐⭐⭐⭐⭐
+                </div>
+                <p class="text-gray-700 mb-6 italic">
+                    "No solo construyeron nuestro sitio, nos enseñaron cómo escalarlo. Su expertise en UX/UI es incomparable. Vale cada centavo."
+                </p>
+                <div class="flex items-center gap-4">
+                    <img src="https://i.pravatar.cc/100?img=27" class="w-14 h-14 rounded-full" alt="Cliente">
+                    <div>
+                        <div class="font-bold">Ana Rodríguez</div>
+                        <div class="text-sm text-gray-500">CMO, FashionHub</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnologías -->
+    <section class="py-24 bg-black text-white">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold mb-4">Tecnologías que Dominamos</h2>
+                <p class="text-xl text-gray-400">Stack moderno para construir productos escalables y performantes.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-6">
+                <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl hover:bg-white/10 transition-all text-center">
+                    <div class="text-4xl mb-3">⚛️</div>
+                    <div class="font-bold">React</div>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl hover:bg-white/10 transition-all text-center">
+                    <div class="text-4xl mb-3">📦</div>
+                    <div class="font-bold">Next.js</div>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl hover:bg-white/10 transition-all text-center">
+                    <div class="text-4xl mb-3">🟢</div>
+                    <div class="font-bold">Node.js</div>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl hover:bg-white/10 transition-all text-center">
+                    <div class="text-4xl mb-3">🎨</div>
+                    <div class="font-bold">Tailwind</div>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl hover:bg-white/10 transition-all text-center">
+                    <div class="text-4xl mb-3">🐘</div>
+                    <div class="font-bold">PostgreSQL</div>
+                </div>
+                <div class="bg-white/5 backdrop-blur-sm p-6 rounded-2xl hover:bg-white/10 transition-all text-center">
+                    <div class="text-4xl mb-3">☁️</div>
+                    <div class="font-bold">AWS</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-32 max-w-7xl mx-auto px-8">
+        <div class="bg-gradient-to-br from-purple-600 to-pink-600 rounded-[3rem] p-16 text-center text-white relative overflow-hidden">
+            <!-- Blobs decorativos -->
+            <div class="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            
+            <div class="relative z-10">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6">
+                    ¿Listo para transformar tu negocio?
+                </h2>
+                <p class="text-2xl text-purple-100 mb-10 max-w-3xl mx-auto">
+                    Hablemos de tu proyecto. Primera consultoría 100% gratis y sin compromiso.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-white text-purple-600 px-10 py-5 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors shadow-xl">
+                        Agendar Llamada Gratis
+                    </button>
+                    <button class="bg-transparent border-2 border-white text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/10 transition-colors">
+                        Ver Más Proyectos
+                    </button>
+                </div>
+                <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 text-purple-100">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Respuesta en 24hrs</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Sin letra chica</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Garantía de satisfacción</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+</body>
+</html>

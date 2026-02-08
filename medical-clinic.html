@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>MediCare Plus - Tu Salud en Buenas Manos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-teal': '#00bfa5',
+                        'brand-blue': '#1e3a8a',
+                    },
+                    fontFamily: {
+                        'sans': ['Manrope', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Topbar -->
+    <div class="bg-brand-blue text-white text-xs py-2">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between">
+            <div class="flex space-x-4">
+                <span>📞 +507 800-MEDICARE</span>
+                <span>📍 Av. Balboa, Torre Salud, Piso 15</span>
+            </div>
+            <div class="hidden md:block">Emergencias 24/7 disponible</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2 text-brand-blue hover:opacity-80 transition cursor-pointer">
+                <div class="w-8 h-8 bg-brand-teal rounded-lg flex items-center justify-center text-white font-bold">+</div>
+                <span class="text-xl font-bold tracking-tight">MediCare<span class="text-brand-teal">Plus</span></span>
+            </div>
+            <nav class="hidden md:flex space-x-8 font-medium text-sm text-slate-600">
+                <a href="#" class="hover:text-brand-teal transition">Especialidades</a>
+                <a href="#" class="hover:text-brand-teal transition">Doctores</a>
+                <a href="#" class="hover:text-brand-teal transition">Pacientes</a>
+                <a href="index.html" class="hover:text-brand-teal transition">Volver</a>
+            </nav>
+            <a href="#" class="bg-brand-teal hover:bg-teal-500 text-white px-5 py-2.5 rounded-full font-semibold text-sm transition shadow-lg shadow-teal-200">
+                Agendar Cita
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32 pt-20 px-4">
+                <main class="mt-10 mx-auto max-w-7xl sm:mt-12 md:mt-16 lg:mt-20 xl:mt-28">
+                    <div class="sm:text-center lg:text-left">
+                        <span class="bg-teal-50 text-brand-teal px-4 py-1 rounded-full text-sm font-bold mb-4 inline-block">Innovación Médica 2024</span>
+                        <h1 class="text-4xl tracking-tight font-bold text-slate-900 sm:text-5xl md:text-6xl mb-6">
+                            <span class="block xl:inline">Cuidado experto para</span>
+                            <span class="block text-brand-teal xl:inline">tu bienestar integral</span>
+                        </h1>
+                        <p class="mt-3 text-base text-slate-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                            Tecnología de diagnóstico avanzada y un equipo de especialistas dedicados a tu salud. Telemedicina, laboratorio clínico y atención primaria en un solo lugar.
+                        </p>
+                        <div class="mt-8 sm:mt-12 sm:flex sm:justify-center lg:justify-start gap-4">
+                            <div class="rounded-md shadow">
+                                <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-brand-blue hover:bg-blue-900 md:py-4 md:text-lg transition">
+                                    Encontrar Doctor
+                                </a>
+                            </div>
+                            <div class="mt-3 sm:mt-0 sm:ml-3">
+                                <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-slate-200 text-base font-medium rounded-full text-brand-blue bg-white hover:bg-gray-50 md:py-4 md:text-lg transition">
+                                    Ver Servicios
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-slate-100">
+            <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="img/dental/doctorr.webp" alt="Doctor talking to patient">
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-brand-blue font-bold text-lg uppercase tracking-wide mb-2">Nuestras Especialidades</h2>
+                <h3 class="text-3xl font-bold text-slate-900">Soluciones médicas completas</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-100">
+                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-brand-blue text-2xl mb-6">❤️</div>
+                    <h4 class="text-xl font-bold mb-3 text-slate-800">Cardiología</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Diagnóstico y tratamiento integral de enfermedades cardiovasculares con equipos de última generación.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-100">
+                    <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-brand-teal text-2xl mb-6">🧠</div>
+                    <h4 class="text-xl font-bold mb-3 text-slate-800">Neurología</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Expertos en el sistema nervioso. Tratamiento de migrañas, trastornos del sueño y neurorehabilitación.</p>
+                </div>
+                 <!-- Service 3 -->
+                 <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-100">
+                    <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 text-2xl mb-6">👶</div>
+                    <h4 class="text-xl font-bold mb-3 text-slate-800">Pediatría</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Cuidado especializado para los más pequeños, desde recién nacidos hasta adolescentes.</p>
+                </div>
+                 <!-- Service 4 -->
+                 <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-100">
+                    <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 text-2xl mb-6">🦷</div>
+                    <h4 class="text-xl font-bold mb-3 text-slate-800">Odontología</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Clínica dental completa. Ortodoncia, implantes y estética dental para una sonrisa perfecta.</p>
+                </div>
+                <!-- Service 5 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-100">
+                    <div class="w-12 h-12 bg-pink-50 rounded-xl flex items-center justify-center text-pink-500 text-2xl mb-6">🤰</div>
+                    <h4 class="text-xl font-bold mb-3 text-slate-800">Ginecología</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Salud femenina integral. Control prenatal, planificación familiar y medicina reproductiva.</p>
+                </div>
+                <!-- Service 6 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-100">
+                    <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 text-2xl mb-6">🦴</div>
+                    <h4 class="text-xl font-bold mb-3 text-slate-800">Traumatología</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Tratamiento de lesiones musculares, fracturas y rehabilitación física especializada.</p>
+                </div>
+                <!-- Service 7 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-100">
+                    <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center text-red-500 text-2xl mb-6">🩺</div>
+                    <h4 class="text-xl font-bold mb-3 text-slate-800">Medicina General</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Atención primaria, chequeos preventivos y seguimiento de enfermedades crónicas.</p>
+                </div>
+                <!-- Service 8 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-slate-100">
+                    <div class="w-12 h-12 bg-yellow-50 rounded-xl flex items-center justify-center text-yellow-600 text-2xl mb-6">🔬</div>
+                    <h4 class="text-xl font-bold mb-3 text-slate-800">Laboratorio</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Análisis clínicos completos. Resultados digitales en 24 horas vía app o email.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-gradient-to-r from-brand-blue to-brand-teal text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-5xl font-extrabold mb-2">50+</div>
+                    <div class="text-blue-100 text-sm">Especialistas Certificados</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-extrabold mb-2">25K+</div>
+                    <div class="text-blue-100 text-sm">Pacientes Atendidos</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-extrabold mb-2">15</div>
+                    <div class="text-blue-100 text-sm">Años de Experiencia</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-extrabold mb-2">98%</div>
+                    <div class="text-blue-100 text-sm">Satisfacción del Paciente</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Preview -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <img src="img/dental/doctor.webp" class="rounded-3xl shadow-2xl skew-y-3">
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-4xl font-bold text-slate-900 mb-6">Un equipo en el que puedes confiar</h2>
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                    Nuestros médicos son líderes reconocidos en sus campos, con certificaciones internacionales y un enfoque humano centrado en el paciente. Creemos en escuchar antes de diagnosticar.
+                </p>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-center text-slate-700">
+                        <span class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center mr-3">✓</span>
+                        Más de 50 especialistas certificados
+                    </li>
+                    <li class="flex items-center text-slate-700">
+                        <span class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center mr-3">✓</span>
+                        Atención en 3 idiomas (Español, Inglés, Francés)
+                    </li>
+                    <li class="flex items-center text-slate-700">
+                        <span class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center mr-3">✓</span>
+                        Historial médico digital accesible vía App
+                    </li>
+                </ul>
+                <a href="#" class="text-brand-teal font-bold text-lg hover:underline decoration-2 underline-offset-4">Conoce a nuestro equipo →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Telemedicine Section -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-brand-blue to-brand-teal rounded-3xl p-8 text-white shadow-2xl">
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-sm font-bold bg-white/20 px-3 py-1 rounded-full">En vivo</span>
+                            <span class="text-sm">14:35 PM</span>
+                        </div>
+                        <div class="aspect-video bg-slate-800 rounded-2xl mb-6 flex items-center justify-center overflow-hidden">
+                            <img src="img/dental/doctora.webp" class="w-full h-full object-contain" alt="Doctor">
+                        </div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <img src="img/dental/perfil.webp" class="w-12 h-12 rounded-full border-2 border-white" alt="Dr">
+                            <div>
+                                <div class="font-bold">Dr. Ana Martínez</div>
+                                <div class="text-xs text-blue-100">Medicina General</div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button class="bg-white/20 hover:bg-white/30 py-3 rounded-xl transition">🎥</button>
+                            <button class="bg-white/20 hover:bg-white/30 py-3 rounded-xl transition">🎤</button>
+                            <button class="bg-red-500 hover:bg-red-600 py-3 rounded-xl transition">📞</button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span class="inline-block px-4 py-2 rounded-full bg-teal-50 text-brand-teal font-bold text-sm mb-4">💻 Telemedicina</span>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+                        Consulta médica desde donde estés
+                    </h2>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        Videoconsultas con nuestros especialistas en tiempo real. Recibe diagnóstico, recetas médicas digitales y seguimiento personalizado sin salir de casa.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm">
+                            <div class="w-12 h-12 bg-teal-50 rounded-full flex items-center justify-center text-brand-teal font-bold text-xl">⚡</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Conexión Instantánea</h4>
+                                <p class="text-sm text-slate-600">Atiéndete en menos de 15 minutos</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm">
+                            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue font-bold text-xl">💊</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Recetas Digitales</h4>
+                                <p class="text-sm text-slate-600">Validadas y enviadas a tu farmacia</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm">
+                            <div class="w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center text-indigo-600 font-bold text-xl">📋</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Historial en la Nube</h4>
+                                <p class="text-sm text-slate-600">Accede a tus consultas desde la app</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="px-8 py-4 bg-brand-teal hover:bg-teal-500 text-white font-bold rounded-full transition shadow-lg">Iniciar Consulta</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planes Médicos -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4">Planes y Coberturas</h2>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto">Elige el plan que mejor se adapte a tus necesidades y las de tu familia</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Plan Básico -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-shadow border-2 border-slate-100">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold">Básico</h3>
+                        <span class="text-3xl">🩺</span>
+                    </div>
+                    <div class="mb-8">
+                        <div class="text-4xl font-extrabold text-slate-900">$39</div>
+                        <p class="text-sm text-slate-500 mt-1">Por mes / persona</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-600">3 consultas mensuales incluidas</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-600">Telemedicina 24/7</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-600">20% descuento en laboratorio</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-600">Chequeo anual preventivo</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition">Seleccionar Plan</button>
+                </div>
+
+                <!-- Plan Premium -->
+                <div class="bg-gradient-to-br from-brand-teal to-teal-400 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-shadow text-white relative overflow-hidden transform scale-105">
+                    <div class="absolute top-4 right-4 bg-yellow-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full">POPULAR</div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-2xl font-bold">Premium</h3>
+                            <span class="text-3xl">⭐</span>
+                        </div>
+                        <div class="mb-8">
+                            <div class="text-4xl font-extrabold">$79</div>
+                            <p class="text-sm text-teal-100 mt-1">Por mes / persona</p>
+                        </div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-white mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span class="text-teal-50">Todo de Básico +</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-white mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span class="text-teal-50">Consultas ilimitadas</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-white mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span class="text-teal-50">50% descuento en especialistas</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-white mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span class="text-teal-50">Laboratorio gratis 1 vez al mes</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-white mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <span class="text-teal-50">Cobertura de emergencias</span>
+                            </li>
+                        </ul>
+                        <button class="w-full py-3 bg-white text-brand-teal font-bold rounded-xl hover:bg-blue-50 transition">Seleccionar Plan</button>
+                    </div>
+                </div>
+
+                <!-- Plan Familiar -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-shadow border-2 border-slate-100">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold">Familiar</h3>
+                        <span class="text-3xl">👨‍👩‍👧‍👦</span>
+                    </div>
+                    <div class="mb-8">
+                        <div class="text-4xl font-extrabold text-slate-900">$149</div>
+                        <p class="text-sm text-slate-500 mt-1">Por mes / hasta 5 personas</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-600">Cobertura para toda la familia</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-600">Incluye pediatría ilimitada</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-600">Vacunación y chequeos gratuitos</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-600">Asesor médico dedicado</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition">Seleccionar Plan</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4">Nuestros pacientes opinan</h2>
+                <p class="text-lg text-slate-500">Miles de familias confían en nosotros cada día</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-12 h-12 rounded-full" alt="Paciente">
+                        <div>
+                            <div class="font-bold text-slate-900">Laura Pérez</div>
+                            <div class="text-xs text-slate-500">Paciente Premium</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-1 mb-4">
+                        <span class="text-yellow-400">⭐</span>
+                        <span class="text-yellow-400">⭐</span>
+                        <span class="text-yellow-400">⭐</span>
+                        <span class="text-yellow-400">⭐</span>
+                        <span class="text-yellow-400">⭐</span>
+                    </div>
+                    <p class="text-slate-600 italic">"La atención es excepcional. El Dr. Rodríguez me ayudó con mi problema cardíaco y ahora me siento mucho mejor. Súper recomendado."</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/46.jpg" class="w-12 h-12 rounded-full" alt="Paciente">
+                        <div>
+                            <div class="font-bold text-slate-900">Roberto Díaz</div>
+                            <div class="text-xs text-slate-500">Paciente Familiar</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-1 mb-4">
+                        <span class="text-yellow-400">⭐</span>
+                        <span class="text-yellow-400">⭐</span>
+                        <span class="text-yellow-400">⭐</span>
+                        <span class="text-yellow-400">⭐</span>
+                        <span class="text-yellow-400">⭐</span>
+                    </div>
+                    <p class="text-slate-600 italic">"El plan familiar nos ha salvado. Tengo 3 hijos y poder llevarlos al pediatra sin preocuparme por el costo es un alivio enorme."</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/29.jpg" class="w-12 h-12 rounded-full" alt="Paciente">
+                        <div>
+                            <div class="font-bold text-slate-900">Carmen Soto</div>
+                            <div class="text-xs text-slate-500">Paciente Básico</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-1 mb-4">
+                        <span class="text-yellow-400">⭐</span>
+                        <span class="text-yellow-400">⭐</span>
+                        <span class="text-yellow-400">⭐</span>
+                        <span class="text-yellow-400">⭐</span>
+                        <span class="text-yellow-400">⭐</span>
+                    </div>
+                    <p class="text-slate-600 italic">"La telemedicina es increíble. Pude consultar con un doctor a las 11 pm desde mi casa. La app es muy fácil de usar."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horarios de Atención -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-gradient-to-br from-brand-blue to-brand-teal rounded-3xl p-12 text-white text-center shadow-2xl">
+                <h2 class="text-3xl font-extrabold mb-6">Horarios de Atención</h2>
+                <div class="grid md:grid-cols-2 gap-6 text-left">
+                    <div class="bg-white/10 rounded-xl p-6">
+                        <div class="font-bold text-lg mb-2">Consulta Externa</div>
+                        <div class="text-blue-100">Lunes a Viernes: 7:00 AM - 7:00 PM</div>
+                        <div class="text-blue-100">Sábados: 8:00 AM - 2:00 PM</div>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-6">
+                        <div class="font-bold text-lg mb-2">Emergencias</div>
+                        <div class="text-blue-100">24 horas, 7 días a la semana</div>
+                        <div class="text-blue-100">📞 +507 800-MEDICARE</div>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-6">
+                        <div class="font-bold text-lg mb-2">Laboratorio</div>
+                        <div class="text-blue-100">Lunes a Viernes: 6:00 AM - 4:00 PM</div>
+                        <div class="text-blue-100">Sábados: 6:00 AM - 12:00 PM</div>
+                    </div>
+                    <div class="bg-white/10 rounded-xl p-6">
+                        <div class="font-bold text-lg mb-2">Telemedicina</div>
+                        <div class="text-blue-100">24/7 disponible</div>
+                        <div class="text-blue-100">Consulta desde la app</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-4">Preguntas Frecuentes</h2>
+                <p class="text-lg text-slate-500">Todo lo que necesitas saber sobre nuestros servicios</p>
+            </div>
+            <div class="space-y-4">
+                <details class="bg-white rounded-2xl p-6 cursor-pointer group shadow-sm">
+                    <summary class="font-bold text-lg text-slate-900 flex justify-between items-center">
+                        ¿Necesito cita previa para consulta?
+                        <span class="text-brand-teal group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">Sí, recomendamos agendar cita para garantizar tu atención. Puedes hacerlo por teléfono, WhatsApp o desde nuestra app móvil. Para emergencias no se requiere cita.</p>
+                </details>
+                <details class="bg-white rounded-2xl p-6 cursor-pointer group shadow-sm">
+                    <summary class="font-bold text-lg text-slate-900 flex justify-between items-center">
+                        ¿Aceptan seguros médicos?
+                        <span class="text-brand-teal group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">Sí, trabajamos con las principales aseguradoras del país: ASSA, Mapfre, Pan-American Life y más. También ofrecemos planes propios a precios accesibles.</p>
+                </details>
+                <details class="bg-white rounded-2xl p-6 cursor-pointer group shadow-sm">
+                    <summary class="font-bold text-lg text-slate-900 flex justify-between items-center">
+                        ¿Cómo funciona la telemedicina?
+                        <span class="text-brand-teal group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">Descarga nuestra app, inicia sesión y solicita una videoconsulta. Un doctor te atenderá en menos de 15 minutos. Recibirás diagnóstico y receta digital si es necesario.</p>
+                </details>
+                <details class="bg-white rounded-2xl p-6 cursor-pointer group shadow-sm">
+                    <summary class="font-bold text-lg text-slate-900 flex justify-between items-center">
+                        ¿Dónde recojo los resultados de laboratorio?
+                        <span class="text-brand-teal group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">Los resultados se envían directamente a tu email y están disponibles en la app en menos de 24 horas. También puedes recogerlos físicamente en nuestra sede.</p>
+                </details>
+                <details class="bg-white rounded-2xl p-6 cursor-pointer group shadow-sm">
+                    <summary class="font-bold text-lg text-slate-900 flex justify-between items-center">
+                        ¿Tienen estacionamiento?
+                        <span class="text-brand-teal group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">Sí, contamos con estacionamiento gratuito para pacientes en el sótano del edificio. Capacidad para 50 vehículos.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-blue text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center opacity-80">
+            <p>© 2025 MediCare Plus. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

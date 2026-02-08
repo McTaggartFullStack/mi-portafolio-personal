@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="img/favicon.png">
-  <title>FutbolTotal | Noticias, Fichajes y Resultados</title>
+    <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>FutbolTotal | Noticias, Fichajes y Resultados</title>
   <meta name="description" content="Esta es una página de demostración del portafolio de Carlos Mc Taggart. Ejemplo de diseño web adaptable y moderno.">
   <link rel="canonical" href="https://www.webspty.dev/revista.html">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -28,14 +31,25 @@
   </style>
 </head>
 <body class="text-gray-900">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
   <!-- Header -->
   <header class="sticky top-0 z-50 bg-gradient-to-r from-emerald-600 to-emerald-700 shadow-xl border-b-4 border-emerald-800">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-14 sm:h-16">
         <div class="flex items-center gap-2 sm:gap-4 min-w-0">
-          <a href="./index.html" class="px-2 py-1.5 sm:px-3 sm:py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg font-bold transition text-xs sm:text-sm flex items-center gap-1 flex-shrink-0" title="Volver al Portafolio">
-            ← <span class="hidden xs:inline">Portafolio</span>
-          </a>
           <div class="flex items-center gap-2 sm:gap-3 text-white font-black text-lg sm:text-2xl truncate">
             <span class="text-2xl sm:text-3xl">⚽</span>
             <span class="truncate">FutbolTotal</span>

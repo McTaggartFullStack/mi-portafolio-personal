@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>Nexus Consulting - Estrategia Empresarial</title>
+    <meta name="description" content="Consultoría de negocios de alto nivel. Estrategia, transformación digital y optimización operativa.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Roboto', sans-serif; }
+        .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Header -->
+    <header class="bg-indigo-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-indigo-500 rounded-lg flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/50">N</div>
+                    <span class="text-2xl font-bold tracking-tight">NEXUS</span>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-indigo-200 hover:text-white transition-colors">Soluciones</a>
+                    <a href="#" class="text-indigo-200 hover:text-white transition-colors">Industrias</a>
+                    <a href="#" class="text-indigo-200 hover:text-white transition-colors">Insights</a>
+                    <a href="#" class="text-indigo-200 hover:text-white transition-colors">Carreras</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="hidden md:block text-sm font-medium text-indigo-300 hover:text-white">Volver</a>
+                    <a href="#" class="px-5 py-2.5 bg-white text-indigo-900 text-sm font-bold rounded hover:bg-indigo-50 transition-colors shadow-lg">
+                        Contactar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative bg-indigo-900 text-white pt-20 pb-32 overflow-hidden">
+        <div class="absolute inset-0 bg-pattern"></div>
+        <div class="absolute right-0 top-0 w-1/2 h-full bg-indigo-800/30 clip-path-polygon hidden lg:block" style="clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-800/50 border border-indigo-700 mb-6">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                    <span class="text-xs uppercase tracking-wide font-semibold text-indigo-300">Líderes en Estrategia 2024</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-black leading-tight mb-6">
+                    Transformamos datos en <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Resultados</span>.
+                </h1>
+                <p class="text-xl text-indigo-200 mb-8 max-w-lg leading-relaxed">
+                    Ayudamos a las organizaciones líderes del mundo a construir ventajas competitivas duraderas a través de consultoría estratégica y análisis de datos.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 rounded font-bold transition-all shadow-lg shadow-indigo-600/30 text-center">
+                        Nuestras Soluciones
+                    </a>
+                    <a href="#" class="px-8 py-4 bg-transparent border border-indigo-500 hover:bg-indigo-800 rounded font-bold transition-all text-center">
+                        Hablar con un Experto
+                    </a>
+                </div>
+            </div>
+            <div class="relative hidden lg:block">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Data Analytics" class="rounded-xl shadow-2xl shadow-black/40 relative z-10 border border-indigo-700">
+                <!-- Floating stat card -->
+                <div class="absolute -bottom-10 -left-10 bg-white p-6 rounded-lg shadow-xl z-20 max-w-xs text-slate-900 border-l-4 border-indigo-500">
+                    <div class="text-sm text-gray-500 uppercase font-bold mb-1">Crecimiento Promedio</div>
+                    <div class="text-4xl font-black text-indigo-900 mb-2">+245%</div>
+                    <p class="text-xs text-gray-600">ROI para clientes en el primer año fiscal de implementación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="bg-indigo-800 py-10 border-b border-indigo-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-indigo-700/50">
+                <div>
+                    <div class="text-3xl font-bold text-white mb-1">500+</div>
+                    <div class="text-indigo-300 text-sm">Proyectos Completados</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white mb-1">50+</div>
+                    <div class="text-indigo-300 text-sm">Países Alcanzados</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white mb-1">$2B+</div>
+                    <div class="text-indigo-300 text-sm">Valor Generado</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white mb-1">24/7</div>
+                    <div class="text-indigo-300 text-sm">Soporte Global</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Grid -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-indigo-600 font-bold tracking-wide uppercase text-sm mb-2">Qué hacemos</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Soluciones Integrales</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="p-8 border border-slate-200 rounded-xl hover:shadow-xl hover:border-indigo-200 transition-all group">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        📊
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Analítica Avanzada</h4>
+                    <p class="text-slate-600 mb-6">Interpretamos grandes volúmenes de datos para descubrir oportunidades ocultas y predecir tendencias de mercado.</p>
+                    <a href="#" class="text-indigo-600 font-semibold group-hover:underline">Leer más →</a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="p-8 border border-slate-200 rounded-xl hover:shadow-xl hover:border-indigo-200 transition-all group">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        🚀
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Transformación Digital</h4>
+                    <p class="text-slate-600 mb-6">Modernizamos su stack tecnológico y procesos para competir en la era digital con agilidad.</p>
+                    <a href="#" class="text-indigo-600 font-semibold group-hover:underline">Leer más →</a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="p-8 border border-slate-200 rounded-xl hover:shadow-xl hover:border-indigo-200 transition-all group">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        ⚙️
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Eficiencia Operativa</h4>
+                    <p class="text-slate-600 mb-6">Optimizamos flujos de trabajo supply chain para reducir costos y mejorar tiempos de entrega.</p>
+                    <a href="#" class="text-indigo-600 font-semibold group-hover:underline">Leer más →</a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="p-8 border border-slate-200 rounded-xl hover:shadow-xl hover:border-indigo-200 transition-all group">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        💼
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Estrategia de Crecimiento</h4>
+                    <p class="text-slate-600 mb-6">Diseñamos planes de expansión, fusión y adquisición para escalar su negocio sosteniblemente.</p>
+                    <a href="#" class="text-indigo-600 font-semibold group-hover:underline">Leer más →</a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="p-8 border border-slate-200 rounded-xl hover:shadow-xl hover:border-indigo-200 transition-all group">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        👥
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Gestión del Cambio</h4>
+                    <p class="text-slate-600 mb-6">Acompañamos la adopción de nuevos procesos con programas de capacitación y comunicación efectiva.</p>
+                    <a href="#" class="text-indigo-600 font-semibold group-hover:underline">Leer más →</a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="p-8 border border-slate-200 rounded-xl hover:shadow-xl hover:border-indigo-200 transition-all group">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        🎯
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Experiencia del Cliente</h4>
+                    <p class="text-slate-600 mb-6">Rediseñamos touchpoints para crear experiencias memorables que fidelizan y aumentan NPS.</p>
+                    <a href="#" class="text-indigo-600 font-semibold group-hover:underline">Leer más →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metodología -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-indigo-600 font-bold tracking-wide uppercase text-sm mb-2">Cómo trabajamos</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Nuestra Metodología Probada</h3>
+                <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Un enfoque estructurado en 5 fases que garantiza resultados medibles y sostenibles</p>
+            </div>
+            <div class="relative">
+                <div class="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-indigo-200 transform -translate-y-1/2"></div>
+                <div class="grid md:grid-cols-5 gap-8 relative">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg relative z-10">1</div>
+                        <h4 class="font-bold text-slate-900 mb-2">Diagnóstico</h4>
+                        <p class="text-sm text-slate-600">Evaluación profunda de procesos actuales y pain points</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg relative z-10">2</div>
+                        <h4 class="font-bold text-slate-900 mb-2">Estrategia</h4>
+                        <p class="text-sm text-slate-600">Diseño de roadmap personalizado con KPIs claros</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg relative z-10">3</div>
+                        <h4 class="font-bold text-slate-900 mb-2">Implementación</h4>
+                        <p class="text-sm text-slate-600">Ejecución hands-on con equipos multidisciplinarios</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg relative z-10">4</div>
+                        <h4 class="font-bold text-slate-900 mb-2">Capacitación</h4>
+                        <p class="text-sm text-slate-600">Transferencia de conocimiento a equipos internos</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg relative z-10">5</div>
+                        <h4 class="font-bold text-slate-900 mb-2">Optimización</h4>
+                        <p class="text-sm text-slate-600">Monitoreo continuo y mejora iterativa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industrias -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-indigo-600 font-bold tracking-wide uppercase text-sm mb-2">Experiencia sectorial</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Industrias que Servimos</h3>
+            </div>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all">
+                    <div class="text-3xl mb-3">🏦</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Banca & Finanzas</h4>
+                    <p class="text-xs text-slate-600">Regulaciones, digital banking, fintech</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all">
+                    <div class="text-3xl mb-3">🛍️</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Retail & E-commerce</h4>
+                    <p class="text-xs text-slate-600">Omnicanalidad, logística de última milla</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all">
+                    <div class="text-3xl mb-3">⚕️</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Salud & Pharma</h4>
+                    <p class="text-xs text-slate-600">Telemedicina, optimización hospitalaria</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all">
+                    <div class="text-3xl mb-3">🚀</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Tecnología & SaaS</h4>
+                    <p class="text-xs text-slate-600">Product-market fit, escalabilidad</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all">
+                    <div class="text-3xl mb-3">🏭</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Manufactura</h4>
+                    <p class="text-xs text-slate-600">Industry 4.0, lean manufacturing</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all">
+                    <div class="text-3xl mb-3">⚡</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Energía & Utilities</h4>
+                    <p class="text-xs text-slate-600">Energías renovables, smart grids</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all">
+                    <div class="text-3xl mb-3">🚗</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Automotive</h4>
+                    <p class="text-xs text-slate-600">Vehículos eléctricos, autonomía</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all">
+                    <div class="text-3xl mb-3">🎓</div>
+                    <h4 class="font-bold text-slate-900 mb-1">Educación</h4>
+                    <p class="text-xs text-slate-600">EdTech, aprendizaje híbrido</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Casos de Éxito -->
+    <section class="py-24 bg-indigo-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-indigo-300 font-bold tracking-wide uppercase text-sm mb-2">Resultados comprobados</h2>
+                <h3 class="text-3xl md:text-4xl font-bold">Casos de Éxito Recientes</h3>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-indigo-800 p-8 rounded-xl border border-indigo-700">
+                    <div class="text-sm text-indigo-300 mb-2">RETAIL | 2023</div>
+                    <h4 class="text-xl font-bold mb-4">Cadena Regional de Supermercados</h4>
+                    <p class="text-indigo-200 mb-6 text-sm">Implementamos sistema de predicción de demanda con ML reduciendo desperdicios de productos perecederos.</p>
+                    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-indigo-700">
+                        <div>
+                            <div class="text-2xl font-bold text-cyan-400">-38%</div>
+                            <div class="text-xs text-indigo-300">Desperdicio</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-cyan-400">+24%</div>
+                            <div class="text-xs text-indigo-300">Margen</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-cyan-400">$2.1M</div>
+                            <div class="text-xs text-indigo-300">Ahorrado</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-indigo-800 p-8 rounded-xl border border-indigo-700">
+                    <div class="text-sm text-indigo-300 mb-2">BANCA | 2024</div>
+                    <h4 class="text-xl font-bold mb-4">Banco Líder en LATAM</h4>
+                    <p class="text-indigo-200 mb-6 text-sm">Digitalizamos proceso de apertura de cuentas con verificación biométrica y firma electrónica.</p>
+                    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-indigo-700">
+                        <div>
+                            <div class="text-2xl font-bold text-cyan-400">82%</div>
+                            <div class="text-xs text-indigo-300">Menos tiempo</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-cyan-400">+156%</div>
+                            <div class="text-xs text-indigo-300">Conversiones</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-cyan-400">95%</div>
+                            <div class="text-xs text-indigo-300">Satisfacción</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-indigo-800 p-8 rounded-xl border border-indigo-700">
+                    <div class="text-sm text-indigo-300 mb-2">MANUFACTURA | 2023</div>
+                    <h4 class="text-xl font-bold mb-4">Fábrica Automotriz</h4>
+                    <p class="text-indigo-200 mb-6 text-sm">Implementación de IoT para mantenimiento predictivo en líneas de producción.</p>
+                    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-indigo-700">
+                        <div>
+                            <div class="text-2xl font-bold text-cyan-400">-67%</div>
+                            <div class="text-xs text-indigo-300">Downtime</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-cyan-400">+42%</div>
+                            <div class="text-xs text-indigo-300">OEE</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-cyan-400">$5.8M</div>
+                            <div class="text-xs text-indigo-300">ROI anual</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipo -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-indigo-600 font-bold tracking-wide uppercase text-sm mb-2">Nuestro equipo</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Consultores de Elite</h3>
+                <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Ex-directivos de Fortune 500 y especialistas con maestrías de top business schools</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center group">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-100 group-hover:border-indigo-600 transition" alt="Consultor">
+                    <h4 class="font-bold text-slate-900">Dr. Carlos Mendoza</h4>
+                    <p class="text-sm text-indigo-600 mb-2">Managing Partner</p>
+                    <p class="text-xs text-slate-600">Ex-McKinsey, MBA Stanford</p>
+                </div>
+                <div class="text-center group">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-100 group-hover:border-indigo-600 transition" alt="Consultora">
+                    <h4 class="font-bold text-slate-900">Ana Torres</h4>
+                    <p class="text-sm text-indigo-600 mb-2">Partner - Digital</p>
+                    <p class="text-xs text-slate-600">Ex-Bain, MIT Sloan</p>
+                </div>
+                <div class="text-center group">
+                    <img src="https://randomuser.me/api/portraits/men/54.jpg" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-100 group-hover:border-indigo-600 transition" alt="Consultor">
+                    <h4 class="font-bold text-slate-900">Roberto Vega</h4>
+                    <p class="text-sm text-indigo-600 mb-2">Partner - Operations</p>
+                    <p class="text-xs text-slate-600">Ex-BCG, Wharton MBA</p>
+                </div>
+                <div class="text-center group">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-indigo-100 group-hover:border-indigo-600 transition" alt="Consultora">
+                    <h4 class="font-bold text-slate-900">María Sánchez</h4>
+                    <p class="text-sm text-indigo-600 mb-2">Partner - Analytics</p>
+                    <p class="text-xs text-slate-600">PhD Data Science, Harvard</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paquetes -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-indigo-600 font-bold tracking-wide uppercase text-sm mb-2">Modelos de engagement</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Paquetes de Consultoría</h3>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl border-2 border-slate-200 hover:border-indigo-300 transition-all">
+                    <h4 class="text-xl font-bold text-slate-900 mb-2">Assessment</h4>
+                    <div class="text-3xl font-bold text-indigo-900 mb-6">$15K</div>
+                    <ul class="space-y-3 mb-8 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-600 mt-1">✓</span>
+                            <span class="text-slate-700">Diagnóstico completo (4 semanas)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-600 mt-1">✓</span>
+                            <span class="text-slate-700">Entrevistas con stakeholders</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-600 mt-1">✓</span>
+                            <span class="text-slate-700">Reporte ejecutivo con roadmap</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-600 mt-1">✓</span>
+                            <span class="text-slate-700">Presentación a directorio</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded transition">Solicitar</button>
+                </div>
+                <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 p-8 rounded-xl text-white transform scale-105 shadow-2xl relative">
+                    <div class="absolute top-4 right-4 bg-cyan-400 text-indigo-900 text-xs font-bold px-3 py-1 rounded-full">POPULAR</div>
+                    <h4 class="text-xl font-bold mb-2">Full Engagement</h4>
+                    <div class="text-3xl font-bold mb-6">Custom</div>
+                    <ul class="space-y-3 mb-8 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-cyan-400 mt-1">✓</span>
+                            <span class="text-indigo-100">Todo de Assessment +</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-cyan-400 mt-1">✓</span>
+                            <span class="text-indigo-100">Implementación end-to-end (3-6 meses)</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-cyan-400 mt-1">✓</span>
+                            <span class="text-indigo-100">Equipo dedicado on-site</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-cyan-400 mt-1">✓</span>
+                            <span class="text-indigo-100">Capacitación y change management</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-cyan-400 mt-1">✓</span>
+                            <span class="text-indigo-100">Soporte post-implementación 3 meses</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 bg-white text-indigo-900 font-bold rounded hover:bg-indigo-50 transition">Cotizar proyecto</button>
+                </div>
+                <div class="bg-white p-8 rounded-xl border-2 border-slate-200 hover:border-indigo-300 transition-all">
+                    <h4 class="text-xl font-bold text-slate-900 mb-2">Retainer</h4>
+                    <div class="text-3xl font-bold text-indigo-900 mb-6">$8K/mes</div>
+                    <ul class="space-y-3 mb-8 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-600 mt-1">✓</span>
+                            <span class="text-slate-700">Asesoría estratégica continua</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-600 mt-1">✓</span>
+                            <span class="text-slate-700">20 horas/mes consultor senior</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-600 mt-1">✓</span>
+                            <span class="text-slate-700">Acceso a herramientas y frameworks</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-indigo-600 mt-1">✓</span>
+                            <span class="text-slate-700">Dashboards de KPIs en tiempo real</span>
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded transition">Contratar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-indigo-600 font-bold tracking-wide uppercase text-sm mb-2">Lo que dicen de nosotros</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900">Testimonios de Clientes</h3>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-slate-50 p-8 rounded-xl border border-slate-200">
+                    <div class="flex gap-1 mb-4 text-yellow-400">
+                        <span>★★★★★</span>
+                    </div>
+                    <p class="text-slate-700 italic mb-6">"Nexus nos ayudó a reducir costos operativos en un 40% sin sacrificar calidad. Su enfoque data-driven y ejecución impecable fueron clave para nuestra transformación."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" class="w-12 h-12 rounded-full" alt="Cliente">
+                        <div>
+                            <div class="font-bold text-slate-900">Jorge Palacios</div>
+                            <div class="text-xs text-slate-600">CEO, RetailCorp SA</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-xl border border-slate-200">
+                    <div class="flex gap-1 mb-4 text-yellow-400">
+                        <span>★★★★★</span>
+                    </div>
+                    <p class="text-slate-700 italic mb-6">"Su equipo de expertos no solo diseñó la estrategia, sino que se arremangó para implementarla con nosotros. Profesionalismo de primer nivel."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" class="w-12 h-12 rounded-full" alt="Cliente">
+                        <div>
+                            <div class="font-bold text-slate-900">Patricia López</div>
+                            <div class="text-xs text-slate-600">CFO, FinTech Solutions</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-xl border border-slate-200">
+                    <div class="flex gap-1 mb-4 text-yellow-400">
+                        <span>★★★★★</span>
+                    </div>
+                    <p class="text-slate-700 italic mb-6">"Triplicó nuestra velocidad de go-to-market. El roadmap que crearon fue una guía invaluable para nuestro crecimiento internacional."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" class="w-12 h-12 rounded-full" alt="Cliente">
+                        <div>
+                            <div class="font-bold text-slate-900">Manuel Rodríguez</div>
+                            <div class="text-xs text-slate-600">VP Operations, TechGlobal</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-indigo-600 font-bold tracking-wide uppercase text-sm mb-2">Preguntas frecuentes</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-900">FAQ</h3>
+            </div>
+            <div class="space-y-4">
+                <details class="bg-white rounded-xl p-6 cursor-pointer group border border-slate-200">
+                    <summary class="font-bold text-lg text-slate-900 flex justify-between items-center">
+                        ¿Cuánto tiempo dura un proyecto típico?
+                        <span class="text-indigo-600 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">Depende del alcance. Un assessment toma 4 semanas, mientras que un engagement completo de transformación digital puede durar entre 3-6 meses. El retainer es un modelo flexible mes a mes.</p>
+                </details>
+                <details class="bg-white rounded-xl p-6 cursor-pointer group border border-slate-200">
+                    <summary class="font-bold text-lg text-slate-900 flex justify-between items-center">
+                        ¿Cómo garantizan resultados medibles?
+                        <span class="text-indigo-600 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">Establecemos KPIs claros al inicio del proyecto y entregamos dashboards en tiempo real. Además, ofrecemos modelos de honorarios basados en performance para proyectos de alto impacto.</p>
+                </details>
+                <details class="bg-white rounded-xl p-6 cursor-pointer group border border-slate-200">
+                    <summary class="font-bold text-lg text-slate-900 flex justify-between items-center">
+                        ¿Trabajan con empresas de qué tamaño?
+                        <span class="text-indigo-600 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">Desde startups en serie B hasta Fortune 500. Tenemos experiencia con organizaciones de 50 a 50,000 empleados en 8 industrias diferentes.</p>
+                </details>
+                <details class="bg-white rounded-xl p-6 cursor-pointer group border border-slate-200">
+                    <summary class="font-bold text-lg text-slate-900 flex justify-between items-center">
+                        ¿Qué diferencia a Nexus de otras consultoras?
+                        <span class="text-indigo-600 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">Combinamos rigor analítico de top tier consultancies con ejecución hands-on. No solo entregamos un PowerPoint, sino que implementamos y capacitamos hasta ver resultados.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-indigo-950 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="hover:text-white">LinkedIn</a>
+                <a href="#" class="hover:text-white">Twitter</a>
+                <a href="#" class="hover:text-white">Facebook</a>
+            </div>
+            <p>&copy; 2024 Nexus Consulting Group. <br class="md:hidden">Diseñado para alto rendimiento.</p>
+        </div>
+    </footer>
+
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

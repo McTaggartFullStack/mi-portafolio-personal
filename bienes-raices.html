@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>Prestige Real Estate | Propiedades de Lujo</title>
+    <meta name="description" content="Venta y alquiler de propiedades exclusivas en las mejores zonas. Apartamentos, casas y penthouses de lujo.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm fixed w-full z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-slate-800 serif tracking-wide">PRESTIGE <span class="text-yellow-600">ESTATE</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#" class="text-gray-600 hover:text-yellow-600 transition-colors uppercase text-xs tracking-widest font-semibold">Propiedades</a>
+                    <a href="#" class="text-gray-600 hover:text-yellow-600 transition-colors uppercase text-xs tracking-widest font-semibold">Agentes</a>
+                    <a href="#" class="text-gray-600 hover:text-yellow-600 transition-colors uppercase text-xs tracking-widest font-semibold">Nosotros</a>
+                    <a href="index.html" class="px-5 py-2 bg-slate-900 text-white text-xs uppercase tracking-widest font-semibold hover:bg-slate-800 transition-colors">Volver</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="relative h-[80vh]">
+        <img src="img/casas/casas.webp" alt="Luxury Home" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 italic">Encuentra tu Espacio Ideal</h1>
+            <p class="text-lg md:text-xl font-light mb-8 max-w-2xl">Colección exclusiva de propiedades residenciales y comerciales en las zonas más prestigiosas.</p>
+            
+            <!-- Search Bar -->
+            <div class="bg-white p-4 rounded shadow-lg flex flex-col md:flex-row gap-4 w-full max-w-4xl">
+                <div class="flex-1">
+                    <label class="block text-xs uppercase text-gray-400 font-bold mb-1 ml-1 text-left">Ubicación</label>
+                    <select class="w-full border-b border-gray-200 py-2 text-gray-800 focus:outline-none focus:border-yellow-600 bg-transparent">
+                        <option>Costa del Este</option>
+                        <option>Santa María</option>
+                        <option>Casco Antiguo</option>
+                        <option>Punta Pacífica</option>
+                    </select>
+                </div>
+                <div class="flex-1">
+                    <label class="block text-xs uppercase text-gray-400 font-bold mb-1 ml-1 text-left">Tipo</label>
+                    <select class="w-full border-b border-gray-200 py-2 text-gray-800 focus:outline-none focus:border-yellow-600 bg-transparent">
+                        <option>Apartamento</option>
+                        <option>Casa / Villa</option>
+                        <option>Penthouse</option>
+                        <option>Oficina</option>
+                    </select>
+                </div>
+                <div class="flex-1">
+                    <label class="block text-xs uppercase text-gray-400 font-bold mb-1 ml-1 text-left">Precio Máx</label>
+                    <select class="w-full border-b border-gray-200 py-2 text-gray-800 focus:outline-none focus:border-yellow-600 bg-transparent">
+                        <option>$300,000</option>
+                        <option>$500,000</option>
+                        <option>$1,000,000</option>
+                        <option>Sin Límite</option>
+                    </select>
+                </div>
+                <button class="bg-slate-900 text-white px-8 py-3 uppercase tracking-widest text-xs font-bold hover:bg-yellow-600 transition-colors">
+                    Buscar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Properties -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-yellow-600 uppercase tracking-widest text-xs font-bold">Exclusividad</span>
+                <h2 class="text-4xl font-bold text-slate-900 mt-2">Propiedades Destacadas</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Property 1 -->
+                <div class="group cursor-pointer">
+                    <div class="relative overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Villa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-slate-900 text-white text-xs px-3 py-1 uppercase tracking-widest">Venta</div>
+                        <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur text-slate-900 px-4 py-2 font-bold serif">$1,250,000</div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-1 group-hover:text-yellow-600 transition-colors">Villa Serena</h3>
+                    <p class="text-gray-500 mb-3 text-sm">Santa María Golf Club</p>
+                    <div class="flex gap-4 text-gray-400 text-sm border-t border-gray-100 pt-3">
+                        <span>4 Beds</span> • <span>5 Baths</span> • <span>650m²</span>
+                    </div>
+                </div>
+
+                <!-- Property 2 -->
+                <div class="group cursor-pointer">
+                    <div class="relative overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Penthouse" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-yellow-600 text-white text-xs px-3 py-1 uppercase tracking-widest">Alquiler</div>
+                        <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur text-slate-900 px-4 py-2 font-bold serif">$4,500/mo</div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-1 group-hover:text-yellow-600 transition-colors">Skyline Penthouse</h3>
+                    <p class="text-gray-500 mb-3 text-sm">Punta Pacífica</p>
+                    <div class="flex gap-4 text-gray-400 text-sm border-t border-gray-100 pt-3">
+                        <span>3 Beds</span> • <span>3.5 Baths</span> • <span>320m²</span>
+                    </div>
+                </div>
+
+                <!-- Property 3 -->
+                <div class="group cursor-pointer">
+                    <div class="relative overflow-hidden aspect-[4/3] mb-4">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mansion" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-slate-900 text-white text-xs px-3 py-1 uppercase tracking-widest">Venta</div>
+                        <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur text-slate-900 px-4 py-2 font-bold serif">$890,000</div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-1 group-hover:text-yellow-600 transition-colors">Casa Moderna</h3>
+                    <p class="text-gray-500 mb-3 text-sm">Costa del Este</p>
+                    <div class="flex gap-4 text-gray-400 text-sm border-t border-gray-100 pt-3">
+                        <span>4 Beds</span> • <span>4 Baths</span> • <span>450m²</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Exclusivos (Nuevo) -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-yellow-600 uppercase tracking-widest text-xs font-bold">Servicios</span>
+                    <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-6 serif">Gestión Integral de Propiedades</h2>
+                    <p class="text-gray-600 mb-6 font-light">
+                        Entendemos que el lujo va más allá de la propiedad. Ofrecemos un ecosistema de servicios diseñados para maximizar su inversión y su calidad de vida.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 shadow-sm border-l-4 border-yellow-600">
+                            <h4 class="text-lg font-bold text-slate-900 mb-2">Asesoría Legal</h4>
+                            <p class="text-xs text-gray-500">Trámites migratorios, constitución de sociedades y gestión de títulos.</p>
+                        </div>
+                        <div class="bg-white p-6 shadow-sm border-l-4 border-slate-900">
+                            <h4 class="text-lg font-bold text-slate-900 mb-2">Diseño Interior</h4>
+                            <p class="text-xs text-gray-500">Alianzas con los mejores estudios para personalizar su espacio.</p>
+                        </div>
+                        <div class="bg-white p-6 shadow-sm border-l-4 border-slate-900">
+                            <h4 class="text-lg font-bold text-slate-900 mb-2">Property Management</h4>
+                            <p class="text-xs text-gray-500">Mantenimiento y administración para propietarios ausentes.</p>
+                        </div>
+                        <div class="bg-white p-6 shadow-sm border-l-4 border-yellow-600">
+                            <h4 class="text-lg font-bold text-slate-900 mb-2">Concierge VIP</h4>
+                            <p class="text-xs text-gray-500">Reservaciones, transporte y servicios lifestyle exclusivos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="img/casas/interior.webp" alt="Interior" class="w-full h-80 object-cover mt-8 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Office" class="w-full h-80 object-cover shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios (Nuevo) -->
+    <section class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 opacity-10 font-[serif] text-[20rem] leading-none pointer-events-none text-white select-none">”</div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <span class="text-yellow-600 uppercase tracking-widest text-xs font-bold">Reseñas</span>
+            <h2 class="text-4xl font-bold mt-2 mb-12 serif">Experiencias de Élite</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-slate-800 p-8 text-left border border-slate-700 hover:border-yellow-600 transition-colors">
+                    <div class="flex text-yellow-500 mb-4 text-sm">★★★★★</div>
+                    <p class="italic text-gray-300 mb-6 font-light leading-relaxed">"La atención al detalle en la búsqueda de nuestro penthouse en Costa del Este fue excepcional. Entendieron exactamente lo que buscábamos desde el primer día."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-gray-600 rounded-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-sm">Carlos Mendez</h5>
+                            <p class="text-xs text-gray-500 uppercase">Inversionista</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-800 p-8 text-left border border-slate-700 hover:border-yellow-600 transition-colors">
+                    <div class="flex text-yellow-500 mb-4 text-sm">★★★★★</div>
+                    <p class="italic text-gray-300 mb-6 font-light leading-relaxed">"Vendieron mi propiedad en tiempo récord y al precio que yo esperaba. El marketing visual que utilizan es, sin duda, el mejor del mercado."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-gray-600 rounded-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-sm">Ana V. Torres</h5>
+                            <p class="text-xs text-gray-500 uppercase">Propietaria</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agent CTA -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Agent" class="w-full h-[500px] object-cover rounded shadow-xl grayscale hover:grayscale-0 transition-all duration-500">
+            </div>
+            <div>
+                <span class="text-yellow-600 uppercase tracking-widest text-xs font-bold">Experiencia</span>
+                <h2 class="text-4xl font-bold text-slate-900 mt-2 mb-6 serif">Venda su propiedad con los mejores</h2>
+                <p class="text-gray-600 mb-8 leading-relaxed">
+                    Nuestro equipo de expertos en bienes raíces utiliza estrategias de marketing de vanguardia y una red global para asegurar que su propiedad obtenga la visibilidad que merece.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="text-slate-900 font-bold mr-4">01.</div>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Valoración Gratuita</h4>
+                            <p class="text-sm text-gray-500">Análisis comparativo de mercado sin compromiso.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="text-slate-900 font-bold mr-4">02.</div>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Fotografía Profesional</h4>
+                            <p class="text-sm text-gray-500">Sesiones fotográficas y tours virtuales 3D.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="text-slate-900 font-bold mr-4">03.</div>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Marketing Digital</h4>
+                            <p class="text-sm text-gray-500">Campañas segmentadas en redes sociales y buscadores.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="mt-10 border border-slate-900 text-slate-900 px-8 py-3 uppercase tracking-widest text-xs font-bold hover:bg-slate-900 hover:text-white transition-colors">
+                    Contactar Agente
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <span class="text-2xl font-bold serif tracking-wide">PRESTIGE <span class="text-yellow-600">ESTATE</span></span>
+                <p class="text-gray-400 mt-4 max-w-sm text-sm">
+                    Redefiniendo el estándar de bienes raíces de lujo en Panamá. Comprometidos con la excelencia y la satisfacción total del cliente.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold uppercase tracking-widest mb-6">Enlaces</h4>
+                <ul class="space-y-3 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Propiedades</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Agentes</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Servicios</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Contacto</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold uppercase tracking-widest mb-6">Contacto</h4>
+                <ul class="space-y-3 text-sm text-gray-400">
+                    <li>Costa del Este, Torre V</li>
+                    <li>Panamá, Rep. de Panamá</li>
+                    <li>info@prestigeestate.com</li>
+                    <li>+507 830-5555</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
+            © 2026 Prestige Estate. Demo por WebsPTY.
+        </div>
+    </footer>
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

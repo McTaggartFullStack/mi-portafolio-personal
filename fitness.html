@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>TITAN POWER | Hardcore Gym</title>
+    <meta name="description" content="Gimnasio de alto rendimiento para culturismo y powerlifting.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Chakra+Petch:wght@400;600;700&display=swap');
+        
+        :root {
+            --primary: #ff5e00;
+            --dark: #0a0a0a;
+            --metal: #262626;
+        }
+
+        body { 
+            background-color: var(--dark); 
+            color: #d4d4d4; 
+            font-family: 'Chakra Petch', sans-serif;
+        }
+        
+        h1, h2, h3, .brand-font { 
+            font-family: 'Black Ops One', cursive; 
+            text-transform: uppercase;
+        }
+
+        .text-primary { color: var(--primary); }
+        .bg-primary { background-color: var(--primary); }
+        .border-primary { border-color: var(--primary); }
+
+        .diagonal-stripes {
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                #1a1a1a 10px,
+                #1a1a1a 20px
+            );
+        }
+
+        .clip-wedge {
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+        }
+        
+        .grunge-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/black-felt.png'); 
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .btn-glitch {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-glitch::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        .btn-glitch:hover::before {
+            left: 100%;
+        }
+
+    </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+    
+    <div class="grunge-overlay"></div>
+
+    <!-- Top Bar -->
+    <div class="bg-primary text-black font-bold text-center py-1 text-xs tracking-widest uppercase">
+        Primera sesión de prueba GRATIS • No Excuses
+    </div>
+
+    <!-- Nav -->
+    <nav class="border-b border-gray-800 bg-[#050505] relative z-40">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-primary flex items-center justify-center rounded clip-wedge">
+                    <span class="text-black text-2xl font-bold">T</span>
+                </div>
+                <span class="text-3xl brand-font tracking-wider text-white">TITAN</span>
+            </div>
+            
+            <div class="hidden md:flex gap-8 font-bold uppercase text-sm tracking-widest text-gray-400">
+                <a href="#" class="hover:text-primary transition-colors">Instalaciones</a>
+                <a href="#" class="hover:text-primary transition-colors">Programas</a>
+                <a href="#" class="hover:text-primary transition-colors">Membresías</a>
+            </div>
+
+            <button class="bg-transparent border-2 border-primary text-primary px-6 py-2 font-bold uppercase tracking-widest hover:bg-primary hover:text-black transition-all btn-glitch">
+                Zona Socios
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative h-[85vh] flex items-center bg-black overflow-hidden">
+        <!-- Image & Gradient -->
+        <div class="absolute inset-0 z-0">
+             <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=2069&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 grayscale">
+             <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2">
+            <div>
+                <h1 class="text-7xl md:text-9xl mb-4 leading-[0.9]">
+                    <span class="text-white block">PURE</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-700">POWER</span>
+                </h1>
+                <div class="w-32 h-2 bg-primary mb-8 ml-2"></div>
+                <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-lg font-light border-l-4 border-gray-700 pl-6">
+                    Donde el hierro se encuentra con la voluntad. Equipamiento profesional para culturismo, powerlifting y strongman.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="bg-primary text-black px-10 py-4 text-xl font-bold uppercase clip-wedge hover:bg-orange-500 transition-colors text-center shadow-[0_0_20px_rgba(255,94,0,0.4)]">
+                        Empieza Ahora
+                    </a>
+                    <a href="#" class="border border-white/30 text-white px-10 py-4 text-xl font-bold uppercase hover:bg-white hover:text-black transition-colors text-center">
+                        Ver Video
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stat Strip -->
+        <div class="absolute bottom-0 right-0 bg-black/90 p-8 border-t-4 border-primary hidden md:block w-1/2">
+            <div class="flex justify-between text-center">
+                <div>
+                    <div class="text-primary text-4xl font-bold brand-font">24/7</div>
+                    <div class="text-xs uppercase tracking-widest mt-1">Acceso</div>
+                </div>
+                <div>
+                    <div class="text-primary text-4xl font-bold brand-font">500+</div>
+                    <div class="text-xs uppercase tracking-widest mt-1">Máquinas</div>
+                </div>
+                <div>
+                    <div class="text-primary text-4xl font-bold brand-font">Free</div>
+                    <div class="text-xs uppercase tracking-widest mt-1">Parking</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features -->
+    <section class="py-24 bg-[#111] relative border-b border-gray-800">
+        <div class="diagonal-stripes absolute top-0 right-0 w-64 h-64 opacity-20"></div>
+        
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-primary font-bold uppercase tracking-[0.3em]">Nuestra Filosofía</span>
+                <h2 class="text-4xl md:text-5xl text-white mt-2">NO PAIN NO GAIN</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-black border border-gray-800 p-8 hover:border-primary transition-colors group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-primary/10 w-20 h-20 rounded-bl-full -mr-10 -mt-10 transition-transform group-hover:scale-150"></div>
+                    <h3 class="text-2xl text-white mb-4 group-hover:text-primary transition-colors">Zona de Peso Libre</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Mancuernas de hasta 80kg, 6 bancos de press planos, y plataformas olímpicas para levantamiento pesado sin restricciones de ruido.
+                    </p>
+                </div>
+                
+                 <!-- Card 2 -->
+                <div class="bg-black border border-gray-800 p-8 hover:border-primary transition-colors group relative overflow-hidden">
+                     <div class="absolute top-0 right-0 bg-primary/10 w-20 h-20 rounded-bl-full -mr-10 -mt-10 transition-transform group-hover:scale-150"></div>
+                    <h3 class="text-2xl text-white mb-4 group-hover:text-primary transition-colors">Máquinas Hammer</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        La mejor biomecánica del mercado. Aísla cada grupo muscular con nuestra línea completa de máquinas Hammer Strength.
+                    </p>
+                </div>
+
+                 <!-- Card 3 -->
+                <div class="bg-black border border-gray-800 p-8 hover:border-primary transition-colors group relative overflow-hidden">
+                     <div class="absolute top-0 right-0 bg-primary/10 w-20 h-20 rounded-bl-full -mr-10 -mt-10 transition-transform group-hover:scale-150"></div>
+                    <h3 class="text-2xl text-white mb-4 group-hover:text-primary transition-colors">Cardio Teatro</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Cintas de correr, elípticas y escaladoras de última generación con pantallas touch y conexión a Netflix/Spotify.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programas -->
+    <section class="py-24 bg-black border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+                <div>
+                    <span class="text-primary font-bold uppercase tracking-[0.3em]">Programas</span>
+                    <h2 class="text-4xl md:text-5xl text-white mt-2">RUTINAS DE ÉLITE</h2>
+                </div>
+                <p class="text-gray-500 max-w-xl">
+                    Planes diseñados para fuerza, hipertrofia y rendimiento. Desde principiantes hasta atletas competitivos.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-[#0e0e0e] border border-gray-800 p-6 hover:border-primary transition-colors">
+                    <div class="text-primary text-3xl mb-3">🏋️</div>
+                    <h3 class="text-white text-xl mb-2">Powerlifting</h3>
+                    <p class="text-gray-500 text-sm">Sentadilla, press banca y peso muerto con progresión semanal.</p>
+                </div>
+                <div class="bg-[#0e0e0e] border border-gray-800 p-6 hover:border-primary transition-colors">
+                    <div class="text-primary text-3xl mb-3">💪</div>
+                    <h3 class="text-white text-xl mb-2">Bodybuilding</h3>
+                    <p class="text-gray-500 text-sm">Hipertrofia avanzada con periodización por grupos musculares.</p>
+                </div>
+                <div class="bg-[#0e0e0e] border border-gray-800 p-6 hover:border-primary transition-colors">
+                    <div class="text-primary text-3xl mb-3">⚡</div>
+                    <h3 class="text-white text-xl mb-2">HIIT & Metcon</h3>
+                    <p class="text-gray-500 text-sm">Circuitos de alta intensidad para quemar grasa y aumentar resistencia.</p>
+                </div>
+                <div class="bg-[#0e0e0e] border border-gray-800 p-6 hover:border-primary transition-colors">
+                    <div class="text-primary text-3xl mb-3">🧠</div>
+                    <h3 class="text-white text-xl mb-2">Coaching 1:1</h3>
+                    <p class="text-gray-500 text-sm">Evaluación, técnica y seguimiento personalizado mensual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Entrenadores -->
+    <section class="py-24 bg-[#0b0b0b] border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-primary font-bold uppercase tracking-[0.3em]">Equipo</span>
+                <h2 class="text-4xl md:text-5xl text-white mt-2">ENTRENADORES TITAN</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black border border-gray-800 p-6">
+                    <div class="h-56 bg-[#111] border border-gray-800 mb-5 flex items-center justify-center">
+                        <span class="text-6xl">🥇</span>
+                    </div>
+                    <h3 class="text-white text-xl">Max Power</h3>
+                    <p class="text-primary text-sm uppercase tracking-widest">Powerlifting Coach</p>
+                    <p class="text-gray-500 text-sm mt-3">Campeón nacional con 12 años de experiencia en fuerza máxima.</p>
+                </div>
+                <div class="bg-black border border-gray-800 p-6">
+                    <div class="h-56 bg-[#111] border border-gray-800 mb-5 flex items-center justify-center">
+                        <span class="text-6xl">🔥</span>
+                    </div>
+                    <h3 class="text-white text-xl">Valentina Steel</h3>
+                    <p class="text-primary text-sm uppercase tracking-widest">Bodybuilding Coach</p>
+                    <p class="text-gray-500 text-sm mt-3">Especialista en hipertrofia, nutrición deportiva y posing.</p>
+                </div>
+                <div class="bg-black border border-gray-800 p-6">
+                    <div class="h-56 bg-[#111] border border-gray-800 mb-5 flex items-center justify-center">
+                        <span class="text-6xl">⚔️</span>
+                    </div>
+                    <h3 class="text-white text-xl">Rafa Grind</h3>
+                    <p class="text-primary text-sm uppercase tracking-widest">Performance Coach</p>
+                    <p class="text-gray-500 text-sm mt-3">Movilidad, velocidad y acondicionamiento para atletas híbridos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horarios -->
+    <section class="py-24 bg-black border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <span class="text-primary font-bold uppercase tracking-[0.3em]">Horarios</span>
+                <h2 class="text-4xl md:text-5xl text-white mt-2">CLASES SEMANALES</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="border border-gray-800 p-6 bg-[#0e0e0e]">
+                    <h3 class="text-white text-xl mb-3">Lunes & Miércoles</h3>
+                    <ul class="text-gray-500 text-sm space-y-2">
+                        <li>06:00 AM – Powerlifting</li>
+                        <li>12:00 PM – HIIT Metcon</li>
+                        <li>07:00 PM – Bodybuilding</li>
+                    </ul>
+                </div>
+                <div class="border border-gray-800 p-6 bg-[#0e0e0e]">
+                    <h3 class="text-white text-xl mb-3">Martes & Jueves</h3>
+                    <ul class="text-gray-500 text-sm space-y-2">
+                        <li>06:00 AM – Strength Basics</li>
+                        <li>05:00 PM – Cardio Teatro</li>
+                        <li>08:00 PM – Mobility Flow</li>
+                    </ul>
+                </div>
+                <div class="border border-gray-800 p-6 bg-[#0e0e0e]">
+                    <h3 class="text-white text-xl mb-3">Viernes & Sábado</h3>
+                    <ul class="text-gray-500 text-sm space-y-2">
+                        <li>07:00 AM – Olympic Lifts</li>
+                        <li>12:00 PM – Full Body Pump</li>
+                        <li>05:00 PM – Strongman</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-24 bg-[#0b0b0b] border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-primary font-bold uppercase tracking-[0.3em]">Testimonios</span>
+                <h2 class="text-4xl md:text-5xl text-white mt-2">RESULTADOS REALES</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black border border-gray-800 p-6">
+                    <div class="text-primary text-xl mb-3">★★★★★</div>
+                    <p class="text-gray-500 text-sm">“Subí 50kg en peso muerto en 4 meses. Ambiente brutal.”</p>
+                    <div class="text-white mt-4">— Carlos M.</div>
+                </div>
+                <div class="bg-black border border-gray-800 p-6">
+                    <div class="text-primary text-xl mb-3">★★★★★</div>
+                    <p class="text-gray-500 text-sm">“Las clases de HIIT son intensas y efectivas. Bajé 8% de grasa.”</p>
+                    <div class="text-white mt-4">— Valeria P.</div>
+                </div>
+                <div class="bg-black border border-gray-800 p-6">
+                    <div class="text-primary text-xl mb-3">★★★★★</div>
+                    <p class="text-gray-500 text-sm">“Entrenadores top, máquinas nuevas y cero excusas.”</p>
+                    <div class="text-white mt-4">— Andrés R.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership CTA -->
+    <section class="py-24 bg-primary text-black text-center px-6">
+        <h2 class="text-5xl md:text-7xl mb-6">¿LISTO PARA EL CAMBIO?</h2>
+        <p class="text-xl max-w-2xl mx-auto mb-10 font-medium">
+            Únete a la legión de titanes. Sin contratos de permanencia. Cancela cuando quieras.
+        </p>
+        <button class="bg-black text-white px-12 py-5 text-xl font-bold uppercase tracking-widest hover:bg-gray-900 shadow-2xl transform hover:-translate-y-1 transition-transform">
+            Obtener Pase Gratis
+        </button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-gray-900 text-center">
+        <div class="text-4xl brand-font text-gray-800 mb-6 select-none">TITAN</div>
+        <div class="flex justify-center gap-6 text-gray-500 mb-8">
+            <a href="#" class="hover:text-primary">Instagram</a>
+            <a href="#" class="hover:text-primary">Facebook</a>
+            <a href="#" class="hover:text-primary">YouTube</a>
+        </div>
+        <p class="text-gray-700 text-xs uppercase tracking-widest">© 2026 Titan Power Gym. Built Strong.</p>
+    </footer>
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+</body>
+</html>

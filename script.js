@@ -373,3 +373,182 @@ if (mobileMenuBtn && mobileMenu) {
         }
     }, { passive: true });
 }
+
+// --- Dark Mode Logic ---
+const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+
+const themeToggleBtn = document.getElementById('theme-toggle');
+const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
+
+function updateIcons(isDark) {
+    // Desktop Icons
+    if (themeToggleDarkIcon && themeToggleLightIcon) {
+        if (isDark) {
+            themeToggleDarkIcon.classList.add('hidden');
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+            themeToggleLightIcon.classList.add('hidden');
+        }
+    }
+    // Mobile Icons
+    if (themeToggleDarkIconMobile && themeToggleLightIconMobile) {
+        if (isDark) {
+            themeToggleDarkIconMobile.classList.add('hidden');
+            themeToggleLightIconMobile.classList.remove('hidden');
+        } else {
+            themeToggleDarkIconMobile.classList.remove('hidden');
+            themeToggleLightIconMobile.classList.add('hidden');
+        }
+    }
+}
+
+// Initial check
+if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+    updateIcons(true);
+} else {
+    document.documentElement.classList.remove('dark');
+    updateIcons(false);
+}
+
+function toggleTheme() {
+    // toggle icons
+    let isDarkNow = document.documentElement.classList.contains('dark');
+    
+    if (isDarkNow) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+        updateIcons(false);
+    } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+        updateIcons(true);
+    }
+}
+
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', toggleTheme);
+}
+if (themeToggleBtnMobile) {
+    themeToggleBtnMobile.addEventListener('click', toggleTheme);
+}
+
+// ==================== BUSCADOR INTELIGENTE ====================
+const searchInput = document.getElementById('search-projects');
+
+if (searchInput) {
+    let searchTimeout;
+    
+    searchInput.addEventListener('input', function(e) {
+        // Debounce para optimizar rendimiento
+        clearTimeout(searchTimeout);
+        
+        searchTimeout = setTimeout(() => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            
+            // Obtener todas las tarjetas de proyectos
+            const projectCards = document.querySelectorAll('.card-hover');
+            const sections = document.querySelectorAll('section[id]:not(#inicio):not(#contacto)');
+            
+            if (searchTerm === '') {
+                // Mostrar todo si no hay búsqueda
+                projectCards.forEach(card => {
+                    card.style.display = '';
+                    card.classList.remove('search-highlight');
+                });
+                sections.forEach(section => {
+                    section.style.display = '';
+                });
+                return;
+            }
+            
+            let hasResults = false;
+            const sectionResults = new Map();
+            
+            // Filtrar tarjetas
+            projectCards.forEach(card => {
+                const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+                const description = card.querySelector('p')?.textContent.toLowerCase() || '';
+                const category = card.closest('section')?.querySelector('h2')?.textContent.toLowerCase() || '';
+                
+                // Buscar en título, descripción y categoría
+                const matches = title.includes(searchTerm) || 
+                               description.includes(searchTerm) || 
+                               category.includes(searchTerm);
+                
+                if (matches) {
+                    card.style.display = '';
+                    card.classList.add('search-highlight');
+                    hasResults = true;
+                    
+                    // Rastrear qué secciones tienen resultados
+                    const section = card.closest('section');
+                    if (section) {
+                        sectionResults.set(section, true);
+                    }
+                } else {
+                    card.style.display = 'none';
+                    card.classList.remove('search-highlight');
+                }
+            });
+            
+            // Ocultar secciones sin resultados
+            sections.forEach(section => {
+                if (sectionResults.has(section)) {
+                    section.style.display = '';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+            
+            // Efecto visual: animación suave
+            projectCards.forEach((card, index) => {
+                if (card.style.display !== 'none') {
+                    card.style.animation = `fadeInScale 0.3s ease forwards ${index * 0.05}s`;
+                }
+            });
+        }, 300); // 300ms de debounce
+    });
+    
+    // Limpiar búsqueda al presionar Escape
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            this.value = '';
+            this.dispatchEvent(new Event('input'));
+            this.blur();
+        }
+    });
+}
+
+// CSS Animation para search highlight (inyectar si no existe)
+if (!document.querySelector('#search-styles')) {
+    const style = document.createElement('style');
+    style.id = 'search-styles';
+    style.textContent = `
+        .search-highlight {
+            animation: searchPulse 0.5s ease;
+        }
+        
+        @keyframes searchPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); box-shadow: 0 8px 30px rgba(124, 58, 237, 0.3); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}

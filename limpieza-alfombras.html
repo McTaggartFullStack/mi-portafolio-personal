@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="img/favicon.png" />
-  <title>Limpieza de Alfombras | AlfombrasPTY</title>
+    <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>Limpieza de Alfombras | AlfombrasPTY</title>
   <meta name="description" content="Servicio profesional de limpieza de alfombras en Panamá. Eliminamos manchas, olores y ácaros con equipos de última generación." />
   <link rel="canonical" href="https://www.webspty.dev/limpieza-alfombras.html" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -17,9 +20,22 @@
   </style>
 </head>
 <body>
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
   <header class="sticky top-0 z-40 bg-white/85 backdrop-blur border-b border-slate-100">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="index.html" class="text-sm font-semibold text-slate-600 hover:text-emerald-600">← Volver al portafolio</a>
       <span class="text-sm font-semibold tracking-[0.2em] uppercase text-emerald-600">AlfombrasPTY</span>
       <a href="#contacto" class="hidden sm:inline-flex px-4 py-2 bg-emerald-600 text-white rounded-full text-sm font-semibold">Cotizar ahora</a>
     </div>
@@ -44,7 +60,7 @@
         </div>
         <div class="fade-in" style="transition-delay: 0.15s;">
           <div class="glass rounded-3xl p-6 shadow-xl">
-            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80" alt="Limpieza de alfombras" class="w-full h-80 object-cover rounded-2xl" loading="lazy" />
+            <img src="img/alfombras/limpieza.webp" alt="Limpieza de alfombras" class="w-full h-80 object-cover rounded-2xl" loading="lazy" />
             <div class="mt-4 flex items-center justify-between text-sm text-slate-600">
               <span>Atención en 24 horas</span>
               <span class="text-emerald-600 font-semibold">Desde $25</span>
@@ -141,7 +157,7 @@
           </div>
         </div>
         <div class="fade-in" style="transition-delay: 0.1s;">
-          <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200&q=80" alt="Alfombra limpia" class="w-full h-96 object-cover rounded-3xl shadow-xl" loading="lazy" />
+          <img src="img/alfombras/alfombras.webp" alt="Alfombra limpia" class="w-full h-96 object-cover rounded-3xl shadow-xl" loading="lazy" />
         </div>
       </div>
     </section>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>NEXUS | Next Gen DeFi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        'crypto-dark': '#0B0B15',
+                        'crypto-card': 'rgba(255, 255, 255, 0.05)',
+                        'crypto-primary': '#6366f1',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+
+        .blob {
+            position: absolute;
+            background: linear-gradient(180deg, #6366f1 0%, #a855f7 100%);
+            filter: blur(80px);
+            opacity: 0.4;
+            border-radius: 50%;
+            z-index: -1;
+            animation: moveBlob 10s infinite alternate;
+        }
+
+        @keyframes moveBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(20px, -20px) scale(1.1); }
+        }
+
+        .float {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-crypto-dark text-white font-sans overflow-x-hidden">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Blobs Background -->
+    <div class="blob w-96 h-96 top-0 left-0"></div>
+    <div class="blob w-96 h-96 bottom-0 right-0 bg-gradient-to-t from-cyan-500 to-blue-500"></div>
+
+    <!-- Navbar -->
+    <nav class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center relative z-20">
+        <div class="text-2xl font-bold tracking-widest flex items-center gap-2">
+            <div class="w-8 h-8 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-lg"></div>
+            NEXUS
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+            <a href="#" class="hover:text-white transition">Markets</a>
+            <a href="#" class="hover:text-white transition">Exchange</a>
+            <a href="#" class="hover:text-white transition">Wallet</a>
+            <a href="index.html" class="hover:text-white transition">Back</a>
+        </div>
+        <a href="#" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-full font-bold transition shadow-lg shadow-indigo-500/20">
+            Connect Wallet
+        </a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="max-w-7xl mx-auto px-6 py-20 md:py-32 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+        <div>
+            <div class="inline-block px-4 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400 text-xs font-bold mb-6 tracking-wide">
+                WEB3 REVOLUTION
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                Decentralized <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 glow-text">Trading Protocol</span>
+            </h1>
+            <p class="text-gray-400 text-lg mb-10 max-w-lg leading-relaxed">
+                Swap, earn, and build on the leading decentralized crypto trading protocol. Fast, secure, and low fees.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#" class="bg-white text-black px-8 py-4 rounded-xl font-bold text-center hover:scale-105 transition transform">
+                    Start Trading
+                </a>
+                <a href="#" class="glass-card text-white px-8 py-4 rounded-xl font-bold text-center hover:bg-white/10 transition">
+                    Read Whitepaper
+                </a>
+            </div>
+            
+            <div class="mt-12 flex items-center gap-8">
+                <div>
+                    <div class="text-3xl font-bold text-white">$45B+</div>
+                    <div class="text-gray-500 text-xs uppercase tracking-wider">Trading Volume</div>
+                </div>
+                <div class="w-px h-10 bg-gray-800"></div>
+                <div>
+                    <div class="text-3xl font-bold text-white">2M+</div>
+                    <div class="text-gray-500 text-xs uppercase tracking-wider">Users</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3D Card Visual -->
+        <div class="relative min-h-[500px] flex items-center justify-center">
+            <!-- Back Card -->
+            <div class="absolute glass-card w-80 h-96 rounded-3xl transform -rotate-12 -translate-x-12 opacity-40 z-0"></div>
+            
+            <!-- Main Card -->
+            <div class="absolute glass-card w-full max-w-md p-6 rounded-3xl transform rotate-3 float z-10 shadow-2xl shadow-indigo-500/10">
+                <div class="flex justify-between items-center mb-8">
+                    <div class="text-gray-400 text-sm">Current Balance</div>
+                    <div class="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-xs">ETH</div>
+                </div>
+                <div class="text-4xl font-bold mb-2">12.845 ETH</div>
+                <div class="text-green-400 text-sm mb-8">+$2,431.20 ("+12.5%")</div>
+                
+                <div class="space-y-4">
+                    <div class="bg-black/20 p-4 rounded-xl flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400">₿</div>
+                            <div>
+                                <div class="font-bold text-sm">Bitcoin</div>
+                                <div class="text-gray-500 text-xs">BTC</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-sm">0.45 BTC</div>
+                            <div class="text-gray-500 text-xs">$19,420</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-black/20 p-4 rounded-xl flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">SOL</div>
+                            <div>
+                                <div class="font-bold text-sm">Solana</div>
+                                <div class="text-gray-500 text-xs">SOL</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-sm">145 SOL</div>
+                            <div class="text-gray-500 text-xs">$3,240</div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="w-full mt-8 bg-indigo-600 hover:bg-indigo-700 py-4 rounded-xl font-bold transition">
+                    Send Assets
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-24 max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4">Why choose Nexus?</h2>
+            <p class="text-gray-400 max-w-xl mx-auto">Market leading security features combined with an intuitive interface for both beginners and pros.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition duration-300">
+                <div class="w-14 h-14 bg-indigo-500/10 rounded-2xl flex items-center justify-center text-2xl mb-6 text-indigo-400">⚡</div>
+                <h3 class="text-xl font-bold mb-3">Lightning Fast</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Transactions confirmed in sub-seconds with our layer-2 scaling solution.</p>
+            </div>
+            
+            <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition duration-300">
+                <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-2xl mb-6 text-purple-400">🔒</div>
+                <h3 class="text-xl font-bold mb-3">Bank-Grade Security</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Audited smart contracts and multi-sig wallets ensure your assets are always safe.</p>
+            </div>
+            
+            <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition duration-300">
+                <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-2xl mb-6 text-cyan-400">🌍</div>
+                <h3 class="text-xl font-bold mb-3">Global Access</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Trade from anywhere in the world without restrictions. Your keys, your crypto.</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="border-t border-white/5 py-12 text-center text-gray-500 text-sm relative z-10 bg-crypto-dark">
+        <p>&copy; 2026 Nexus Protocol. All rights reserved.</p>
+    </footer>
+
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

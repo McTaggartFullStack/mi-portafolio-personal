@@ -2,112 +2,357 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.webspty.dev/</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://www.webspty.dev/abogados.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/agencia.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/arquitectura.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/art-gallery.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.webspty.dev/auto-accesorios.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/banda.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/barberia.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/bienes-raices.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/boda.html</loc>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/canelino.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/casco.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/chino.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/cocina.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/coffee-shop.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/colaboradores.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/componentes.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/conferencia.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/consultoria.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/crypto-defi.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/dashboard-analytics.html</loc>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/educacion.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/electropty.html</loc>
-    <lastmod>2026-02-03</lastmod>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/esports-team.html</loc>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/evento.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/experimental.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/fintech.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/fitness-gym.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/fitness.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/foro-ayuda.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/foro-gaming.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/foro-tech.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/fotografia.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/gaming.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/gimnasio.html</loc>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/heladeria.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/hogar.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/inmobiliaria.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/legal-firm.html</loc>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/limpieza-alfombras.html</loc>
-    <lastmod>2026-02-03</lastmod>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/luxury-cars.html</loc>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/mariscos.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/mascotas.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/medical-clinic.html</loc>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/miel-pan.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/moda.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/music-streaming.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/musica.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/ngo-charity.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/odontologia.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/panaderia.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/photography-portfolio.html</loc>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/pizzeria.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/precios.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/restaurante.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/retratos.html</loc>
-    <lastmod>2026-02-03</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/revista.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/ropa.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/saas-landing.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/social-feed.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/spa.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/supermercado.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/sushi-restaurant.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/tienda-deco.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/tienda-moda.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/tienda-tech.html</loc>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/tienda.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/travel-agency.html</loc>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.webspty.dev/tribu.html</loc>
-    <lastmod>2026-01-30</lastmod>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/university.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.webspty.dev/viajes.html</loc>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
