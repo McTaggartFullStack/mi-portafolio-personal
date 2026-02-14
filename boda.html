@@ -14,23 +14,107 @@
     <style>
         body { font-family: 'Montserrat', sans-serif; }
         h1, h2, .script-font { font-family: 'Great Vibes', cursive; }
+        /* PREVIEW IFRAME MODES */
+        .preview-shell {
+            background: #fff;
+            box-shadow: 0 24px 70px rgba(15, 23, 42, 0.25);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            margin: auto;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(15, 23, 42, 0.12);
+        }
+
+        .preview-shell.preview-phone {
+            width: 390px;
+            height: 844px;
+            border-radius: 40px;
+            border-width: 8px;
+            border-color: #1f2937;
+        }
+
+        .preview-shell.preview-tablet {
+            width: 820px;
+            height: 1180px;
+            border-radius: 24px;
+            border-width: 8px;
+            border-color: #1f2937;
+        }
+
+        .preview-shell.preview-desktop {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .preview-fullscreen {
+            width: 100% !important;
+            height: calc(100vh - 4rem) !important;
+            max-width: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            background: #f3f4f6 !important;
+            overflow: hidden !important; 
+        }
+
+        .preview-fullscreen .preview-shell {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: none !important;
+            max-height: none !important;
+            border-radius: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+        #lightbox-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); z-index: 100000; display: flex; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(5px); }
+        #lightbox-overlay.hidden { display: none !important; }
+        #lightbox-overlay.show { opacity: 1; }
+        .lightbox-content { position: relative; max-width: 90vw; max-height: 90vh; transform: scale(0.95); transition: transform 0.3s ease; }
+        #lightbox-overlay.show .lightbox-content { transform: scale(1); }
+        #lightbox-img { max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: 4px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .lightbox-close { position: absolute; top: -40px; right: -40px; background: transparent; border: none; color: white; font-size: 2rem; cursor: pointer; padding: 10px; line-height: 1; transition: color 0.2s; }
+        .lightbox-close:hover { color: #d1d5db; }
+        @media (max-width: 768px) { .lightbox-close { top: -40px; right: 0; } }
     </style>
 </head>
 <body class="bg-[#FFFBFB] text-slate-600">
-<!-- Portfolio Top Bar -->
-<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
-    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center gap-4">
-            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
-                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
-            </a>
-            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
-                <span>&larr;</span> Volver al Portafolio
-            </a>
+    <!-- Portfolio Top Bar (estilo banda) -->
+    <nav id="portfolio-topbar" class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                        <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+                    </a>
+                    <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                        <span>&larr;</span> Volver al Portafolio
+                    </a>
+                </div>
+                <div class="hidden lg:flex items-center gap-2">
+                  <button type="button" data-preview="phone" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">Teléfono</button>
+                  <button type="button" data-preview="tablet" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">Tablet</button>
+                  <button type="button" data-preview="desktop" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-900 text-white">Escritorio</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="portfolio-spacer" class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Preview Iframe Container -->
+    <div id="preview-frame" class="w-full h-[calc(100vh-4rem)] bg-gray-100 hidden flex flex-col items-center overflow-auto py-8">
+        <div id="preview-shell" class="preview-shell preview-desktop shadow-2xl bg-white overflow-hidden shrink-0">
+            <iframe id="preview-iframe" class="w-full h-full border-0" src="about:blank"></iframe>
         </div>
     </div>
-</nav>
-<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Original Content Wrapper -->
+    <div id="page-content">
 
     <!-- Navigation -->
     <nav class="absolute w-full z-50 py-6">
@@ -44,10 +128,10 @@
                 <a href="#" class="hover:text-rose-500 transition">Servicios</a>
                 <a href="#" class="hover:text-rose-500 transition">Historias</a>
             </div>
-            <a href="index.html" class="md:hidden text-rose-900 font-bold">Menu</a>
-            <a href="index.html" class="hidden md:block px-6 py-2 bg-rose-900/90 hover:bg-rose-800 text-white rounded-full text-xs font-bold uppercase tracking-widest transition-all">
+            <a href="#" class="md:hidden text-rose-900 font-bold">Menu</a>
+            <!-- <a href="index.html" class="hidden md:block px-6 py-2 bg-rose-900/90 hover:bg-rose-800 text-white rounded-full text-xs font-bold uppercase tracking-widest transition-all">
                 Volver
-            </a>
+            </a> -->
         </div>
     </nav>
 
@@ -138,30 +222,148 @@
                 <a href="#">Pinterest</a>
                 <a href="#">Facebook</a>
             </div>
-            <p class="text-xs text-slate-400">© 2024 Amour Wedding Planning. Todos los derechos reservados.</p>
+            <p class="text-xs text-slate-400">© 2026 Amour Wedding Planning. Todos los derechos reservados.</p>
         </div>
     </footer>
 
+    <!-- Footer WebsPTY -->
+    <footer class="bg-gray-900 text-white py-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+                <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+                    <span>✉️</span> mctaggart.dev@gmail.com
+                </a>
+                <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+                    <span>📱</span> +507 6204-9480
+                </a>
+            </div>
+            <p class="text-gray-500 text-sm">
+                Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+            </p>
+        </div>
+    </footer>
 
+</div>
 
-
-<!-- Footer WebsPTY -->
-<footer class="bg-gray-900 text-white py-8 relative z-10">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
-    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
-      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
-        <span>✉️</span> mctaggart.dev@gmail.com
-      </a>
-      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
-        <span>📱</span> +507 6204-9480
-      </a>
+<!-- Lightbox -->
+<div id="lightbox-overlay" class="hidden" aria-hidden="true">
+    <div class="lightbox-content">
+        <button class="lightbox-close" type="button" aria-label="Cerrar">✕</button>
+        <img id="lightbox-img" src="" alt="" />
     </div>
-    <p class="text-gray-500 text-sm">
-      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
-    </p>
-  </div>
-</footer>
+</div>
+
+<script>
+    const previewFrame = document.getElementById("preview-frame");
+    const previewShell = document.getElementById("preview-shell");
+    const previewIframe = document.getElementById("preview-iframe");
+    const previewButtons = document.querySelectorAll(".preview-btn");
+    const pageContent = document.getElementById("page-content");
+    const portfolioTopbar = document.getElementById("portfolio-topbar");
+    const portfolioSpacer = document.getElementById("portfolio-spacer");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const isPreview = urlParams.get("preview") === "1";
+
+    if (isPreview) {
+        if (portfolioTopbar) portfolioTopbar.style.display = "none";
+        if (portfolioSpacer) portfolioSpacer.style.display = "none";
+        if (previewFrame) previewFrame.style.display = "none";
+        if (pageContent) pageContent.style.display = "block";
+    } else {
+        if (previewFrame) {
+            previewFrame.classList.remove("hidden");
+            previewFrame.style.display = "flex";
+        }
+        if (pageContent) {
+            pageContent.style.display = "none";
+        }
+
+        if (previewIframe) {
+            const previewUrl = new URL(window.location.href);
+            previewUrl.searchParams.set("preview", "1");
+            previewIframe.src = previewUrl.toString();
+        }
+
+        const setPreview = (mode) => {
+            // Reset shell classes
+            previewShell.classList.remove("preview-phone", "preview-tablet", "preview-desktop");
+            previewShell.classList.add(`preview-${mode}`);
+
+            // Toggle fullscreen wrapper class
+            if (mode === "desktop") {
+                previewFrame.classList.add("preview-fullscreen");
+            } else {
+                previewFrame.classList.remove("preview-fullscreen");
+            }
+
+            // Update buttons
+            previewButtons.forEach((btn) => {
+                const isActive = btn.dataset.preview === mode;
+                if (isActive) {
+                    btn.classList.remove("bg-gray-100", "text-gray-700");
+                    btn.classList.add("bg-gray-900", "text-white");
+                } else {
+                    btn.classList.add("bg-gray-100", "text-gray-700");
+                    btn.classList.remove("bg-gray-900", "text-white");
+                }
+            });
+        };
+
+        previewButtons.forEach((btn) => {
+            btn.addEventListener("click", () => setPreview(btn.dataset.preview));
+        });
+
+        // Initialize
+        setPreview("desktop");
+    }
+
+    // LIGHTBOX
+    (() => {
+        const overlay = document.getElementById("lightbox-overlay");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeBtn = overlay?.querySelector(".lightbox-close");
+
+        if (!overlay || !lightboxImg) return;
+
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || "";
+            overlay.classList.remove("hidden");
+            requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add("show")));
+            overlay.setAttribute("aria-hidden", "false");
+        }
+
+        function closeLightbox() {
+            overlay.classList.remove("show");
+            overlay.setAttribute("aria-hidden", "true");
+            const once = () => {
+                overlay.classList.add("hidden");
+                overlay.removeEventListener("transitionend", once);
+            };
+            overlay.addEventListener("transitionend", once);
+        }
+
+        document.querySelectorAll("img").forEach((img) => {
+            img.style.cursor = "zoom-in";
+            img.addEventListener("click", (e) => {
+                const target = e.currentTarget;
+                openLightbox(target.src, target.alt || "");
+            });
+        });
+
+        overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) closeLightbox();
+        });
+
+        closeBtn?.addEventListener("click", closeLightbox);
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && overlay.classList.contains("show")) closeLightbox();
+        });
+    })();
+</script>
 
 </body>
 </html>

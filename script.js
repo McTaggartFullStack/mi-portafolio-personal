@@ -47,23 +47,32 @@ document.addEventListener('DOMContentLoaded', () => {
 // Navbar background change on scroll
 let lastScroll = 0;
 const navbar = document.getElementById('navbar');
+let ticking = false; // Optimization variable
 
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll <= 0) {
-        navbar.classList.remove('shadow-md');
-        navbar.style.transform = 'translateY(0)';
-    } else if (currentScroll > lastScroll && currentScroll > 100) {
-        // Scrolling down
-        navbar.style.transform = 'translateY(-100%)';
-    } else {
-        // Scrolling up
-        navbar.style.transform = 'translateY(0)';
-        navbar.classList.add('shadow-md');
+    // Throttling with requestAnimationFrame for better mobile performance
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                navbar.classList.remove('shadow-md');
+                navbar.style.transform = 'translateY(0)';
+            } else if (currentScroll > lastScroll && currentScroll > 100) {
+                // Scrolling down
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up
+                navbar.style.transform = 'translateY(0)';
+                navbar.classList.add('shadow-md');
+            }
+            
+            lastScroll = currentScroll;
+            ticking = false;
+        });
+
+        ticking = true;
     }
-    
-    lastScroll = currentScroll;
 });
 
 // Parallax effect for hero section
@@ -552,3 +561,118 @@ if (!document.querySelector('#search-styles')) {
     `;
     document.head.appendChild(style);
 }
+
+// Optimization: "Load More" functionality for sections
+document.addEventListener('DOMContentLoaded', () => {
+    // Function to handle the "Load More" logic
+    const initLoadMore = () => {
+        // Find all grids and keep only those containing project cards
+        const grids = Array.from(document.querySelectorAll('div.grid'))
+            .filter(grid => grid.querySelector('.card-zoom'));
+
+        // Config: How many cards to show initially
+        const ITEMS_PER_PAGE = 3;
+
+        grids.forEach(grid => {
+            // Avoid processing grids that are already processed (just in case)
+            if (grid.dataset.loadMoreInitialized) return;
+            grid.dataset.loadMoreInitialized = 'true';
+
+            const cards = Array.from(grid.querySelectorAll('.card-zoom'));
+
+            // If we have more cards than the limit
+            if (cards.length > ITEMS_PER_PAGE) {
+                // Hide the extra cards
+                cards.slice(ITEMS_PER_PAGE).forEach(card => {
+                    card.classList.add('hidden-card');
+                    card.style.display = 'none'; // Force hide
+                    card.setAttribute('aria-hidden', 'true');
+                });
+
+                // Create "Ver más" button
+                const buttonContainer = document.createElement('div');
+                buttonContainer.className = 'w-full flex justify-center mt-12 mb-16 relative z-10';
+
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.setAttribute('aria-label', 'Ver más proyectos');
+                btn.innerHTML = `<span class="relative z-10 flex items-center gap-3 uppercase tracking-wide">Ver más proyectos <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>`;
+                btn.className = 'group relative px-10 py-4 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white text-lg font-extrabold rounded-full shadow-2xl ring-2 ring-purple-300/60 dark:ring-purple-500/60 hover:shadow-purple-500/50 hover:-translate-y-1 transition-all duration-300 overflow-hidden focus:outline-none focus-visible:ring-4 focus-visible:ring-purple-300/60';
+
+                // Add shine effect element
+                const shine = document.createElement('div');
+                shine.className = 'absolute inset-0 translate-x-[-120%] group-hover:translate-x-[120%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12';
+                btn.appendChild(shine);
+
+                btn.addEventListener('click', () => {
+                    const isExpanded = btn.dataset.expanded === 'true';
+
+                    if (!isExpanded) {
+                        // Show all hidden cards in this grid
+                        const hiddenCards = grid.querySelectorAll('.hidden-card');
+
+                        hiddenCards.forEach((card, index) => {
+                            card.style.display = '';
+                            card.classList.remove('hidden-card');
+                            card.removeAttribute('aria-hidden');
+
+                            card.animate([
+                                { opacity: 0, transform: 'translateY(20px)' },
+                                { opacity: 1, transform: 'translateY(0)' }
+                            ], {
+                                duration: 500,
+                                delay: index * 100,
+                                fill: 'forwards',
+                                easing: 'ease-out'
+                            });
+                        });
+
+                        btn.dataset.expanded = 'true';
+                        btn.innerHTML = `<span class="relative z-10 flex items-center gap-3 uppercase tracking-wide">Ver menos <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg></span>`;
+                    } else {
+                        // Hide extra cards again
+                        const cardsToHide = Array.from(grid.querySelectorAll('.card-zoom')).slice(ITEMS_PER_PAGE);
+
+                        cardsToHide.forEach((card, index) => {
+                            card.animate([
+                                { opacity: 1, transform: 'translateY(0)' },
+                                { opacity: 0, transform: 'translateY(10px)' }
+                            ], {
+                                duration: 300,
+                                delay: index * 40,
+                                fill: 'forwards',
+                                easing: 'ease-out'
+                            });
+
+                            setTimeout(() => {
+                                card.classList.add('hidden-card');
+                                card.style.display = 'none';
+                                card.setAttribute('aria-hidden', 'true');
+                            }, 280);
+                        });
+
+                        btn.dataset.expanded = 'false';
+                        btn.innerHTML = `<span class="relative z-10 flex items-center gap-3 uppercase tracking-wide">Ver más proyectos <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></span>`;
+
+                        // On mobile/tablet, return the user to the section header
+                        if (window.innerWidth < 1280) {
+                            const heading = (grid.previousElementSibling && grid.previousElementSibling.tagName === 'H3')
+                                ? grid.previousElementSibling
+                                : grid.closest('section')?.querySelector('h3[id]');
+                            if (heading) {
+                                heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        }
+                    }
+                });
+
+                buttonContainer.appendChild(btn);
+                // Insert button after the grid
+                grid.parentNode.insertBefore(buttonContainer, grid.nextSibling);
+            }
+        });
+    };
+
+    // Run immediately if ready, or wait a bit to ensure DOM elements are fully parsed
+    initLoadMore();
+});

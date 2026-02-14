@@ -18,36 +18,195 @@
         body {
             font-family: 'Lato', sans-serif;
         }
+        .preview-shell {
+            width: 100%;
+            max-width: 1400px;
+            height: 900px;
+            border: 1px solid rgba(15, 23, 42, 0.12);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 24px 70px rgba(15, 23, 42, 0.25);
+            transition: width 0.25s ease, max-width 0.25s ease, height 0.25s ease;
+            background: #fff;
+        }
+
+        .preview-shell.preview-phone {
+            width: 390px;
+            max-width: 390px;
+            height: 844px;
+        }
+
+        .preview-shell.preview-tablet {
+            width: 820px;
+            max-width: 820px;
+            height: 1180px;
+        }
+
+        .preview-shell.preview-desktop {
+            width: 100%;
+            max-width: 1400px;
+            height: 100%;
+            max-height: none;
+        }
+
+        .preview-iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background: #ffffff;
+        }
+
+        .preview-fullscreen {
+            position: fixed !important;
+            top: 4rem !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100vw !important;
+            height: auto !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            z-index: 50;
+            overflow: hidden !important;
+            display: block !important;
+            background: #fff !important;
+        }
+
+        .preview-fullscreen .preview-shell {
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+            max-width: none !important;
+            max-height: none !important;
+        }
+
+        /* LIGHTBOX */
+        #lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 23, 42, 0.8);
+            z-index: 60;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 220ms ease;
+        }
+
+        #lightbox-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            transform: scale(0.95);
+            transition: transform 220ms ease;
+        }
+
+        #lightbox-overlay.show .lightbox-content {
+            transform: scale(1);
+        }
+
+        .lightbox-content img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 90vh;
+            border-radius: 4px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 32px;
+            cursor: pointer;
+            padding: 8px;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .lightbox-close:hover {
+            color: #e2e8f0;
+        }
+
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-<!-- Portfolio Top Bar -->
-<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
-    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center gap-4">
-            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
-                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
-            </a>
-            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
-                <span>&larr;</span> Volver al Portafolio
-            </a>
+    <nav id="portfolio-topbar" class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                        <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+                    </a>
+                    <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                        <span>&larr;</span> Volver al Portafolio
+                    </a>
+                </div>
+                <div class="hidden lg:flex items-center gap-2">
+                <button type="button" data-preview="phone" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">Teléfono</button>
+                <button type="button" data-preview="tablet" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">Tablet</button>
+                <button type="button" data-preview="desktop" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-900 text-white">Escritorio</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="portfolio-spacer" class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Preview Iframe Container -->
+    <div id="preview-frame" class="w-full h-[calc(100vh-4rem)] bg-gray-100 hidden flex flex-col items-center overflow-auto pt-8 pb-8">
+        <div id="preview-shell" class="preview-shell preview-desktop shadow-2xl bg-white overflow-hidden mx-auto shrink-0">
+            <iframe id="preview-iframe" class="w-full h-full border-0" src="about:blank"></iframe>
         </div>
     </div>
-</nav>
-<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Original Content Wrapper -->
+    <div id="page-content">
     <!-- Navbar -->
     <nav class="bg-white shadow-sm fixed w-full z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
+            <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center">
                     <span class="text-2xl font-bold text-slate-800 serif tracking-wide">PRESTIGE <span class="text-yellow-600">ESTATE</span></span>
                 </div>
+                
+                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#" class="text-gray-600 hover:text-yellow-600 transition-colors uppercase text-xs tracking-widest font-semibold">Propiedades</a>
                     <a href="#" class="text-gray-600 hover:text-yellow-600 transition-colors uppercase text-xs tracking-widest font-semibold">Agentes</a>
                     <a href="#" class="text-gray-600 hover:text-yellow-600 transition-colors uppercase text-xs tracking-widest font-semibold">Nosotros</a>
                     <a href="index.html" class="px-5 py-2 bg-slate-900 text-white text-xs uppercase tracking-widest font-semibold hover:bg-slate-800 transition-colors">Volver</a>
                 </div>
+
+                <!-- Mobile Button -->
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-500 hover:text-slate-900 focus:outline-none p-2">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-20 shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-yellow-600 hover:bg-gray-50 uppercase tracking-wider text-xs">Propiedades</a>
+                <a href="#" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-yellow-600 hover:bg-gray-50 uppercase tracking-wider text-xs">Agentes</a>
+                <a href="#" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-yellow-600 hover:bg-gray-50 uppercase tracking-wider text-xs">Nosotros</a>
+                <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-white bg-slate-900 hover:bg-slate-800 uppercase tracking-wider text-xs mt-4 text-center">Volver</a>
             </div>
         </div>
     </nav>
@@ -269,40 +428,6 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="col-span-1 md:col-span-2">
-                <span class="text-2xl font-bold serif tracking-wide">PRESTIGE <span class="text-yellow-600">ESTATE</span></span>
-                <p class="text-gray-400 mt-4 max-w-sm text-sm">
-                    Redefiniendo el estándar de bienes raíces de lujo en Panamá. Comprometidos con la excelencia y la satisfacción total del cliente.
-                </p>
-            </div>
-            <div>
-                <h4 class="text-sm font-bold uppercase tracking-widest mb-6">Enlaces</h4>
-                <ul class="space-y-3 text-sm text-gray-400">
-                    <li><a href="#" class="hover:text-white transition-colors">Propiedades</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Agentes</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Servicios</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Contacto</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-sm font-bold uppercase tracking-widest mb-6">Contacto</h4>
-                <ul class="space-y-3 text-sm text-gray-400">
-                    <li>Costa del Este, Torre V</li>
-                    <li>Panamá, Rep. de Panamá</li>
-                    <li>info@prestigeestate.com</li>
-                    <li>+507 830-5555</li>
-                </ul>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-gray-800 text-center text-xs text-gray-500">
-            © 2026 Prestige Estate. Demo por WebsPTY.
-        </div>
-    </footer>
-
-
-
 <!-- Footer WebsPTY -->
 <footer class="bg-gray-900 text-white py-8 relative z-10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -320,6 +445,132 @@
     </p>
   </div>
 </footer>
+</div>
 
+<!-- Lightbox -->
+<div id="lightbox-overlay" class="hidden fixed inset-0 z-[100000] bg-black/90 flex justify-center items-center opacity-0 transition-opacity duration-300" aria-hidden="true">
+    <div class="relative max-w-4xl max-h-[90vh] p-4 text-center">
+        <button class="lightbox-close absolute top-4 right-4 text-white text-3xl font-bold bg-transparent border-0 cursor-pointer focus:outline-none hover:text-gray-300 transition-colors" type="button" aria-label="Cerrar">✕</button>
+        <img id="lightbox-img" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl" src="" alt="" />
+    </div>
+</div>
+
+<script>
+    const previewFrame = document.getElementById("preview-frame");
+    const previewShell = document.getElementById("preview-shell");
+    const previewIframe = document.getElementById("preview-iframe");
+    const previewButtons = document.querySelectorAll(".preview-btn");
+    const pageContent = document.getElementById("page-content");
+    const portfolioTopbar = document.getElementById("portfolio-topbar");
+    const portfolioSpacer = document.getElementById("portfolio-spacer");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const isPreview = urlParams.get("preview") === "1";
+
+    if (isPreview) {
+        if (portfolioTopbar) portfolioTopbar.style.display = "none";
+        if (portfolioSpacer) portfolioSpacer.style.display = "none";
+        if (previewFrame) previewFrame.style.display = "none";
+        if (pageContent) pageContent.style.display = "block";
+    } else {
+        if (previewFrame) previewFrame.style.display = "flex";
+        if (pageContent) pageContent.style.display = "none";
+
+        if (previewIframe) {
+            const previewUrl = new URL(window.location.href);
+            previewUrl.searchParams.set("preview", "1");
+            previewIframe.src = previewUrl.toString();
+        }
+
+        const setPreview = (mode) => {
+            previewShell.classList.remove("preview-phone", "preview-tablet", "preview-desktop");
+            previewShell.classList.add(`preview-${mode}`);
+
+            if (mode === "desktop") {
+                previewFrame.classList.add("preview-fullscreen");
+            } else {
+                previewFrame.classList.remove("preview-fullscreen");
+            }
+
+            previewButtons.forEach((btn) => {
+                const isActive = btn.dataset.preview === mode;
+                if (isActive) {
+                    btn.classList.remove("bg-gray-100", "text-gray-700");
+                    btn.classList.add("bg-gray-900", "text-white");
+                } else {
+                    btn.classList.add("bg-gray-100", "text-gray-700");
+                    btn.classList.remove("bg-gray-900", "text-white");
+                }
+            });
+        };
+
+        previewButtons.forEach((btn) => {
+            btn.addEventListener("click", () => setPreview(btn.dataset.preview));
+        });
+        
+        setPreview("desktop");
+    }
+
+    // Mobile Menu Logic
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    }
+
+    (() => {
+        const overlay = document.getElementById("lightbox-overlay");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeBtn = overlay?.querySelector(".lightbox-close");
+
+        if (!overlay || !lightboxImg) return;
+
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || "";
+            overlay.classList.remove("hidden");
+            void overlay.offsetWidth;
+            overlay.classList.add("show");
+            overlay.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeLightbox() {
+            overlay.classList.remove("show");
+            overlay.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+
+            const onTransitionEnd = () => {
+                overlay.classList.add("hidden");
+                overlay.removeEventListener("transitionend", onTransitionEnd);
+            };
+            overlay.addEventListener("transitionend", onTransitionEnd);
+        }
+
+        document.querySelectorAll("img").forEach((img) => {
+            if (img.closest("nav") || img.closest("footer") || img.classList.contains("no-lightbox")) return;
+            
+            img.style.cursor = "zoom-in";
+            img.addEventListener("click", (e) => {
+                e.preventDefault();
+                const target = e.currentTarget;
+                openLightbox(target.src, target.alt || "");
+            });
+        });
+
+        overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) closeLightbox();
+        });
+
+        closeBtn?.addEventListener("click", closeLightbox);
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && !overlay.classList.contains("hidden")) closeLightbox();
+        });
+    })();
+</script>
 </body>
 </html>
