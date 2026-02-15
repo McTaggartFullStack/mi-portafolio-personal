@@ -384,67 +384,68 @@ if (mobileMenuBtn && mobileMenu) {
 }
 
 // --- Dark Mode Logic ---
-const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
-const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+document.addEventListener('DOMContentLoaded', function () {
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+    const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
 
-const themeToggleBtn = document.getElementById('theme-toggle');
-const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
 
-function updateIcons(isDark) {
-    // Desktop Icons
-    if (themeToggleDarkIcon && themeToggleLightIcon) {
-        if (isDark) {
-            themeToggleDarkIcon.classList.add('hidden');
-            themeToggleLightIcon.classList.remove('hidden');
-        } else {
-            themeToggleDarkIcon.classList.remove('hidden');
-            themeToggleLightIcon.classList.add('hidden');
+    function updateIcons(isDark) {
+        // Desktop Icons
+        if (themeToggleDarkIcon && themeToggleLightIcon) {
+            if (isDark) {
+                themeToggleDarkIcon.classList.remove('hidden');
+                themeToggleLightIcon.classList.add('hidden');
+            } else {
+                themeToggleDarkIcon.classList.add('hidden');
+                themeToggleLightIcon.classList.remove('hidden');
+            }
+        }
+        // Mobile Icons
+        if (themeToggleDarkIconMobile && themeToggleLightIconMobile) {
+            if (isDark) {
+                themeToggleDarkIconMobile.classList.remove('hidden');
+                themeToggleLightIconMobile.classList.add('hidden');
+            } else {
+                themeToggleDarkIconMobile.classList.add('hidden');
+                themeToggleLightIconMobile.classList.remove('hidden');
+            }
         }
     }
-    // Mobile Icons
-    if (themeToggleDarkIconMobile && themeToggleLightIconMobile) {
-        if (isDark) {
-            themeToggleDarkIconMobile.classList.add('hidden');
-            themeToggleLightIconMobile.classList.remove('hidden');
-        } else {
-            themeToggleDarkIconMobile.classList.remove('hidden');
-            themeToggleLightIconMobile.classList.add('hidden');
-        }
-    }
-}
 
-// Initial check
-if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark');
-    updateIcons(true);
-} else {
-    document.documentElement.classList.remove('dark');
-    updateIcons(false);
-}
-
-function toggleTheme() {
-    // toggle icons
-    let isDarkNow = document.documentElement.classList.contains('dark');
-    
-    if (isDarkNow) {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('color-theme', 'light');
-        updateIcons(false);
-    } else {
+    // Initial check
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
-        localStorage.setItem('color-theme', 'dark');
         updateIcons(true);
+    } else {
+        document.documentElement.classList.remove('dark');
+        updateIcons(false);
     }
-}
 
-if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', toggleTheme);
-}
-if (themeToggleBtnMobile) {
-    themeToggleBtnMobile.addEventListener('click', toggleTheme);
-}
+    function toggleTheme() {
+        // toggle icons
+        let isDarkNow = document.documentElement.classList.contains('dark');
+        if (isDarkNow) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+            updateIcons(false);
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+            updateIcons(true);
+        }
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', toggleTheme);
+    }
+    if (themeToggleBtnMobile) {
+        themeToggleBtnMobile.addEventListener('click', toggleTheme);
+    }
+});
 
 // ==================== BUSCADOR INTELIGENTE ====================
 const searchInput = document.getElementById('search-projects');

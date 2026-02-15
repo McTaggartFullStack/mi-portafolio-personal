@@ -37,15 +37,6 @@
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-        // Estado inicial para móvil
-        if (isMobile()) {
-          iaBtn.style.display = 'flex';
-          iaCircleIcon.style.display = 'flex';
-          iaChatContent.style.display = 'none';
-          iaChatHeader.style.display = 'none';
-          iaChatMessages.style.display = 'none';
-          iaChatInput.style.display = 'none';
-        }
     tailwind.config = {
       darkMode: 'class',
     }
@@ -2581,6 +2572,7 @@
   <!-- JavaScript -->
   <script src="script.js">
   </script>
+  
 
   <!-- Asistente de IA -->
   <style>
@@ -2595,14 +2587,15 @@
       background: linear-gradient(135deg, #6366f1 0%, #a21caf 100%);
       border-radius: 50%;
       box-shadow: 0 8px 32px 0 rgba(99,102,241,0.25);
-      display: none !important;
+      display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: box-shadow 0.2s, transform 0.2s, width 0.3s, height 0.3s, border-radius 0.3s;
     }
     #ia-assistant-btn.expanded {
-      width: 95vw;
+      width: 340px;
+      max-width: 95vw;
       height: 340px;
       border-radius: 1.2rem;
       right: 2.5vw;
@@ -2612,6 +2605,14 @@
       align-items: flex-start;
       justify-content: flex-start;
       padding: 0;
+    }
+    .dark #ia-assistant-btn.expanded {
+      background: #18181b;
+    }
+    @media (max-width: 768px) {
+      #ia-assistant-btn.expanded {
+        width: 95vw;
+      }
     }
     #ia-assistant-btn.expanded .ia-circle-icon {
       display: none;
@@ -2635,6 +2636,9 @@
       font-size: 1.1rem;
       margin-bottom: 0.5rem;
     }
+    .dark #ia-assistant-btn.expanded .ia-chat-header {
+      color: #a5b4fc;
+    }
     #ia-assistant-btn.expanded .ia-chat-messages {
       flex: 1;
       overflow-y: auto;
@@ -2644,10 +2648,18 @@
       margin-bottom: 0.5rem;
       font-size: 0.97rem;
     }
+    .dark #ia-assistant-btn.expanded .ia-chat-messages {
+      background: #27272a;
+      color: #e5e7eb;
+    }
     #ia-assistant-btn.expanded .ia-chat-input {
       display: flex;
-      border-top: 1px solid #e5e7eb;
+      border-top: 1px solid #444;
       background: #fff;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input {
+      background: #18181b;
+      border-top: 1px solid #27272a;
     }
     #ia-assistant-btn.expanded .ia-chat-input input {
       flex: 1;
@@ -2656,6 +2668,10 @@
       font-size: 1rem;
       outline: none;
       background: transparent;
+      color: #222;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input input {
+      color: #e5e7eb;
     }
     #ia-assistant-btn.expanded .ia-chat-input button {
       background: #6366f1;
@@ -2670,84 +2686,33 @@
     #ia-assistant-btn.expanded .ia-chat-input button:hover {
       background: #a21caf;
     }
+    .dark #ia-assistant-btn.expanded .ia-chat-input button {
+      background: #6366f1;
+      color: #fff;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input button:hover {
+      background: #a21caf;
+    }
     
     #ia-assistant-btn svg {
       width: 2rem;
       height: 2rem;
       color: #fff;
     }
-    #ia-chat-box {
-      position: fixed;
-      bottom: 32px;
-      right: 32px;
-      width: 340px;
-      max-width: 95vw;
-      background: #fff;
-      border-radius: 1.5rem;
-      box-shadow: 0 8px 32px 0 rgba(99,102,241,0.18);
-      z-index: 10000;
-      display: none !important;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    #ia-chat-header {
-      background: linear-gradient(135deg, #6366f1 0%, #a21caf 100%);
-      color: #fff;
-      padding: 1rem;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    #ia-chat-messages {
-      padding: 1rem;
-      height: 220px;
-      overflow-y: auto;
-      font-size: 0.97rem;
-      background: #f8fafc;
-    }
-    #ia-chat-input {
-      display: flex;
-      border-top: 1px solid #e5e7eb;
-      background: #fff;
-    }
-    #ia-chat-input input {
-      flex: 1;
-      border: none;
-      padding: 0.8rem 1rem;
-      font-size: 1rem;
-      outline: none;
-      background: transparent;
-    }
-    #ia-chat-input button {
-      background: #6366f1;
-      color: #fff;
-      border: none;
-      padding: 0 1.2rem;
-      font-size: 1.2rem;
-      border-radius: 0 0 1.5rem 0;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    #ia-chat-input button:hover {
-      background: #a21caf;
-    }
     @media (max-width: 768px) {
       #ia-assistant-btn {
         display: flex;
       }
-      #ia-chat-box {
-        display: none !important;
-      }
     }
   </style>
-  <div id="ia-assistant-btn" title="Habla con el asistente IA">
+  
+  <div id="ia-assistant-btn" title="Habla con FlorIA">
     <span class="ia-circle-icon">
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 15s1.5 2 4 2 4-2 4-2" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg>
+      <img src="img/principal/logoIA.webp" alt="Logo IA" style="width: 58px; height: 58px; border-radius: 50%; object-fit: cover; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.10);" />
     </span>
     <div class="ia-chat-content">
       <div class="ia-chat-header">
-        Asistente IA
+        FlorIA - Tu Asistente Virtual
         <button class="ia-chat-close" style="background:transparent;border:none;color:#6366f1;font-size:1.3rem;cursor:pointer;">×</button>
       </div>
       <div class="ia-chat-messages"></div>
@@ -2757,127 +2722,145 @@
       </form>
     </div>
   </div>
-  <div id="ia-chat-box">
-    <div id="ia-chat-header">
-      Asistente IA
-      <button id="ia-chat-close" style="background:transparent;border:none;color:#fff;font-size:1.3rem;cursor:pointer;">×</button>
-    </div>
-    <div id="ia-chat-messages"></div>
-    <form id="ia-chat-input" autocomplete="off">
-      <input type="text" placeholder="Escribe tu pregunta..." required />
-      <button type="submit">➤</button>
-    </form>
-  </div>
+  
   <script>
-    // IA: círculo en móvil, chatbox en desktop/tablet
-    const iaBtn = document.getElementById('ia-assistant-btn');
-    const iaBox = document.getElementById('ia-chat-box');
-    const iaCircleIcon = iaBtn.querySelector('.ia-circle-icon');
-    const iaChatContent = iaBtn.querySelector('.ia-chat-content');
-    const iaChatHeader = iaBtn.querySelector('.ia-chat-header');
-    const iaChatClose = iaBtn.querySelector('.ia-chat-close');
-    const iaChatMessages = iaBtn.querySelector('.ia-chat-messages');
-    const iaChatInput = iaBtn.querySelector('.ia-chat-input');
-    const iaInput = iaChatInput.querySelector('input');
-    // Desktop/tablet
-    const iaClose = document.getElementById('ia-chat-close');
-    const iaForm = document.getElementById('ia-chat-input');
-    const iaMessages = document.getElementById('ia-chat-messages');
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      // IA: círculo flotante y chat unificado
+      const iaBtn = document.getElementById('ia-assistant-btn');
+      if (!iaBtn) return;
+      const iaCircleIcon = iaBtn.querySelector('.ia-circle-icon');
+      const iaChatContent = iaBtn.querySelector('.ia-chat-content');
+      const iaChatHeader = iaBtn.querySelector('.ia-chat-header');
+      const iaChatClose = iaBtn.querySelector('.ia-chat-close');
+      const iaChatMessages = iaBtn.querySelector('.ia-chat-messages');
+      if (!iaCircleIcon || !iaChatContent || !iaChatHeader || !iaChatClose || !iaChatMessages) return;
+      iaChatMessages.style.display = 'flex';
+      iaChatMessages.style.flexDirection = 'column';
+      iaChatMessages.style.gap = '0.3em';
+      const iaChatInput = iaBtn.querySelector('.ia-chat-input');
+      const iaInput = iaChatInput.querySelector('input');
+      if (!iaChatInput || !iaInput) return;
 
-    function isMobile() {
-      return window.innerWidth <= 768;
-    }
+      function isMobile() {
+        return window.innerWidth <= 768;
+      }
 
-    function setChatVisibility() {
-      if (isMobile()) {
+      function setChatVisibility() {
         iaBtn.style.display = 'flex';
-        iaBox && (iaBox.style.display = 'none');
         if (!iaBtn.classList.contains('expanded')) {
           iaCircleIcon.style.display = 'flex';
           iaChatContent.style.display = 'none';
         }
-      } else {
-        iaBtn.style.display = 'none';
-        iaBox && (iaBox.style.display = 'flex');
       }
-    }
-    window.addEventListener('resize', setChatVisibility);
-    setChatVisibility();
+      window.addEventListener('resize', setChatVisibility);
+      setChatVisibility();
 
-    // Abrir chat móvil
-    iaBtn && iaBtn.addEventListener('click', function(e) {
-      if (isMobile() && !iaBtn.classList.contains('expanded') && (e.target === iaCircleIcon || iaCircleIcon.contains(e.target))) {
-        iaBtn.classList.add('expanded');
-        iaCircleIcon.style.display = 'none';
-        iaChatContent.style.display = 'flex';
-        iaChatHeader.style.display = 'flex';
-        iaChatMessages.style.display = 'flex';
-        iaChatInput.style.display = 'flex';
-        iaInput.focus();
+      // Cerrar chat IA al hacer click fuera
+      document.addEventListener('mousedown', function(e) {
+        if (
+          iaBtn.classList.contains('expanded') &&
+          !iaBtn.contains(e.target)
+        ) {
+          iaBtn.classList.remove('expanded');
+          iaCircleIcon.style.display = 'flex';
+          iaChatContent.style.display = 'none';
+          iaChatHeader.style.display = 'none';
+          iaChatMessages.style.display = 'none';
+          iaChatInput.style.display = 'none';
+          iaInput.blur();
+        }
+      });
+
+      // Abrir chat móvil
+      iaBtn.addEventListener('click', function(e) {
+        if (!iaBtn.classList.contains('expanded')) {
+          iaBtn.classList.add('expanded');
+          iaCircleIcon.style.display = 'none';
+          iaChatContent.style.display = 'flex';
+          // Restaurar display flex de los elementos internos
+          iaChatHeader.style.display = 'flex';
+          iaChatMessages.style.display = 'flex';
+          iaChatInput.style.display = 'flex';
+          iaInput.disabled = false;
+          iaInput.style.display = '';
+          iaInput.focus();
+        }
+      });
+      // Cerrar chat móvil
+      iaChatClose.addEventListener('click', function(e) {
+        e.stopPropagation(); // Evita que el click reabra el chat
+        if (iaBtn.classList.contains('expanded')) {
+          iaBtn.classList.remove('expanded');
+          iaCircleIcon.style.display = 'flex';
+          iaChatContent.style.display = 'none';
+          iaChatHeader.style.display = 'none';
+          iaChatMessages.style.display = 'none';
+          iaChatInput.style.display = 'none';
+          iaInput.blur();
+        }
+      });
+
+      // Simulación de respuesta IA
+      iaChatInput.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const val = iaInput.value.trim();
+        if(!val) return;
+        appendMsg(val, 'user');
+        iaInput.value = '';
+        setTimeout(()=>{
+          appendMsg('🤖 Pronto responderé con IA real. ¡Gracias por tu mensaje!', 'bot');
+        }, 800);
+      });
+      function setBubbleStyle(bubble, from) {
+        if (from === 'user') {
+          bubble.style.background = '#6366f1';
+          bubble.style.color = '#fff';
+        } else {
+          if (document.documentElement.classList.contains('dark')) {
+            bubble.style.background = '#23232b';
+            bubble.style.color = '#e5e7eb';
+          } else {
+            bubble.style.background = '#f1f5f9';
+            bubble.style.color = '#222';
+          }
+        }
       }
-    });
-    // Cerrar chat móvil
-    iaChatClose && iaChatClose.addEventListener('click', function(e) {
-      if (isMobile() && iaBtn.classList.contains('expanded')) {
-        iaBtn.classList.remove('expanded');
-        iaCircleIcon.style.display = 'flex';
-        iaChatContent.style.display = 'none';
-        iaChatHeader.style.display = 'none';
-        iaChatMessages.style.display = 'none';
-        iaChatInput.style.display = 'none';
-        iaInput.blur();
+
+      function appendMsg(msg, from) {
+        const div = document.createElement('div');
+        div.style.display = 'flex';
+        div.style.width = '100%';
+        div.style.marginBottom = '0.1em';
+        div.style.justifyContent = from === 'user' ? 'flex-end' : 'flex-start';
+        const bubble = document.createElement('span');
+        bubble.style.display = 'inline-block';
+        bubble.style.padding = '0.5em 1em';
+        bubble.style.borderRadius = '1em';
+        bubble.style.maxWidth = '80%';
+        bubble.style.wordBreak = 'break-word';
+        bubble.style.boxSizing = 'border-box';
+        setBubbleStyle(bubble, from);
+        bubble.textContent = msg;
+        // Guardar el tipo de burbuja para actualización
+        bubble.setAttribute('data-from', from);
+        div.appendChild(bubble);
+        iaChatMessages.appendChild(div);
+        iaChatMessages.scrollTop = iaChatMessages.scrollHeight;
       }
-    });
 
-    // Desktop/tablet chat
-    iaClose && iaClose.addEventListener('click', function() {
-      if (!isMobile()) {
-        iaBox.style.display = 'none';
+      // Actualizar burbujas existentes al cambiar el modo
+      function updateAllBubbles() {
+        iaChatMessages.querySelectorAll('span[data-from]').forEach(bubble => {
+          setBubbleStyle(bubble, bubble.getAttribute('data-from'));
+        });
       }
-    });
 
-    // Simulación de respuesta IA para móvil
-    iaChatInput && iaChatInput.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const val = iaInput.value.trim();
-      if(!val) return;
-      appendMsgMobile(val, 'user');
-      iaInput.value = '';
-      setTimeout(()=>{
-        appendMsgMobile('🤖 Pronto responderé con IA real. ¡Gracias por tu mensaje!', 'bot');
-      }, 800);
-    });
-    function appendMsgMobile(msg, from) {
-      const div = document.createElement('div');
-      div.style.marginBottom = '0.7em';
-      div.style.textAlign = from === 'user' ? 'right' : 'left';
-      div.innerHTML = `<span style="display:inline-block;padding:0.5em 1em;border-radius:1em;max-width:80%;background:${from==='user'?'#6366f1':'#f1f5f9'};color:${from==='user'?'#fff':'#222'};">${msg}</span>`;
-      iaChatMessages.appendChild(div);
-      iaChatMessages.scrollTop = iaChatMessages.scrollHeight;
-    }
-
-    // Simulación de respuesta IA para desktop/tablet
-    iaForm && iaForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const val = iaInput.value.trim();
-      if(!val) return;
-      appendMsg(val, 'user');
-      iaInput.value = '';
-      setTimeout(()=>{
-        appendMsg('🤖 Pronto responderé con IA real. ¡Gracias por tu mensaje!', 'bot');
-      }, 800);
-    });
-    function appendMsg(msg, from) {
-      const div = document.createElement('div');
-      div.style.marginBottom = '0.7em';
-      div.style.textAlign = from === 'user' ? 'right' : 'left';
-      div.innerHTML = `<span style="display:inline-block;padding:0.5em 1em;border-radius:1em;max-width:80%;background:${from==='user'?'#6366f1':'#f1f5f9'};color:${from==='user'?'#fff':'#222'};">${msg}</span>`;
-      iaMessages.appendChild(div);
-      iaMessages.scrollTop = iaMessages.scrollHeight;
-    }
-    // ...existing code...
-        appendMsg('🤖 Pronto responderé con IA real. ¡Gracias por tu mensaje!', 'bot');
-      }, 800);
+      // Detectar cambio de modo oscuro
+      const observer = new MutationObserver(() => {
+        updateAllBubbles();
+      });
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
     });
   </script>
  </body>
