@@ -606,6 +606,372 @@
 
 </div>
 
+<style>
+    /* Flotante IA */
+    #ia-assistant-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #6366f1 0%, #a21caf 100%);
+      border-radius: 50%;
+      box-shadow: 0 8px 32px 0 rgba(99,102,241,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: box-shadow 0.2s, transform 0.2s, width 0.3s, height 0.3s, border-radius 0.3s;
+    }
+    #ia-assistant-btn.expanded {
+      width: 340px;
+      max-width: 95vw;
+      height: 340px;
+      border-radius: 1.2rem;
+      right: 2.5vw;
+      bottom: 2.5vw;
+      box-shadow: 0 8px 32px 0 rgba(99,102,241,0.25);
+      background: #fff;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 0;
+    }
+    .dark #ia-assistant-btn.expanded {
+      background: #18181b;
+    }
+    @media (max-width: 768px) {
+      #ia-assistant-btn.expanded {
+        width: 95vw;
+      }
+    }
+    #ia-assistant-btn.expanded .ia-circle-icon {
+      display: none;
+    }
+    #ia-assistant-btn .ia-chat-content {
+      display: none;
+    }
+    #ia-assistant-btn.expanded .ia-chat-content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+    }
+    #ia-assistant-btn.expanded .ia-chat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: bold;
+      color: #6366f1;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-header {
+      color: #a5b4fc;
+    }
+    #ia-assistant-btn.expanded .ia-chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      background: #f8fafc;
+      border-radius: 0.8rem;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.97rem;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-messages {
+      background: #27272a;
+      color: #e5e7eb;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input {
+      display: flex;
+      border-top: 1px solid #444;
+      background: #fff;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input {
+      background: #18181b;
+      border-top: 1px solid #27272a;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input input {
+      flex: 1;
+      border: none;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      outline: none;
+      background: transparent;
+      color: #222;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input input {
+      color: #e5e7eb;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input button {
+      background: #6366f1;
+      color: #fff;
+      border: none;
+      padding: 0 1.2rem;
+      font-size: 1.2rem;
+      border-radius: 0 0 1.2rem 0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input button:hover {
+      background: #a21caf;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input button {
+      background: #6366f1;
+      color: #fff;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input button:hover {
+      background: #a21caf;
+    }
+    
+    #ia-assistant-btn svg {
+      width: 2rem;
+      height: 2rem;
+      color: #fff;
+    }
+    @media (max-width: 768px) {
+      #ia-assistant-btn {
+        display: flex;
+      }
+    }
+  </style>
+  
+  <div id="ia-assistant-btn" title="Habla con FlorIA">
+    <span class="ia-circle-icon">
+      <img src="img/principal/logoIA.webp" alt="Logo IA" style="width: 58px; height: 58px; border-radius: 50%; object-fit: cover; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.10);" />
+    </span>
+    <div class="ia-chat-content">
+      <div class="ia-chat-header">
+        FlorIA - Tu Asistente Virtual
+        <button class="ia-chat-close" style="background:transparent;border:none;color:#6366f1;font-size:1.3rem;cursor:pointer;">×</button>
+      </div>
+      <div class="ia-chat-messages"></div>
+      <form class="ia-chat-input" autocomplete="off">
+        <input type="text" placeholder="Escribe tu pregunta..." required />
+        <button type="submit">➤</button>
+      </form>
+    </div>
+  </div>
+  
+ <script>
+      document.addEventListener('DOMContentLoaded', function() {
+      // IA: círculo flotante y chat unificado
+      const iaBtn = document.getElementById('ia-assistant-btn');
+      if (!iaBtn) return;
+      const iaCircleIcon = iaBtn.querySelector('.ia-circle-icon');
+      const iaChatContent = iaBtn.querySelector('.ia-chat-content');
+      const iaChatHeader = iaBtn.querySelector('.ia-chat-header');
+      const iaChatClose = iaBtn.querySelector('.ia-chat-close');
+      const iaChatMessages = iaBtn.querySelector('.ia-chat-messages');
+      if (!iaCircleIcon || !iaChatContent || !iaChatHeader || !iaChatClose || !iaChatMessages) return;
+      iaChatMessages.style.display = 'flex';
+      iaChatMessages.style.flexDirection = 'column';
+      iaChatMessages.style.gap = '0.3em';
+      const iaChatInput = iaBtn.querySelector('.ia-chat-input');
+      const iaInput = iaChatInput.querySelector('input');
+      const iaSubmitBtn = iaChatInput.querySelector('button[type="submit"]');
+      if (!iaChatInput || !iaInput || !iaSubmitBtn) return;
+
+      // Protección extrema: bloquear recarga accidental
+      let blockReload = false;
+      window.addEventListener('beforeunload', function(e) {
+        if (blockReload) {
+          e.preventDefault();
+          e.returnValue = '';
+          return '';
+        }
+      });
+
+      function isMobile() {
+        return window.innerWidth <= 768;
+      }
+
+      function setChatVisibility() {
+        iaBtn.style.display = 'flex';
+        if (!iaBtn.classList.contains('expanded')) {
+          iaCircleIcon.style.display = 'flex';
+          iaChatContent.style.display = 'none';
+        }
+      }
+      window.addEventListener('resize', setChatVisibility);
+      setChatVisibility();
+
+      // Cerrar chat IA al hacer click fuera
+      document.addEventListener('mousedown', function(e) {
+        if (
+          iaBtn.classList.contains('expanded') &&
+          !iaBtn.contains(e.target)
+        ) {
+          iaBtn.classList.remove('expanded');
+          iaCircleIcon.style.display = 'flex';
+          iaChatContent.style.display = 'none';
+          iaChatHeader.style.display = 'none';
+          iaChatMessages.style.display = 'none';
+          iaChatInput.style.display = 'none';
+          iaInput.blur();
+          blockReload = false;
+        }
+      });
+
+      // Abrir chat móvil
+      iaBtn.addEventListener('click', function(e) {
+        if (!iaBtn.classList.contains('expanded')) {
+          iaBtn.classList.add('expanded');
+          iaCircleIcon.style.display = 'none';
+          iaChatContent.style.display = 'flex';
+          // Restaurar display flex de los elementos internos
+          iaChatHeader.style.display = 'flex';
+          iaChatMessages.style.display = 'flex';
+          iaChatInput.style.display = 'flex';
+          iaInput.disabled = false;
+          iaInput.style.display = '';
+          iaInput.focus();
+          blockReload = true;
+        }
+      });
+      // Cerrar chat móvil
+      iaChatClose.addEventListener('click', function(e) {
+        e.stopPropagation(); // Evita que el click reabra el chat
+        if (iaBtn.classList.contains('expanded')) {
+          iaBtn.classList.remove('expanded');
+          iaCircleIcon.style.display = 'flex';
+          iaChatContent.style.display = 'none';
+          iaChatHeader.style.display = 'none';
+          iaChatMessages.style.display = 'none';
+          iaChatInput.style.display = 'none';
+          iaInput.blur();
+          blockReload = false;
+        }
+      });
+
+      // Integración real con backend de FlorIA
+      let chatProcessing = false;
+      iaChatInput.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        if (chatProcessing) return;
+        chatProcessing = true;
+        iaSubmitBtn.disabled = true;
+        const val = iaInput.value.trim();
+        if(!val) {
+          chatProcessing = false;
+          iaSubmitBtn.disabled = false;
+          return;
+        }
+        appendMsg(val, 'user');
+        iaInput.value = '';
+        // Feedback visual: FlorIA está pensando...
+        const thinkingId = Symbol('thinking');
+        let thinkingDiv = document.createElement('div');
+        thinkingDiv.style.display = 'flex';
+        thinkingDiv.style.width = '100%';
+        thinkingDiv.style.marginBottom = '0.1em';
+        thinkingDiv.style.justifyContent = 'flex-start';
+        let thinkingBubble = document.createElement('span');
+        thinkingBubble.style.display = 'inline-block';
+        thinkingBubble.style.padding = '0.5em 1em';
+        thinkingBubble.style.borderRadius = '1em';
+        thinkingBubble.style.maxWidth = '80%';
+        thinkingBubble.style.wordBreak = 'break-word';
+        thinkingBubble.style.boxSizing = 'border-box';
+        setBubbleStyle(thinkingBubble, 'bot');
+        thinkingBubble.textContent = 'FlorIA está pensando...';
+        thinkingBubble.setAttribute('data-from', 'bot');
+        thinkingBubble.setAttribute('data-thinking', 'true');
+        thinkingDiv.appendChild(thinkingBubble);
+        iaChatMessages.appendChild(thinkingDiv);
+        iaChatMessages.scrollTop = iaChatMessages.scrollHeight;
+
+        // Lazy loading: solo hace fetch al enviar
+        try {
+          const resp = await fetch('http://localhost:3001/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: val })
+          });
+          const data = await resp.json();
+          // Eliminar burbuja de pensando
+          iaChatMessages.removeChild(thinkingDiv);
+          if (resp.ok && data.response) {
+            appendMsg(data.response, 'bot');
+          } else if (data.error) {
+            appendMsg('Vas muy rápido, respira un poco e intenta de nuevo en un momento.', 'bot');
+          } else {
+            appendMsg('FlorIA no pudo responder en este momento. Intenta de nuevo más tarde.', 'bot');
+          }
+        } catch (err) {
+          iaChatMessages.removeChild(thinkingDiv);
+          appendMsg('FlorIA no pudo responder en este momento. Intenta de nuevo más tarde.', 'bot');
+        }
+        chatProcessing = false;
+        iaSubmitBtn.disabled = false;
+      });
+      function setBubbleStyle(bubble, from) {
+        if (from === 'user') {
+          bubble.style.background = '#6366f1';
+          bubble.style.color = '#fff';
+        } else {
+          if (document.documentElement.classList.contains('dark')) {
+            bubble.style.background = '#23232b';
+            bubble.style.color = '#e5e7eb';
+          } else {
+            bubble.style.background = '#f1f5f9';
+            bubble.style.color = '#222';
+          }
+        }
+      }
+
+      function escapeHTML(str) {
+        return str.replace(/[&<>'"`]/g, function (c) {
+          return ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;',
+            '`': '&#96;'
+          })[c];
+        });
+      }
+
+      function appendMsg(msg, from) {
+        const div = document.createElement('div');
+        div.style.display = 'flex';
+        div.style.width = '100%';
+        div.style.marginBottom = '0.1em';
+        div.style.justifyContent = from === 'user' ? 'flex-end' : 'flex-start';
+        const bubble = document.createElement('span');
+        bubble.style.display = 'inline-block';
+        bubble.style.padding = '0.5em 1em';
+        bubble.style.borderRadius = '1em';
+        bubble.style.maxWidth = '80%';
+        bubble.style.wordBreak = 'break-word';
+        bubble.style.boxSizing = 'border-box';
+        setBubbleStyle(bubble, from);
+        bubble.textContent = escapeHTML(msg);
+        // Guardar el tipo de burbuja para actualización
+        bubble.setAttribute('data-from', from);
+        div.appendChild(bubble);
+        iaChatMessages.appendChild(div);
+        iaChatMessages.scrollTop = iaChatMessages.scrollHeight;
+      }
+
+      // Actualizar burbujas existentes al cambiar el modo
+      function updateAllBubbles() {
+        iaChatMessages.querySelectorAll('span[data-from]').forEach(bubble => {
+          setBubbleStyle(bubble, bubble.getAttribute('data-from'));
+        });
+      }
+
+      // Detectar cambio de modo oscuro
+      const observer = new MutationObserver(() => {
+        updateAllBubbles();
+      });
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    });
+  </script>
+
+
 <!-- Lightbox -->
 <div id="lightbox-overlay" class="hidden" aria-hidden="true">
     <div class="lightbox-content">

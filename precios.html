@@ -239,17 +239,17 @@
 
         .whatsapp-float {
             position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 30px;
-            right: 30px;
+            width: 56px;
+            height: 56px;
+            bottom: 88px;
+            right: 24px;
             background-color: #25d366;
             color: #FFF;
             border-radius: 50%;
             text-align: center;
             font-size: 30px;
             box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
-            z-index: 100;
+            z-index: 10001;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -287,9 +287,6 @@
                 <span>&larr;</span> Volver al Portafolio
             </a>
         </div>
-                <div class="mt-10 flex justify-center fade-in">
-                
-                </div>
     </div>
 </nav>
 <div class="h-16 w-full relative z-[9998]"></div>
@@ -498,6 +495,14 @@
             <div class="text-center mb-12 fade-in">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Planes de Desarrollo Web</h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">Todos los planes incluyen nuestra base técnica profesional. Los planes superiores suman funcionalidades más avanzadas para escalar tu negocio.</p>
+            </div>
+
+            <!-- FRAUD WARNING NOTE -->
+            <div class="max-w-2xl mx-auto mb-8">
+                <div class="bg-red-50 border border-red-200 rounded-xl p-5 text-center shadow-md fade-in">
+                    <p class="text-red-700 font-bold text-lg mb-2">⚠️ Importante: Pago Seguro</p>
+                    <p class="text-red-700 text-sm">Para protegerte de posibles fraudes, <strong>NO realices pagos a colaboradores, intermediarios ni terceros</strong>. El único autorizado para recibir pagos es <span class="font-bold">Carlos Mc Taggart</span>.<br>Si tienes dudas, confirma siempre el método de pago directamente conmigo.</p>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-start">
@@ -747,8 +752,8 @@
                     <div class="absolute top-0 right-0 bg-indigo-600 text-white text-xs px-3 py-1 rounded-bl-lg font-bold">NUEVO</div>
                     <div class="w-16 h-16 bg-white rounded-full flex-shrink-0 flex items-center justify-center text-3xl shadow-sm">🤖</div>
                     <div class="flex-grow text-center md:text-left">
-                        <h4 class="text-xl font-bold text-gray-900 mb-2">Implementación de IA (+$150 USD)</h4>
-                        <p class="text-gray-600 mb-3">Potencia tu sitio con inteligencia artificial.</p>
+                        <h4 class="text-xl font-bold text-gray-900 mb-2">Implementación de IA (280 USD)</h4>
+                        <p class="text-gray-600 mb-3">Potencia tu sitio con inteligencia artificial diseñada y entrenada para tu sitio web.</p>
                         <ul class="text-sm text-gray-600 space-y-2">
                             <li class="flex items-center gap-2 justify-center md:justify-start">💬 Chatbot de IA entrenado con tu información</li>
                             <li class="flex items-center gap-2 justify-center md:justify-start">📝 Generación de contenido automático para blog</li>
@@ -771,7 +776,7 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Plan Técnico $30 -->
-                <div class="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow fade-in">
+                <div class="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow fade-in order-1">
                     <div class="text-center mb-8">
                         <h3 class="text-xl font-bold text-gray-800">Plan Técnico</h3>
                         <div class="text-4xl font-bold text-gray-800 mt-4 mb-2">$30<span class="text-base text-gray-500 font-normal">/mes</span></div>
@@ -802,40 +807,8 @@
                     <a href="mailto:mctaggart.dev@gmail.com?subject=Interés%20Plan%20Técnico" class="block w-full py-3 bg-white border-2 border-gray-300 text-gray-700 font-bold text-center rounded-xl hover:bg-gray-50 transition-colors">Solicitar Plan Técnico</a>
                 </div>
 
-                <!-- Plan IA Hosting $30 -->
-                <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-8 hover:shadow-lg transition-shadow fade-in relative">
-                    <div class="absolute top-0 right-0 bg-indigo-600 text-white text-xs px-3 py-1 rounded-bl-lg font-bold">NUEVO</div>
-                    <div class="text-center mb-8">
-                        <h3 class="text-xl font-bold text-indigo-700">Plan IA Hosting</h3>
-                        <div class="text-4xl font-bold text-indigo-700 mt-4 mb-2">$30<span class="text-base text-gray-500 font-normal">/mes</span></div>
-                        <p class="text-gray-500 text-sm">Infraestructura optimizada para proyectos con inteligencia artificial.</p>
-                    </div>
-                    <ul class="space-y-4 mb-8 text-gray-700">
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-indigo-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                            Servidor dedicado para IA
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-indigo-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                            Soporte para chatbots y generación de contenido
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-indigo-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
-                            Seguridad avanzada y backups automáticos
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-indigo-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                            Soporte especializado IA
-                        </li>
-                    </ul>
-                    <div class="bg-yellow-100 border border-yellow-300 text-yellow-900 text-xs rounded-lg p-3 mb-4 text-center font-semibold">
-                        Nota: Este plan es exclusivo para sitios web que cuentan con asistente de IA integrado. <br> No incluye planes de hosting tradicionales, es exclusivamente para el mantenimiento y hosting de la IA.
-                    </div>
-                    <a href="mailto:mctaggart.dev@gmail.com?subject=Interés%20Plan%20IA%20Hosting" class="block w-full py-3 bg-indigo-600 text-white font-bold text-center rounded-xl hover:bg-indigo-700 transition-colors shadow-lg">Solicitar Plan IA Hosting</a>
-                </div>
-
                 <!-- Plan Seguridad $50 -->
-                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow fade-in" style="animation-delay: 0.1s;">
+                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-shadow fade-in order-2" style="animation-delay: 0.1s;">
                     <div class="text-center mb-8">
                         <h3 class="text-xl font-bold text-gray-800">Plan Seguro</h3>
                         <div class="text-4xl font-bold text-gray-800 mt-4 mb-2">$50<span class="text-base text-gray-500 font-normal">/mes</span></div>
@@ -855,7 +828,7 @@
                             Copias de Seguridad Semanales
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                             Protección Anti-Hackeos
                         </li>
                         <li class="flex items-center">
@@ -867,12 +840,12 @@
                 </div>
 
                 <!-- Plan Crecimiento $90 -->
-                <div class="bg-white border-2 border-purple-500 rounded-2xl p-8 shadow-xl relative fade-in" style="animation-delay: 0.2s;">
+                <div class="bg-white border-2 border-purple-500 rounded-2xl p-8 shadow-xl relative fade-in order-3" style="animation-delay: 0.2s;">
                     <div class="absolute top-0 right-0 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl">RECOMENDADO</div>
                     <div class="text-center mb-8">
                         <h3 class="text-xl font-bold text-purple-700">Plan De Crecimiento</h3>
                         <div class="text-4xl font-bold text-gray-800 mt-4 mb-2">$90<span class="text-base text-gray-500 font-normal">/mes</span></div>
-                        <p class="text-gray-500 text-sm">Incluye todo lo del Plan Seguro y Plan IA Hosting, más:</p>
+                        <p class="text-gray-500 text-sm">Incluye todo lo del Plan Seguro más:</p>
                     </div>
                     <ul class="space-y-4 mb-8 text-gray-600">
                         <li class="flex items-center font-semibold text-purple-600">
@@ -895,12 +868,41 @@
                             <svg class="w-5 h-5 text-green-500 mr-3" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12.04 2C6.52 2 2 6.48 2 12c0 1.95.57 3.76 1.55 5.29L2 22l4.82-1.5A9.94 9.94 0 0 0 12.04 22C17.52 22 22 17.52 22 12S17.52 2 12.04 2Zm5.75 14.6c-.24.67-1.41 1.28-1.95 1.36-.5.07-1.14.1-1.84-.12-.42-.13-.97-.31-1.67-.62-2.94-1.28-4.86-4.24-5-4.45-.14-.2-1.2-1.6-1.2-3.05 0-1.44.76-2.15 1.03-2.44.27-.3.6-.38.8-.38h.57c.18 0 .42-.04.66.5.24.55.82 1.9.9 2.04.08.14.13.3.02.49-.11.2-.16.3-.31.46-.15.16-.32.36-.46.49-.15.15-.31.31-.13.6.18.3.79 1.3 1.69 2.11 1.16 1.03 2.14 1.35 2.45 1.5.31.15.49.13.67-.08.19-.2.77-.9.98-1.21.2-.31.4-.26.67-.16.28.1 1.77.83 2.07.98.3.15.5.22.57.34.07.12.07.7-.17 1.37Z"/></svg>
                             Soporte VIP por WhatsApp
                         </li>
-                        <li class="flex items-center">
-                            <svg class="w-5 h-5 text-indigo-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                            Hosting IA incluido
-                        </li>
+                        
                     </ul>
                     <a href="https://wa.me/50762049480?text=Hola%2C%20me%20interesa%20el%20Plan%20Crecimiento" target="_blank" rel="noopener noreferrer" class="block w-full py-3 bg-purple-600 text-white font-bold text-center rounded-xl hover:bg-purple-700 transition-colors shadow-lg">Elegir Plan Recomendado</a>
+                </div>
+
+                <!-- Plan IA Hosting $30+ -->
+                <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-8 hover:shadow-lg transition-shadow fade-in order-4 md:order-4 lg:col-span-3 lg:mx-auto lg:w-1/2" style="margin-top:0;">
+                    <div class="absolute top-0 right-0 bg-indigo-600 text-white text-xs px-3 py-1 rounded-bl-lg font-bold">NUEVO</div>
+                    <div class="text-center mb-8">
+                        <h3 class="text-xl font-bold text-indigo-700">Plan IA Hosting</h3>
+                        <div class="text-4xl font-bold text-indigo-700 mt-4 mb-2">$30+<span class="text-base text-gray-500 font-normal">/mes</span></div>
+                        <p class="text-gray-500 text-sm">Infraestructura optimizada para proyectos con inteligencia artificial.</p>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-gray-700">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-indigo-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            Servidor dedicado para IA
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-indigo-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                            Soporte para chatbots y generación de contenido
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-indigo-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+                            Seguridad avanzada y backups automáticos
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-indigo-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            Soporte especializado IA
+                        </li>
+                    </ul>
+                    <div class="bg-yellow-100 border border-yellow-300 text-yellow-900 text-xs rounded-lg p-3 mb-4 text-center font-semibold">
+                        Nota: Este plan es exclusivo para sitios web que cuentan con asistente de IA integrado. <br> No incluye planes de hosting tradicionales, es exclusivamente para el mantenimiento y hosting de la IA, el precio puede subir dependiendo de la cantidad de clientes que usen la IA.
+                    </div>
+                    <a href="mailto:mctaggart.dev@gmail.com?subject=Interés%20Plan%20IA%20Hosting" class="block w-full py-3 bg-indigo-600 text-white font-bold text-center rounded-xl hover:bg-indigo-700 transition-colors shadow-lg">Solicitar Plan IA Hosting</a>
                 </div>
             </div>
         </div>
@@ -947,6 +949,373 @@
             </div>
         </div>
     </footer>
+
+
+<style>
+    /* Flotante IA */
+    #ia-assistant-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #6366f1 0%, #a21caf 100%);
+      border-radius: 50%;
+      box-shadow: 0 8px 32px 0 rgba(99,102,241,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: box-shadow 0.2s, transform 0.2s, width 0.3s, height 0.3s, border-radius 0.3s;
+    }
+    #ia-assistant-btn.expanded {
+      width: 340px;
+      max-width: 95vw;
+      height: 340px;
+      border-radius: 1.2rem;
+      right: 2.5vw;
+      bottom: 2.5vw;
+      box-shadow: 0 8px 32px 0 rgba(99,102,241,0.25);
+      background: #fff;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 0;
+    }
+    .dark #ia-assistant-btn.expanded {
+      background: #18181b;
+    }
+    @media (max-width: 768px) {
+      #ia-assistant-btn.expanded {
+        width: 95vw;
+      }
+    }
+    #ia-assistant-btn.expanded .ia-circle-icon {
+      display: none;
+    }
+    #ia-assistant-btn .ia-chat-content {
+      display: none;
+    }
+    #ia-assistant-btn.expanded .ia-chat-content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+    }
+    #ia-assistant-btn.expanded .ia-chat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: bold;
+      color: #6366f1;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-header {
+      color: #a5b4fc;
+    }
+    #ia-assistant-btn.expanded .ia-chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      background: #f8fafc;
+      border-radius: 0.8rem;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.97rem;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-messages {
+      background: #27272a;
+      color: #e5e7eb;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input {
+      display: flex;
+      border-top: 1px solid #444;
+      background: #fff;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input {
+      background: #18181b;
+      border-top: 1px solid #27272a;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input input {
+      flex: 1;
+      border: none;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      outline: none;
+      background: transparent;
+      color: #222;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input input {
+      color: #e5e7eb;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input button {
+      background: #6366f1;
+      color: #fff;
+      border: none;
+      padding: 0 1.2rem;
+      font-size: 1.2rem;
+      border-radius: 0 0 1.2rem 0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input button:hover {
+      background: #a21caf;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input button {
+      background: #6366f1;
+      color: #fff;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input button:hover {
+      background: #a21caf;
+    }
+    
+    #ia-assistant-btn svg {
+      width: 2rem;
+      height: 2rem;
+      color: #fff;
+    }
+    @media (max-width: 768px) {
+      #ia-assistant-btn {
+        display: flex;
+      }
+    }
+  </style>
+  
+  <div id="ia-assistant-btn" title="Habla con FlorIA">
+    <span class="ia-circle-icon">
+      <img src="img/principal/logoIA.webp" alt="Logo IA" style="width: 58px; height: 58px; border-radius: 50%; object-fit: cover; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.10);" />
+    </span>
+    <div class="ia-chat-content">
+      <div class="ia-chat-header">
+        FlorIA - Tu Asistente Virtual
+        <button class="ia-chat-close" style="background:transparent;border:none;color:#6366f1;font-size:1.3rem;cursor:pointer;">×</button>
+      </div>
+      <div class="ia-chat-messages"></div>
+      <form class="ia-chat-input" autocomplete="off">
+        <input type="text" placeholder="Escribe tu pregunta..." required />
+        <button type="submit">➤</button>
+      </form>
+    </div>
+  </div>
+  
+ <script>
+      document.addEventListener('DOMContentLoaded', function() {
+      // IA: círculo flotante y chat unificado
+      const iaBtn = document.getElementById('ia-assistant-btn');
+      if (!iaBtn) return;
+      const iaCircleIcon = iaBtn.querySelector('.ia-circle-icon');
+      const iaChatContent = iaBtn.querySelector('.ia-chat-content');
+      const iaChatHeader = iaBtn.querySelector('.ia-chat-header');
+      const iaChatClose = iaBtn.querySelector('.ia-chat-close');
+      const iaChatMessages = iaBtn.querySelector('.ia-chat-messages');
+      if (!iaCircleIcon || !iaChatContent || !iaChatHeader || !iaChatClose || !iaChatMessages) return;
+      iaChatMessages.style.display = 'flex';
+      iaChatMessages.style.flexDirection = 'column';
+      iaChatMessages.style.gap = '0.3em';
+      const iaChatInput = iaBtn.querySelector('.ia-chat-input');
+      const iaInput = iaChatInput.querySelector('input');
+      const iaSubmitBtn = iaChatInput.querySelector('button[type="submit"]');
+      if (!iaChatInput || !iaInput || !iaSubmitBtn) return;
+
+      // Protección extrema: bloquear recarga accidental
+      let blockReload = false;
+      window.addEventListener('beforeunload', function(e) {
+        if (blockReload) {
+          e.preventDefault();
+          e.returnValue = '';
+          return '';
+        }
+      });
+
+      function isMobile() {
+        return window.innerWidth <= 768;
+      }
+
+      function setChatVisibility() {
+        iaBtn.style.display = 'flex';
+        if (!iaBtn.classList.contains('expanded')) {
+          iaCircleIcon.style.display = 'flex';
+          iaChatContent.style.display = 'none';
+        }
+      }
+      window.addEventListener('resize', setChatVisibility);
+      setChatVisibility();
+
+      // Cerrar chat IA al hacer click fuera
+      document.addEventListener('mousedown', function(e) {
+        if (
+          iaBtn.classList.contains('expanded') &&
+          !iaBtn.contains(e.target)
+        ) {
+          iaBtn.classList.remove('expanded');
+          iaCircleIcon.style.display = 'flex';
+          iaChatContent.style.display = 'none';
+          iaChatHeader.style.display = 'none';
+          iaChatMessages.style.display = 'none';
+          iaChatInput.style.display = 'none';
+          iaInput.blur();
+          blockReload = false;
+        }
+      });
+
+      // Abrir chat móvil
+      iaBtn.addEventListener('click', function(e) {
+        if (!iaBtn.classList.contains('expanded')) {
+          iaBtn.classList.add('expanded');
+          iaCircleIcon.style.display = 'none';
+          iaChatContent.style.display = 'flex';
+          // Restaurar display flex de los elementos internos
+          iaChatHeader.style.display = 'flex';
+          iaChatMessages.style.display = 'flex';
+          iaChatInput.style.display = 'flex';
+          iaInput.disabled = false;
+          iaInput.style.display = '';
+          iaInput.focus();
+          blockReload = true;
+        }
+      });
+      // Cerrar chat móvil
+      iaChatClose.addEventListener('click', function(e) {
+        e.stopPropagation(); // Evita que el click reabra el chat
+        if (iaBtn.classList.contains('expanded')) {
+          iaBtn.classList.remove('expanded');
+          iaCircleIcon.style.display = 'flex';
+          iaChatContent.style.display = 'none';
+          iaChatHeader.style.display = 'none';
+          iaChatMessages.style.display = 'none';
+          iaChatInput.style.display = 'none';
+          iaInput.blur();
+          blockReload = false;
+        }
+      });
+
+      // Integración real con backend de FlorIA
+      let chatProcessing = false;
+      iaChatInput.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        if (chatProcessing) return;
+        chatProcessing = true;
+        iaSubmitBtn.disabled = true;
+        const val = iaInput.value.trim();
+        if(!val) {
+          chatProcessing = false;
+          iaSubmitBtn.disabled = false;
+          return;
+        }
+        appendMsg(val, 'user');
+        iaInput.value = '';
+        // Feedback visual: FlorIA está pensando...
+        const thinkingId = Symbol('thinking');
+        let thinkingDiv = document.createElement('div');
+        thinkingDiv.style.display = 'flex';
+        thinkingDiv.style.width = '100%';
+        thinkingDiv.style.marginBottom = '0.1em';
+        thinkingDiv.style.justifyContent = 'flex-start';
+        let thinkingBubble = document.createElement('span');
+        thinkingBubble.style.display = 'inline-block';
+        thinkingBubble.style.padding = '0.5em 1em';
+        thinkingBubble.style.borderRadius = '1em';
+        thinkingBubble.style.maxWidth = '80%';
+        thinkingBubble.style.wordBreak = 'break-word';
+        thinkingBubble.style.boxSizing = 'border-box';
+        setBubbleStyle(thinkingBubble, 'bot');
+        thinkingBubble.textContent = 'FlorIA está pensando...';
+        thinkingBubble.setAttribute('data-from', 'bot');
+        thinkingBubble.setAttribute('data-thinking', 'true');
+        thinkingDiv.appendChild(thinkingBubble);
+        iaChatMessages.appendChild(thinkingDiv);
+        iaChatMessages.scrollTop = iaChatMessages.scrollHeight;
+
+        // Lazy loading: solo hace fetch al enviar
+        try {
+          const resp = await fetch('http://localhost:3001/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: val })
+          });
+          const data = await resp.json();
+          // Eliminar burbuja de pensando
+          iaChatMessages.removeChild(thinkingDiv);
+          if (resp.ok && data.response) {
+            appendMsg(data.response, 'bot');
+          } else if (data.error) {
+            appendMsg('Vas muy rápido, respira un poco e intenta de nuevo en un momento.', 'bot');
+          } else {
+            appendMsg('FlorIA no pudo responder en este momento. Intenta de nuevo más tarde.', 'bot');
+          }
+        } catch (err) {
+          iaChatMessages.removeChild(thinkingDiv);
+          appendMsg('FlorIA no pudo responder en este momento. Intenta de nuevo más tarde.', 'bot');
+        }
+        chatProcessing = false;
+        iaSubmitBtn.disabled = false;
+      });
+      function setBubbleStyle(bubble, from) {
+        if (from === 'user') {
+          bubble.style.background = '#6366f1';
+          bubble.style.color = '#fff';
+        } else {
+          if (document.documentElement.classList.contains('dark')) {
+            bubble.style.background = '#23232b';
+            bubble.style.color = '#e5e7eb';
+          } else {
+            bubble.style.background = '#f1f5f9';
+            bubble.style.color = '#222';
+          }
+        }
+      }
+
+      function escapeHTML(str) {
+        return str.replace(/[&<>'"`]/g, function (c) {
+          return ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;',
+            '`': '&#96;'
+          })[c];
+        });
+      }
+
+      function appendMsg(msg, from) {
+        const div = document.createElement('div');
+        div.style.display = 'flex';
+        div.style.width = '100%';
+        div.style.marginBottom = '0.1em';
+        div.style.justifyContent = from === 'user' ? 'flex-end' : 'flex-start';
+        const bubble = document.createElement('span');
+        bubble.style.display = 'inline-block';
+        bubble.style.padding = '0.5em 1em';
+        bubble.style.borderRadius = '1em';
+        bubble.style.maxWidth = '80%';
+        bubble.style.wordBreak = 'break-word';
+        bubble.style.boxSizing = 'border-box';
+        setBubbleStyle(bubble, from);
+        bubble.textContent = escapeHTML(msg);
+        // Guardar el tipo de burbuja para actualización
+        bubble.setAttribute('data-from', from);
+        div.appendChild(bubble);
+        iaChatMessages.appendChild(div);
+        iaChatMessages.scrollTop = iaChatMessages.scrollHeight;
+      }
+
+      // Actualizar burbujas existentes al cambiar el modo
+      function updateAllBubbles() {
+        iaChatMessages.querySelectorAll('span[data-from]').forEach(bubble => {
+          setBubbleStyle(bubble, bubble.getAttribute('data-from'));
+        });
+      }
+
+      // Detectar cambio de modo oscuro
+      const observer = new MutationObserver(() => {
+        updateAllBubbles();
+      });
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    });
+  </script>
+
 
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/50762049480?text=Hola%2C%20tengo%20una%20consulta%20sobre%20los%20servicios" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contactar por WhatsApp">

@@ -356,9 +356,9 @@
        <a class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400 hover:bg-pink-50 dark:hover:bg-pink-900/20 rounded-lg transition-all duration-300 whitespace-nowrap flex-shrink-0" href="#educacion">
         Educación
        </a>
-       <a class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-lime-600 dark:hover:text-lime-400 hover:bg-lime-50 dark:hover:bg-lime-900/20 rounded-lg transition-all duration-300 whitespace-nowrap flex-shrink-0" href="#experimental">
-        Experimental
-       </a>
+      <a class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-lime-600 dark:hover:text-lime-400 hover:bg-lime-50 dark:hover:bg-lime-900/20 rounded-lg transition-all duration-300 whitespace-nowrap flex-shrink-0" href="#experimental">
+       lab
+      </a>
 
 
       </div>
@@ -415,7 +415,7 @@
       <a class="block px-6 py-4 text-base text-gray-700 dark:text-gray-300 hover:text-blue-600 hover:bg-blue-50 font-medium transition-colors text-left" href="#tiendas">Tiendas</a>
       <a class="block px-6 py-4 text-base text-gray-700 dark:text-gray-300 hover:text-orange-600 hover:bg-orange-50 font-medium transition-colors text-left" href="#restaurantes">Restaurantes</a>
       <a class="block px-6 py-4 text-base text-gray-700 dark:text-gray-300 hover:text-pink-600 hover:bg-pink-50 font-medium transition-colors text-left" href="#educacion">Educación</a>
-      <a class="block px-6 py-4 text-base text-gray-700 dark:text-gray-300 hover:text-lime-600 hover:bg-lime-50 font-medium transition-colors text-left" href="#experimental">Experimental</a>
+      <a class="block px-6 py-4 text-base text-gray-700 dark:text-gray-300 hover:text-lime-600 hover:bg-lime-50 font-medium transition-colors text-left" href="#experimental">lab</a>
      </div>
      <div class="p-6 border-t border-gray-100">
         <a href="precios.html" class="block w-full text-center px-4 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow-md hover:shadow-lg transition-all">Ver Precios</a>
@@ -2716,6 +2716,9 @@
         <button class="ia-chat-close" style="background:transparent;border:none;color:#6366f1;font-size:1.3rem;cursor:pointer;">×</button>
       </div>
       <div class="ia-chat-messages"></div>
+      <div id="recaptcha-container" class="w-full flex justify-center items-center mb-2 mt-2">
+        <div id="recaptcha-widget"></div>
+      </div>
       <form class="ia-chat-input" autocomplete="off">
         <input type="text" placeholder="Escribe tu pregunta..." required />
         <button type="submit">➤</button>
@@ -2740,7 +2743,18 @@
       iaChatMessages.style.gap = '0.3em';
       const iaChatInput = iaBtn.querySelector('.ia-chat-input');
       const iaInput = iaChatInput.querySelector('input');
-      if (!iaChatInput || !iaInput) return;
+      const iaSubmitBtn = iaChatInput.querySelector('button[type="submit"]');
+      if (!iaChatInput || !iaInput || !iaSubmitBtn) return;
+
+      // Protección extrema: bloquear recarga accidental
+      let blockReload = false;
+      window.addEventListener('beforeunload', function(e) {
+        if (blockReload) {
+          e.preventDefault();
+          e.returnValue = '';
+          return '';
+        }
+      });
 
       function isMobile() {
         return window.innerWidth <= 768;
@@ -2769,6 +2783,7 @@
           iaChatMessages.style.display = 'none';
           iaChatInput.style.display = 'none';
           iaInput.blur();
+          blockReload = false;
         }
       });
 
@@ -2785,6 +2800,7 @@
           iaInput.disabled = false;
           iaInput.style.display = '';
           iaInput.focus();
+          blockReload = true;
         }
       });
       // Cerrar chat móvil
@@ -2798,20 +2814,143 @@
           iaChatMessages.style.display = 'none';
           iaChatInput.style.display = 'none';
           iaInput.blur();
+          blockReload = false;
         }
       });
 
-      // Simulación de respuesta IA
-      iaChatInput.addEventListener('submit', function(e) {
+      // FlorIA chat memory implementation + reCAPTCHA
+      const SYSTEM_INSTRUCTION = `Eres FlorIA, asistente oficial de webspty Tu misión: vender servicios con respuestas ultra-concisas.\n\nREGLAS DE ORO:\n- Máximo 20 palabras por respuesta a no ser que el usuario pregunte algo, ahi si tu limite es mayor.\n- No hablar del programa de afiliados salvo que lo pidan.\n- Siempre termina con una pregunta relacionada.\n- Solo respondes sobre webspty.dev. Si preguntan otra cosa, di que no puedes ayudar.\n\nSERVICIOS Y PRECIOS:\n- Tarjeta Digital: $125\n- Landing page Express: $250\n- Web Profesional: $480 (SEO + dominio .com gratis 1 año)\n- E-commerce: $1250\n- IA Extra: $150 implementación + $30/mes hosting exclusivo\n\nMANTENIMIENTO:\nPlanes de $30, $50 y $90 mensuales.\n -plan tecnico: 30$ incluye hoosting asociado a tu dominio, actualizaciones de seguridad y soporte técnico.\n -plan seguro: 50$ incluye todo lo del plan técnico más optimizaciones de rendimiento, hosting propio de alto nivel y monitoreo proactivo.\n -plan de crecimiento: 90$ incluye todo lo del plan seguro mas actualizaciones de hasta 3 secciones mensuales, hosting premium con recursos dedicados, plan de IA y soporte prioritario.\n -plan de IA: 30$ incluye el hosting de una inteligencia artificial dedicada al sitio web\n\nAFILIADOS (solo si preguntan):\n- $20 por Tarjeta Digital\n- $40 por Landing page Express\n- $60 por Web Profesional\n- Pago inmediato: efectivo, transferencia o yappy\n\nCONTACTO:\nCarlos Mc Taggart | WhatsApp: +507 6204-9480`;
+      let chatHistory = [
+        { role: 'user', parts: [{ text: SYSTEM_INSTRUCTION }] }
+      ];
+      let chatProcessing = false;
+
+      // reCAPTCHA v2
+
+      let recaptchaWidgetId = null;
+      let captchaValidated = false;
+      function loadRecaptcha() {
+        if (window.grecaptcha) {
+          if (recaptchaWidgetId === null) {
+            recaptchaWidgetId = window.grecaptcha.render('recaptcha-widget', {
+              'sitekey': '6LfKqm8sAAAAALUNBqk_O9kVbJ5LOSL3Vt1FlaB-',
+              'theme': 'light'
+            });
+          }
+        } else {
+          setTimeout(loadRecaptcha, 500);
+        }
+      }
+      // Cargar reCAPTCHA al cargar el DOM
+      loadRecaptcha();
+
+      iaChatInput.addEventListener('submit', async function(e) {
         e.preventDefault();
+        if (chatProcessing) return;
+        chatProcessing = true;
+        iaSubmitBtn.disabled = true;
         const val = iaInput.value.trim();
-        if(!val) return;
+        if(!val) {
+          chatProcessing = false;
+          iaSubmitBtn.disabled = false;
+          return;
+        }
+        // Solo pedir captcha en el primer mensaje
+        let recaptchaToken = null;
+        if (!captchaValidated) {
+          try {
+            if (window.grecaptcha && recaptchaWidgetId !== null) {
+              recaptchaToken = window.grecaptcha.getResponse(recaptchaWidgetId);
+            }
+          } catch (err) {
+            appendMsg('Error al obtener el captcha. Intenta de nuevo.', 'bot');
+            chatProcessing = false;
+            iaSubmitBtn.disabled = false;
+            return;
+          }
+          if (!recaptchaToken) {
+            appendMsg('Por favor completa el captcha antes de enviar.', 'bot');
+            chatProcessing = false;
+            iaSubmitBtn.disabled = false;
+            return;
+          }
+        }
         appendMsg(val, 'user');
         iaInput.value = '';
-        setTimeout(()=>{
-          appendMsg('🤖 Pronto responderé con IA real. ¡Gracias por tu mensaje!', 'bot');
-        }, 800);
+        // Add user message to chatHistory
+        chatHistory.push({ role: 'user', parts: [{ text: val }] });
+        // Limit to last 10 messages (excluding SYSTEM_INSTRUCTION)
+        if (chatHistory.length > 11) {
+          chatHistory = [chatHistory[0], ...chatHistory.slice(-10)];
+        }
+        // Feedback visual: FlorIA está pensando...
+        let thinkingDiv = document.createElement('div');
+        thinkingDiv.style.display = 'flex';
+        thinkingDiv.style.width = '100%';
+        thinkingDiv.style.marginBottom = '0.1em';
+        thinkingDiv.style.justifyContent = 'flex-start';
+        let thinkingBubble = document.createElement('span');
+        thinkingBubble.style.display = 'inline-block';
+        thinkingBubble.style.padding = '0.5em 1em';
+        thinkingBubble.style.borderRadius = '1em';
+        thinkingBubble.style.maxWidth = '80%';
+        thinkingBubble.style.wordBreak = 'break-word';
+        thinkingBubble.style.boxSizing = 'border-box';
+        setBubbleStyle(thinkingBubble, 'bot');
+        thinkingBubble.textContent = 'FlorIA está pensando...';
+        thinkingBubble.setAttribute('data-from', 'bot');
+        thinkingBubble.setAttribute('data-thinking', 'true');
+        thinkingDiv.appendChild(thinkingBubble);
+        iaChatMessages.appendChild(thinkingDiv);
+        iaChatMessages.scrollTop = iaChatMessages.scrollHeight;
+
+        try {
+          const resp = await fetch('http://localhost:3001/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ history: chatHistory, recaptchaToken })
+          });
+          const data = await resp.json();
+          iaChatMessages.removeChild(thinkingDiv);
+          if (!captchaValidated) {
+            if (window.grecaptcha && recaptchaWidgetId !== null) {
+              window.grecaptcha.reset(recaptchaWidgetId);
+            }
+            // Si el captcha fue válido, ocultar el widget
+            if (resp.ok && data.response) {
+              captchaValidated = true;
+              const recaptchaContainer = document.getElementById('recaptcha-container');
+              if (recaptchaContainer) recaptchaContainer.style.display = 'none';
+            }
+          }
+          if (resp.ok && data.response) {
+            appendMsg(data.response, 'bot');
+            // Add bot response to chatHistory
+            chatHistory.push({ role: 'model', parts: [{ text: data.response }] });
+            if (chatHistory.length > 11) {
+              chatHistory = [chatHistory[0], ...chatHistory.slice(-10)];
+            }
+          } else if (data.error) {
+            appendMsg(data.error, 'bot');
+          } else {
+            appendMsg('FlorIA no pudo responder en este momento. Intenta de nuevo más tarde.', 'bot');
+          }
+        } catch (err) {
+          iaChatMessages.removeChild(thinkingDiv);
+          appendMsg('FlorIA no pudo responder en este momento. Intenta de nuevo más tarde.', 'bot');
+        }
+        chatProcessing = false;
+        iaSubmitBtn.disabled = false;
       });
+          // Cargar script de reCAPTCHA v2
+          if (!document.getElementById('recaptcha-script')) {
+            const recaptchaScript = document.createElement('script');
+            recaptchaScript.id = 'recaptcha-script';
+            recaptchaScript.src = 'https://www.google.com/recaptcha/api.js';
+            recaptchaScript.async = true;
+            recaptchaScript.defer = true;
+            document.body.appendChild(recaptchaScript);
+          }
       function setBubbleStyle(bubble, from) {
         if (from === 'user') {
           bubble.style.background = '#6366f1';
@@ -2825,6 +2964,19 @@
             bubble.style.color = '#222';
           }
         }
+      }
+
+      function escapeHTML(str) {
+        return str.replace(/[&<>'"`]/g, function (c) {
+          return ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;',
+            '`': '&#96;'
+          })[c];
+        });
       }
 
       function appendMsg(msg, from) {
@@ -2841,7 +2993,7 @@
         bubble.style.wordBreak = 'break-word';
         bubble.style.boxSizing = 'border-box';
         setBubbleStyle(bubble, from);
-        bubble.textContent = msg;
+        bubble.textContent = escapeHTML(msg);
         // Guardar el tipo de burbuja para actualización
         bubble.setAttribute('data-from', from);
         div.appendChild(bubble);
