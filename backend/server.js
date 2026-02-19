@@ -53,7 +53,9 @@ const allowedOrigins = [
   'https://www.webspty.dev',
   'https://webspty.dev',
   'http://webspty.dev',
-  'http://www.webspty.dev'
+  'http://www.webspty.dev',
+  'webspty.dev',
+  'www.webspty.dev',
 ];
 
 app.use(cors({
