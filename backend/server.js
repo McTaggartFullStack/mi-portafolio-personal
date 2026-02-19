@@ -56,6 +56,8 @@ const allowedOrigins = [
   'http://www.webspty.dev',
   'webspty.dev',
   'www.webspty.dev',
+  // Permitir cualquier origen en desarrollo (solo para pruebas locales)
+  ...((process.env.NODE_ENV !== 'production') ? ['*'] : [])
 ];
 
 app.use(cors({
