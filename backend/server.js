@@ -45,30 +45,29 @@ app.use(helmet());
 app.use(express.json());
 
 // 2. CORS (Permitiendo tus puertos locales y tu dominio)
-const allowedOrigins = [
-  'http://127.0.0.1:5500',
-  'http://127.0.0.1:5502',
-  'http://localhost:5500',
-  'http://localhost:5502',
-  'https://www.webspty.dev',
-  'https://webspty.dev',
-  'http://webspty.dev',
-  'http://www.webspty.dev',
-  'webspty.dev',
-  'www.webspty.dev',
-  // Permitir cualquier origen en desarrollo (solo para pruebas locales)
-  ...((process.env.NODE_ENV !== 'production') ? ['*'] : [])
-];
-
-app.use(cors({
-  origin: function(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('No permitido por CORS'));
+if (process.env.NODE_ENV !== 'production') {
+  // Permitir cualquier origen en desarrollo
+  app.use(cors({ origin: true }));
+} else {
+  // Producción: solo orígenes permitidos
+  const allowedOrigins = [
+    'https://www.webspty.dev',
+    'https://webspty.dev',
+    'http://webspty.dev',
+    'http://www.webspty.dev',
+    'webspty.dev',
+    'www.webspty.dev',
+  ];
+  app.use(cors({
+    origin: function(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('No permitido por CORS'));
+      }
     }
-  }
-}));
+  }));
+}
 
 // 3. Rate Limit (10 mensajes cada 2 minutos)
 const chatLimiter = rateLimit({
