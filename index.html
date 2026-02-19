@@ -2716,8 +2716,8 @@
         <button class="ia-chat-close" style="background:transparent;border:none;color:#6366f1;font-size:1.3rem;cursor:pointer;">×</button>
       </div>
       <div class="ia-chat-messages"></div>
-      <div id="recaptcha-container" class="w-full flex justify-center items-center mb-2 mt-2">
-        <div id="recaptcha-widget"></div>
+      <div id="recaptcha-container" class="w-full flex justify-center items-center mb-2 mt-2" style="min-height:78px;">
+        <div id="recaptcha-widget" style="width:100%;max-width:320px;min-width:180px;display:flex;justify-content:center;"></div>
       </div>
       <form class="ia-chat-input" autocomplete="off">
         <input type="text" placeholder="Escribe tu pregunta..." required />
@@ -2787,22 +2787,26 @@
         }
       });
 
-      // Abrir chat móvil
+      // Abrir chat IA flotante (botón) - compatible y robusto
       iaBtn.addEventListener('click', function(e) {
-        if (!iaBtn.classList.contains('expanded')) {
+        // Solo expandir si el click es sobre el círculo, el logo, o el botón flotante
+        const isCircle = e.target.classList.contains('ia-circle-icon');
+        const isLogo = e.target.tagName === 'IMG' && e.target.closest('.ia-circle-icon');
+        const isBtn = e.target === iaBtn;
+        if (!iaBtn.classList.contains('expanded') && (isCircle || isLogo || isBtn)) {
           iaBtn.classList.add('expanded');
           iaCircleIcon.style.display = 'none';
           iaChatContent.style.display = 'flex';
-          // Restaurar display flex de los elementos internos
           iaChatHeader.style.display = 'flex';
           iaChatMessages.style.display = 'flex';
           iaChatInput.style.display = 'flex';
           iaInput.disabled = false;
           iaInput.style.display = '';
-          iaInput.focus();
+          setTimeout(() => iaInput.focus(), 100);
           blockReload = true;
         }
       });
+
       // Cerrar chat móvil
       iaChatClose.addEventListener('click', function(e) {
         e.stopPropagation(); // Evita que el click reabra el chat
@@ -2815,6 +2819,8 @@
           iaChatInput.style.display = 'none';
           iaInput.blur();
           blockReload = false;
+          // Al cerrar el chat, volver a pedir captcha en la próxima sesión
+          captchaValidated = false;
         }
       });
 
@@ -2824,12 +2830,30 @@
         { role: 'user', parts: [{ text: SYSTEM_INSTRUCTION }] }
       ];
       let chatProcessing = false;
+  // Generar identificador de sesión único al abrir el chat
+  let sessionId = window.crypto && window.crypto.randomUUID ? window.crypto.randomUUID() : (Date.now() + '-' + Math.random().toString(36).substr(2, 9));
 
       // reCAPTCHA v2
 
       let recaptchaWidgetId = null;
       let captchaValidated = false;
-      function loadRecaptcha() {
+      function loadRecaptcha(attempt=0) {
+        // Forzar visibilidad y tamaño correcto
+        const recaptchaContainer = document.getElementById('recaptcha-container');
+        const recaptchaWidget = document.getElementById('recaptcha-widget');
+        if (recaptchaContainer) {
+          recaptchaContainer.style.display = 'flex';
+          recaptchaContainer.style.justifyContent = 'center';
+          recaptchaContainer.style.alignItems = 'center';
+          recaptchaContainer.style.minHeight = '78px';
+        }
+        if (recaptchaWidget) {
+          recaptchaWidget.style.width = '100%';
+          recaptchaWidget.style.maxWidth = '320px';
+          recaptchaWidget.style.minWidth = '180px';
+          recaptchaWidget.style.display = 'flex';
+          recaptchaWidget.style.justifyContent = 'center';
+        }
         if (window.grecaptcha) {
           if (recaptchaWidgetId === null) {
             recaptchaWidgetId = window.grecaptcha.render('recaptcha-widget', {
@@ -2838,11 +2862,18 @@
             });
           }
         } else {
-          setTimeout(loadRecaptcha, 500);
+          // Si tras 10 intentos (5s) no carga, muestra mensaje de error
+          if (attempt > 10) {
+            if (recaptchaWidget) recaptchaWidget.innerHTML = '<span style="color:red;font-size:14px;">No se pudo cargar el captcha. Refresca la página.</span>';
+            return;
+          }
+          setTimeout(()=>loadRecaptcha(attempt+1), 500);
         }
       }
       // Cargar reCAPTCHA al cargar el DOM
+      // Prioridad: cargar script de reCAPTCHA v2 antes de otros scripts/UI
       loadRecaptcha();
+      // CSS para captcha debe ir fuera del bloque <script>, no dentro
 
       iaChatInput.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -2855,7 +2886,7 @@
           iaSubmitBtn.disabled = false;
           return;
         }
-        // Solo pedir captcha en el primer mensaje
+        // Solo pedir captcha en el primer mensaje, luego marcar como validado permanentemente
         let recaptchaToken = null;
         if (!captchaValidated) {
           try {
@@ -2907,7 +2938,10 @@
         try {
           const resp = await fetch('http://localhost:3001/api/chat', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+              'Content-Type': 'application/json',
+              'x-session-id': sessionId
+            },
             body: JSON.stringify({ history: chatHistory, recaptchaToken })
           });
           const data = await resp.json();
@@ -2916,7 +2950,7 @@
             if (window.grecaptcha && recaptchaWidgetId !== null) {
               window.grecaptcha.reset(recaptchaWidgetId);
             }
-            // Si el captcha fue válido, ocultar el widget
+            // Si el captcha fue válido, ocultar el widget y marcar validado para toda la sesión
             if (resp.ok && data.response) {
               captchaValidated = true;
               const recaptchaContainer = document.getElementById('recaptcha-container');

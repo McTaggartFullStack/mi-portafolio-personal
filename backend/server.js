@@ -38,11 +38,14 @@ app.use(express.json());
 
 // 2. CORS (Permitiendo tus puertos locales y tu dominio)
 const allowedOrigins = [
-  'http://127.0.0.1:5500', 
-  'http://127.0.0.1:5502', 
-  'http://localhost:5500', 
+  'http://127.0.0.1:5500',
+  'http://127.0.0.1:5502',
+  'http://localhost:5500',
   'http://localhost:5502',
-  'https://www.webspty.dev'
+  'https://www.webspty.dev',
+  'https://webspty.dev',
+  'http://webspty.dev',
+  'http://www.webspty.dev'
 ];
 
 app.use(cors({
@@ -134,21 +137,32 @@ function sanitizeMessage(msg) {
 // 5. RUTA DEL CHAT (Con sistema de reintento automático y validación reCAPTCHA)
 const axios = require('axios');
 const RECAPTCHA_SECRET = '6LfKqm8sAAAAAN7Kakn9lPSRiyaMjze3WPo38JWr';
+// Simple in-memory session validation store
+const validatedSessions = {};
 
 app.post('/api/chat', dailyLimiter, chatLimiter, async (req, res) => {
   let { message, history, recaptchaToken } = req.body;
-  // Validar reCAPTCHA
-  if (!recaptchaToken) {
-    return res.status(400).json({ error: 'Falta el token de reCAPTCHA.' });
+  // Session ID from header (frontend must send this)
+  const sessionId = req.headers['x-session-id'];
+  if (!sessionId) {
+    return res.status(400).json({ error: 'Falta el identificador de sesión.' });
   }
-  try {
-    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${recaptchaToken}`;
-    const verifyResp = await axios.post(verifyUrl);
-    if (!verifyResp.data.success) {
-      return res.status(403).json({ error: 'No se pudo verificar el captcha. Intenta de nuevo.' });
+  // Only require captcha if session is not validated
+  if (!validatedSessions[sessionId]) {
+    if (!recaptchaToken) {
+      return res.status(400).json({ error: 'Falta el token de reCAPTCHA.' });
     }
-  } catch (captchaErr) {
-    return res.status(500).json({ error: 'Error al verificar el captcha.' });
+    try {
+      const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${recaptchaToken}`;
+      const verifyResp = await axios.post(verifyUrl);
+      if (!verifyResp.data.success) {
+        return res.status(403).json({ error: 'No se pudo verificar el captcha. Intenta de nuevo.' });
+      }
+      // Mark session as validated
+      validatedSessions[sessionId] = true;
+    } catch (captchaErr) {
+      return res.status(500).json({ error: 'Error al verificar el captcha.' });
+    }
   }
 
   // ...existing code...
