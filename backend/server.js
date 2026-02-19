@@ -18,6 +18,14 @@ if (process.env.SENTRY_DSN) {
 }
 
 const app = express();
+// Endpoint para obtener el sitekey de reCAPTCHA de forma segura
+app.get('/api/recaptcha-sitekey', (req, res) => {
+  const sitekey = process.env.RECAPTCHA_SITE_KEY || '';
+  if (!sitekey) {
+    return res.status(404).json({ error: 'Sitekey no configurado' });
+  }
+  res.json({ sitekey });
+});
 if (Sentry) {
   app.use(Sentry.Handlers.requestHandler());
 }

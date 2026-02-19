@@ -36,6 +36,8 @@
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -2870,8 +2872,7 @@
           setTimeout(()=>loadRecaptcha(attempt+1), 500);
         }
       }
-      // Cargar reCAPTCHA al cargar el DOM
-      // Prioridad: cargar script de reCAPTCHA v2 antes de otros scripts/UI
+      // Esperar a que el script de reCAPTCHA esté listo antes de cargar el widget
       loadRecaptcha();
       // CSS para captcha debe ir fuera del bloque <script>, no dentro
 
