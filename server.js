@@ -49,7 +49,7 @@ if (process.env.NODE_ENV !== 'production') {
   // Permitir cualquier origen en desarrollo
   app.use(cors({ origin: true }));
 } else {
-  // Producción: solo orígenes permitidos
+  // Producción: solo orígenes permitidos (con y sin www)
   const allowedOrigins = [
     'https://www.webspty.dev',
     'https://webspty.dev',
@@ -58,15 +58,20 @@ if (process.env.NODE_ENV !== 'production') {
     'webspty.dev',
     'www.webspty.dev',
   ];
-  app.use(cors({
-    origin: function(origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('No permitido por CORS'));
+  app.use((req, res, next) => {
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+      res.header('Access-Control-Allow-Origin', origin);
+      res.header('Vary', 'Origin');
+      res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+      res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization,x-session-id');
+      res.header('Access-Control-Allow-Credentials', 'true');
+      if (req.method === 'OPTIONS') {
+        return res.sendStatus(204);
       }
     }
-  }));
+    next();
+  });
 }
 
 // 3. Rate Limit (10 mensajes cada 2 minutos)
