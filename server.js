@@ -261,18 +261,5 @@ if (Sentry) {
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`-----------------------------------------`);
-  console.log(`🚀 FlorIA Backend escuchando en puerto ${PORT}`);
-  console.log(`🔑 API KEY: ${process.env.GEMINI_API_KEY ? 'CONFIGURADA' : 'FALTA'}`);
-  // 5. Advertencia de dependencias desactualizadas
-  try {
-    const { execSync } = require('child_process');
-    const outdated = execSync('npm outdated --json', { encoding: 'utf8' });
-    if (outdated && outdated !== '{}') {
-      console.warn('⚠️ Dependencias desactualizadas detectadas. Ejecuta "npm update" para mejorar seguridad.');
-    }
-  } catch (e) {
-    // Silenciar errores si npm outdated falla
-  }
-  console.log(`-----------------------------------------`);
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
