@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>Palacio del Dragón | Cocina Imperial</title>
+  <meta name="description" content="Esta es una página de demostración del portafolio de Carlos Mc Taggart. Ejemplo de diseño web adaptable y moderno.">
+  <link rel="canonical" href="https://www.webspty.dev/chino.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'chinese': ['"Zhi Mang Xing"', 'cursive'],
+                        'serif-cn': ['"Noto Serif SC"', 'serif'],
+                    },
+                    colors: {
+                        'china-red': '#C41E3A',
+                        'china-gold': '#D4AF37',
+                        'parchment': '#FDF5E6',
+                        'ink-black': '#1a1a1a'
+                    },
+                    backgroundImage: {
+                        'pattern': "url('https://www.transparenttextures.com/patterns/black-scales.png')"
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .cookie-shake {
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0) rotate(-1deg); }
+            20%, 80% { transform: translate3d(2px, 0, 0) rotate(2deg); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0) rotate(-4deg); }
+            40%, 60% { transform: translate3d(4px, 0, 0) rotate(4deg); }
+        }
+        .paper-reveal {
+            animation: unfold 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+            transform-origin: center top;
+        }
+        @keyframes unfold {
+            0% { transform: scaleY(0); opacity: 0; }
+            100% { transform: scaleY(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-ink-black text-parchment font-serif-cn bg-pattern">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Navbar -->
+    <nav class="bg-china-red shadow-lg border-b-4 border-china-gold sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <span class="text-4xl text-china-gold">🐉</span>
+                    <div>
+                        <h1 class="font-chinese text-3xl text-white">Palacio del Dragón</h1>
+                        <p class="text-xs text-china-gold uppercase tracking-widest">Tradición Milenaria</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex gap-8 text-white font-bold tracking-wide">
+                    <a href="#menu" class="hover:text-china-gold transition-colors">DIM SUM</a>
+                    <a href="#platos" class="hover:text-china-gold transition-colors">BANQUETES</a>
+                    <a href="#fortuna" class="hover:text-china-gold transition-colors text-china-gold border-b border-china-gold">TU FORTUNA</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1515669097368-22e68427d265?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-black to-transparent"></div>
+        </div>
+        <div class="relative z-10 text-center p-8 border-y-2 border-china-gold bg-black/50 backdrop-blur-sm max-w-3xl">
+            <p class="text-china-gold text-xl mb-4 font-bold tracking-[0.3em]">BIENVENIDOS</p>
+            <h2 class="text-5xl md:text-7xl font-chinese mb-6 text-white text-shadow">Sabor Imperial</h2>
+            <p class="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
+                Una experiencia culinaria que viaja desde las regiones de Szechuan hasta Cantón. <br>
+                Auténtico, picante y lleno de prosperidad.
+            </p>
+            <button onclick="document.getElementById('fortuna').scrollIntoView({behavior: 'smooth'})" class="bg-china-red text-white px-8 py-3 rounded border border-china-gold hover:bg-red-800 transition-colors font-bold tracking-widest">
+                DESCUBRE TU DESTINO 🥠
+            </button>
+        </div>
+    </div>
+
+    <!-- Menú Preview -->
+    <section id="menu" class="py-24 max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+            <span class="text-china-red font-chinese text-4xl block mb-2">点心</span>
+            <h3 class="text-4xl text-china-gold font-bold uppercase tracking-widest">Dim Sum & Especialidades</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Item 1 -->
+            <div class="bg-neutral-900 border border-china-gold/30 p-6 hover:border-china-gold transition-colors group">
+                <div class="relative overflow-hidden h-48 mb-6 border border-white/10">
+                    <img src="img/pato.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <h4 class="text-2xl text-white font-chinese mb-2">Pato Pekín Laqueado</h4>
+                <p class="text-gray-400 text-sm mb-4">Servido con crepes finos, cebollino y salsa hoisin casera.</p>
+                <span class="text-china-gold text-xl font-bold">$45.00</span>
+            </div>
+
+            <!-- Item 2 -->
+             <div class="bg-neutral-900 border border-china-gold/30 p-6 hover:border-china-gold transition-colors group">
+                <div class="relative overflow-hidden h-48 mb-6 border border-white/10">
+                    <img src="img/dumpling.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <h4 class="text-2xl text-white font-chinese mb-2">Xiaolongbao</h4>
+                <p class="text-gray-400 text-sm mb-4">Dumplings de sopa de Shanghai al vapor con relleno de cerdo y cangrejo.</p>
+                <span class="text-china-gold text-xl font-bold">$18.00</span>
+            </div>
+
+            <!-- Item 3 -->
+             <div class="bg-neutral-900 border border-china-gold/30 p-6 hover:border-china-gold transition-colors group">
+                <div class="relative overflow-hidden h-48 mb-6 border border-white/10">
+                    <img src="img/tofu.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <h4 class="text-2xl text-white font-chinese mb-2">Mapo Tofu</h4>
+                <p class="text-gray-400 text-sm mb-4">Tofu sedoso en salsa picante de frijoles fermentados y pimienta de Sichuan.</p>
+                <span class="text-china-gold text-xl font-bold">$22.00</span>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="bg-neutral-900 border border-china-gold/30 p-6 hover:border-china-gold transition-colors group">
+                <div class="relative overflow-hidden h-48 mb-6 border border-white/10">
+                    <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=2072&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <h4 class="text-2xl text-white font-chinese mb-2">Arroz Yangchow</h4>
+                <p class="text-gray-400 text-sm mb-4">El clásico arroz frito imperial con camarones, cerdo BBQ, guisantes y huevo.</p>
+                <span class="text-china-gold text-xl font-bold">$16.00</span>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="bg-neutral-900 border border-china-gold/30 p-6 hover:border-china-gold transition-colors group">
+                <div class="relative overflow-hidden h-48 mb-6 border border-white/10">
+                    <img src="img/sopa.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <h4 class="text-2xl text-white font-chinese mb-2">Wonton Soup</h4>
+                <p class="text-gray-400 text-sm mb-4">Caldo claro de pollo con wontons de camarón rellenos a mano y bok choy.</p>
+                <span class="text-china-gold text-xl font-bold">$14.00</span>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="bg-neutral-900 border border-china-gold/30 p-6 hover:border-china-gold transition-colors group">
+                <div class="relative overflow-hidden h-48 mb-6 border border-white/10">
+                    <img src="img/pao.jpg" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <h4 class="text-2xl text-white font-chinese mb-2">Kung Pao Chicken</h4>
+                <p class="text-gray-400 text-sm mb-4">Pollo salteado con cacahuates, verduras y chiles. Un favorito picante y crujiente.</p>
+                <span class="text-china-gold text-xl font-bold">$20.00</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fortune Cookie Section -->
+    <section id="fortuna" class="py-24 bg-china-red/5 relative overflow-hidden">
+        <div class="absolute -top-20 -left-20 text-[20rem] opacity-5 select-none pointer-events-none text-china-red font-chinese">福</div>
+        
+        <div class="max-w-4xl mx-auto px-4 text-center sm:px-6">
+            <h3 class="text-5xl font-chinese text-china-red mb-4">La Galleta de la Fortuna</h3>
+            <p class="text-black/60 dark:text-gray-400 mb-12">Haz clic en la galleta para revelar la sabiduría ancestral que te espera.</p>
+
+            <div class="relative min-h-[400px] flex flex-col items-center justify-center cursor-pointer group select-none" onclick="crackCookie()" id="cookieArea">
+                
+                <!-- Galleta Cerrada -->
+                <div id="closedCookie" class="transition-transform duration-300 transform hover:scale-105 relative z-20">
+                    <div class="text-[150px] leading-none drop-shadow-2xl filter drop-shadow-lg">🥠</div>
+                    <p class="mt-4 text-china-gold font-bold animate-pulse">CLIC PARA ABRIR</p>
+                </div>
+
+                <!-- Mensaje Revelado -->
+                <div id="fortunePaper" class="hidden bg-parchment text-ink-black p-8 shadow-2xl max-w-md w-full border-4 border-china-red relative z-10 rotate-1">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-red-800 rounded-full border-4 border-white shadow"></div>
+                    
+                    <h4 class="text-center font-chinese text-3xl text-china-red mb-4">Tu Fortuna</h4>
+                    <p id="fortuneText" class="text-xl font-serif text-center italic mb-6 leading-relaxed">
+                        "..."
+                    </p>
+                    
+                    <div class="border-t border-gray-300 pt-4 flex justify-between items-center text-sm text-gray-500">
+                        <span>Números de la suerte:</span>
+                        <span id="luckyNumbers" class="font-bold text-china-red tracking-widest">00 - 00 - 00</span>
+                    </div>
+
+                    <button class="mt-6 w-full py-2 bg-china-gold hover:bg-yellow-600 text-white font-bold uppercase text-sm tracking-wider" onclick="event.stopPropagation(); resetCookie()">
+                        Probar otra vez
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural End Section -->
+    <section class="py-20 bg-ink-black relative border-t border-china-gold/20">
+        <div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+             <img src="https://www.transparenttextures.com/patterns/black-scales.png" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="inline-block border-y-2 border-china-red py-8 px-12 relative">
+                <span class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-ink-black px-4 text-china-gold text-2xl">✴</span>
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 bg-ink-black px-4 text-china-gold text-2xl">✴</span>
+                
+                <h2 class="text-6xl md:text-8xl font-chinese text-parchment mb-4 leading-relaxed">
+                    民以食为天
+                </h2>
+                <p class="text-china-gold text-xl font-serif-cn italic tracking-widest">
+                    "Para el pueblo, la comida es el cielo"
+                </p>
+                <p class="text-gray-500 text-sm mt-4 font-sans tracking-wide uppercase">
+                    — Proverbio Antiguo —
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+                <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+                    <span>✉️</span> mctaggart.dev@gmail.com
+                </a>
+                <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+                    <span>📱</span> +507 6204-9480
+                </a>
+            </div>
+            <p class="text-gray-500 text-sm">
+                Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const fortunes = [
+            "La felicidad está a la vuelta de la esquina, a menos que la esquina sea un círculo.",
+            "Un viaje de mil millas comienza con un solo paso delicioso.",
+            "Tu creatividad te abrirá puertas que parecían muros.",
+            "No temas al cambio, es la única constante en el menú de la vida.",
+            "Alguien cercano piensa en ti con una sonrisa.",
+            "La paciencia es un árbol de raíz amarga pero de frutos muy dulces.",
+            "Pronto recibirás noticias que alegrarán tu corazón.",
+            "La fortuna favorece a los valientes (y a los que comen bien).",
+            "Tu intuición es tu mejor brújula; confía en ella.",
+            "Comparte tu alegría y se multiplicará como el arroz.",
+            "Un viejo amigo reaparecerá pronto en tu vida.",
+            "El éxito no es el destino, es el viaje y la compañía.",
+            "Hoy es un buen día para probar algo nuevo.",
+            "Tu bondad es tu mayor fortaleza, no la cambies.",
+            "Las mejores cosas de la vida no son cosas, son momentos.",
+            "Si puedes soñarlo, puedes cocinarlo.",
+            "Evita las decisiones apresuradas hoy, mastica lento.",
+            "Una sonrisa es el idioma universal. Úsalo a menudo.",
+            "La suerte te encontrará trabajando.",
+            "Lo que buscas también te está buscando a ti.",
+            "No cuentes los días, haz que los días cuenten.",
+            "La verdadera riqueza es tener salud y buenos amigos.",
+            "Un problema compartido es un problema dividido a la mitad.",
+            "La disciplina es el puente entre metas y logros.",
+            "No mires atrás, no vas en esa dirección.",
+            "Tu capacidad de amar es infinita.",
+            "Acepta lo que no puedes cambiar y cambia lo que no puedes aceptar.",
+            "La simplicidad es la máxima sofisticación.",
+            "El conocimiento habla, pero la sabiduría escucha.",
+            "Cada flor florece a su propio ritmo. Ten paciencia.",
+            "El respeto se gana, la honestidad se aprecia.",
+            "Un pequeño gesto amable puede cambiar el día de alguien.",
+            "Tu energía positiva atrae cosas positivas.",
+            "Prepárate para una aventura inesperada.",
+            "La mejor vista viene después de la escalada más difícil.",
+            "Confía en el tiempo, que suele dar dulces salidas a muchas amargas dificultades.",
+            "El que madruga... encuentra el mejor desayuno.",
+            "No hay atajos para cualquier lugar al que valga la pena ir.",
+            "Tu talento será reconocido muy pronto.",
+            "La gratitud convierte lo que tenemos en suficiente."
+        ];
+
+        function crackCookie() {
+            const closed = document.getElementById('closedCookie');
+            const paper = document.getElementById('fortunePaper');
+            const text = document.getElementById('fortuneText');
+            const numbers = document.getElementById('luckyNumbers');
+
+            // Quick shake animation
+            closed.classList.add('cookie-shake');
+            
+            setTimeout(() => {
+                closed.classList.add('hidden');
+                closed.classList.remove('cookie-shake');
+                
+                // Pick random fortune
+                const randomMsg = fortunes[Math.floor(Math.random() * fortunes.length)];
+                text.innerText = `"${randomMsg}"`;
+                
+                // Generate lucky numbers
+                const nums = Array.from({length: 3}, () => Math.floor(Math.random() * 99) + 1).join(" - ");
+                numbers.innerText = nums;
+
+                paper.classList.remove('hidden');
+                paper.classList.add('paper-reveal');
+            }, 500);
+        }
+
+        function resetCookie() {
+            const closed = document.getElementById('closedCookie');
+            const paper = document.getElementById('fortunePaper');
+            
+            paper.classList.add('hidden');
+            paper.classList.remove('paper-reveal');
+            closed.classList.remove('hidden');
+        }
+    </script>
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

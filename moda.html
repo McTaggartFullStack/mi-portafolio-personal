@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>LUMIÈRE | Moda Atemporal</title>
+  <meta name="description" content="Esta es una página de demostración del portafolio de Carlos Mc Taggart. Ejemplo de diseño web adaptable y moderno.">
+  <link rel="canonical" href="https://www.webspty.dev/moda.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    },
+                    colors: {
+                        'cream': '#F5F5F0',
+                        'charcoal': '#1a1a1a',
+                        'sand': '#e6e2dd'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(40px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            background-color: #F5F5F0; 
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .reveal-text {
+            clip-path: inset(0 0 100% 0);
+            transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .reveal-text.active {
+            clip-path: inset(0 0 0 0);
+        }
+
+        .image-parallax {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        @keyframes zoomIn {
+            0% { transform: scale(1.05); }
+            100% { transform: scale(1.15); }
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 1px;
+            background: #1a1a1a;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F5F5F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4d4d0;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+    <!-- Preloader -->
+    <div id="loader" class="fixed inset-0 bg-charcoal z-50 flex items-center justify-center transition-transform duration-700 ease-in-out">
+        <div class="text-cream font-serif text-4xl italic overflow-hidden">
+            <span class="inline-block animate-slide-up">LUMIÈRE</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 px-6 py-6 flex justify-between items-center transition-colors duration-300" id="navbar">
+        
+        <!-- Logo and Menu Items Grouped Left/Center -->
+        <div class="flex items-center gap-8 md:gap-12">
+            <a href="#" class="relative z-50 font-serif text-2xl md:text-3xl tracking-wide text-white mix-blend-difference">LUMIÈRE</a>
+            
+            <div class="hidden md:flex gap-8 font-sans text-xs tracking-[0.2em] text-white mix-blend-difference">
+                <a href="#collection" class="nav-link">COLECCIÓN</a>
+                <a href="#about" class="nav-link">MAISON</a>
+                <a href="#journal" class="nav-link">DIARIO</a>
+            </div>
+        </div>
+
+        <!-- Right Side items -->
+        <div class="flex items-center gap-6">
+            <a href="./index.html" class="hidden md:block relative z-50 font-sans text-xs md:text-sm tracking-widest text-white hover:opacity-70 transition-colors mix-blend-difference">
+                ← VOLVER
+            </a>
+
+            <button class="md:hidden z-50 relative group w-8 h-8 flex flex-col justify-center items-end space-y-1.5" id="menu-btn">
+                <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+                <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-charcoal/95 backdrop-blur-xl z-40 transform translate-x-full transition-transform duration-500 flex items-center justify-center">
+        <div class="flex flex-col text-center space-y-8 font-serif text-4xl italic text-cream">
+            <a href="#collection" class="hover:text-rose-300 transition-colors transform hover:skew-x-6">Colección</a>
+            <a href="#about" class="hover:text-rose-300 transition-colors transform hover:skew-x-6">La Maison</a>
+            <a href="#journal" class="hover:text-rose-300 transition-colors transform hover:skew-x-6">Diario</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen overflow-hidden bg-charcoal">
+        <div class="absolute inset-0">
+            <!-- Added poster image and background color fallback -->
+            <video autoplay muted loop playsinline 
+                   poster="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop"
+                   class="w-full h-full object-cover opacity-80 md:opacity-90 scale-105 animate-[zoomIn_20s_ease-in-out_infinite_alternate]">
+                <source src="https://videos.pexels.com/video-files/7653556/7653556-uhd_2560_1440_30fps.mp4" type="video/mp4">
+            </video>
+            <!-- Enhanced gradient for better text visibility -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+            
+            <!-- Floating particles -->
+            <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-white/40 rounded-full animate-float" style="animation-delay: 0s;"></div>
+            <div class="absolute top-1/3 right-1/3 w-3 h-3 bg-white/30 rounded-full animate-float" style="animation-delay: 1.5s;"></div>
+            <div class="absolute bottom-1/4 left-1/3 w-2 h-2 bg-white/50 rounded-full animate-float" style="animation-delay: 3s;"></div>
+        </div>
+
+        <div class="absolute bottom-20 md:bottom-12 left-6 md:left-12 max-w-xl z-20">
+            <p class="font-sans text-[10px] md:text-xs tracking-[0.3em] mb-4 opacity-0 animate-slide-up backdrop-blur-sm bg-white/10 inline-block px-4 py-2 rounded text-sky-200 border border-white/10" style="animation-delay: 0.8s;">PRIMAVERA / VERANO '26</p>
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-none mb-6 opacity-0 animate-slide-up text-cream" style="animation-delay: 1s;">
+                <span class="block drop-shadow-lg">Elegancia</span>
+                <span class="italic font-light text-rose-300/90 drop-shadow-lg block mt-2">Silenciosa</span>
+            </h1>
+            <a href="#collection" class="inline-block border border-cream/40 px-6 py-3 md:px-8 md:py-3 font-sans text-[10px] md:text-xs tracking-widest text-cream hover:bg-cream hover:text-charcoal hover:scale-105 transition-all duration-500 opacity-0 animate-slide-up backdrop-blur-md bg-black/20" style="animation-delay: 1.2s;">
+                VER LA COLECCIÓN
+            </a>
+        </div>
+    </header>
+
+    <!-- Marquee -->
+    <div class="py-4 border-b border-charcoal/10 bg-cream text-charcoal overflow-hidden">
+        <div class="marquee-container font-sans text-xs tracking-[0.2em]">
+            <div class="marquee-content">
+                NUEVA COLECCIÓN DISPONIBLE — ENVÍOS GLOBALES — MATERIALES SOSTENIBLES — DISEÑO ARTESANAL — NUEVA COLECCIÓN DISPONIBLE — ENVÍOS GLOBALES — 
+                NUEVA COLECCIÓN DISPONIBLE — ENVÍOS GLOBALES — MATERIALES SOSTENIBLES — DISEÑO ARTESANAL — NUEVA COLECCIÓN DISPONIBLE — ENVÍOS GLOBALES —
+            </div>
+        </div>
+    </div>
+
+    <!-- Intro -->
+    <section id="about" class="py-24 md:py-32 px-6 md:px-12 max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div class="order-2 md:order-1 relative">
+            <div class="overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=2073&auto=format&fit=crop" 
+                     alt="Detalle de tela" 
+                     class="w-full h-auto object-cover hover:scale-105 transition-transform duration-1000">
+            </div>
+            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-sand rounded-full flex items-center justify-center text-xs font-sans tracking-widest animate-float">
+                EST. 1992
+            </div>
+        </div>
+        <div class="order-1 md:order-2">
+            <h2 class="font-serif text-4xl md:text-5xl mb-8 leading-tight reveal-on-scroll">
+                Vestir no es solo cubrirse,<br> 
+                <span class="italic text-purple-700 font-semibold">es expresarse sin hablar.</span>
+            </h2>
+            <div class="space-y-6 font-sans font-light text-sm leading-relaxed text-gray-600 reveal-on-scroll" style="transition-delay: 0.2s;">
+                <p>En LUMIÈRE, creemos en el minimalismo como la máxima forma de sofisticación. Cada pieza es cortada y confeccionada a mano en nuestros talleres de París y Milán, utilizando únicamente fibras naturales de origen ético.</p>
+                <p>Nuestra colección P/V '26 explora la dualidad entre la estructura arquitectónica y la fluidez orgánica.</p>
+                <a href="#" class="inline-block mt-4 border-b border-charcoal pb-1 hover:text-gray-500 transition-colors tracking-widest text-xs uppercase">Leer el Manifiesto</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection Grid -->
+    <section id="collection" class="py-12 md:py-20 px-4 md:px-8">
+        <div class="flex justify-between items-end mb-12 px-2 md:px-4">
+            <h2 class="font-serif text-5xl md:text-7xl">Colección</h2>
+            <span class="font-sans text-xs tracking-widest text-gray-500 hidden md:block">(08 PIEZAS)</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-8">
+            <!-- Item 1 -->
+            <div class="group cursor-pointer">
+                <div class="relative overflow-hidden aspect-[3/4] mb-4">
+                    <img src="img/abriigo.jpeg" 
+                         alt="Abrigo de Lana" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                         loading="lazy">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500"></div>
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-serif text-2xl italic">L'Hiver Coat</h3>
+                        <p class="font-sans text-xs text-gray-500 mt-1 uppercase tracking-widest">Lana Merino / Cashmere</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="group cursor-pointer lg:mt-24">
+                <div class="relative overflow-hidden aspect-[3/4] mb-4">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1020&auto=format&fit=crop" 
+                         alt="Vestido Seda" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                         loading="lazy">
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-serif text-2xl italic">Silk Flow Dress</h3>
+                        <p class="font-sans text-xs text-gray-500 mt-1 uppercase tracking-widest">Seda Cruda 100%</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="group cursor-pointer">
+                <div class="relative overflow-hidden aspect-[3/4] mb-4">
+                    <img src="img/ropa.png" 
+                         alt="Blazer Estructurado" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                         loading="lazy">
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-serif text-2xl italic">Architect Blazer</h3>
+                        <p class="font-sans text-xs text-gray-500 mt-1 uppercase tracking-widest">Lino Italiano</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Item 4 -->
+             <div class="group cursor-pointer">
+                <div class="relative overflow-hidden aspect-[3/4] mb-4">
+                    <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=1064&auto=format&fit=crop" 
+                         alt="Accesorios" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                         loading="lazy">
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-serif text-2xl italic">Nude Set</h3>
+                        <p class="font-sans text-xs text-gray-500 mt-1 uppercase tracking-widest">Algodón Orgánico</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="group cursor-pointer lg:mt-24">
+                <div class="relative overflow-hidden aspect-[3/4] mb-4">
+                    <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=1005&auto=format&fit=crop" 
+                         alt="Textiles Blancos" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                         loading="lazy">
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-serif text-2xl italic">White Ensemble</h3>
+                        <p class="font-sans text-xs text-gray-500 mt-1 uppercase tracking-widest">Lino / Viscosa</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="group cursor-pointer">
+                <div class="relative overflow-hidden aspect-[3/4] mb-4">
+                    <img src="img/palazo.png" 
+                         alt="Pantalón Palazzo" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                         loading="lazy">
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-serif text-2xl italic">Palazzo Noir</h3>
+                        <p class="font-sans text-xs text-gray-500 mt-1 uppercase tracking-widest">Seda Satinada</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Image Divider -->
+    <section class="relative h-[60vh] md:h-[80vh] overflow-hidden flex items-center justify-center my-20">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop" 
+                 alt="Editorial" 
+                 class="w-full h-full object-cover parallax-bg scale-125">
+        </div>
+        <div class="relative z-10 text-center text-white mix-blend-difference">
+            <h2 class="font-serif text-6xl md:text-9xl italic">Atemporal</h2>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+                <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+                    <span>✉️</span> mctaggart.dev@gmail.com
+                </a>
+                <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+                    <span>📱</span> +507 6204-9480
+                </a>
+            </div>
+            <p class="text-gray-500 text-sm">
+                Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+
+
+        // Preloader with Fallback
+        const loader = document.getElementById('loader');
+        const hideLoader = () => {
+            if (!loader.classList.contains('-translate-y-full')) {
+                loader.classList.add('-translate-y-full');
+            }
+        };
+
+        window.addEventListener('load', () => setTimeout(hideLoader, 800));
+        // Force hide after 3.5s in case video loads slowly
+        setTimeout(hideLoader, 3500);
+
+        // Mobile Menu
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = mobileMenu.querySelectorAll('a');
+        let isMenuOpen = false;
+
+        menuBtn.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            const spans = menuBtn.querySelectorAll('span');
+            
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+                // Animate to X
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.transform = 'rotate(-45deg) translate(4px, -5px)';
+            } else {
+                mobileMenu.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+                // Reset to Burger
+                spans[0].style.transform = 'none';
+                spans[1].style.transform = 'none';
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                isMenuOpen = false;
+                mobileMenu.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+                const spans = menuBtn.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.transform = 'none';
+            });
+        });
+
+        // Scroll reveals and Parallax
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.classList.add('reveal-text', 'active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+            el.style.opacity = '0';
+            el.classList.add('transition-all', 'duration-1000');
+            observer.observe(el);
+        });
+
+        // Simple Parallax Effect
+        window.addEventListener('scroll', () => {
+            const parallaxBg = document.querySelector('.parallax-bg');
+            if (parallaxBg) {
+                const scrolled = window.pageYOffset;
+                const limit = parallaxBg.offsetTop + parallaxBg.offsetHeight;
+                if(scrolled > parallaxBg.offsetTop - window.innerHeight && scrolled < limit) {
+                     parallaxBg.style.transform = `scale(1.25) translateY(${(scrolled - parallaxBg.offsetTop) * 0.1}px)`;
+                }
+            }
+        });
+    </script>
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

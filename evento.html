@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>NEON FEST 2026 | Festival de Música Electrónica</title>
+  <meta name="description" content="Esta es una página de demostración del portafolio de Carlos Mc Taggart. Ejemplo de diseño web adaptable y moderno.">
+  <link rel="canonical" href="https://www.webspty.dev/evento.html">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+    
+    * { box-sizing: border-box; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: #0a0118;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    
+    .orbitron { font-family: 'Orbitron', sans-serif; }
+    
+    .neon-text {
+      text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+      animation: flicker 3s infinite alternate;
+    }
+    
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+    
+    .glow-box {
+      background: rgba(255, 0, 255, 0.1);
+      border: 2px solid #ff00ff;
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.5), inset 0 0 20px rgba(255, 0, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .glow-box:hover {
+      box-shadow: 0 0 30px rgba(255, 0, 255, 0.8), inset 0 0 30px rgba(255, 0, 255, 0.2);
+      transform: translateY(-5px);
+    }
+    
+    .cyber-btn {
+      background: linear-gradient(45deg, #ff00ff, #00ffff);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .cyber-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(255, 0, 255, 0.8);
+    }
+    
+    .cyber-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    .cyber-btn:hover::before {
+      left: 100%;
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .pulse-ring {
+      animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.1); }
+    }
+    
+    .slide-in {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.8s ease;
+    }
+    
+    .slide-in.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease;
+    }
+    
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .grid-bg {
+      background-image: 
+        linear-gradient(rgba(255, 0, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 255, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: grid-move 20s linear infinite;
+    }
+    
+    @keyframes grid-move {
+      0% { background-position: 0 0; }
+      100% { background-position: 50px 50px; }
+    }
+    
+    .countdown-box {
+      background: linear-gradient(135deg, rgba(255, 0, 255, 0.2), rgba(0, 255, 255, 0.2));
+      border: 2px solid rgba(255, 0, 255, 0.5);
+      backdrop-filter: blur(10px);
+    }
+    
+    .artist-card {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+      border: 1px solid rgba(255, 0, 255, 0.3);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .artist-card:hover {
+      transform: scale(1.05) rotate(2deg);
+      border-color: rgba(255, 0, 255, 0.8);
+      box-shadow: 0 20px 40px rgba(255, 0, 255, 0.4);
+    }
+    
+    .stage-badge {
+      background: linear-gradient(90deg, #ff00ff, #00ffff);
+      animation: badge-pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+  </style>
+</head>
+<body class="grid-bg">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+  <!-- Back Button -->
+  <a href="./index.html" class="fixed top-4 left-4 z-50 px-4 py-2 bg-black/50 backdrop-blur border border-pink-500 text-pink-500 font-bold rounded-lg hover:bg-pink-500 hover:text-black transition flex items-center gap-2">
+    ← <span class="hidden sm:inline">Portafolio</span>
+  </a>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-10">
+    <!-- Animated circles -->
+    <div class="absolute top-20 left-10 w-64 h-64 bg-purple-500 rounded-full blur-3xl opacity-30 floating"></div>
+    <div class="absolute bottom-20 right-10 w-80 h-80 bg-pink-500 rounded-full blur-3xl opacity-30 floating" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 left-1/2 w-72 h-72 bg-cyan-500 rounded-full blur-3xl opacity-20 floating" style="animation-delay: 4s;"></div>
+    
+    <div class="relative z-10 text-center px-4 max-w-6xl mx-auto">
+      <div class="fade-up mb-6">
+        <h1 class="orbitron text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black neon-text mb-4">
+          NEON FEST
+        </h1>
+        <div class="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+          2026
+        </div>
+      </div>
+      
+      <p class="fade-up text-lg sm:text-xl md:text-2xl text-purple-200 mb-8 max-w-3xl mx-auto" style="transition-delay: 0.2s;">
+        El festival de música electrónica más grande de América Latina
+      </p>
+      
+      <div class="fade-up mb-12" style="transition-delay: 0.4s;">
+        <div class="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-base sm:text-lg">
+          <span class="flex items-center gap-2">
+            <span class="text-3xl">📍</span>
+            <span class="text-cyan-400 font-bold">Estadio Nacional, Santiago</span>
+          </span>
+          <span class="hidden sm:inline text-purple-400">|</span>
+          <span class="flex items-center gap-2">
+            <span class="text-3xl">📅</span>
+            <span class="text-pink-400 font-bold">15-16 Marzo 2026</span>
+          </span>
+        </div>
+      </div>
+      
+      <div class="fade-up flex flex-col sm:flex-row gap-4 justify-center mb-16" style="transition-delay: 0.6s;">
+        <a href="#registro" class="cyber-btn px-8 py-4 rounded-full text-white font-black text-lg shadow-2xl">
+          🎫 COMPRAR ENTRADAS
+        </a>
+        <a href="#lineup" class="px-8 py-4 rounded-full border-2 border-purple-500 text-purple-300 font-black text-lg hover:bg-purple-500/20 transition">
+          🎵 VER LINE-UP
+        </a>
+      </div>
+
+      <!-- Countdown -->
+      <div id="countdown" class="fade-up grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto" style="transition-delay: 0.8s;">
+        <div class="countdown-box rounded-2xl p-4 sm:p-6">
+          <div id="days" class="text-4xl sm:text-5xl font-black text-cyan-400">00</div>
+          <div class="text-sm sm:text-base text-purple-300 font-semibold mt-2">DÍAS</div>
+        </div>
+        <div class="countdown-box rounded-2xl p-4 sm:p-6">
+          <div id="hours" class="text-4xl sm:text-5xl font-black text-pink-400">00</div>
+          <div class="text-sm sm:text-base text-purple-300 font-semibold mt-2">HORAS</div>
+        </div>
+        <div class="countdown-box rounded-2xl p-4 sm:p-6">
+          <div id="minutes" class="text-4xl sm:text-5xl font-black text-purple-400">00</div>
+          <div class="text-sm sm:text-base text-purple-300 font-semibold mt-2">MINUTOS</div>
+        </div>
+        <div class="countdown-box rounded-2xl p-4 sm:p-6">
+          <div id="seconds" class="text-4xl sm:text-5xl font-black text-yellow-400">00</div>
+          <div class="text-sm sm:text-base text-purple-300 font-semibold mt-2">SEGUNDOS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Line-up -->
+  <section id="lineup" class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="orbitron text-4xl sm:text-5xl md:text-6xl font-black text-center mb-4 slide-in">
+        <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+          LINE-UP 2026
+        </span>
+      </h2>
+      <p class="text-center text-purple-300 mb-12 slide-in" style="transition-delay: 0.1s;">Los mejores DJs y productores del mundo</p>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Artist 1 - Headliner -->
+        <div class="artist-card rounded-2xl p-6 fade-up" style="transition-delay: 0.1s;">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-3xl">
+              🎧
+            </div>
+            <div>
+              <h3 class="text-2xl font-black text-white">Martin Garrix</h3>
+              <span class="stage-badge text-xs px-3 py-1 rounded-full text-black font-bold">MAIN STAGE</span>
+            </div>
+          </div>
+          <p class="text-sm text-purple-300 mb-3">
+            El DJ #1 del mundo regresa con su espectacular show de luces y sonido.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-cyan-400 font-bold">📅 Sábado 15 • 23:00</span>
+            <span class="text-pink-400">🔥 HEADLINER</span>
+          </div>
+        </div>
+
+        <!-- Artist 2 -->
+        <div class="artist-card rounded-2xl p-6 fade-up" style="transition-delay: 0.2s;">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-3xl">
+              🎹
+            </div>
+            <div>
+              <h3 class="text-2xl font-black text-white">Armin van Buuren</h3>
+              <span class="stage-badge text-xs px-3 py-1 rounded-full text-black font-bold">TRANCE STAGE</span>
+            </div>
+          </div>
+          <p class="text-sm text-purple-300 mb-3">
+            Leyenda del trance con más de 20 años de trayectoria mundial.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-cyan-400 font-bold">📅 Domingo 16 • 22:00</span>
+            <span class="text-yellow-400">⭐ FEATURED</span>
+          </div>
+        </div>
+
+        <!-- Artist 3 -->
+        <div class="artist-card rounded-2xl p-6 fade-up" style="transition-delay: 0.3s;">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-pink-500 to-red-500 flex items-center justify-center text-3xl">
+              🎛️
+            </div>
+            <div>
+              <h3 class="text-2xl font-black text-white">Charlotte de Witte</h3>
+              <span class="stage-badge text-xs px-3 py-1 rounded-full text-black font-bold">TECHNO STAGE</span>
+            </div>
+          </div>
+          <p class="text-sm text-purple-300 mb-3">
+            La reina del techno oscuro y potente directo desde Bélgica.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-cyan-400 font-bold">📅 Sábado 15 • 21:00</span>
+            <span class="text-purple-400">💜 TECHNO</span>
+          </div>
+        </div>
+
+        <!-- Artist 4 -->
+        <div class="artist-card rounded-2xl p-6 fade-up" style="transition-delay: 0.4s;">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center text-3xl">
+              🎚️
+            </div>
+            <div>
+              <h3 class="text-2xl font-black text-white">Tiësto</h3>
+              <span class="stage-badge text-xs px-3 py-1 rounded-full text-black font-bold">MAIN STAGE</span>
+            </div>
+          </div>
+          <p class="text-sm text-purple-300 mb-3">
+            Icono absoluto de la música electrónica con hits legendarios.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-cyan-400 font-bold">📅 Domingo 16 • 23:30</span>
+            <span class="text-pink-400">🔥 HEADLINER</span>
+          </div>
+        </div>
+
+        <!-- Artist 5 -->
+        <div class="artist-card rounded-2xl p-6 fade-up" style="transition-delay: 0.5s;">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center text-3xl">
+              🎵
+            </div>
+            <div>
+              <h3 class="text-2xl font-black text-white">Amelie Lens</h3>
+              <span class="stage-badge text-xs px-3 py-1 rounded-full text-black font-bold">UNDERGROUND</span>
+            </div>
+          </div>
+          <p class="text-sm text-purple-300 mb-3">
+            Techno industrial y atmosférico de la escena underground europea.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-cyan-400 font-bold">📅 Sábado 15 • 19:00</span>
+            <span class="text-green-400">🎧 LIVE SET</span>
+          </div>
+        </div>
+
+        <!-- Artist 6 -->
+        <div class="artist-card rounded-2xl p-6 fade-up" style="transition-delay: 0.6s;">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-3xl">
+              🎼
+            </div>
+            <div>
+              <h3 class="text-2xl font-black text-white">Hardwell</h3>
+              <span class="stage-badge text-xs px-3 py-1 rounded-full text-black font-bold">MAIN STAGE</span>
+            </div>
+          </div>
+          <p class="text-sm text-purple-300 mb-3">
+            El regreso triunfal después de su pausa con nuevo material explosivo.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-cyan-400 font-bold">📅 Domingo 16 • 20:00</span>
+            <span class="text-yellow-400">⚡ BIG ROOM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agenda/Schedule -->
+  <section id="agenda" class="py-20 px-4 bg-black/40">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="orbitron text-4xl sm:text-5xl font-black text-center mb-12 slide-in">
+        <span class="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+          AGENDA DEL EVENTO
+        </span>
+      </h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Día 1 -->
+        <div class="glow-box rounded-2xl p-6 fade-up">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="text-4xl">📅</div>
+            <div>
+              <h3 class="text-2xl font-black text-cyan-400">SÁBADO 15 MARZO</h3>
+              <p class="text-purple-300">DÍA 1 • PUERTAS: 16:00</p>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3 p-3 bg-purple-900/30 rounded-lg">
+              <span class="text-pink-400 font-bold min-w-[60px]">16:00</span>
+              <div>
+                <p class="font-bold text-white">Apertura de puertas</p>
+                <p class="text-sm text-purple-300">Food trucks y zona chill</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-purple-900/30 rounded-lg">
+              <span class="text-pink-400 font-bold min-w-[60px]">17:00</span>
+              <div>
+                <p class="font-bold text-white">DJ Sets locales</p>
+                <p class="text-sm text-purple-300">Talentos emergentes</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-purple-900/30 rounded-lg">
+              <span class="text-pink-400 font-bold min-w-[60px]">19:00</span>
+              <div>
+                <p class="font-bold text-white">Amelie Lens</p>
+                <p class="text-sm text-purple-300">Underground Stage</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-purple-900/30 rounded-lg">
+              <span class="text-pink-400 font-bold min-w-[60px]">21:00</span>
+              <div>
+                <p class="font-bold text-white">Charlotte de Witte</p>
+                <p class="text-sm text-purple-300">Techno Stage</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-gradient-to-r from-purple-900/50 to-pink-900/50 rounded-lg border border-pink-500">
+              <span class="text-cyan-400 font-bold min-w-[60px]">23:00</span>
+              <div>
+                <p class="font-bold text-white">Martin Garrix 🔥</p>
+                <p class="text-sm text-purple-300">Main Stage • Headliner</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Día 2 -->
+        <div class="glow-box rounded-2xl p-6 fade-up" style="transition-delay: 0.2s;">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="text-4xl">📅</div>
+            <div>
+              <h3 class="text-2xl font-black text-pink-400">DOMINGO 16 MARZO</h3>
+              <p class="text-purple-300">DÍA 2 • PUERTAS: 16:00</p>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3 p-3 bg-purple-900/30 rounded-lg">
+              <span class="text-cyan-400 font-bold min-w-[60px]">16:00</span>
+              <div>
+                <p class="font-bold text-white">Apertura día 2</p>
+                <p class="text-sm text-purple-300">Experiencias VR</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-purple-900/30 rounded-lg">
+              <span class="text-cyan-400 font-bold min-w-[60px]">18:00</span>
+              <div>
+                <p class="font-bold text-white">Sets Progressive</p>
+                <p class="text-sm text-purple-300">Chill Stage</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-purple-900/30 rounded-lg">
+              <span class="text-cyan-400 font-bold min-w-[60px]">20:00</span>
+              <div>
+                <p class="font-bold text-white">Hardwell</p>
+                <p class="text-sm text-purple-300">Main Stage</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-purple-900/30 rounded-lg">
+              <span class="text-cyan-400 font-bold min-w-[60px]">22:00</span>
+              <div>
+                <p class="font-bold text-white">Armin van Buuren</p>
+                <p class="text-sm text-purple-300">Trance Stage</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 bg-gradient-to-r from-cyan-900/50 to-purple-900/50 rounded-lg border border-cyan-500">
+              <span class="text-pink-400 font-bold min-w-[60px]">23:30</span>
+              <div>
+                <p class="font-bold text-white">Tiësto 🔥</p>
+                <p class="text-sm text-purple-300">Main Stage • Headliner</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registro/Tickets -->
+  <section id="registro" class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="orbitron text-4xl sm:text-5xl font-black text-center mb-4 slide-in">
+        <span class="neon-text">CONSIGUE TUS ENTRADAS</span>
+      </h2>
+      <p class="text-center text-purple-300 mb-12 slide-in" style="transition-delay: 0.1s;">Elige tu experiencia y vive NEON FEST 2026</p>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Ticket 1 -->
+        <div class="glow-box rounded-2xl p-6 fade-up text-center" style="transition-delay: 0.1s;">
+          <div class="text-4xl mb-4">🎟️</div>
+          <h3 class="text-2xl font-black text-cyan-400 mb-2">GENERAL</h3>
+          <div class="text-4xl font-black text-white mb-4">$89</div>
+          <ul class="text-sm text-purple-300 space-y-2 mb-6 text-left">
+            <li>✓ Acceso 2 días</li>
+            <li>✓ Zona general</li>
+            <li>✓ Food court</li>
+            <li>✓ Lockers disponibles</li>
+          </ul>
+          <button class="w-full cyber-btn py-3 rounded-full font-bold text-white">
+            COMPRAR
+          </button>
+        </div>
+
+        <!-- Ticket 2 - Popular -->
+        <div class="glow-box rounded-2xl p-6 fade-up text-center border-4 border-pink-500 relative" style="transition-delay: 0.2s;">
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 stage-badge px-4 py-1 rounded-full text-xs font-bold text-black">
+            MÁS POPULAR
+          </div>
+          <div class="text-4xl mb-4">🌟</div>
+          <h3 class="text-2xl font-black text-pink-400 mb-2">VIP</h3>
+          <div class="text-4xl font-black text-white mb-4">$189</div>
+          <ul class="text-sm text-purple-300 space-y-2 mb-6 text-left">
+            <li>✓ Todo de General</li>
+            <li>✓ Zona VIP elevada</li>
+            <li>✓ Barra premium</li>
+            <li>✓ Baños exclusivos</li>
+            <li>✓ Fast track</li>
+          </ul>
+          <button class="w-full cyber-btn py-3 rounded-full font-bold text-white">
+            COMPRAR
+          </button>
+        </div>
+
+        <!-- Ticket 3 -->
+        <div class="glow-box rounded-2xl p-6 fade-up text-center" style="transition-delay: 0.3s;">
+          <div class="text-4xl mb-4">👑</div>
+          <h3 class="text-2xl font-black text-yellow-400 mb-2">PLATINUM</h3>
+          <div class="text-4xl font-black text-white mb-4">$349</div>
+          <ul class="text-sm text-purple-300 space-y-2 mb-6 text-left">
+            <li>✓ Todo de VIP</li>
+            <li>✓ Meet & Greet</li>
+            <li>✓ Backstage pass</li>
+            <li>✓ Goodie bag</li>
+            <li>✓ Foto con artistas</li>
+          </ul>
+          <button class="w-full cyber-btn py-3 rounded-full font-bold text-white">
+            COMPRAR
+          </button>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="glow-box rounded-2xl p-8 mt-12 fade-up" style="transition-delay: 0.4s;">
+        <h3 class="text-2xl font-black text-center mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          REGÍSTRATE Y RECIBE NOTICIAS
+        </h3>
+        <form class="space-y-4">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <input type="text" placeholder="Nombre" class="w-full px-4 py-3 bg-purple-900/30 border border-purple-500 rounded-lg text-white placeholder-purple-400 focus:outline-none focus:ring-2 focus:ring-pink-500">
+            <input type="email" placeholder="Email" class="w-full px-4 py-3 bg-purple-900/30 border border-purple-500 rounded-lg text-white placeholder-purple-400 focus:outline-none focus:ring-2 focus:ring-pink-500">
+          </div>
+          <input type="tel" placeholder="Teléfono" class="w-full px-4 py-3 bg-purple-900/30 border border-purple-500 rounded-lg text-white placeholder-purple-400 focus:outline-none focus:ring-2 focus:ring-pink-500">
+          <button type="submit" class="w-full cyber-btn py-4 rounded-full font-bold text-white text-lg">
+            📧 SUSCRIBIRME
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+      <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+        <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+          <span>✉️</span> mctaggart.dev@gmail.com
+        </a>
+        <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+          <span>📱</span> +507 6204-9480
+        </a>
+      </div>
+      <p class="text-gray-500 text-sm">
+        Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Countdown
+    const eventDate = new Date('2026-03-15T16:00:00').getTime();
+    
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+      
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('countdown').innerHTML = '<div class="col-span-4 text-3xl font-bold text-pink-400">¡EL EVENTO HA COMENZADO!</div>';
+      }
+    }
+    
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+    
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.fade-up, .slide-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

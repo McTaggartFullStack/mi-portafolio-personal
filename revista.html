@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>FutbolTotal | Noticias, Fichajes y Resultados</title>
+  <meta name="description" content="Esta es una página de demostración del portafolio de Carlos Mc Taggart. Ejemplo de diseño web adaptable y moderno.">
+  <link rel="canonical" href="https://www.webspty.dev/revista.html">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+    :root { color-scheme: light; }
+    body { background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); }
+    .field-card { background: rgba(255,255,255,0.95); border-left: 4px solid #10b981; box-shadow: 0 20px 50px -18px rgba(0,0,0,0.4); transition: all .3s ease; }
+    .field-card:hover { transform: translateY(-6px); box-shadow: 0 25px 60px -18px rgba(0,0,0,0.5); }
+    .fade { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+    .fade.visible { opacity: 1; transform: translateY(0); }
+    .score-live { animation: pulse-score 2s infinite; }
+    @keyframes pulse-score { 0%, 100% { opacity: 1; } 50% { opacity: .6; } }
+    .carousel-wrapper { overflow: hidden; position: relative; }
+    .carousel-track { display: flex; transition: transform .6s cubic-bezier(0.4, 0, 0.2, 1); }
+    .carousel-item { min-width: 100%; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.4); transition: all .3s ease; }
+    .dot.active { background: #10b981; transform: scale(1.3); }
+    .badge-live { animation: live-pulse 1.5s infinite; }
+    @keyframes live-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); } 50% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); } }
+  </style>
+</head>
+<body class="text-gray-900">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-emerald-600 to-emerald-700 shadow-xl border-b-4 border-emerald-800">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-14 sm:h-16">
+        <div class="flex items-center gap-2 sm:gap-4 min-w-0">
+          <div class="flex items-center gap-2 sm:gap-3 text-white font-black text-lg sm:text-2xl truncate">
+            <span class="text-2xl sm:text-3xl">⚽</span>
+            <span class="truncate">FutbolTotal</span>
+          </div>
+        </div>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-bold text-white/90">
+          <a href="#portada" class="hover:text-white transition">Portada</a>
+          <a href="#premier" class="hover:text-white transition">Premier</a>
+          <a href="#laliga" class="hover:text-white transition">LaLiga</a>
+          <a href="#seriea" class="hover:text-white transition">Serie A</a>
+          <a href="#fichajes" class="hover:text-white transition">Fichajes</a>
+        </nav>
+        <button class="hidden sm:flex px-3 sm:px-4 py-1.5 sm:py-2 bg-white text-emerald-700 font-bold rounded-lg hover:bg-emerald-50 transition text-xs sm:text-sm items-center gap-1">
+          🔔 <span class="hidden sm:inline">Alertas</span>
+        </button>
+        <button class="sm:hidden p-2 bg-white/20 hover:bg-white/30 text-white rounded-lg font-bold transition" aria-label="Menú">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+    <!-- Hero con Breaking News -->
+    <section id="portada" class="grid lg:grid-cols-[1.3fr,0.7fr] gap-6">
+      <!-- Noticia principal -->
+      <article class="field-card rounded-2xl overflow-hidden shadow-2xl fade" style="transition-delay:.05s">
+        <div class="relative h-80 bg-gradient-to-br from-emerald-600 to-teal-700 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80" 
+               alt="Estadio" 
+               class="w-full h-full object-cover opacity-80"
+               loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+          <div class="absolute top-4 left-4">
+            <span class="badge-live px-4 py-2 bg-red-600 text-white font-bold text-sm rounded-full flex items-center gap-2">
+              <span class="w-2 h-2 bg-white rounded-full"></span> ÚLTIMA HORA
+            </span>
+          </div>
+          <div class="absolute bottom-6 left-6 right-6 text-white space-y-2">
+            <h1 class="text-3xl sm:text-4xl font-black leading-tight">Salah renueva con el Liverpool hasta 2028</h1>
+            <p class="text-white/90 text-lg">El egipcio firma extensión por 3 años y se convierte en el jugador mejor pagado de la historia del club.</p>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-3 text-sm text-gray-600 mb-3">
+            <span class="font-semibold text-emerald-700">📰 Exclusiva</span>
+            <span>•</span>
+            <span>Hace 12 minutos</span>
+            <span>•</span>
+            <span>Por Redacción FT</span>
+          </div>
+          <p class="text-gray-700 leading-relaxed">Mohamed Salah ha firmado su renovación con el Liverpool FC en un acuerdo que lo mantendrá en Anfield hasta junio de 2028. El delantero egipcio, de 33 años, recibirá £350,000 semanales y una cláusula de liberación de £150 millones. Klopp celebra la continuidad de su estrella tras meses de negociaciones...
+        </div>
+      </article>
+
+      <!-- Marcadores en vivo -->
+      <aside class="space-y-4">
+        <div class="field-card rounded-2xl p-5 fade" style="transition-delay:.1s">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-black text-lg flex items-center gap-2">
+              <span class="text-xl">🔴</span> EN VIVO
+            </h3>
+            <span class="text-xs text-gray-500">Actualizado ahora</span>
+          </div>
+          <div class="space-y-3">
+            <!-- Match 1 -->
+            <div class="p-4 bg-emerald-50 rounded-xl border-l-4 border-emerald-600">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-emerald-700">Premier League · 78'</span>
+                <span class="score-live text-xs font-bold text-red-600">● EN VIVO</span>
+              </div>
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-sm">Arsenal</span>
+                  <span class="font-black text-xl text-emerald-700">2</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-sm">Liverpool</span>
+                  <span class="font-black text-xl text-emerald-700">2</span>
+                </div>
+              </div>
+            </div>
+            <!-- Match 2 -->
+            <div class="p-4 bg-gray-50 rounded-xl">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-gray-600">LaLiga · Finalizado</span>
+              </div>
+              <div class="space-y-2 text-gray-600">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-sm">Real Madrid</span>
+                  <span class="font-black text-xl">3</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-sm">Atlético</span>
+                  <span class="font-black text-xl">1</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Goleadores -->
+        <div class="field-card rounded-2xl p-5 fade" style="transition-delay:.15s">
+          <h4 class="font-black text-sm mb-3 flex items-center gap-2">
+            <span>🏆</span> TOP GOLEADORES
+          </h4>
+          <ol class="space-y-2 text-sm">
+            <li class="flex items-center justify-between p-2 bg-amber-50 rounded-lg">
+              <div class="flex items-center gap-2">
+                <span class="font-black text-amber-600">1.</span>
+                <span class="font-bold">Haaland</span>
+              </div>
+              <span class="font-black text-emerald-700">28 ⚽</span>
+            </li>
+            <li class="flex items-center justify-between p-2 hover:bg-gray-50 rounded-lg">
+              <div class="flex items-center gap-2">
+                <span class="font-black text-gray-600">2.</span>
+                <span class="font-bold">Lewandowski</span>
+              </div>
+              <span class="font-black text-emerald-700">24 ⚽</span>
+            </li>
+            <li class="flex items-center justify-between p-2 hover:bg-gray-50 rounded-lg">
+              <div class="flex items-center gap-2">
+                <span class="font-black text-gray-600">3.</span>
+                <span class="font-bold">Osimhen</span>
+              </div>
+              <span class="font-black text-emerald-700">22 ⚽</span>
+            </li>
+          </ol>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Carrusel de Fichajes -->
+    <section id="fichajes" class="fade" style="transition-delay:.1s">
+      <div class="flex items-center justify-between mb-5">
+        <div>
+          <h2 class="text-3xl font-black text-white flex items-center gap-2">
+            <span>💼</span> MERCADO DE FICHAJES
+          </h2>
+          <p class="text-emerald-200 text-sm mt-1">Ventana de invierno 2026 - Cierra 31 enero</p>
+        </div>
+        <div class="flex gap-2">
+          <button id="prevCarousel" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg font-bold transition">←</button>
+          <button id="nextCarousel" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg font-bold transition">→</button>
+        </div>
+      </div>
+      
+      <div class="carousel-wrapper rounded-2xl">
+        <div id="carouselTrack" class="carousel-track">
+          <!-- Slide 1 -->
+          <div class="carousel-item grid md:grid-cols-3 gap-4">
+            <div class="field-card rounded-2xl p-5">
+              <span class="inline-block px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-bold rounded-full mb-3">✅ CONFIRMADO</span>
+              <h4 class="font-black text-lg mb-2">Osimhen al Chelsea por €120M</h4>
+              <p class="text-sm text-gray-600 mb-3">Los Blues cierran el fichaje del nigeriano. Firma por 5 años y será el 9 titular.</p>
+              <div class="flex items-center gap-2 text-xs text-gray-500">
+                <span>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier</span> • <span>Hace 2h</span>
+              </div>
+            </div>
+            <div class="field-card rounded-2xl p-5">
+              <span class="inline-block px-3 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full mb-3">🔄 RUMOR</span>
+              <h4 class="font-black text-lg mb-2">Marcus Rashford al PSG</h4>
+              <p class="text-sm text-gray-600 mb-3">El United acepta negociar por €85M. El jugador busca nuevo proyecto tras temporada irregular.</p>
+              <div class="flex items-center gap-2 text-xs text-gray-500">
+                <span>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier</span> • <span>Hace 4h</span>
+              </div>
+            </div>
+            <div class="field-card rounded-2xl p-5">
+              <span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full mb-3">📝 CERCA</span>
+              <h4 class="font-black text-lg mb-2">Joao Félix permanece en el Barça</h4>
+              <p class="text-sm text-gray-600 mb-3">El Atlético acepta €60M + variables. Xavi logra quedarse con su estrella portuguesa.</p>
+              <div class="flex items-center gap-2 text-xs text-gray-500">
+                <span>🇪🇸 LaLiga</span> • <span>Hace 6h</span>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="carousel-item grid md:grid-cols-3 gap-4">
+            <div class="field-card rounded-2xl p-5">
+              <span class="inline-block px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-bold rounded-full mb-3">✅ CONFIRMADO</span>
+              <h4 class="font-black text-lg mb-2">Enzo Fernández renovado en Chelsea</h4>
+              <p class="text-sm text-gray-600 mb-3">El argentino extiende su contrato hasta 2029. Los Blues blindan a su cerebro del mediocampo.</p>
+              <div class="flex items-center gap-2 text-xs text-gray-500">
+                <span>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier</span> • <span>Hace 8h</span>
+              </div>
+            </div>
+            <div class="field-card rounded-2xl p-5">
+              <span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full mb-3">📝 CERCA</span>
+              <h4 class="font-black text-lg mb-2">Toney al Arsenal: acuerdo verbal</h4>
+              <p class="text-sm text-gray-600 mb-3">El Brentford pide £75M. Arteta quiere al delantero inglés para pelear el título.</p>
+              <div class="flex items-center gap-2 text-xs text-gray-500">
+                <span>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier</span> • <span>Hace 10h</span>
+              </div>
+            </div>
+            <div class="field-card rounded-2xl p-5">
+              <span class="inline-block px-3 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full mb-3">🔄 RUMOR</span>
+              <h4 class="font-black text-lg mb-2">Tchouaméni interesa al Liverpool</h4>
+              <p class="text-sm text-gray-600 mb-3">Los Reds estudian oferta por el francés. El Madrid no lo deja ir por menos de €90M.</p>
+              <div class="flex items-center gap-2 text-xs text-gray-500">
+                <span>🇪🇸 LaLiga</span> • <span>Hace 12h</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex justify-center gap-2 mt-4">
+        <button class="dot" data-slide="0"></button>
+        <button class="dot" data-slide="1"></button>
+      </div>
+    </section>
+
+    <!-- Premier League -->
+    <section id="premier" class="fade" style="transition-delay:.15s">
+      <div class="flex items-center gap-3 mb-5">
+        <h2 class="text-3xl font-black text-white">🏴󠁧󠁢󠁥󠁮󠁧󠁿 PREMIER LEAGUE</h2>
+        <span class="px-3 py-1 bg-purple-600 text-white text-xs font-bold rounded-full">J24</span>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <article class="field-card rounded-2xl overflow-hidden">
+          <div class="h-48 bg-gradient-to-br from-purple-600 to-pink-600 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&q=80" 
+                 alt="Haaland celebrando" 
+                 class="w-full h-full object-cover opacity-70"
+                 loading="lazy">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-bold text-purple-600">ANÁLISIS TÁCTICO</span>
+            <h3 class="font-black text-xl mt-2 mb-2">El City de Guardiola alcanza 15 victorias consecutivas</h3>
+            <p class="text-sm text-gray-600">Récord histórico igualado. ¿Puede alguien frenar a Haaland y compañía antes del clásico contra el United?</p>
+          </div>
+        </article>
+        
+        <article class="field-card rounded-2xl overflow-hidden">
+          <div class="h-48 bg-gradient-to-br from-red-600 to-orange-600 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&q=80" 
+                 alt="Jugadores Arsenal" 
+                 class="w-full h-full object-cover opacity-70"
+                 loading="lazy">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-bold text-red-600">PREVIA</span>
+            <h3 class="font-black text-xl mt-2 mb-2">Arsenal vs Liverpool: duelo de titanes en el Emirates</h3>
+            <p class="text-sm text-gray-600">Este sábado 25 de enero, 13:30h. Arteta busca revancha tras la derrota de la primera vuelta.</p>
+          </div>
+        </article>
+
+        <article class="field-card rounded-2xl overflow-hidden">
+          <div class="h-48 bg-gradient-to-br from-blue-600 to-cyan-600 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600&q=80" 
+                 alt="Chelsea" 
+                 class="w-full h-full object-cover opacity-70"
+                 loading="lazy">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-bold text-blue-600">MERCADO</span>
+            <h3 class="font-black text-xl mt-2 mb-2">Chelsea invierte €80M en refuerzos defensivos</h3>
+            <p class="text-sm text-gray-600">Boehly sigue gastando. Llegan dos centrales y un lateral derecho para resolver problemas atrás.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- LaLiga -->
+    <section id="laliga" class="fade" style="transition-delay:.2s">
+      <div class="flex items-center gap-3 mb-5">
+        <h2 class="text-3xl font-black text-white">🇪🇸 LALIGA</h2>
+        <span class="px-3 py-1 bg-red-600 text-white text-xs font-bold rounded-full">J21</span>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <article class="field-card rounded-2xl overflow-hidden">
+          <div class="">
+            <img src="img/realmadrid.png" 
+                 alt="Real Madrid" 
+                 class="w-full h-full object-cover opacity-70"
+                 loading="lazy">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-bold text-orange-600">VICTORIA CLAVE</span>
+            <h3 class="font-black text-xl mt-2 mb-2">Real Madrid golea 3-1 al Atleti y es líder en solitario</h3>
+            <p class="text-sm text-gray-600">Bellingham doblete + Vinicius sentencian. Los blancos tienen 5 puntos de ventaja sobre el Barça.</p>
+          </div>
+        </article>
+        
+        <article class="field-card rounded-2xl overflow-hidden">
+          <div class="h-48 bg-gradient-to-br from-blue-700 to-red-700 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?w=600&q=80" 
+                 alt="Barcelona" 
+                 class="w-full h-full object-cover opacity-70"
+                 loading="lazy">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-bold text-blue-700">CRISIS</span>
+            <h3 class="font-black text-xl mt-2 mb-2">Barça en problemas: cuarta derrota consecutiva</h3>
+            <p class="text-sm text-gray-600">Xavi en la cuerda floja. La directiva inicia contactos con Luis Enrique y Tuchel.</p>
+          </div>
+        </article>
+
+        <article class="field-card rounded-2xl overflow-hidden">
+          <div class="h-48 bg-gradient-to-br from-green-600 to-lime-600 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600&q=80" 
+                 alt="LaLiga" 
+                 class="w-full h-full object-cover opacity-70"
+                 loading="lazy">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-bold text-green-700">SORPRESA</span>
+            <h3 class="font-black text-xl mt-2 mb-2">Girona sigue soñando: 2º lugar tras ganar en Valencia</h3>
+            <p class="text-sm text-gray-600">Míchel logra la temporada histórica. El modesto club catalán pelea por Champions.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Serie A -->
+    <section id="seriea" class="fade" style="transition-delay:.25s">
+      <div class="flex items-center gap-3 mb-5">
+        <h2 class="text-3xl font-black text-white">🇮🇹 SERIE A</h2>
+        <span class="px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full">J22</span>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <article class="field-card rounded-2xl overflow-hidden">
+          <div class="h-48 bg-gradient-to-br from-black to-gray-700 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=600&q=80" 
+                 alt="Inter Milan" 
+                 class="w-full h-full object-cover opacity-70"
+                 loading="lazy">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-bold text-gray-900">DOMINIO TOTAL</span>
+            <h3 class="font-black text-xl mt-2 mb-2">Inter arrasa: 20 partidos invicto y +12 sobre la Juve</h3>
+            <p class="text-sm text-gray-600">Los nerazzurri van camino al Scudetto. Inzaghi renueva hasta 2028.</p>
+          </div>
+        </article>
+        
+        <article class="field-card rounded-2xl overflow-hidden">
+          <div class="h-48 bg-gradient-to-br from-sky-500 to-blue-600 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&q=80" 
+                 alt="Napoli" 
+                 class="w-full h-full object-cover opacity-70"
+                 loading="lazy">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-bold text-sky-600">CAMPEÓN VIGENTE</span>
+            <h3 class="font-black text-xl mt-2 mb-2">Napoli busca enganchar: victoria ante la Roma 2-0</h3>
+            <p class="text-sm text-gray-600">Osimhen sigue en racha goleadora. Los partenopei a 8 puntos del líder.</p>
+          </div>
+        </article>
+
+        <article class="field-card rounded-2xl overflow-hidden">
+          <div class="h-48 bg-gradient-to-br from-red-600 to-black relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?w=600&q=80" 
+                 alt="AC Milan" 
+                 class="w-full h-full object-cover opacity-70"
+                 loading="lazy">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-bold text-red-600">FICHAJE BOMBA</span>
+            <h3 class="font-black text-xl mt-2 mb-2">Milan ficha a Zirkzee del Bologna por €60M</h3>
+            <p class="text-sm text-gray-600">El delantero holandés llega para suplir a Giroud. Pioli tendrá doble nueve de lujo.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Jugador de la Semana -->
+    <section class="fade" style="transition-delay:.28s">
+      <div class="field-card rounded-3xl overflow-hidden">
+        <div class="grid md:grid-cols-[0.4fr,1fr] gap-6">
+          <div class="relative h-64 md:h-auto bg-gradient-to-br from-amber-500 to-orange-600 overflow-hidden">
+            <img src="img/haaland.png" 
+                 alt="Erling Haaland" 
+                 class="w-full h-full object-cover"
+                 loading="lazy">
+            <div class="absolute top-4 left-4">
+              <span class="px-4 py-2 bg-amber-500 text-white font-black text-xs rounded-full">⭐ JUGADOR DE LA SEMANA</span>
+            </div>
+          </div>
+          <div class="p-8 flex flex-col justify-center">
+            <div class="mb-4">
+              <h3 class="text-3xl font-black mb-1">Erling Haaland</h3>
+              <p class="text-emerald-600 font-bold">Manchester City · Delantero</p>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mb-6">
+              <div class="text-center p-3 bg-emerald-50 rounded-xl">
+                <p class="text-3xl font-black text-emerald-700">4</p>
+                <p class="text-xs text-gray-600 font-semibold">Goles</p>
+              </div>
+              <div class="text-center p-3 bg-blue-50 rounded-xl">
+                <p class="text-3xl font-black text-blue-700">2</p>
+                <p class="text-xs text-gray-600 font-semibold">Asistencias</p>
+              </div>
+              <div class="text-center p-3 bg-amber-50 rounded-xl">
+                <p class="text-3xl font-black text-amber-700">9.5</p>
+                <p class="text-xs text-gray-600 font-semibold">Puntuación</p>
+              </div>
+            </div>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              El noruego vuelve a brillar con un póker ante el Newcastle (5-1) y dos asistencias en la victoria sobre el Everton. 
+              Con 28 goles en 24 jornadas, lidera la Bota de Oro europea y es el gran favorito al Balón de Oro 2026.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full font-semibold">Hat-trick vs Newcastle</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full font-semibold">15 victorias seguidas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opinión y estadísticas -->
+    <section class="grid lg:grid-cols-[1.2fr,0.8fr] gap-6 fade" style="transition-delay:.3s">
+      <article class="field-card rounded-2xl p-8">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-3xl">✍️</span>
+          <div>
+            <h3 class="font-black text-2xl">Columna: La inflación del mercado</h3>
+            <p class="text-sm text-gray-600">Por Javier Martínez • Analista deportivo</p>
+          </div>
+        </div>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          La renovación de Mohamed Salah hasta 2028 con el Liverpool marca un cambio de tendencia. En lugar de buscar el último gran contrato en Arabia Saudí o la MLS, el egipcio elige la competencia europea. Con 33 años, seguirá siendo el rostro de los Reds en su mejor momento...
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          Esta decisión envía un mensaje claro: los mejores jugadores aún priorizan ganar títulos en Europa sobre salarios astronómicos en otras ligas. El fichaje de Osimhen por el Chelsea (€120M) y la posible salida de Rashford al PSG demuestran que el mercado invernal sigue activo y competitivo.
+        </p>
+      </article>
+
+      <aside class="field-card rounded-2xl p-6">
+        <h4 class="font-black text-lg mb-4 flex items-center gap-2">
+          <span>📊</span> ESTADÍSTICAS DE LA SEMANA
+        </h4>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="font-bold">Goles promedio/partido</span>
+              <span class="font-black text-emerald-700">2.8</span>
+            </div>
+            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div class="h-full bg-emerald-600 rounded-full" style="width: 56%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="font-bold">Tiros a puerta/partido</span>
+              <span class="font-black text-blue-700">12.4</span>
+            </div>
+            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div class="h-full bg-blue-600 rounded-full" style="width: 62%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="font-bold">Posesión promedio (%)</span>
+              <span class="font-black text-amber-700">54%</span>
+            </div>
+            <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div class="h-full bg-amber-600 rounded-full" style="width: 54%"></div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-200">
+            <p class="text-xs text-gray-500">Datos agregados Premier, LaLiga, Serie A</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+      <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+        <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+          <span>✉️</span> mctaggart.dev@gmail.com
+        </a>
+        <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+          <span>📱</span> +507 6204-9480
+        </a>
+      </div>
+      <p class="text-gray-500 text-sm">
+        Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Fade observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { 
+        if (entry.isIntersecting) entry.target.classList.add('visible'); 
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+
+    // Carousel
+    const carouselTrack = document.getElementById('carouselTrack');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.getElementById('prevCarousel');
+    const nextBtn = document.getElementById('nextCarousel');
+    let currentSlide = 0;
+    const totalSlides = 2;
+
+    function updateCarousel() {
+      carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        currentSlide = i;
+        updateCarousel();
+      });
+    });
+
+    // Auto-play carousel
+    let autoplay = setInterval(nextSlide, 6000);
+
+    // Pause on hover
+    carouselTrack.addEventListener('mouseenter', () => clearInterval(autoplay));
+    carouselTrack.addEventListener('mouseleave', () => {
+      autoplay = setInterval(nextSlide, 6000);
+    });
+
+    // Initialize
+    updateCarousel();
+  </script>
+</body>
+</html>

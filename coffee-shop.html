@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>Brew & Bean | Specialty Coffee</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'coffee-dark': '#3C2A21',
+                        'coffee-med': '#D5CEA3',
+                        'coffee-light': '#E5E5CB',
+                        'coffee-accent': '#1A120B',
+                    },
+                    fontFamily: {
+                        'serif': ['Merriweather', 'serif'],
+                        'sans': ['Lato', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'paper-pattern': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="bg-coffee-light font-sans text-coffee-dark bg-paper-pattern">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-coffee-dark text-coffee-light shadow-lg py-4 px-6 md:px-12 flex justify-between items-center">
+        <div class="text-2xl font-serif font-bold italic">Brew & Bean</div>
+        <div class="hidden md:flex gap-8 text-sm uppercase tracking-wider font-bold">
+            <a href="#" class="hover:text-coffee-med transition">Orígenes</a>
+            <a href="#menu" class="hover:text-coffee-med transition">Menú</a>
+            <a href="#locations" class="hover:text-coffee-med transition">Ubicación</a>
+            <a href="index.html" class="hover:text-coffee-med transition">Volver</a>
+        </div>
+        <a href="#" class="bg-coffee-med text-coffee-dark px-5 py-2 rounded-sm font-bold hover:bg-white transition text-xs uppercase tracking-widest">
+            Pedir Online
+        </a>
+    </nav>
+
+    <!-- Hero Parallax -->
+    <section class="parallax h-[80vh] flex items-center justify-center text-center relative" 
+             style="background-image: url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="relative z-10 px-6 max-w-4xl">
+            <span class="text-coffee-light uppercase tracking-[0.4em] text-sm md:text-base mb-4 block">Est. 2024</span>
+            <h1 class="text-5xl md:text-7xl font-serif text-white font-bold mb-6 italic leading-tight">
+                El arte del café,<br>en cada taza.
+            </h1>
+            <p class="text-gray-200 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto">
+                Granos seleccionados artesanalmente de las mejores fincas de Etiopía, Colombia y Brasil. Tostado diario en casa.
+            </p>
+            <a href="#menu" class="inline-block border-2 border-white text-white px-8 py-3 hover:bg-white hover:text-coffee-dark transition font-bold tracking-widest text-sm">
+                VER MENÚ
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-24 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        <div class="order-2 md:order-1 relative">
+            <div class="absolute -top-4 -left-4 w-full h-full border-2 border-coffee-dark"></div>
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="relative z-10 shadow-xl w-full">
+        </div>
+        <div class="order-1 md:order-2">
+            <h2 class="text-4xl font-serif font-bold mb-6 text-coffee-accent">Nuestra Filosofía</h2>
+            <p class="text-lg mb-6 leading-relaxed opacity-80">
+                Creemos que el café es más que una bebida; es un ritual. Por eso trabajamos directamente con agricultores para asegurar un comercio justo y una calidad excepcional.
+            </p>
+            <p class="text-lg mb-8 leading-relaxed opacity-80">
+                Cada grano cuenta una historia, desde la tierra volcánica donde creció hasta el momento preciso de su extracción en nuestra máquina La Marzocco.
+            </p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Signature_sample.svg" class="h-12 opacity-60">
+        </div>
+    </section>
+
+    <!-- Menu Grid -->
+    <section id="menu" class="bg-white py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold text-coffee-accent mb-4">Nuestro Menú</h2>
+                <div class="w-24 h-1 bg-coffee-med mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-x-16 gap-y-12">
+                <!-- Category 1 -->
+                <div>
+                    <h3 class="text-2xl font-serif italic mb-8 text-coffee-med border-b pb-2">Espresso Bar</h3>
+                    
+                    <div class="flex justify-between items-baseline mb-6 border-b border-dotted border-gray-300 pb-2">
+                        <div>
+                            <h4 class="font-bold text-coffee-accent">Espresso Doble</h4>
+                            <p class="text-sm text-gray-500 italic">Intenso, notas a chocolate.</p>
+                        </div>
+                        <span class="font-bold text-lg">$3.00</span>
+                    </div>
+
+                    <div class="flex justify-between items-baseline mb-6 border-b border-dotted border-gray-300 pb-2">
+                        <div>
+                            <h4 class="font-bold text-coffee-accent">Cortado</h4>
+                            <p class="text-sm text-gray-500 italic">Espresso "cortado" con leche vaporizada.</p>
+                        </div>
+                        <span class="font-bold text-lg">$3.50</span>
+                    </div>
+
+                    <div class="flex justify-between items-baseline mb-6 border-b border-dotted border-gray-300 pb-2">
+                        <div>
+                            <h4 class="font-bold text-coffee-accent">Flat White</h4>
+                            <p class="text-sm text-gray-500 italic">Doble shot, micro-espuma sedosa.</p>
+                        </div>
+                        <span class="font-bold text-lg">$4.00</span>
+                    </div>
+                </div>
+
+                <!-- Category 2 -->
+                <div>
+                    <h3 class="text-2xl font-serif italic mb-8 text-coffee-med border-b pb-2">Brew Bar & Fríos</h3>
+                    
+                    <div class="flex justify-between items-baseline mb-6 border-b border-dotted border-gray-300 pb-2">
+                        <div>
+                            <h4 class="font-bold text-coffee-accent">V60 Pour Over</h4>
+                            <p class="text-sm text-gray-500 italic">Método manual, cuerpo ligero y frutal.</p>
+                        </div>
+                        <span class="font-bold text-lg">$5.00</span>
+                    </div>
+
+                    <div class="flex justify-between items-baseline mb-6 border-b border-dotted border-gray-300 pb-2">
+                        <div>
+                            <h4 class="font-bold text-coffee-accent">Cold Brew</h4>
+                            <p class="text-sm text-gray-500 italic">Maceración en frío por 18 horas.</p>
+                        </div>
+                        <span class="font-bold text-lg">$4.50</span>
+                    </div>
+
+                    <div class="flex justify-between items-baseline mb-6 border-b border-dotted border-gray-300 pb-2">
+                        <div>
+                            <h4 class="font-bold text-coffee-accent">Matcha Latte</h4>
+                            <p class="text-sm text-gray-500 italic">Té verde ceremonial japonés.</p>
+                        </div>
+                        <span class="font-bold text-lg">$5.50</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Parallax -->
+    <section class="parallax py-32 bg-fixed relative flex items-center justify-center"
+             style="background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <div class="absolute inset-0 bg-coffee-dark/70"></div>
+        <div class="relative z-10 text-center px-6 max-w-3xl">
+            <p class="text-2xl md:text-4xl font-serif text-white italic leading-relaxed mb-8">
+                "El mejor lugar para desconectarse del ruido de la ciudad y disfrutar de un libro con el mejor café de Panamá."
+            </p>
+            <div class="font-bold text-coffee-med tracking-widest uppercase">— Revista Gastronómica Local</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-coffee-accent text-white py-12 border-t-8 border-coffee-med">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-center md:text-left">
+            <div>
+                <h3 class="font-serif font-bold text-xl mb-4">Brew & Bean</h3>
+                <p class="text-gray-400 text-sm">
+                    Café de especialidad, pastelería artesanal y un ambiente diseñado para la creatividad y la conversación.
+                </p>
+            </div>
+            <div>
+                <h3 class="font-serif font-bold text-xl mb-4">Horario</h3>
+                <p class="text-gray-400 text-sm">Lun - Vie: 7:00 AM - 8:00 PM</p>
+                <p class="text-gray-400 text-sm">Sáb - Dom: 8:00 AM - 9:00 PM</p>
+            </div>
+            <div>
+                <h3 class="font-serif font-bold text-xl mb-4">Contacto</h3>
+                <p class="text-gray-400 text-sm">Calle 50, Plaza Concepto</p>
+                <p class="text-gray-400 text-sm">hola@brewandbean.com</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

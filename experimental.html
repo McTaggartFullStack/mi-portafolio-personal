@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>Experimental Lab | Experimentos UI/UX</title>
+  <meta name="description" content="Esta es una página de demostración del portafolio de Carlos Mc Taggart. Ejemplo de diseño web adaptable y moderno.">
+  <link rel="canonical" href="https://www.webspty.dev/experimental.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Space Grotesk"', 'sans-serif'],
+                        display: ['"Syne"', 'sans-serif'],
+                    },
+                    colors: {
+                        'void': '#050505',
+                        'neon-lime': '#ccff00',
+                        'electric-purple': '#b026ff',
+                        'cyber-blue': '#00f3ff'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                        'spin-reverse': 'spin-reverse 3s linear infinite',
+                        'marquee': 'marquee 25s linear infinite',
+                        'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '.5' }
+                        },
+                        'spin-reverse': {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(-360deg)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+            cursor: none; /* Custom cursor */
+        }
+        
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ccff00;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
+            mix-blend-mode: difference;
+        }
+
+        .cursor-dot {
+            width: 4px;
+            height: 4px;
+            background-color: #ccff00;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease-out;
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ccff00;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 9998;
+            animation: trailFade 0.6s ease-out forwards;
+        }
+
+        @keyframes trailFade {
+            to {
+                opacity: 0;
+                transform: scale(0);
+            }
+        }
+
+        .hover-magnetic {
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            animation: rippleEffect 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #ccff00, #00f3ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .reveal-text {
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+            transform: translateY(100%);
+            transition: all 1s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        
+        .reveal-text.active {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            transform: translateY(0);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hover-distort {
+            transition: transform 0.3s;
+        }
+        .hover-distort:hover {
+            transform: scale(1.05) skew(-2deg);
+        }
+
+        /* Spinner Animations */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .spinner-animate {
+            animation: spin 1s linear infinite;
+        }
+
+        /* Progress Bar Animations */
+        @keyframes progressLoop1 {
+            0% { transform: scaleX(0); }
+            60% { transform: scaleX(1); }
+            100% { transform: scaleX(0); }
+        }
+        
+        @keyframes progressLoop2 {
+            0% { transform: scaleX(0); }
+            50% { transform: scaleX(1); }
+            85% { transform: scaleX(1); }
+            100% { transform: scaleX(0); }
+        }
+        
+        @keyframes progressLoop3 {
+            0% { transform: scaleX(0); }
+            40% { transform: scaleX(1); }
+            70% { transform: scaleX(0.4); }
+            100% { transform: scaleX(0); }
+        }
+        
+        .progress-animate-1 {
+            animation: progressLoop1 4s ease-in-out infinite;
+            transform-origin: left center;
+            will-change: transform;
+        }
+        
+        .progress-animate-2 {
+            animation: progressLoop2 5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+            transform-origin: left center;
+            will-change: transform;
+        }
+        
+        .progress-animate-3 {
+            animation: progressLoop3 6s ease-in-out infinite;
+            transform-origin: left center;
+            will-change: transform;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .custom-cursor, .cursor-dot { display: none; }
+            body { cursor: auto; }
+        }
+    </style>
+</head>
+<body>
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor hidden md:block" id="cursor"></div>
+    <div class="cursor-dot hidden md:block" id="dot"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 px-6 py-6 flex justify-between items-center mix-blend-mode-difference" id="navbar">
+        <a href="./index.html" class="font-sans text-sm font-bold tracking-widest hover:text-neon-lime transition-colors">
+            ← VOLVER
+        </a>
+        <div class="font-display font-bold text-xl tracking-tighter">LAB.010</div>
+    </nav>
+
+    <!-- Parallax Hero -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden perspective-1000">
+        <!-- Abstract Shapes Background -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-electric-purple rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
+            <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-cyber-blue rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style="animation-delay: 2s"></div>
+            <div class="absolute bottom-1/4 left-1/3 w-80 h-80 bg-neon-lime rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float" style="animation-delay: 4s"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4">
+            <div class="overflow-hidden mb-2">
+                <h1 class="font-display text-6xl md:text-9xl font-black leading-none reveal-text active" id="hero-title">
+                    DIGITAL
+                </h1>
+            </div>
+            <div class="overflow-hidden">
+                <h1 class="font-display text-6xl md:text-9xl font-black leading-none reveal-text active" style="transition-delay: 0.1s" id="hero-subtitle">
+                    <span class="text-stroke text-transparent stroke-white" style="-webkit-text-stroke: 2px rgba(255,255,255,0.2);">ALCHEMY</span>
+                </h1>
+            </div>
+            <p class="mt-8 font-sans text-sm md:text-base tracking-[0.5em] text-gray-400 uppercase opacity-0 animate-pulse-glow" style="animation-duration: 3s;">
+                Interacciones • Inmersión • Futuro
+            </p>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+            <div class="w-[1px] h-16 bg-gradient-to-b from-transparent via-neon-lime to-transparent"></div>
+            <span class="font-sans text-[10px] tracking-widest text-neon-lime">SCROLL</span>
+        </div>
+    </header>
+
+    <!-- Marquee Text -->
+    <div class="bg-neon-lime text-void py-3 overflow-hidden border-y border-void relative z-20 rotate-1 scale-105 origin-left">
+        <div class="whitespace-nowrap animate-marquee font-display font-bold text-lg md:text-2xl tracking-tighter">
+            CREATIVIDAD SIN LÍMITES — UI/UX EXPERIMENTAL — ANIMACIONES FLUIDAS — DISEÑO DE INTERACCIÓN — CÓDIGO CREATIVO — 
+            CREATIVIDAD SIN LÍMITES — UI/UX EXPERIMENTAL — ANIMACIONES FLUIDAS — DISEÑO DE INTERACCIÓN — CÓDIGO CREATIVO —
+        </div>
+    </div>
+
+    <!-- Components Showcase Section -->
+    <section class="py-24 px-4 md:px-12 max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <h2 class="font-display text-5xl md:text-7xl font-bold mb-4">
+                <span class="gradient-text">Componentes</span> Interactivos
+            </h2>
+            <p class="text-gray-400 font-sans">Explora todas las posibilidades del diseño web moderno</p>
+        </div>
+
+        <!-- Tabs Component -->
+        <div class="mb-32">
+            <h3 class="font-display text-3xl font-bold mb-8 flex items-center gap-3">
+                <span class="text-neon-lime">01</span> Navegación por Pestañas
+            </h3>
+            <div class="glass-card rounded-2xl p-6 md:p-8">
+                <div class="flex flex-wrap gap-2 mb-6 border-b border-white/10 pb-4">
+                    <button class="tab-btn active px-6 py-3 rounded-lg font-sans text-sm transition-all" data-tab="tab1">
+                        🎨 Diseño
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg font-sans text-sm transition-all" data-tab="tab2">
+                        💻 Desarrollo
+                    </button>
+                    <button class="tab-btn px-6 py-3 rounded-lg font-sans text-sm transition-all" data-tab="tab3">
+                        🚀 Marketing
+                    </button>
+                </div>
+                <div class="tab-content active" id="tab1">
+                    <h4 class="font-display text-2xl font-bold mb-4">Diseño UI/UX</h4>
+                    <p class="text-gray-400 leading-relaxed">Creamos experiencias visuales que combinan estética con funcionalidad. Cada pixel cuenta en la construcción de interfaces memorables.</p>
+                </div>
+                <div class="tab-content" id="tab2">
+                    <h4 class="font-display text-2xl font-bold mb-4">Desarrollo Frontend</h4>
+                    <p class="text-gray-400 leading-relaxed">Código limpio, performante y escalable. Utilizamos las últimas tecnologías para construir productos digitales de calidad.</p>
+                </div>
+                <div class="tab-content" id="tab3">
+                    <h4 class="font-display text-2xl font-bold mb-4">Marketing Digital</h4>
+                    <p class="text-gray-400 leading-relaxed">Estrategias que convierten visitantes en clientes. SEO, SEM y análisis de datos para resultados medibles.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accordion Component -->
+        <div class="mb-32">
+            <h3 class="font-display text-3xl font-bold mb-8 flex items-center gap-3">
+                <span class="text-cyber-blue">02</span> Acordeones FAQ
+            </h3>
+            <div class="space-y-4">
+                <div class="accordion-item glass-card rounded-xl overflow-hidden">
+                    <button class="accordion-header w-full text-left p-6 flex justify-between items-center hover:bg-white/5 transition-colors">
+                        <span class="font-sans font-semibold">¿Qué tecnologías utilizas?</span>
+                        <span class="accordion-icon text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="accordion-body max-h-0 overflow-hidden transition-all duration-300">
+                        <div class="p-6 pt-0 text-gray-400">
+                            Trabajo con HTML5, CSS3, JavaScript (ES6+), React, Vue, Tailwind CSS, Node.js y más. Me adapto a las necesidades del proyecto.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item glass-card rounded-xl overflow-hidden">
+                    <button class="accordion-header w-full text-left p-6 flex justify-between items-center hover:bg-white/5 transition-colors">
+                        <span class="font-sans font-semibold">¿Cuánto tiempo toma un proyecto?</span>
+                        <span class="accordion-icon text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="accordion-body max-h-0 overflow-hidden transition-all duration-300">
+                        <div class="p-6 pt-0 text-gray-400">
+                            Depende de la complejidad, pero un sitio web típico toma entre 2-4 semanas desde el concepto hasta el lanzamiento.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item glass-card rounded-xl overflow-hidden">
+                    <button class="accordion-header w-full text-left p-6 flex justify-between items-center hover:bg-white/5 transition-colors">
+                        <span class="font-sans font-semibold">¿Ofreces soporte post-lanzamiento?</span>
+                        <span class="accordion-icon text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="accordion-body max-h-0 overflow-hidden transition-all duration-300">
+                        <div class="p-6 pt-0 text-gray-400">
+                            Sí, todos los proyectos incluyen 30 días de soporte gratuito. Luego ofrezco planes de mantenimiento mensual.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bars & Skills -->
+        <div class="mb-32">
+            <h3 class="font-display text-3xl font-bold mb-8 flex items-center gap-3">
+                <span class="text-electric-purple">03</span> Barras de Progreso Animadas
+            </h3>
+            <div class="glass-card rounded-2xl p-8">
+                <div class="space-y-6">
+                    <div class="skill-bar">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-sans text-sm">JavaScript</span>
+                            <span class="font-mono text-sm text-neon-lime">95%</span>
+                        </div>
+                        <div class="h-2 bg-white/10 rounded-full overflow-hidden relative">
+                            <div class="h-full w-full bg-gradient-to-r from-neon-lime to-cyan-400 rounded-full progress-animate-1"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-sans text-sm">UI/UX Design</span>
+                            <span class="font-mono text-sm text-cyber-blue">88%</span>
+                        </div>
+                        <div class="h-2 bg-white/10 rounded-full overflow-hidden relative">
+                            <div class="h-full w-full bg-gradient-to-r from-cyber-blue to-blue-600 rounded-full progress-animate-2"></div>
+                        </div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-sans text-sm">React & Vue</span>
+                            <span class="font-mono text-sm text-electric-purple">90%</span>
+                        </div>
+                        <div class="h-2 bg-white/10 rounded-full overflow-hidden relative">
+                            <div class="h-full w-full bg-gradient-to-r from-electric-purple to-pink-600 rounded-full progress-animate-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons & Badges -->
+        <div class="mb-32">
+            <h3 class="font-display text-3xl font-bold mb-8 flex items-center gap-3">
+                <span class="text-neon-lime">04</span> Botones & Badges
+            </h3>
+            <div class="glass-card rounded-2xl p-8">
+                <div class="mb-8">
+                    <h4 class="font-sans font-bold mb-4 text-sm uppercase tracking-wider text-gray-400">Botones Primarios</h4>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="px-6 py-3 bg-neon-lime text-void font-bold rounded-lg hover:scale-105 transition-transform">
+                            Primario
+                        </button>
+                        <button class="px-6 py-3 bg-cyber-blue text-void font-bold rounded-lg hover:scale-105 transition-transform">
+                            Secundario
+                        </button>
+                        <button class="px-6 py-3 border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-void transition-all">
+                            Outline
+                        </button>
+                        <button class="px-6 py-3 text-white font-bold rounded-lg hover:bg-white/10 transition-colors">
+                            Ghost
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-sans font-bold mb-4 text-sm uppercase tracking-wider text-gray-400">Badges & Tags</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-neon-lime/20 text-neon-lime rounded-full text-xs font-mono border border-neon-lime/50">✨ Nuevo</span>
+                        <span class="px-4 py-2 bg-red-500/20 text-red-400 rounded-full text-xs font-mono border border-red-500/50">🔥 Popular</span>
+                        <span class="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full text-xs font-mono border border-blue-500/50">💎 Premium</span>
+                        <span class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-xs font-mono border border-purple-500/50">⚡ Rápido</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards with Hover Effects -->
+        <div class="mb-32">
+            <h3 class="font-display text-3xl font-bold mb-8 flex items-center gap-3">
+                <span class="text-cyber-blue">05</span> Cards con Efectos
+            </h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="feature-card glass-card rounded-xl p-6 hover:scale-105 hover:rotate-1 transition-all duration-500 cursor-pointer relative overflow-hidden group" data-tilt>
+                    <div class="text-4xl mb-4 group-hover:scale-125 transition-transform duration-300">🎯</div>
+                    <h4 class="font-display text-xl font-bold mb-2">Precisión</h4>
+                    <p class="text-gray-400 text-sm">Cada detalle cuenta en la experiencia del usuario.</p>
+                    <div class="absolute inset-0 bg-gradient-to-br from-neon-lime/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+                <div class="feature-card glass-card rounded-xl p-6 hover:scale-110 transition-all duration-500 cursor-pointer relative overflow-hidden group" data-magnetic>
+                    <div class="text-4xl mb-4 group-hover:rotate-12 transition-transform duration-300">⚡</div>
+                    <h4 class="font-display text-xl font-bold mb-2">Velocidad</h4>
+                    <p class="text-gray-400 text-sm">Optimización y performance desde el primer día.</p>
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyber-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+                <div class="feature-card glass-card rounded-xl p-6 hover:scale-105 hover:-rotate-1 transition-all duration-500 cursor-pointer relative overflow-hidden group" data-glow>
+                    <div class="text-4xl mb-4 group-hover:scale-125 group-hover:-rotate-12 transition-transform duration-300">🚀</div>
+                    <h4 class="font-display text-xl font-bold mb-2">Innovación</h4>
+                    <p class="text-gray-400 text-sm">Soluciones creativas para problemas complejos.</p>
+                    <div class="absolute inset-0 bg-gradient-to-br from-electric-purple/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdown Menus -->
+        <div class="mb-32">
+            <h3 class="font-display text-3xl font-bold mb-8 flex items-center gap-3">
+                <span class="text-electric-purple">06</span> Menús Desplegables
+            </h3>
+            <div class="glass-card rounded-2xl p-8">
+                <div class="flex flex-wrap gap-4">
+                    <div class="dropdown relative">
+                        <button class="dropdown-toggle px-6 py-3 bg-white/10 rounded-lg font-sans hover:bg-white/20 transition-colors flex items-center gap-2">
+                            Servicios <span class="text-xs">▼</span>
+                        </button>
+                        <div class="dropdown-menu absolute top-full mt-2 w-48 bg-void border border-white/20 rounded-lg overflow-hidden opacity-0 invisible transition-all">
+                            <a href="#" class="block px-4 py-3 hover:bg-white/10 transition-colors text-sm">🎨 Diseño Web</a>
+                            <a href="#" class="block px-4 py-3 hover:bg-white/10 transition-colors text-sm">💻 Desarrollo</a>
+                            <a href="#" class="block px-4 py-3 hover:bg-white/10 transition-colors text-sm">📱 Apps Móviles</a>
+                            <a href="#" class="block px-4 py-3 hover:bg-white/10 transition-colors text-sm">🔍 SEO</a>
+                        </div>
+                    </div>
+                    <div class="dropdown relative">
+                        <button class="dropdown-toggle px-6 py-3 bg-white/10 rounded-lg font-sans hover:bg-white/20 transition-colors flex items-center gap-2">
+                            Portfolio <span class="text-xs">▼</span>
+                        </button>
+                        <div class="dropdown-menu absolute top-full mt-2 w-48 bg-void border border-white/20 rounded-lg overflow-hidden opacity-0 invisible transition-all">
+                            <a href="#" class="block px-4 py-3 hover:bg-white/10 transition-colors text-sm">🏢 Corporativo</a>
+                            <a href="#" class="block px-4 py-3 hover:bg-white/10 transition-colors text-sm">🛍️ E-commerce</a>
+                            <a href="#" class="block px-4 py-3 hover:bg-white/10 transition-colors text-sm">🎭 Creativo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Animated Counters -->
+        <div class="mb-32">
+            <h3 class="font-display text-3xl font-bold mb-8 flex items-center gap-3">
+                <span class="text-neon-lime">07</span> Contadores Animados
+            </h3>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="glass-card rounded-xl p-6 text-center hover-magnetic hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div class="text-5xl font-display font-bold text-neon-lime mb-2 counter animate-bounce" style="animation-duration: 2s" data-target="21">0</div>
+                    <div class="text-sm text-gray-400">Proyectos</div>
+                </div>
+                <div class="glass-card rounded-xl p-6 text-center hover-magnetic hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div class="text-5xl font-display font-bold text-cyber-blue mb-2 counter animate-pulse" data-target="6420">0</div>
+                    <div class="text-sm text-gray-400">Líneas de Código</div>
+                </div>
+                <div class="glass-card rounded-xl p-6 text-center hover-magnetic hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div class="text-5xl font-display font-bold text-electric-purple mb-2 counter" style="display: inline-block; animation: float 3s ease-in-out infinite" data-target="1">0</div>
+                    <div class="text-sm text-gray-400">Años Experiencia</div>
+                </div>
+                <div class="glass-card rounded-xl p-6 text-center hover-magnetic hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div class="text-5xl font-display font-bold text-neon-lime mb-2 counter animate-bounce" style="animation-duration: 1.5s; animation-delay: 0.2s" data-target="6">0</div>
+                    <div class="text-sm text-gray-400">lenguajes aprendidos</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="mb-32">
+            <h3 class="font-display text-3xl font-bold mb-8 flex items-center gap-3">
+                <span class="text-cyber-blue">08</span> Línea de Tiempo
+            </h3>
+            <div class="relative">
+                <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-neon-lime via-cyber-blue to-electric-purple"></div>
+                
+                <div class="space-y-12">
+                    <div class="relative flex items-center md:justify-end md:pr-[50%]">
+                        <div class="absolute left-8 md:left-1/2 w-4 h-4 bg-neon-lime rounded-full border-4 border-void transform -translate-x-1/2"></div>
+                        <div class="ml-16 md:ml-0 md:mr-16 glass-card rounded-xl p-6 flex-1 max-w-md">
+                            <span class="text-neon-lime font-mono text-sm">2025</span>
+                            <h4 class="font-display text-xl font-bold mt-2 mb-2">Inicio del Proyecto</h4>
+                            <p class="text-gray-400 text-sm">Lanzamiento de la marca personal y primeros clientes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative flex items-center md:justify-start md:pl-[50%]">
+                        <div class="absolute left-8 md:left-1/2 w-4 h-4 bg-cyber-blue rounded-full border-4 border-void transform -translate-x-1/2"></div>
+                        <div class="ml-16 md:ml-16 glass-card rounded-xl p-6 flex-1 max-w-md">
+                            <span class="text-cyber-blue font-mono text-sm">2025</span>
+                            <h4 class="font-display text-xl font-bold mt-2 mb-2">Expansión</h4>
+                            <p class="text-gray-400 text-sm">Crecimiento del equipo y nuevos servicios digitales.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="relative flex items-center md:justify-end md:pr-[50%]">
+                        <div class="absolute left-8 md:left-1/2 w-4 h-4 bg-electric-purple rounded-full border-4 border-void transform -translate-x-1/2"></div>
+                        <div class="ml-16 md:ml-0 md:mr-16 glass-card rounded-xl p-6 flex-1 max-w-md">
+                            <span class="text-electric-purple font-mono text-sm">2026</span>
+                            <h4 class="font-display text-xl font-bold mt-2 mb-2">Innovación</h4>
+                            <p class="text-gray-400 text-sm">Desarrollo de productos propios y mentoría.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Trigger -->
+        <div class="mb-32">
+            <h3 class="font-display text-3xl font-bold mb-8 flex items-center gap-3">
+                <span class="text-electric-purple">09</span> Ventanas Modales
+            </h3>
+            <div class="glass-card rounded-2xl p-8 text-center">
+                <p class="text-gray-400 mb-6">Haz clic en el botón para ver una ventana modal</p>
+                <button id="modal-trigger" class="px-8 py-4 bg-gradient-to-r from-electric-purple to-cyber-blue text-white font-bold rounded-lg hover:scale-105 transition-transform">
+                    Abrir Modal 🪟
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading Spinners -->
+        <div class="mb-32">
+            <h3 class="font-display text-3xl font-bold mb-8 flex items-center gap-3">
+                <span class="text-neon-lime">10</span> Animaciones de Carga
+            </h3>
+            <div class="glass-card rounded-2xl p-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+                    <div class="flex flex-col items-center gap-3">
+                        <div class="w-16 h-16 border-4 border-neon-lime border-t-transparent rounded-full spinner-animate"></div>
+                        <span class="text-xs text-gray-400">Spinner Clásico</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-3">
+                        <div class="flex gap-2">
+                            <div class="w-4 h-4 bg-cyber-blue rounded-full animate-bounce"></div>
+                            <div class="w-4 h-4 bg-cyber-blue rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                            <div class="w-4 h-4 bg-cyber-blue rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                        </div>
+                        <span class="text-xs text-gray-400">Dots Bounce</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-3">
+                        <div class="relative w-16 h-16">
+                            <div class="absolute inset-0 border-4 border-electric-purple border-t-transparent rounded-full spinner-animate"></div>
+                            <div class="absolute inset-2 border-4 border-neon-lime border-b-transparent rounded-full animate-spin-reverse"></div>
+                        </div>
+                        <span class="text-xs text-gray-400">Doble Spinner</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-3">
+                        <div class="flex gap-1">
+                            <div class="w-2 h-12 bg-gradient-to-t from-electric-purple to-transparent animate-pulse"></div>
+                            <div class="w-2 h-12 bg-gradient-to-t from-cyber-blue to-transparent animate-pulse" style="animation-delay: 0.15s"></div>
+                            <div class="w-2 h-12 bg-gradient-to-t from-neon-lime to-transparent animate-pulse" style="animation-delay: 0.3s"></div>
+                            <div class="w-2 h-12 bg-gradient-to-t from-cyber-blue to-transparent animate-pulse" style="animation-delay: 0.45s"></div>
+                            <div class="w-2 h-12 bg-gradient-to-t from-electric-purple to-transparent animate-pulse" style="animation-delay: 0.6s"></div>
+                        </div>
+                        <span class="text-xs text-gray-400">Bars Pulse</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-[9998] flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <div class="glass-card rounded-2xl p-8 max-w-md mx-4 transform scale-90 transition-transform duration-300" id="modal-content">
+            <div class="flex justify-between items-start mb-6">
+                <h3 class="font-display text-3xl font-bold">¡Hola! 👋</h3>
+                <button id="modal-close" class="text-3xl hover:text-red-500 transition-colors">&times;</button>
+            </div>
+            <p class="text-gray-400 mb-6">
+                Esta es una ventana modal funcional. Las modales son perfectas para mostrar información importante sin cambiar de página.
+            </p>
+            <div class="flex gap-4">
+                <button class="flex-1 px-4 py-2 bg-neon-lime text-void font-bold rounded-lg hover:scale-105 transition-transform">
+                    Aceptar
+                </button>
+                <button id="modal-cancel" class="flex-1 px-4 py-2 border border-white/20 rounded-lg hover:bg-white/10 transition-colors">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery / Projects Grid -->
+    <section class="py-32 px-4 md:px-12 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 md:gap-24">
+            
+            <!-- Card 1 -->
+            <div class="group relative md:translate-y-12">
+                <div class="glass-card rounded-2xl overflow-hidden aspect-[4/5] relative image-hover">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop" 
+                         alt="Abstract 3D" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="font-display text-4xl font-bold text-white translate-y-10 group-hover:translate-y-0 transition-transform duration-500">EXPLORAR</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-end border-b border-white/20 pb-4">
+                    <div>
+                        <span class="text-neon-lime font-mono text-xs mb-1 block">01</span>
+                        <h3 class="font-display text-2xl font-bold">Materia Oscura</h3>
+                    </div>
+                    <span class="text-xs font-sans text-gray-400">WebGL Concept</span>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="group relative md:-translate-y-12">
+                <div class="glass-card rounded-2xl overflow-hidden aspect-[4/5] relative image-hover">
+                    <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1935&auto=format&fit=crop" 
+                         alt="Neon Lights" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="font-display text-4xl font-bold text-white translate-y-10 group-hover:translate-y-0 transition-transform duration-500">SENTIR</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-end border-b border-white/20 pb-4">
+                    <div>
+                        <span class="text-cyber-blue font-mono text-xs mb-1 block">02</span>
+                        <h3 class="font-display text-2xl font-bold">Luz Neón</h3>
+                    </div>
+                    <span class="text-xs font-sans text-gray-400">Lighting Engine</span>
+                </div>
+            </div>
+
+             <!-- Card 3 -->
+             <div class="group relative">
+                <div class="glass-card rounded-2xl overflow-hidden aspect-video relative image-hover">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop" 
+                         alt="Retro Tech" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2">
+                    <div class="absolute inset-0 bg-gradient-to-t from-electric-purple/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div class="mt-6 flex justify-between items-end border-b border-white/20 pb-4">
+                    <div>
+                        <span class="text-electric-purple font-mono text-xs mb-1 block">03</span>
+                        <h3 class="font-display text-2xl font-bold">Cyber Retro</h3>
+                    </div>
+                    <span class="text-xs font-sans text-gray-400">Interface Design</span>
+                </div>
+            </div>
+
+             <!-- Info Block -->
+             <div class="flex flex-col justify-center items-start md:pl-12">
+                <h2 class="font-display text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    Diseño que <br> <span class="gradient-text">rompe las reglas</span>
+                </h2>
+                <p class="text-gray-400 font-sans text-lg mb-8 max-w-sm">
+                    Este espacio representa mi zona de juegos, donde la lógica de la programación se encuentra con el caos del arte digital.
+                </p>
+                <button class="px-8 py-3 border border-neon-lime text-neon-lime font-mono text-sm hover:bg-neon-lime hover:text-void transition-colors duration-300 hover-distort">
+                    INICIAR PROYECTO ->
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Footer Section -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+                <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+                    <span>✉️</span> mctaggart.dev@gmail.com
+                </a>
+                <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+                    <span>📱</span> +507 6204-9480
+                </a>
+            </div>
+            <p class="text-gray-500 text-sm">
+                Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Custom Cursor Logic with Trail
+        const cursor = document.getElementById('cursor');
+        const dot = document.getElementById('dot');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Create trail effect
+            if (Math.random() > 0.8) {
+                const trail = document.createElement('div');
+                trail.className = 'cursor-trail';
+                trail.style.left = e.clientX + 'px';
+                trail.style.top = e.clientY + 'px';
+                document.body.appendChild(trail);
+                setTimeout(() => trail.remove(), 600);
+            }
+        });
+
+        // Smooth cursor follow
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.2;
+            cursorY += (mouseY - cursorY) * 0.2;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            dot.style.left = mouseX + 'px';
+            dot.style.top = mouseY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'scale(0.8)';
+            cursor.style.borderWidth = '3px';
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'scale(1)';
+            cursor.style.borderWidth = '2px';
+        });
+
+        // Varied hover effects
+        document.querySelectorAll('a').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2.5)';
+                cursor.style.backgroundColor = 'rgba(204, 255, 0, 0.2)';
+                cursor.style.border = '1px solid #ccff00';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.backgroundColor = 'transparent';
+                cursor.style.border = '2px solid #ccff00';
+            });
+        });
+
+        document.querySelectorAll('button').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(3) rotate(45deg)';
+                cursor.style.backgroundColor = 'rgba(0, 243, 255, 0.2)';
+                cursor.style.borderRadius = '10px';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1) rotate(0deg)';
+                cursor.style.backgroundColor = 'transparent';
+                cursor.style.borderRadius = '50%';
+            });
+            
+            // Ripple effect on click
+            el.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple';
+                ripple.style.left = (e.clientX - rect.left) + 'px';
+                ripple.style.top = (e.clientY - rect.top) + 'px';
+                ripple.style.width = ripple.style.height = '10px';
+                this.style.position = 'relative';
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Special effects for cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(4)';
+                cursor.style.backgroundColor = 'rgba(176, 38, 255, 0.1)';
+                cursor.style.border = '1px dashed #b026ff';
+            });
+            card.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.backgroundColor = 'transparent';
+                cursor.style.border = '2px solid #ccff00';
+            });
+        });
+
+        // Magnetic effect for counter cards
+        document.querySelectorAll('.hover-magnetic').forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                el.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.05)`;
+                cursor.style.transform = 'scale(2.5)';
+                cursor.style.borderColor = '#00f3ff';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'translate(0, 0) scale(1)';
+                cursor.style.transform = 'scale(1)';
+                cursor.style.borderColor = '#ccff00';
+            });
+        });
+
+        // Intersection Observer for Scroll Reveals
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section div').forEach(el => {
+            if (!el.classList.contains('group')) {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.8s ease-out';
+                observer.observe(el);
+            }
+        });
+
+        // Tabs Functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.dataset.tab;
+                
+                tabButtons.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+
+        // Accordion Functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const body = item.querySelector('.accordion-body');
+                const icon = header.querySelector('.accordion-icon');
+                const isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
+                
+                // Close all other accordions
+                document.querySelectorAll('.accordion-body').forEach(b => {
+                    b.style.maxHeight = '0px';
+                });
+                document.querySelectorAll('.accordion-icon').forEach(i => {
+                    i.textContent = '+';
+                    i.style.transform = 'rotate(0deg)';
+                });
+                
+                // Toggle current
+                if (!isOpen) {
+                    body.style.maxHeight = body.scrollHeight + 'px';
+                    icon.textContent = '−';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Dropdown Menus
+        const dropdowns = document.querySelectorAll('.dropdown');
+        
+        dropdowns.forEach(dropdown => {
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                
+                // Close other dropdowns
+                document.querySelectorAll('.dropdown-menu').forEach(m => {
+                    if (m !== menu) {
+                        m.style.opacity = '0';
+                        m.style.visibility = 'hidden';
+                    }
+                });
+                
+                // Toggle current
+                if (menu.style.opacity === '1') {
+                    menu.style.opacity = '0';
+                    menu.style.visibility = 'hidden';
+                } else {
+                    menu.style.opacity = '1';
+                    menu.style.visibility = 'visible';
+                }
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.style.opacity = '0';
+                menu.style.visibility = 'hidden';
+            });
+        });
+
+        // Animated Counters
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.dataset.target);
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+                    
+                    const updateCounter = () => {
+                        current += step;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+                    
+                    updateCounter();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.counter').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Modal Functionality
+        const modal = document.getElementById('modal');
+        const modalTrigger = document.getElementById('modal-trigger');
+        const modalClose = document.getElementById('modal-close');
+        const modalCancel = document.getElementById('modal-cancel');
+        const modalContent = document.getElementById('modal-content');
+        
+        function openModal() {
+            modal.style.opacity = '1';
+            modal.style.visibility = 'visible';
+            setTimeout(() => {
+                modalContent.style.transform = 'scale(1)';
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            modalContent.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                modal.style.opacity = '0';
+                modal.style.visibility = 'hidden';
+            }, 200);
+            document.body.style.overflow = '';
+        }
+        
+        modalTrigger.addEventListener('click', openModal);
+        modalClose.addEventListener('click', closeModal);
+        modalCancel.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Add tab styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .tab-btn {
+                background: rgba(255, 255, 255, 0.05);
+                color: #ffffff;
+            }
+            .tab-btn.active {
+                background: rgba(204, 255, 0, 0.2);
+                color: #ccff00;
+                border: 1px solid #ccff00;
+            }
+            .tab-content {
+                display: none;
+                animation: fadeIn 0.3s ease-in;
+            }
+            .tab-content.active {
+                display: block;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

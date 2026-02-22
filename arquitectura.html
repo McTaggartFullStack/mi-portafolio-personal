@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>Studio Lineal - Arquitectura</title>
+    <meta name="description" content="Estudio de arquitectura minimalist. Diseño residencial y comercial contemporáneo.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Space Mono', monospace; background-color: #0f0f0f; color: #f0f0f0; }
+        h1, h2, h3, .heading-font { font-family: 'Syncopate', sans-serif; }
+        .grid-line {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.05);
+            z-index: -1;
+        }
+        .reveal-text {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+    </style>
+    <style>
+        .preview-shell {
+            width: 100%;
+            max-width: 1400px;
+            height: 900px;
+            border: 1px solid rgba(15, 23, 42, 0.12);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 24px 70px rgba(15, 23, 42, 0.25);
+            transition: width 0.25s ease, max-width 0.25s ease, height 0.25s ease;
+            background: #fff;
+        }
+
+        .preview-shell.preview-phone {
+            width: 390px;
+            max-width: 390px;
+            height: 844px;
+        }
+
+        .preview-shell.preview-tablet {
+            width: 820px;
+            max-width: 820px;
+            height: 1180px;
+        }
+
+        .preview-shell.preview-desktop {
+            width: 100%;
+            max-width: 1400px;
+            height: 100%;
+            max-height: none;
+        }
+
+        .preview-iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background: #ffffff;
+        }
+
+        .preview-fullscreen {
+            width: 100vw !important;
+            max-width: 100vw !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            height: calc(100vh - 4rem);
+        }
+
+        .preview-fullscreen .w-full {
+            height: 100%;
+        }
+
+        .preview-fullscreen .preview-shell {
+            height: 100%;
+            border-radius: 0;
+            border-left: 0;
+            border-right: 0;
+        }
+
+        .preview-fullscreen .preview-shell.preview-desktop {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* LIGHTBOX */
+        #lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 23, 42, 0.8);
+            z-index: 60;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 220ms ease;
+        }
+
+        #lightbox-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            transform: scale(0.95);
+            transition: transform 220ms ease;
+        }
+
+        #lightbox-overlay.show .lightbox-content {
+            transform: scale(1);
+        }
+
+        .lightbox-content img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 90vh;
+            object-fit: contain;
+            background: #0f172a;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: rgba(15, 23, 42, 0.6);
+            color: #fff;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 140ms ease, background 140ms ease;
+        }
+
+        .lightbox-close:hover { transform: scale(1.08); background: rgba(15, 23, 42, 0.8); }
+    </style>
+</head>
+<body>
+<!-- Portfolio Top Bar -->
+<nav id="portfolio-topbar" class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                    <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+                </a>
+                <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                    <span>&larr;</span> Volver al Portafolio
+                </a>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" data-preview="phone" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">Teléfono</button>
+              <button type="button" data-preview="tablet" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">Tablet</button>
+              <button type="button" data-preview="desktop" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-900 text-white">Escritorio</button>
+            </div>
+        </div>
+    </div>
+</nav>
+<div id="portfolio-spacer" class="h-16 w-full relative z-[9998]"></div>
+
+<div id="preview-frame" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+  <div class="w-full flex justify-center">
+    <div id="preview-shell" class="preview-shell preview-desktop">
+      <iframe id="preview-iframe" class="preview-iframe" title="Vista previa Retratos"></iframe>
+    </div>
+  </div>
+</div>
+
+    <!-- Original Content Wrapper -->
+    <div id="page-content">
+
+    <!-- Grid Background -->
+    <div class="fixed inset-0 pointer-events-none">
+        <div class="grid-line w-px h-full left-[10%]"></div>
+        <div class="grid-line w-px h-full left-[30%]"></div>
+        <div class="grid-line w-px h-full left-[50%]"></div>
+        <div class="grid-line w-px h-full left-[70%]"></div>
+        <div class="grid-line w-px h-full left-[90%]"></div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="fixed w-full z-50 px-8 py-8 flex justify-between items-start mix-blend-difference">
+        <a href="#" class="heading-font text-white font-bold tracking-widest text-xl uppercase">Lineal.</a>
+        <div class="flex flex-col text-right text-xs gap-1">
+            <a href="index.html" class="hover:underline">INDEX</a>
+            <a href="#" class="hover:underline">WORK</a>
+            <a href="#" class="hover:underline">ABOUT</a>
+            <a href="#" class="hover:underline">CONTACT</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="min-h-screen flex flex-col justify-center px-[10%] pt-20">
+        <p class="text-xs text-gray-500 mb-4 ml-1">EST. 2024 — TOKYO / MADRID</p>
+        <h1 class="heading-font text-4xl md:text-7xl lg:text-9xl font-bold uppercase leading-[0.9] text-transparent stroke-white" style="-webkit-text-stroke: 1px white; color: transparent;">
+            Form
+            <br>
+            <span class="text-white" style="-webkit-text-stroke: 0;">Follows</span>
+            <br>
+            Function
+        </h1>
+    </section>
+
+    <!-- Projects List (Horizontal Scroll feeling but vertical) -->
+    <section class="py-32">
+        <!-- Project 01 -->
+        <div class="group relative min-h-screen flex items-center border-t border-white/10">
+            <div class="absolute inset-0 -z-10 opacity-0 group-hover:opacity-40 transition-opacity duration-700">
+                <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover grayscale">
+            </div>
+            <div class="w-full px-[10%] flex md:justify-between items-baseline flex-wrap">
+                <span class="text-xs text-gray-500 mr-8">01/</span>
+                <h2 class="heading-font text-3xl sm:text-4xl md:text-8xl hover:text-transparent hover:stroke-white transition-all duration-500 cursor-pointer" style="-webkit-text-stroke: 1px transparent; color: white;">The Void House</h2>
+                <span class="text-xs md:ml-auto mt-4 md:mt-0 block w-full md:w-auto text-right">RESIDENTIAL / 2023</span>
+            </div>
+        </div>
+
+        <!-- Project 02 -->
+         <div class="group relative min-h-screen flex items-center border-t border-white/10">
+            <div class="absolute inset-0 -z-10 opacity-0 group-hover:opacity-40 transition-opacity duration-700">
+                <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover grayscale">
+            </div>
+            <div class="w-full px-[10%] flex md:justify-between items-baseline flex-wrap">
+                <span class="text-xs text-gray-500 mr-8">02/</span>
+                <h2 class="heading-font text-3xl sm:text-4xl md:text-8xl hover:text-transparent hover:stroke-white transition-all duration-500 cursor-pointer" style="-webkit-text-stroke: 1px transparent; color: white;">Concrete Tower</h2>
+                <span class="text-xs md:ml-auto mt-4 md:mt-0 block w-full md:w-auto text-right">COMMERCIAL / 2024</span>
+            </div>
+        </div>
+
+        <!-- Project 03 -->
+         <div class="group relative min-h-screen flex items-center border-t border-white/10 border-b">
+            <div class="absolute inset-0 -z-10 opacity-0 group-hover:opacity-40 transition-opacity duration-700">
+                <img src="https://images.unsplash.com/photo-1574958269340-fa927503f3dd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover grayscale">
+            </div>
+            <div class="w-full px-[10%] flex md:justify-between items-baseline flex-wrap">
+                <span class="text-xs text-gray-500 mr-8">03/</span>
+                <h2 class="heading-font text-3xl sm:text-4xl md:text-8xl hover:text-transparent hover:stroke-white transition-all duration-500 cursor-pointer" style="-webkit-text-stroke: 1px transparent; color: white;">Silent Pavilion</h2>
+                <span class="text-xs md:ml-auto mt-4 md:mt-0 block w-full md:w-auto text-right">PUBLIC / 2023</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="px-[10%] py-24 flex flex-col md:flex-row justify-between md:items-end gap-8">
+        <div>
+            <h3 class="heading-font text-2xl mb-8">Get in Touch</h3>
+            <p class="text-sm max-w-xs text-gray-500">
+                We believe in silence, space, and light.<br>
+                Based in Madrid, working globally.
+            </p>
+        </div>
+        <div class="text-left md:text-right">
+            <a href="#" class="block text-2xl sm:text-3xl md:text-4xl heading-font hover:underline break-all sm:break-normal">hello@lineal.com</a>
+        </div>
+    </footer>
+
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox-overlay" class="hidden" aria-hidden="true">
+    <div class="lightbox-content">
+        <button class="lightbox-close" type="button" aria-label="Cerrar">✕</button>
+        <img id="lightbox-img" src="" alt="" />
+    </div>
+</div>
+
+<script>
+    const previewFrame = document.getElementById("preview-frame");
+    const previewShell = document.getElementById("preview-shell");
+    const previewIframe = document.getElementById("preview-iframe");
+    const previewButtons = document.querySelectorAll(".preview-btn");
+    const pageContent = document.getElementById("page-content");
+    const portfolioTopbar = document.getElementById("portfolio-topbar");
+    const portfolioSpacer = document.getElementById("portfolio-spacer");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const isPreview = urlParams.get("preview") === "1";
+
+    if (isPreview) {
+      portfolioTopbar?.classList.add("hidden");
+      portfolioSpacer?.classList.add("hidden");
+      previewFrame?.classList.add("hidden");
+      pageContent?.classList.remove("hidden");
+    } else {
+      previewFrame?.classList.remove("hidden");
+      pageContent?.classList.add("hidden");
+
+      if (previewIframe) {
+        const previewUrl = new URL(window.location.href);
+        previewUrl.searchParams.set("preview", "1");
+        previewIframe.src = previewUrl.toString();
+      }
+
+      const setPreview = (mode) => {
+        previewShell?.classList.remove("preview-phone", "preview-tablet", "preview-desktop");
+        previewShell?.classList.add(`preview-${mode}`);
+
+        const frameLayoutClasses = ["max-w-7xl", "mx-auto", "px-4", "sm:px-6", "lg:px-8"]; 
+
+        if (mode === "desktop") {
+          previewFrame?.classList.add("preview-fullscreen");
+          previewFrame?.classList.remove(...frameLayoutClasses);
+        } else {
+          previewFrame?.classList.remove("preview-fullscreen");
+          previewFrame?.classList.add(...frameLayoutClasses);
+        }
+
+        previewButtons.forEach((btn) => {
+          const isActive = btn.dataset.preview === mode;
+          btn.classList.toggle("bg-gray-900", isActive);
+          btn.classList.toggle("text-white", isActive);
+          btn.classList.toggle("bg-gray-100", !isActive);
+          btn.classList.toggle("text-gray-700", !isActive);
+        });
+      };
+
+      previewButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          setPreview(btn.dataset.preview);
+        });
+      });
+
+      setPreview("desktop");
+    }
+
+    // LIGHTBOX
+    (() => {
+        const overlay = document.getElementById("lightbox-overlay");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeBtn = overlay?.querySelector(".lightbox-close");
+
+        if (!overlay || !lightboxImg) return;
+
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || "";
+            overlay.classList.remove("hidden");
+            requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add("show")));
+            overlay.setAttribute("aria-hidden", "false");
+        }
+
+        function closeLightbox() {
+            overlay.classList.remove("show");
+            overlay.setAttribute("aria-hidden", "true");
+            const once = () => {
+                overlay.classList.add("hidden");
+                overlay.removeEventListener("transitionend", once);
+            };
+            overlay.addEventListener("transitionend", once);
+        }
+
+        document.querySelectorAll("img").forEach((img) => {
+            img.style.cursor = "zoom-in";
+            img.addEventListener("click", (e) => {
+                const target = e.currentTarget;
+                openLightbox(target.src, target.alt || "");
+            });
+        });
+
+        overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) closeLightbox();
+        });
+
+        closeBtn?.addEventListener("click", closeLightbox);
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && overlay.classList.contains("show")) closeLightbox();
+        });
+    })();
+</script>
+
+</body>
+</html>

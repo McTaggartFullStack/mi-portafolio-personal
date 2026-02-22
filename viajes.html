@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>Viajes Paraíso | Agencia de Turismo</title>
+  <meta name="description" content="Descubre el mundo con nosotros. Paquetes turísticos a medida, vuelos y hoteles de lujo.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+    
+    * { font-family: 'Lato', sans-serif; }
+    h1, h2, h3, .serif-font { font-family: 'Playfair Display', serif; }
+    
+    :root { color-scheme: light; }
+    body { background: #f0f9ff; }
+    
+    .destination-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+    }
+    
+    .destination-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px -12px rgba(14, 165, 233, 0.25);
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .hero-bg {
+        background-color: #0c4a6e;
+        position: relative;
+    }
+    
+    .search-bar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+  </style>
+</head>
+<body class="text-gray-800">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+  
+  <!-- Navbar -->
+  <nav class="absolute w-full z-50 py-6">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <div class="logo text-white font-bold text-2xl serif-font flex items-center gap-2">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+            Paraíso
+        </div>
+        <div class="hidden md:flex space-x-8 text-white/90 font-medium">
+            <a href="#" class="hover:text-white transition-colors">Destinos</a>
+            <a href="#" class="hover:text-white transition-colors">Ofertas</a>
+            <a href="#" class="hover:text-white transition-colors">Experiencias</a>
+            <a href="#" class="hover:text-white transition-colors">Nosotros</a>
+        </div>
+        <button class="bg-white text-sky-900 px-6 py-2 rounded-full font-bold hover:bg-sky-50 transition-colors">
+            Reservar
+        </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="h-[85vh] relative flex items-center justify-center bg-gray-900 overflow-hidden">
+    <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80" alt="Beach" class="w-full h-full object-cover opacity-80">
+        <div class="absolute inset-0 bg-gradient-to-t from-sky-900/60 to-transparent"></div>
+    </div>
+    
+    <div class="relative z-10 text-center text-white px-4 max-w-4xl pt-20">
+        <span class="text-sky-200 uppercase tracking-[0.2em] text-sm font-bold mb-4 block fade-in">Explora lo desconocido</span>
+        <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight serif-font fade-in">
+            Tu próxima aventura comienza aquí
+        </h1>
+        
+        <!-- Search Widget -->
+        <div class="search-bar p-2 rounded-full max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-2 fade-in text-gray-800 mt-12">
+          <div class="flex-1 px-6 py-3 w-full border-b md:border-b-0 md:border-r border-gray-200 text-center">
+                <label class="block text-xs font-bold text-gray-400 uppercase">Destino</label>
+            <input type="text" placeholder="¿A dónde quieres ir?" class="w-full bg-transparent outline-none font-bold text-gray-700 placeholder-gray-400 text-center">
+            </div>
+           <div class="flex-1 px-6 py-3 w-full border-b md:border-b-0 md:border-r border-gray-200 text-center">
+                <label class="block text-xs font-bold text-gray-400 uppercase">Fechas</label>
+            <input type="text" placeholder="Seleccionar fechas" class="w-full bg-transparent outline-none font-bold text-gray-700 placeholder-gray-400 text-center">
+            </div>
+            <div class="px-6 py-3 w-full md:w-auto">
+                 <button class="bg-sky-500 hover:bg-sky-600 text-white w-full md:w-16 h-16 rounded-full flex items-center justify-center transition-all shadow-lg shadow-sky-300/50">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+  </header>
+
+  <!-- Popular Destinations -->
+  <section class="py-24 px-6 max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4 serif-font">Destinos Populares</h2>
+          <p class="text-gray-500 max-w-2xl mx-auto text-lg">Lugares que nuestros viajeros aman y recomiendan para unas vacaciones inolvidables.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+          
+          <!-- Card 1 -->
+          <div class="destination-card group cursor-pointer fade-in">
+              <div class="relative h-96 overflow-hidden">
+                  <img src="img/viajes/grecia.webp" alt="Bali" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                  <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-sky-800 shadow-sm">$850/noche</div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8">
+                      <h3 class="text-3xl text-white font-bold serif-font mb-2">Bali, Indonesia</h3>
+                      <div class="flex items-center gap-4 text-white/90 text-sm">
+                          <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> 7 Días</span>
+                           <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> 4.9</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+           <!-- Card 2 -->
+          <div class="destination-card group cursor-pointer fade-in">
+              <div class="relative h-96 overflow-hidden">
+                  <img src="img/viajes/francia.webp" alt="Paris" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                  <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-sky-800 shadow-sm">$1,200/noche</div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8">
+                      <h3 class="text-3xl text-white font-bold serif-font mb-2">París, Francia</h3>
+                      <div class="flex items-center gap-4 text-white/90 text-sm">
+                          <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> 5 Días</span>
+                           <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> 4.8</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+           <!-- Card 3 -->
+          <div class="destination-card group cursor-pointer fade-in">
+              <div class="relative h-96 overflow-hidden">
+                  <img src="img/viajes/grecia2.webp" alt="Goa" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                  <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold text-sky-800 shadow-sm">$600/noche</div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8">
+                      <h3 class="text-3xl text-white font-bold serif-font mb-2">Santorini, Grecia</h3>
+                      <div class="flex items-center gap-4 text-white/90 text-sm">
+                          <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> 6 Días</span>
+                           <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg> 5.0</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+  </section>
+
+  <!-- Experiencias Exclusivas -->
+  <section class="py-24 px-6 max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4 serif-font">Experiencias Exclusivas</h2>
+      <p class="text-gray-500 max-w-2xl mx-auto text-lg">Itinerarios diseñados por expertos para vivir lo mejor de cada destino.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="destination-card p-8 fade-in">
+        <div class="text-sky-600 text-3xl mb-4">🏝️</div>
+        <h3 class="text-2xl font-bold mb-2 serif-font">Islas & Playas</h3>
+        <p class="text-gray-600">Resorts all-inclusive, tours privados en catamarán y cenas frente al mar.</p>
+      </div>
+      <div class="destination-card p-8 fade-in">
+        <div class="text-sky-600 text-3xl mb-4">🏔️</div>
+        <h3 class="text-2xl font-bold mb-2 serif-font">Aventura & Montaña</h3>
+        <p class="text-gray-600">Senderismo, glaciares y experiencias outdoor con guías certificados.</p>
+      </div>
+      <div class="destination-card p-8 fade-in">
+        <div class="text-sky-600 text-3xl mb-4">🏙️</div>
+        <h3 class="text-2xl font-bold mb-2 serif-font">City Breaks</h3>
+        <p class="text-gray-600">Escapadas urbanas con hoteles boutique y tours culturales exclusivos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ofertas de Temporada -->
+  <section class="py-24 bg-sky-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4 serif-font">Ofertas de Temporada</h2>
+        <p class="text-gray-500 max-w-2xl mx-auto text-lg">Aprovecha descuentos por tiempo limitado en destinos premium.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="destination-card overflow-hidden fade-in">
+          <div class="h-56">
+            <img src="img/viajes/kenia.webp" class="w-full h-full object-cover" alt="Safari">
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold serif-font">Safari en Kenia</h3>
+            <p class="text-gray-600">7 días con guías expertos y hoteles de lujo.</p>
+            <div class="mt-4 text-sky-700 font-bold">Desde $1,980</div>
+          </div>
+        </div>
+        <div class="destination-card overflow-hidden fade-in">
+          <div class="h-56">
+            <img src="img/viajes/aurora.webp" class="w-full h-full object-cover" alt="Auroras">
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold serif-font">Auroras en Islandia</h3>
+            <p class="text-gray-600">4 noches con tours nocturnos y spas termales.</p>
+            <div class="mt-4 text-sky-700 font-bold">Desde $1,350</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section class="py-24 px-6 max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4 serif-font">Lo que dicen nuestros viajeros</h2>
+      <p class="text-gray-500 max-w-2xl mx-auto text-lg">Reseñas reales de quienes ya vivieron la experiencia Paraíso.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="destination-card p-6 fade-in">
+        <div class="text-sky-500 text-xl mb-3">★★★★★</div>
+        <p class="text-gray-600">“Todo perfecto: vuelos, hotel y excursiones. Repetiría sin dudar.”</p>
+        <div class="mt-4 font-bold">— Mariana G.</div>
+      </div>
+      <div class="destination-card p-6 fade-in">
+        <div class="text-sky-500 text-xl mb-3">★★★★★</div>
+        <p class="text-gray-600">“El itinerario fue impecable y el soporte estuvo siempre disponible.”</p>
+        <div class="mt-4 font-bold">— Luis P.</div>
+      </div>
+      <div class="destination-card p-6 fade-in">
+        <div class="text-sky-500 text-xl mb-3">★★★★★</div>
+        <p class="text-gray-600">“Excelente relación calidad-precio. Los destinos increíbles.”</p>
+        <div class="mt-4 font-bold">— Andrea M.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-24 bg-sky-900 text-white">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold serif-font mb-4">Recibe ofertas exclusivas</h2>
+      <p class="text-sky-200 mb-8">Suscríbete y sé el primero en conocer promociones y destinos nuevos.</p>
+      <form class="flex flex-col sm:flex-row gap-4 justify-center">
+        <input type="email" placeholder="tu@email.com" class="px-6 py-3 rounded-full text-gray-900 w-full sm:w-96">
+        <button class="bg-white text-sky-900 px-8 py-3 rounded-full font-bold hover:bg-sky-100">Suscribirme</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+  </script>
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

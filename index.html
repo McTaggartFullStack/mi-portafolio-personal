@@ -1,0 +1,3057 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+
+  <!-- Title & Meta -->
+    <title>Diseño y Desarrollo Web en Panamá | Carlos Mc Taggart</title>
+    <meta name="description" content="Diseño y desarrollo de sitios web en Panamá: landing pages, tiendas online, páginas corporativas y mantenimiento web. Portafolio y servicios de Carlos Mc Taggart.">
+    <meta name="keywords" content="desarrollo web Panamá, diseñador web Panamá, creación de sitios web, páginas web profesionales, landing page, tienda online, e-commerce, mantenimiento web, hosting, SEO, Carlos Mc Taggart">
+  <meta name="author" content="Carlos Mc Taggart">
+    <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://www.webspty.dev/">
+  <meta name="google-site-verification" content="5YldcucHsvViVa0MJf19NIqrDGyTaNQdOVOn1TkJkKE"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://www.webspty.dev/"/>
+    <meta property="og:title" content="Diseño y Desarrollo Web en Panamá | Carlos Mc Taggart"/>
+    <meta property="og:description" content="Diseño y desarrollo de sitios web, tiendas online y landing pages en Panamá. Conoce mis proyectos y servicios."/>
+  <meta property="og:image" content="https://www.webspty.dev/img/preview.png"/>
+    <meta property="og:site_name" content="WebsPTY"/>
+    <meta property="og:locale" content="es_PA"/>
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:url" content="https://www.webspty.dev/"/>
+    <meta name="twitter:title" content="Diseño y Desarrollo Web en Panamá | Carlos Mc Taggart"/>
+    <meta name="twitter:description" content="Sitios web modernos, tiendas online y landing pages. Portafolio y servicios en Panamá."/>
+  <meta name="twitter:image" content="https://www.webspty.dev/img/preview.png"/>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+
+  <style>
+   * {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Fix: Ensure content is visible on small screens */
+        @media (max-width: 768px) {
+            .fade-in {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Unified Card Animation */
+        .card-zoom {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent; 
+        }
+        
+        .card-zoom:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Colors */
+        .card-service:hover { border-color: #3b82f6; } /* Blue */
+        .card-restaurant:hover { border-color: #ef4444; } /* Red */
+        .card-store:hover { border-color: #8b5cf6; } /* Purple/Default */
+        .card-fashion:hover { border-color: #ec4899; } /* Pink */
+        .card-home:hover { border-color: #f59e0b; } /* Amber */
+        .card-auto:hover { border-color: #dc2626; } /* Red */
+        .card-tech:hover { border-color: #06b6d4; } /* Cyan */
+        .card-education:hover { border-color: #10b981; } /* Emerald */
+        .card-event:hover { border-color: #8b5cf6; } /* Violet */
+        
+        .shimmer {
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.5;
+            animation: blob 7s infinite;
+            will-change: transform; /* Hint for browser optimization */
+        }
+
+        /* Optimization for mobile: Reduce blur and animation complexity */
+        @media (max-width: 768px) {
+            .blob {
+                filter: blur(40px); /* Reduce blur radius */
+                animation: blob 10s infinite linear; /* Slower animation */
+                opacity: 0.3; /* Reduce opacity for better contrast with text */
+            }
+        }
+        
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        
+        .project-img {
+            transition: transform 0.5s ease;
+        }
+        
+        .card-hover:hover .project-img {
+            transform: scale(1.1);
+        }
+        
+        .pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .7; }
+        }
+        
+        /* Efectos hover únicos por proyecto */
+        .hover-lift:hover {
+            transform: translateY(-20px) scale(1.03) rotate(2deg);
+            box-shadow: 0 30px 60px -12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .hover-zoom:hover {
+            transform: scale(1.08);
+            box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.5);
+        }
+        
+        .hover-tilt-left:hover {
+            transform: perspective(1000px) rotateY(-8deg) translateY(-10px);
+            box-shadow: -20px 20px 40px rgba(16, 185, 129, 0.3);
+        }
+        
+        .hover-tilt-right:hover {
+            transform: perspective(1000px) rotateY(8deg) translateY(-10px);
+            box-shadow: 20px 20px 40px rgba(236, 72, 153, 0.3);
+        }
+        
+        .hover-glow:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 0 40px rgba(249, 115, 22, 0.6), 0 20px 40px rgba(249, 115, 22, 0.3);
+        }
+        
+        .hover-bounce:hover {
+            animation: bounceHover 0.6s ease;
+            box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.4);
+        }
+        
+        @keyframes bounceHover {
+            0%, 100% { transform: translateY(-12px) scale(1.02); }
+            50% { transform: translateY(-20px) scale(1.04); }
+        }
+        
+        .hover-flip:hover {
+            transform: perspective(1000px) rotateX(10deg) translateY(-15px);
+            box-shadow: 0 30px 50px rgba(6, 182, 212, 0.4);
+        }
+        
+        .hover-pulse-grow:hover {
+            transform: translateY(-10px);
+            animation: pulseGrow 1s infinite;
+            box-shadow: 0 25px 50px -12px rgba(20, 184, 166, 0.4);
+        }
+        
+        @keyframes pulseGrow {
+            0%, 100% { transform: translateY(-10px) scale(1.02); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+        
+        .hover-skew:hover {
+            transform: skewY(-2deg) translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.4);
+        }
+        
+        .hover-rotate:hover {
+            transform: rotate(-3deg) translateY(-15px) scale(1.04);
+            box-shadow: 0 30px 60px -12px rgba(245, 158, 11, 0.5);
+        }
+
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Carlos Alberto Mc Taggart Montes",
+    "alternateName": "McTaggartFullStack",
+    "url": "https://www.webspty.dev",
+    "jobTitle": "Desarrollador Web",
+    "description": "Diseño y desarrollo de sitios web en Panamá. Landing pages, tiendas online y páginas corporativas.",
+    "knowsAbout": [
+      "HTML5",
+      "Tailwind CSS",
+      "JavaScript",
+      "SEO",
+      "Web Design",
+      "Website Maintenance",
+      "Web Hosting"
+    ],
+    "sameAs": [
+      "https://github.com/mctaggartfullstack"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "TecnoCorePTY"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios de Desarrollo Profesional",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Desarrollo Web Profesional",
+            "description": "Creación de sitios web robustos, escalables y optimizados."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Diseño de Landing Pages de Alta Conversión",
+            "description": "Páginas de aterrizaje enfocadas en ventas y captación de leads."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Tiendas Online y E-commerce",
+            "description": "Catálogo, pagos y carrito de compras personalizados."
+          }
+        }
+      ]
+    }
+  }
+  </script>
+ </head>
+ <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+  <!-- Navigation -->
+  <nav class="fixed w-full bg-white dark:bg-gray-800/80 backdrop-blur-md shadow-sm z-50 transition-all duration-300" id="navbar">
+   <div class="max-w-[1600px] mx-auto px-6 sm:px-8 lg:px-12">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex-shrink-0 flex items-center gap-2 min-w-[120px] -ml-2">
+       <img src="img/principal/favicon.webp" alt="Logo" loading="lazy" class="h-8 w-8 hover:scale-110 transition-transform duration-300">
+        <h2 class="text-lg font-bold text-gradient whitespace-nowrap">
+             Webs PTY
+            </h2>
+        </div>
+    <div class="hidden xl:block flex-1 overflow-visible pl-6">
+    <div class="ml-0 mr-4 flex items-center gap-3 overflow-x-auto scrollbar-hide py-2" style="scrollbar-width: none; -ms-overflow-style: none;">
+      <!-- Grupo Principal: Planes, Afiliados y Contacto -->
+       <div class="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg border border-green-200 dark:border-green-700 flex-shrink-0">
+        <a class="px-3 py-1.5 text-sm font-semibold text-green-700 dark:text-green-300 hover:text-green-900 dark:hover:text-green-100 hover:bg-green-100 dark:hover:bg-green-800/50 rounded-md transition-all duration-300" href="precios.html">
+         Planes
+        </a>
+        <a class="px-3 py-1.5 text-sm font-semibold text-purple-700 dark:text-purple-300 hover:text-purple-900 dark:hover:text-purple-100 hover:bg-purple-100 dark:hover:bg-purple-800/50 rounded-md transition-all duration-300" href="colaboradores.html">
+         Afiliados
+        </a>
+        <a class="px-3 py-1.5 text-sm font-semibold text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-blue-100 hover:bg-blue-100 dark:hover:bg-blue-800/50 rounded-md transition-all duration-300" href="#contacto">
+         Contacto
+        </a>
+       </div>
+
+      <!-- Botón de Modo Oscuro -->
+      <button id="theme-toggle" type="button" class="flex-shrink-0 text-gray-600 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-900/30 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-700 rounded-lg p-3 transition-all duration-300 hover:scale-105 group" aria-label="Toggle dark mode">
+       <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 group-hover:rotate-12 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+       </svg>
+       <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 group-hover:rotate-12 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+       </svg>
+      </button>
+
+       <!-- Separador vertical -->
+       <div class="h-8 w-px bg-gray-300 dark:bg-gray-600 flex-shrink-0"></div>
+
+       <!-- Categorías -->
+       <a class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-lg transition-all duration-300 whitespace-nowrap flex-shrink-0" href="#inicio">
+        Inicio
+       </a>
+       <a class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-lg transition-all duration-300 whitespace-nowrap flex-shrink-0" href="#servicios">
+        Servicios
+       </a>
+      <a class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-lg transition-all duration-300 whitespace-nowrap flex-shrink-0" href="#salud">
+       Salud
+      </a>
+      <a class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/20 rounded-lg transition-all duration-300 whitespace-nowrap flex-shrink-0" href="#ejercicio">
+       Ejercicio
+      </a>
+       <a class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-300 whitespace-nowrap flex-shrink-0" href="#tiendas">
+        Tiendas
+       </a>
+       <a class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-900/20 rounded-lg transition-all duration-300 whitespace-nowrap flex-shrink-0" href="#restaurantes">
+        Restaurantes
+       </a>
+       <a class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400 hover:bg-pink-50 dark:hover:bg-pink-900/20 rounded-lg transition-all duration-300 whitespace-nowrap flex-shrink-0" href="#educacion">
+        Educación
+       </a>
+      <a class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-lime-600 dark:hover:text-lime-400 hover:bg-lime-50 dark:hover:bg-lime-900/20 rounded-lg transition-all duration-300 whitespace-nowrap flex-shrink-0" href="#experimental">
+       lab
+      </a>
+
+
+      </div>
+     </div>
+    <div class="-mr-2 flex xl:hidden">
+      
+     <!-- Dark Mode Toggle Mobile -->
+     <button id="theme-toggle-mobile" type="button" class="mr-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 transition-colors" aria-label="Toggle dark mode">
+      <svg id="theme-toggle-dark-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+      <svg id="theme-toggle-light-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+     </button>
+
+     <!-- Mobile menu button -->
+     <button class="bg-white dark:bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-purple-600 hover:bg-gray-100 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500" type="button" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-btn" aria-label="Abrir menú principal">
+       <span class="sr-only">Abrir menú principal</span>
+       <!-- Icon when menu is closed. -->
+       <!-- Heroicon name: outline/menu -->
+       <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" id="menu-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg>
+       <!-- Icon when menu is open. -->
+       <!-- Heroicon name: outline/x -->
+       <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" id="close-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+       </svg>
+      </button>
+     </div>
+    </div>
+   </div>
+
+   <!-- Mobile menu with sidebar style -->
+   <!-- Overlay -->
+   <div id="mobile-overlay" class="xl:hidden hidden fixed inset-0 bg-gray-900/50 z-40 transition-opacity duration-300" onclick="document.getElementById('mobile-menu-btn').click()"></div>
+   
+    <!-- Sidebar Menu (Right Side) -->
+    <div class="xl:hidden fixed top-0 right-0 h-screen min-h-screen w-72 bg-white dark:bg-gray-800 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 flex flex-col" id="mobile-menu">
+     <div class="h-16 flex items-center justify-between px-6 border-b border-gray-100">
+       <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600">Menú</span>
+       <button class="p-2 rounded-full hover:bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400" onclick="document.getElementById('mobile-menu-btn').click()" aria-label="Cerrar menú">✕</button>
+     </div>
+    <div class="flex-1 overflow-y-auto py-6 text-left">
+      <!-- Grupo Principal: Planes, Afiliados y Contacto -->
+      <div class="mx-6 mb-4 px-3 py-2 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl border border-green-200 dark:border-green-700">
+      <a class="block px-4 py-3 text-base font-semibold text-green-700 dark:text-green-300 hover:text-green-900 dark:hover:text-green-100 hover:bg-green-100 dark:hover:bg-green-800/50 rounded-lg transition-all text-left" href="precios.html">Planes</a>
+      <a class="block px-4 py-3 text-base font-semibold text-purple-700 dark:text-purple-300 hover:text-purple-900 dark:hover:text-purple-100 hover:bg-purple-100 dark:hover:bg-purple-800/50 rounded-lg transition-all text-left" href="colaboradores.html">Afiliados</a>
+      <a class="block px-4 py-3 text-base font-semibold text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-blue-100 hover:bg-blue-100 dark:hover:bg-blue-800/50 rounded-lg transition-all text-left" href="#contacto">Contacto</a>
+      </div>
+
+      <!-- Categorías (orden escritorio) -->
+      <a class="block px-6 py-4 text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 hover:bg-purple-50 font-medium transition-colors text-left" href="#inicio">Inicio</a>
+      <a class="block px-6 py-4 text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 hover:bg-purple-50 font-medium transition-colors text-left" href="#servicios">Servicios</a>
+      <a class="block px-6 py-4 text-base text-gray-700 dark:text-gray-300 hover:text-emerald-600 hover:bg-emerald-50 font-medium transition-colors text-left" href="#salud">Salud</a>
+      <a class="block px-6 py-4 text-base text-gray-700 dark:text-gray-300 hover:text-amber-600 hover:bg-amber-50 font-medium transition-colors text-left" href="#ejercicio">Ejercicio</a>
+      <a class="block px-6 py-4 text-base text-gray-700 dark:text-gray-300 hover:text-blue-600 hover:bg-blue-50 font-medium transition-colors text-left" href="#tiendas">Tiendas</a>
+      <a class="block px-6 py-4 text-base text-gray-700 dark:text-gray-300 hover:text-orange-600 hover:bg-orange-50 font-medium transition-colors text-left" href="#restaurantes">Restaurantes</a>
+      <a class="block px-6 py-4 text-base text-gray-700 dark:text-gray-300 hover:text-pink-600 hover:bg-pink-50 font-medium transition-colors text-left" href="#educacion">Educación</a>
+      <a class="block px-6 py-4 text-base text-gray-700 dark:text-gray-300 hover:text-lime-600 hover:bg-lime-50 font-medium transition-colors text-left" href="#experimental">lab</a>
+     </div>
+     <div class="p-6 border-t border-gray-100">
+        <a href="precios.html" class="block w-full text-center px-4 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow-md hover:shadow-lg transition-all">Ver Precios</a>
+     </div>
+   </div>
+  </nav>
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16" id="inicio">
+   <!-- Animated Background Blobs -->
+   <div class="blob w-72 h-72 bg-purple-400 top-20 left-10">
+   </div>
+   <div class="blob w-96 h-96 bg-blue-400 bottom-20 right-10" style="animation-delay: 2s;">
+   </div>
+   <div class="blob w-80 h-80 bg-indigo-400 top-1/2 left-1/2" style="animation-delay: 4s;">
+   </div>
+   <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="floating mt-12 md:mt-0">
+     <div class="inline-block p-4 bg-white dark:bg-gray-800/20 backdrop-blur-sm rounded-full mb-6">
+      <div class="text-6xl">
+       💻
+      </div>
+     </div>
+    </div>
+    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white mb-6 fade-in">
+     Desarrollador
+     <span class="text-gradient block mt-2">
+      web
+     </span>
+    </h1>
+    <p class="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8 fade-in max-w-3xl mx-auto" style="transition-delay: 0.2s;">
+     Creando experiencias web modernas, interactivas y visualmente impactantes
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="transition-delay: 0.4s;">
+     <a class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-full hover:from-purple-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl" href="#proyectos">
+      Ver Proyectos ↓
+     </a>
+     <a class="inline-flex items-center px-8 py-4 bg-white dark:bg-gray-800 text-purple-600 font-semibold rounded-full hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-purple-200" href="precios.html">
+      Ver Precios 💲
+     </a>
+     <a class="inline-flex items-center px-8 py-4 bg-white dark:bg-gray-800 text-purple-600 font-semibold rounded-full hover:bg-gray-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-purple-200" href="#contacto">
+      Contáctame ✉️
+     </a>
+    </div>
+    <!-- Tech Stack Icons -->
+    <div class="mt-16 flex justify-center gap-6 flex-wrap fade-in" style="transition-delay: 0.6s;">
+     <div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+      <div class="text-4xl">
+       🌐
+      </div>
+     </div>
+     <div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+      <div class="text-4xl">
+       🎨
+      </div>
+     </div>
+     <div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+      <div class="text-4xl">
+       ⚡
+      </div>
+     </div>
+     <div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+      <div class="text-4xl">
+       ⚛️
+      </div>
+     </div>
+     <div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+      <div class="text-4xl">
+       🚀
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Projects Section -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800" id="proyectos">
+   <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+     <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+      Mis
+      <span class="text-gradient">
+       Proyectos
+      </span>
+     </h2>
+     <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+      Una colección de mis trabajos más destacados en desarrollo web
+     </p>
+     <div class="mt-4 w-24 h-1 bg-gradient-to-r from-purple-600 to-indigo-600 mx-auto rounded-full">
+     </div>
+    </div>
+    <h3 id="servicios" class="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8 mt-12 pl-4 border-l-4 border-purple-600">
+     Servicios Profesionales
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+    <a href="https://tecnocorepty.com" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group" target="_blank" rel="noopener noreferrer">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="TecnoCorePTY" class="w-full h-full object-cover project-img" decoding="async" fetchpriority="high" loading="lazy" src="img/principal/tecnocore.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-green-500 text-white text-sm font-semibold rounded-full flex items-center gap-1">
+         <span class="w-2 h-2 bg-white dark:bg-gray-800 rounded-full pulse-slow">
+         </span>
+         Live
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        TecnoCorePTY
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Sitio web profesional con diseño moderno y funcionalidades avanzadas.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+        <span class="px-3 py-1 bg-gray-800 text-white text-sm rounded-full flex items-center gap-1">
+         <svg class="h-3 w-3" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          </path>
+         </svg>
+         Sitio Externo
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group"  >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="canelino.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+    <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+     <img alt="Servicios Técnicos" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/canelino.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+     Canelino S.A.
+    </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Descripción del proyecto. Agrega tus trabajos aquí con sus características principales.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+    <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+            <a href="retratos.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+                <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+                 <img alt="Retratos Studio" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/retratos.webp
+                 "/>
+                 <div class="absolute top-4 right-4">
+                     <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                      Demostración
+                     </span>
+                 </div>
+                </div>
+                <div class="p-6">
+                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                     Retratos Studio
+                 </h3>
+                 <p class="text-gray-600 dark:text-gray-300 mb-4">
+                     Retratos artísticos de personas, animales y objetos con acabado editorial.
+                 </p>
+                 <div class="flex flex-wrap gap-2 mb-4">
+                     <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                      HTML5
+                     </span>
+                     <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                      Tailwind CSS
+                     </span>
+                     <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                      JavaScript
+                     </span>
+                 </div>
+                 <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+                     Ver Proyecto
+                                                                          →
+                 </div>
+                </div>
+            </a>
+
+     <a href="abogados.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Justicia & Asociados" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/abogados.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        Justicia & Asociados
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Despacho de abogados corporativos y litigantes con más de 20 años de experiencia. Defensa legal sólida y confiable.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="consultoria.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Nexus Consulting - Estrategia Empresarial" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/nexu.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        Nexus Consulting - Estrategia Empresarial
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Consultoría de negocios de alto nivel. Estrategia, transformación digital y optimización operativa.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="saas-landing.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="FlowTask - Gestión de Proyectos Simplificada" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/flowtask.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        FlowTask - Gestión de Proyectos Simplificada
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Proyecto de sitio web profesional con diseño moderno y optimización.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="fintech.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="NovaBank - La Banca del Futuro" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/bank.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        NovaBank - La Banca del Futuro
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Banca digital moderna, sin comisiones ocultas y con herramientas de ahorro inteligente.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="ngo-charity.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="EcoEarth - Juntos por el Planeta" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/eco.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        EcoEarth - Juntos por el Planeta
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Proyecto de sitio web profesional con diseño moderno y optimización.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="crypto-defi.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="NEXUS" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/nexus2.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        NEXUS
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Proyecto de sitio web profesional con diseño moderno y optimización.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="legal-firm.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Justitia - Firma Legal" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/justice.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        Justice - Firma Legal
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Proyecto de sitio web profesional con diseño moderno y optimización.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+      <a href="agencia.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+       <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+        <img alt="Stellar Agency" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/agencia.webp"/>
+        <div class="absolute top-4 right-4">
+         <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+          Nuevo
+         </span>
+        </div>
+       </div>
+       <div class="p-6">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+         Stellar Agency
+        </h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+         Agencia digital creativa especializada en branding y diseño web.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-4">
+         <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+          Agencia
+         </span>
+         <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+          Tailwind CSS
+         </span>
+         <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+          Creativo
+         </span>
+        </div>
+        <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+         Ver Proyecto
+                 →
+        </div>
+       </div>
+      </a>
+          <a href="cocina.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+           <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+            <img alt="Gourmet Kitchen" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/cocina.webp"/>
+            <div class="absolute top-4 right-4">
+             <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+              Nuevo
+             </span>
+            </div>
+           </div>
+           <div class="p-6">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+             Gourmet Kitchen
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+             Blog de cocina con recetas paso a paso y videoclases.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+             <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+              Blog
+             </span>
+             <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+              Tailwind CSS
+             </span>
+             <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+              Multimedia
+             </span>
+            </div>
+            <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+             Ver Proyecto
+                     →
+            </div>
+           </div>
+          </a>
+          <a href="supermercado.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+           <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+            <img alt="FreshMarket" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/market.webp"/>
+            <div class="absolute top-4 right-4">
+             <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+              Nuevo
+             </span>
+            </div>
+           </div>
+           <div class="p-6">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+             FreshMarket
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+             Supermercado online con entrega a domicilio y ofertas frescas.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+             <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+              Tienda
+             </span>
+             <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+              Tailwind CSS
+             </span>
+             <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+              Delivery
+             </span>
+            </div>
+            <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+             Ver Proyecto
+                     →
+            </div>
+           </div>
+          </a>
+            <a href="gaming.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+             <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+              <img alt="CyberZone" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/gaming.webp"/>
+              <div class="absolute top-4 right-4">
+               <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                Nuevo
+               </span>
+              </div>
+             </div>
+             <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+               CyberZone
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+               Portal de noticias de videojuegos y reseñas de hardware.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+               <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                Gaming
+               </span>
+               <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                Tailwind CSS
+               </span>
+               <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                News
+               </span>
+              </div>
+              <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+               Ver Proyecto
+                       →
+              </div>
+             </div>
+            </a>
+            <a href="viajes.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+             <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+              <img alt="Wanderlust Travel" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/viajes.webp"/>
+              <div class="absolute top-4 right-4">
+               <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                Nuevo
+               </span>
+              </div>
+             </div>
+             <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+               Wanderlust Travel
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+               Agencia de viajes con destinos exóticos y paquetes turísticos.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+               <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                Turismo
+               </span>
+               <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                Tailwind CSS
+               </span>
+               <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                Booking
+               </span>
+              </div>
+              <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+               Ver Proyecto
+                       →
+              </div>
+             </div>
+            </a>
+            <a href="banda.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+             <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+              <img alt="The Void" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/eclipse.webp"/>
+              <div class="absolute top-4 right-4">
+               <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                Nuevo
+               </span>
+              </div>
+             </div>
+             <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+               The Void
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">
+               Sitio oficial de banda de rock con fechas de tour y discografía.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+               <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                Música
+               </span>
+               <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                Tailwind CSS
+               </span>
+               <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                Eventos
+               </span>
+              </div>
+              <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+               Ver Proyecto
+                       →
+              </div>
+             </div>
+            </a>
+                  <a href="arquitectura.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+                   <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+                    <img alt="Studio Lineal - Arquitectura" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/arquitectura.webp"/>
+                    <div class="absolute top-4 right-4">
+                     <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                Demostración
+                     </span>
+                    </div>
+                   </div>
+                   <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                     Studio Lineal - Arquitectura
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                     Estudio de arquitectura minimalist. Diseño residencial y comercial contemporáneo.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                     <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                HTML5
+                     </span>
+                     <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                Tailwind CSS
+                     </span>
+                     <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                JavaScript
+                     </span>
+                    </div>
+                    <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+                     Ver Proyecto
+                       →
+                    </div>
+                   </div>
+                  </a>
+                  <a href="barberia.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+                   <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+                    <img alt="Gentleman's Cut" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/barberia.webp"/>
+                    <div class="absolute top-4 right-4">
+                     <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                Demostración
+                     </span>
+                    </div>
+                   </div>
+                   <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                     Gentleman's Cut
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                     Barbería tradicional con estilo moderno. Cortes de cabello, afeitado con navaja y cuidado de barba.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                     <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                HTML5
+                     </span>
+                     <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                Tailwind CSS
+                     </span>
+                     <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                JavaScript
+                     </span>
+                    </div>
+                    <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+                     Ver Proyecto
+                       →
+                    </div>
+                   </div>
+                  </a>
+                  <a href="esports-team.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+                   <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+                    <img alt="NEON DRAGONS - Esports Team" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/dragons.webp"/>
+                    <div class="absolute top-4 right-4">
+                     <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                Demostración
+                     </span>
+                    </div>
+                   </div>
+                   <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                     NEON DRAGONS - Esports Team
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                     Sitio oficial de equipo esports con calendario, roster y contenido exclusivo.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                     <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                HTML5
+                     </span>
+                     <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                Tailwind CSS
+                     </span>
+                     <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                JavaScript
+                     </span>
+                    </div>
+                    <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+                     Ver Proyecto
+                       →
+                    </div>
+                   </div>
+                  </a>
+                  <a href="photography-portfolio.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+                   <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+                    <img alt="LUMINA - Photography Portfolio" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/fotos.webp"/>
+                    <div class="absolute top-4 right-4">
+                     <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                Demostración
+                     </span>
+                    </div>
+                   </div>
+                   <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                     LUMINA - Photography Portfolio
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                     Portafolio de fotografía editorial y comercial.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                     <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                HTML5
+                     </span>
+                     <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                Tailwind CSS
+                     </span>
+                     <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                JavaScript
+                     </span>
+                    </div>
+                    <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+                     Ver Proyecto
+                       →
+                    </div>
+                   </div>
+                  </a>
+                  <a href="revista.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+                   <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+                    <img alt="FutbolTotal" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/futbol.webp"/>
+                    <div class="absolute top-4 right-4">
+                     <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                Demostración
+                     </span>
+                    </div>
+                   </div>
+                   <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                     FutbolTotal
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                     Revista deportiva con noticias, entrevistas y resultados en vivo.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                     <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                HTML5
+                     </span>
+                     <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                Tailwind CSS
+                     </span>
+                     <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                JavaScript
+                     </span>
+                    </div>
+                    <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+                     Ver Proyecto
+                       →
+                    </div>
+                   </div>
+                  </a>
+                  <a href="spa.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+                   <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+                    <img alt="Serenity Spa & Wellness - Relajación Total" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/spa.webp"/>
+                    <div class="absolute top-4 right-4">
+                     <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                Demostración
+                     </span>
+                    </div>
+                   </div>
+                   <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                     Serenity Spa & Wellness - Relajación Total
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                     Centro de bienestar y spa de lujo. Masajes, tratamientos faciales y circuitos de agua.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                     <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                HTML5
+                     </span>
+                     <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                Tailwind CSS
+                     </span>
+                     <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                JavaScript
+                     </span>
+                    </div>
+                    <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+                     Ver Proyecto
+                       →
+                    </div>
+                   </div>
+                  </a>
+                     <a href="limpieza-alfombras.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+                      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+                       <img alt="EcoClean - Limpieza de Alfombras" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/alfombras.webp"/>
+                       <div class="absolute top-4 right-4">
+                        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                      Demostración
+                        </span>
+                       </div>
+                      </div>
+                      <div class="p-6">
+                       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                        EcoClean - Limpieza de Alfombras
+                       </h3>
+                       <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Servicio profesional de lavado profundo y desinfección de alfombras y tapicería.
+                       </p>
+                       <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                      HTML5
+                        </span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                      Tailwind CSS
+                        </span>
+                        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                      JavaScript
+                        </span>
+                       </div>
+                       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+                        Ver Proyecto
+                       →
+                       </div>
+                      </div>
+                     </a>
+    </div>
+              <h3 id="salud" class="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8 mt-12 pl-4 border-l-4 border-emerald-600">
+               Salud y Bienestar
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+               <a href="medical-clinic.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+                <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+                 <img alt="MediCare Plus - Tu Salud en Buenas Manos" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/medicare.webp"/>
+                 <div class="absolute top-4 right-4">
+                <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                 Demostración
+                </span>
+                 </div>
+                </div>
+                <div class="p-6">
+                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                MediCare Plus - Tu Salud en Buenas Manos
+                 </h3>
+                 <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Proyecto de sitio web profesional con diseño moderno y optimización.
+                 </p>
+                 <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                 HTML5
+                </span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                 Tailwind CSS
+                </span>
+                <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                 JavaScript
+                </span>
+                 </div>
+                 <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+                Ver Proyecto
+                          →
+                 </div>
+                </div>
+               </a>
+               <a href="odontologia.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+                <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+                 <img alt="Dental Care Clinic" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/dental.webp"/>
+                 <div class="absolute top-4 right-4">
+                <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                 Demostración
+                </span>
+                 </div>
+                </div>
+                <div class="p-6">
+                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                Dental Care Clinic
+                 </h3>
+                 <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Clínica dental especializada en ortodoncia, implantes y estética dental. Tecnología de punta y atención personalizada.
+                 </p>
+                 <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                 HTML5
+                </span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                 Tailwind CSS
+                </span>
+                <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                 JavaScript
+                </span>
+                 </div>
+                 <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+                Ver Proyecto
+                          →
+                 </div>
+                </div>
+               </a>
+               <a href="mascotas.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+                <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+                 <img alt="Pawsitive Care - Veterinaria y Cuidado" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/mascotas.webp"/>
+                 <div class="absolute top-4 right-4">
+                <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                 Demostración
+                </span>
+                 </div>
+                </div>
+                <div class="p-6">
+                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                Pawsitive Care - Veterinaria y Cuidado
+                 </h3>
+                 <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Clínica veterinaria y cuidado de mascotas. Vacunación, emergencias 24/7 y spa para perros y gatos.
+                 </p>
+                 <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                 HTML5
+                </span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                 Tailwind CSS
+                </span>
+                <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                 JavaScript
+                </span>
+                 </div>
+                 <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+                Ver Proyecto
+                         →
+                 </div>
+                </div>
+               </a>
+              </div>
+              <h3 id="ejercicio" class="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8 mt-12 pl-4 border-l-4 border-amber-600">
+               Ejercicio y Fitness
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+               <a href="fitness.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+                <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+                 <img alt="Titan Power Gym" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/gym.webp"/>
+                 <div class="absolute top-4 right-4">
+                <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                 Nuevo
+                </span>
+                 </div>
+                </div>
+                <div class="p-6">
+                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                Titan Power Gym
+                 </h3>
+                 <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Gimnasio hardcore con estética oscura y naranja. "No Pain No Gain".
+                 </p>
+                 <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                 Powerlifting
+                </span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                 Tailwind CSS
+                </span>
+                <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                 Hardcore
+                </span>
+                 </div>
+                 <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+                Ver Proyecto
+                         →
+                 </div>
+                </div>
+               </a>
+               <a href="fitness-gym.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+                <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+                 <img alt="IronForce Gym - Entrena Sin Límites" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/gym2.webp"/>
+                 <div class="absolute top-4 right-4">
+                <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                 Demostración
+                </span>
+                 </div>
+                </div>
+                <div class="p-6">
+                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                IronForce Gym - Entrena Sin Límites
+                 </h3>
+                 <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Gimnasio boutique con programas personalizados y clases grupales.
+                 </p>
+                 <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                 HTML5
+                </span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                 Tailwind CSS
+                </span>
+                <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                 JavaScript
+                </span>
+                 </div>
+                 <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+                Ver Proyecto
+                         →
+                 </div>
+                </div>
+               </a>
+               <a href="gimnasio.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+                <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+                 <img alt="IronForge Gym" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/gym3.webp"/>
+                 <div class="absolute top-4 right-4">
+                <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+                 Demostración
+                </span>
+                 </div>
+                </div>
+                <div class="p-6">
+                 <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                IronForge Gym
+                 </h3>
+                 <p class="text-gray-600 dark:text-gray-300 mb-4">
+                Gimnasio de alto rendimiento con entrenadores personales.
+                 </p>
+                 <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                 HTML5
+                </span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                 Tailwind CSS
+                </span>
+                <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+                 JavaScript
+                </span>
+                 </div>
+                 <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+                Ver Proyecto
+                         →
+                 </div>
+                </div>
+               </a>
+              </div>
+    <h3 id="tiendas" class="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8 mt-12 pl-4 border-l-4 border-blue-600">
+     Tiendas en Línea
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+     <a href="./tienda.html" class="block fade-in card-zoom card-tech bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="TechStore" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/tienda.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        TechStore
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Tienda online de celulares y accesorios con carrito funcional, filtros por categoría y diseño mobile-first.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+        <a href="./electropty.html" class="block fade-in card-zoom card-tech bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+         <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+          <img alt="ElectroPTY" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/electronica.webp"/>
+          <div class="absolute top-4 right-4">
+           <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+            Demostración
+           </span>
+          </div>
+         </div>
+         <div class="p-6">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+           ElectroPTY
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4">
+           Tienda tecnológica con estética editorial, catálogo curado y secciones estilo galería.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+           <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">
+            HTML5
+           </span>
+           <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+            Tailwind CSS
+           </span>
+           <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+            JavaScript
+           </span>
+          </div>
+          <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+           Ver Proyecto
+                           →
+          </div>
+         </div>
+        </a>
+     <a href="./moda.html" class="block fade-in card-zoom card-fashion bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Lumière" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/moda.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        LUMIÈRE Fashion
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Boutique de moda minimalista con efectos parallax, transiciones suaves y estética editorial de alta gama.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-stone-100 text-stone-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-orange-50 text-orange-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="./hogar.html" class="block fade-in card-zoom card-home bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Aura Living" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/hogar.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        AURA LIVING
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Concept Store de diseño interior consciente con catálogo inmersivo, filtrado dinámico y estética Wabi-Sabi.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-stone-100 text-stone-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-orange-50 text-orange-800 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-amber-50 text-amber-800 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-stone-600 font-semibold group-hover:text-stone-900 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="./auto-accesorios.html" class="block fade-in card-zoom card-auto bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gradient-to-br from-red-500 to-black">
+       <img alt="AutoPro Shop" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/autos.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        AutoPro Shop 🏎️
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Tienda online de accesorios premium para vehículos. Incluye filtros por marca, modelo y categoría con carrito de compras funcional.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-gray-800 text-white text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-red-600 font-semibold group-hover:text-red-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+
+     <a href="bienes-raices.html" class="block fade-in card-zoom card-tech bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Prestige Real Estate" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/casas.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        Prestige Real Estate
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Venta y alquiler de propiedades exclusivas en las mejores zonas. Apartamentos, casas y penthouses de lujo.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="inmobiliaria.html" class="block fade-in card-zoom card-tech bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="LUX ESTATES - Propiedades Exclusivas" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/ventacasa.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        LUX ESTATES - Propiedades Exclusivas
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Proyecto profesional con diseño moderno.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="luxury-cars.html" class="block fade-in card-zoom card-tech bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="VELOCE" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/carros.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        VELOCE
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Proyecto profesional con diseño moderno.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="tienda-deco.html" class="block fade-in card-zoom card-tech bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Hygge Home - Decoración Escandinava" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/hogar1.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        Hygge Home - Decoración Escandinava
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Muebles y decoración estilo escandinavo. Simplicidad, funcionalidad y calidez para tu hogar.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+
+    </div>
+    <h3 id="restaurantes" class="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8 mt-12 pl-4 border-l-4 border-orange-600">
+     Restaurantes y Gastronomía
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+     <a href="./restaurante.html" class="block fade-in card-zoom card-restaurant bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="La Hacienda" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/restaurante.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        La Hacienda
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Sitio web premium para restaurante de alta cocina con reservas online, menú interactivo y diseño elegante dark-mode.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-stone-100 text-stone-800 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="casco.html" class="block fade-in card-zoom card-restaurant bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="El Fogón del Casco" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/fogon.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        El Fogón del Casco
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Restaurante casual de comida típica panameña con menú del día, ambiente familiar y pedidos online. Sabor auténtico.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-amber-100 text-amber-800 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-orange-600 font-semibold group-hover:text-orange-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="pizzeria.html" class="block fade-in card-zoom card-restaurant bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="La Esquina Napolitana" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/pizzeria.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        La Esquina Napolitana
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Pizzería premium con horno de leña. Menú de 10 pizzas auténticas, pastas frescas y ambiente rústico italiano.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-stone-100 text-stone-800 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full">
+         Parallax
+        </span>
+       </div>
+       <div class="inline-flex items-center text-red-600 font-semibold group-hover:text-red-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="heladeria.html" class="block fade-in card-zoom card-restaurant bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Helados del Trópico" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/heladeria.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        Helados del Trópico
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Heladería minimalista y colorida. Visualizador de toppings interactivo y galería de sabores tropicales.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-teal-100 text-teal-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         Minimalist
+        </span>
+       </div>
+       <div class="inline-flex items-center text-pink-500 font-semibold group-hover:text-pink-700 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="tribu.html" class="block fade-in card-zoom card-restaurant bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="La Tribu Food" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/tribu.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        La Tribu Food
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Restaurante y bar con ambiente vibrante, ideal para previas. Incluye ruleta interactiva para decidir quién paga la cuenta.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="chino.html" class="block fade-in card-zoom card-restaurant bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-red-900 dark:bg-gray-700 border-b-4 border-yellow-500 dark:border-yellow-400">
+       <img alt="Palacio del Dragón" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/chino.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6 bg-red-50 dark:bg-gray-800">
+       <h3 class="text-2xl font-bold text-red-900 dark:text-white mb-3" style="font-family: serif;">
+        Palacio del Dragón 🐲
+       </h3>
+       <p class="text-gray-700 dark:text-gray-300 mb-4">
+        Restaurante chino tradicional. Incluye una <strong>Galleta de la Fortuna Interactiva</strong> con más de 40 frases de sabiduría.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-red-200 text-red-800 text-sm rounded-full">
+         Interactive JS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-sm rounded-full">
+         Culture Design
+        </span>
+       </div>
+       <div class="inline-flex items-center text-red-700 dark:text-red-400 font-bold group-hover:text-red-900 dark:group-hover:text-red-300 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="miel-pan.html" class="block fade-in card-zoom card-restaurant bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-[#FAEDCD] dark:bg-gray-700">
+       <img alt="Miel & Pan" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/cafeteria.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-green-500 text-white text-sm font-semibold rounded-full"> 
+         Nuevo
+        </span>
+       </div>
+      </div>
+      <div class="p-6 bg-[#FDFBF7] dark:bg-gray-800">
+       <h3 class="text-2xl font-bold text-[#D4A373] dark:text-white mb-3" style="font-family: 'Times New Roman', serif;">
+        Miel & Pan ☕
+       </h3>
+       <p class="text-gray-700 dark:text-gray-300 mb-4">
+        Cafetería Aesthetic de especialidad. Animaciones de vapor y un diseño minimalista "Slow Living".
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-[#CCD5AE] text-white text-sm rounded-full">
+         Pastel UI
+        </span>
+        <span class="px-3 py-1 bg-[#D4A373] text-white text-sm rounded-full">
+         Steam FX
+        </span>
+       </div>
+       <div class="inline-flex items-center text-[#D4A373] dark:text-purple-400 font-bold group-hover:text-[#b08558] dark:group-hover:text-purple-300 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="mariscos.html" class="block fade-in card-zoom card-restaurant bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Marea Alta" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/mariscos.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-cyan-900 mb-3">
+        Marea Alta ⚓
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Elegante restaurante de mariscos y grill. Diseño fresco con tonos oceánicos y menú de "Pesca del Día".
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-cyan-100 text-cyan-800 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+       </div>
+       <div class="inline-flex items-center text-cyan-600 font-bold group-hover:text-cyan-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+
+     <a href="coffee-shop.html" class="block fade-in card-zoom card-restaurant bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Brew & Bean" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/cafeteria2.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        Brew & Bean
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Proyecto profesional con diseño moderno.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="panaderia.html" class="block fade-in card-zoom card-restaurant bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Crumbs & Co. - Panadería Artesanal" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/panaderia.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        Crumbs & Co. - Panadería Artesanal
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Panadería y pastelería artesanal. Masa madre, café de especialidad y desayunos horneados diariamente.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+
+    </div>
+    <h3 id="educacion" class="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8 mt-12 pl-4 border-l-4 border-pink-600">
+     Educación y Eventos
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+     <a href="./educacion.html" class="block fade-in card-zoom card-education bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Plataforma Educativa Online" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/educativo.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        Sitio Educativo
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Plataforma de cursos online con rutas guiadas, mentorías y planes flexibles.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+       <a href="university.html" class="block fade-in card-zoom card-education bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+        <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+         <img alt="Oxford Heights University" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/university.webp"/>
+         <div class="absolute top-4 right-4">
+          <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+           Demostración
+          </span>
+         </div>
+        </div>
+        <div class="p-6">
+         <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+          Oxford Heights University
+         </h3>
+         <p class="text-gray-600 dark:text-gray-300 mb-4">
+          Universidad con oferta académica completa, admisiones online y vida estudiantil.
+         </p>
+         <div class="flex flex-wrap gap-2 mb-4">
+          <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">
+           Educación
+          </span>
+          <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+           Tailwind CSS
+          </span>
+          <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+           JavaScript
+          </span>
+         </div>
+         <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+          Ver Proyecto
+                              →
+         </div>
+        </div>
+       </a>
+     <a href="./evento.html" class="block fade-in card-zoom card-event bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Festival de Música Neon Fest" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/eventos.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        NEON FEST 2026
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Landing page para festival de música electrónica con cuenta regresiva, line-up de artistas y sistema de registro.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+
+     <a href="art-gallery.html" class="block fade-in card-zoom card-event bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="KUNST" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/arte.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        KUNST
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Proyecto impresionante de Lifestyle y Eventos.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="boda.html" class="block fade-in card-zoom card-event bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Amour - Wedding Planner & Event Design" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/boda.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        Amour - Wedding Planner & Event Design
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Organización de bodas de ensueño. Diseño de eventos, coordinación y gestión logìstica para tu día especial.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="conferencia.html" class="block fade-in card-zoom card-event bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="FUTURE TECH 2025 - Global Innovation Summit" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/evento1.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        FUTURE TECH 2025 - Global Innovation Summit
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        El evento de tecnología más grande del año. IA, Blockchain, Cloud Computing y más.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="musica.html" class="block fade-in card-zoom card-event bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Neon Beat Festival 2024" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/fiesta.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        Neon Beat Festival 2024
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Festival de música electrónica y arte digital. Compra tus entradas para el evento del año.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+    </div>
+      <h3 id="experimental" class="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8 mt-12 pl-4 border-l-4 border-lime-600">
+     Laboratorio Experimental
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
+     <a href="./experimental.html" class="block fade-in card-zoom card-tech bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Experimental Lab" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/lab.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-full">
+         Demostración
+        </span>
+       </div>
+       <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+        <span class="text-neon-lime text-3xl font-bold" style="color: #ccff00; text-shadow: 0 0 10px rgba(0,0,0,0.5);">
+         LAB.010
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        Experimental Lab
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Playground creativo de UI/UX con animaciones avanzadas, micro-interacciones y estética futurista experimental.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-black text-white text-sm rounded-full">
+         HTML5
+        </span>
+        <span class="px-3 py-1 bg-lime-100 text-lime-800 text-sm rounded-full">
+         Tailwind CSS
+        </span>
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         JavaScript
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Proyecto
+                            →
+       </div>
+      </div>
+     </a>
+        <a href="./componentes.html" class="block fade-in card-zoom card-tech bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+         <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+            <img alt="UI Kit WebsPTY" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/CodeShowPTY.webp"/>
+            <div class="absolute top-4 right-4">
+             <span class="px-3 py-1 bg-indigo-500 text-white text-sm font-semibold rounded-full">
+                Code Show PTY
+             </span>
+            </div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+             <span class="text-white text-3xl font-bold drop-shadow" style="text-shadow: 0 4px 18px rgba(0,0,0,0.35);">
+                UI KIT
+             </span>
+            </div>
+         </div>
+         <div class="p-6">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+             UI Kit y Snippets
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+             Colección estilo Bootstrap con tarjetas, listas y bloques listos para copiar y pegar en proyectos WebsPTY.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+             <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+                Tailwind CSS
+             </span>
+             <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-sm rounded-full">
+                Snippets
+             </span>
+             <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-full">
+                Copiar & Pegar
+             </span>
+            </div>
+            <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+             Ver Proyecto
+                                                        →
+            </div>
+         </div>
+        </a>
+    </div>
+
+    <!-- Pricing Section -->
+    <h3 id="planes" class="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-8 mt-12 pl-4 border-l-4 border-green-600">
+      Precios y Afiliados
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
+     <a href="./precios.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Precios y Servicios" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/precios.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-green-500 text-white text-sm font-semibold rounded-full">
+         Servicios
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        Mis Precios y Servicios
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Consulta mis planes de desarrollo web, landing pages y tiendas online. Soluciones a medida para tu negocio.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         Web Design
+        </span>
+        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-sm rounded-full">
+         E-commerce
+        </span>
+        <span class="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full">
+         Consultoría
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Precios
+                            →
+       </div>
+      </div>
+     </a>
+     <a href="./colaboradores.html" class="block fade-in card-zoom card-service bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg group">
+      <div class="relative overflow-hidden h-64 bg-gray-100 dark:bg-gray-700">
+       <img alt="Colaboradores" class="w-full h-full object-cover project-img" decoding="async" loading="lazy" src="img/principal/colaboradores.webp"/>
+       <div class="absolute top-4 right-4">
+        <span class="px-3 py-1 bg-purple-500 text-white text-sm font-semibold rounded-full">
+         Equipo
+        </span>
+       </div>
+      </div>
+      <div class="p-6">
+       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+        Programa de Afiliados
+       </h3>
+       <p class="text-gray-600 dark:text-gray-300 mb-4">
+        Conoce a los profesionales y partners con los que colaboro para llevar los proyectos al siguiente nivel.
+       </p>
+       <div class="flex flex-wrap gap-2 mb-4">
+        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full">
+         Diseño
+        </span>
+        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+         Marketing
+        </span>
+        <span class="px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full">
+         Desarrollo
+        </span>
+       </div>
+       <div class="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-800 transition-colors duration-300 group" >
+        Ver Colaboradores
+                            →
+       </div>
+      </div>
+     </a>
+    </div>
+   </div>
+  </section>
+  <!-- Contact Section -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 gradient-bg" id="contacto">
+   <div class="max-w-4xl mx-auto text-center">
+    <div class="fade-in">
+     <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+      ¿Listo para trabajar juntos?
+     </h2>
+     <p class="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
+      Estoy disponible para nuevos proyectos y oportunidades. ¡Conectemos!
+     </p>
+     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+    <a class="inline-flex items-center justify-center text-center w-full sm:w-auto px-8 py-4 bg-white dark:bg-gray-800 text-purple-600 font-semibold rounded-full hover:bg-gray-100 dark:bg-gray-700 transform hover:scale-105 transition-all duration-300 shadow-lg" href="mailto:mctaggart.dev@gmail.com">
+       📧
+                        Enviar Email
+      </a>
+    <a class="inline-flex items-center justify-center text-center w-full sm:w-auto px-8 py-4 bg-purple-500/30 backdrop-blur-sm text-white font-semibold rounded-full hover:bg-purple-500/40 transform hover:scale-105 transition-all duration-300 shadow-lg border-2 border-white/30" href="https://github.com/McTaggartFullStack" target="_blank" rel="noopener noreferrer">
+       🐱
+                        GitHub
+      </a>
+    <a class="inline-flex items-center justify-center text-center w-full sm:w-auto px-8 py-4 bg-green-500/30 backdrop-blur-sm text-white font-semibold rounded-full hover:bg-green-500/40 transform hover:scale-105 transition-all duration-300 shadow-lg border-2 border-white/30" href="https://wa.me/50762049480" target="_blank" rel="noopener noreferrer">
+       💬
+                        WhatsApp
+      </a>
+     </div>
+     <!-- Social Links -->
+     <div class="flex justify-center gap-6">
+
+     </div>
+    </div>
+   </div>
+  </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h3 class="text-2xl font-bold mb-2">
+         Carlos Mc Taggart
+        </h3>
+        <p class="text-gray-400 mb-6">
+         Portafolio personal de diseño y desarrollo web. Aquí encontrarás proyectos, servicios y formas de contacto.
+        </p>
+        <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400">
+         <a class="hover:text-white transition-colors flex items-center gap-2" href="mailto:mctaggart.dev@gmail.com">
+            <span>
+             ✉️
+            </span>
+            mctaggart.dev@gmail.com
+         </a>
+         <a class="hover:text-white transition-colors flex items-center gap-2" href="https://wa.me/50762049480">
+            <span>
+             📱
+            </span>
+            +507 6204-9480
+         </a>
+        </div>
+     </div>
+    </footer>
+  <!-- JavaScript -->
+  <script src="script.js">
+  </script>
+  
+
+  <!-- Asistente de IA -->
+  <style>
+    /* Flotante IA */
+    #ia-assistant-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #6366f1 0%, #a21caf 100%);
+      border-radius: 50%;
+      box-shadow: 0 8px 32px 0 rgba(99,102,241,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: box-shadow 0.2s, transform 0.2s, width 0.3s, height 0.3s, border-radius 0.3s;
+    }
+    #ia-assistant-btn.expanded {
+      width: 340px;
+      max-width: 95vw;
+      height: 340px;
+      border-radius: 1.2rem;
+      right: 2.5vw;
+      bottom: 2.5vw;
+      box-shadow: 0 8px 32px 0 rgba(99,102,241,0.25);
+      background: #fff;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 0;
+    }
+    .dark #ia-assistant-btn.expanded {
+      background: #18181b;
+    }
+    @media (max-width: 768px) {
+      #ia-assistant-btn.expanded {
+        width: 95vw;
+      }
+    }
+    #ia-assistant-btn.expanded .ia-circle-icon {
+      display: none;
+    }
+    #ia-assistant-btn .ia-chat-content {
+      display: none;
+    }
+    #ia-assistant-btn.expanded .ia-chat-content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+    }
+    #ia-assistant-btn.expanded .ia-chat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: bold;
+      color: #6366f1;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-header {
+      color: #a5b4fc;
+    }
+    #ia-assistant-btn.expanded .ia-chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      background: #f8fafc;
+      border-radius: 0.8rem;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.97rem;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-messages {
+      background: #27272a;
+      color: #e5e7eb;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input {
+      display: flex;
+      border-top: 1px solid #444;
+      background: #fff;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input {
+      background: #18181b;
+      border-top: 1px solid #27272a;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input input {
+      flex: 1;
+      border: none;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      outline: none;
+      background: transparent;
+      color: #222;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input input {
+      color: #e5e7eb;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input button {
+      background: #6366f1;
+      color: #fff;
+      border: none;
+      padding: 0 1.2rem;
+      font-size: 1.2rem;
+      border-radius: 0 0 1.2rem 0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input button:hover {
+      background: #a21caf;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input button {
+      background: #6366f1;
+      color: #fff;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input button:hover {
+      background: #a21caf;
+    }
+    
+    #ia-assistant-btn svg {
+      width: 2rem;
+      height: 2rem;
+      color: #fff;
+    }
+    @media (max-width: 768px) {
+      #ia-assistant-btn {
+        display: flex;
+      }
+    }
+  </style>
+  
+  <div id="ia-assistant-btn" title="Habla con FlorIA">
+    <span class="ia-circle-icon">
+      <img src="img/principal/logoIA.webp" alt="Logo IA" style="width: 58px; height: 58px; border-radius: 50%; object-fit: cover; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.10);" />
+    </span>
+    <div class="ia-chat-content">
+      <div class="ia-chat-header">
+        FlorIA - Tu Asistente Virtual
+        <button class="ia-chat-close" style="background:transparent;border:none;color:#6366f1;font-size:1.3rem;cursor:pointer;">×</button>
+      </div>
+      <div class="ia-chat-messages"></div>
+      <div id="recaptcha-container" class="w-full flex justify-center items-center mb-2 mt-2" style="min-height:78px;">
+        <div id="recaptcha-widget" style="width:100%;max-width:320px;min-width:180px;display:flex;justify-content:center;"></div>
+      </div>
+      <form class="ia-chat-input" autocomplete="off">
+        <input type="text" placeholder="Escribe tu pregunta..." required />
+        <button type="submit">➤</button>
+      </form>
+    </div>
+  </div>
+  
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      // IA: círculo flotante y chat unificado
+      const iaBtn = document.getElementById('ia-assistant-btn');
+      if (!iaBtn) return;
+      const iaCircleIcon = iaBtn.querySelector('.ia-circle-icon');
+      const iaChatContent = iaBtn.querySelector('.ia-chat-content');
+      const iaChatHeader = iaBtn.querySelector('.ia-chat-header');
+      const iaChatClose = iaBtn.querySelector('.ia-chat-close');
+      const iaChatMessages = iaBtn.querySelector('.ia-chat-messages');
+      if (!iaCircleIcon || !iaChatContent || !iaChatHeader || !iaChatClose || !iaChatMessages) return;
+      iaChatMessages.style.display = 'flex';
+      iaChatMessages.style.flexDirection = 'column';
+      iaChatMessages.style.gap = '0.3em';
+      const iaChatInput = iaBtn.querySelector('.ia-chat-input');
+      const iaInput = iaChatInput.querySelector('input');
+      const iaSubmitBtn = iaChatInput.querySelector('button[type="submit"]');
+      if (!iaChatInput || !iaInput || !iaSubmitBtn) return;
+
+      // Protección extrema: bloquear recarga accidental
+      let blockReload = false;
+      window.addEventListener('beforeunload', function(e) {
+        if (blockReload) {
+          e.preventDefault();
+          e.returnValue = '';
+          return '';
+        }
+      });
+
+      function isMobile() {
+        return window.innerWidth <= 768;
+      }
+
+      function setChatVisibility() {
+        iaBtn.style.display = 'flex';
+        if (!iaBtn.classList.contains('expanded')) {
+          iaCircleIcon.style.display = 'flex';
+          iaChatContent.style.display = 'none';
+        }
+      }
+      window.addEventListener('resize', setChatVisibility);
+      setChatVisibility();
+
+      // Cerrar chat IA al hacer click fuera
+      document.addEventListener('mousedown', function(e) {
+        if (
+          iaBtn.classList.contains('expanded') &&
+          !iaBtn.contains(e.target)
+        ) {
+          iaBtn.classList.remove('expanded');
+          iaCircleIcon.style.display = 'flex';
+          iaChatContent.style.display = 'none';
+          iaChatHeader.style.display = 'none';
+          iaChatMessages.style.display = 'none';
+          iaChatInput.style.display = 'none';
+          iaInput.blur();
+          blockReload = false;
+        }
+      });
+
+      // Abrir chat IA flotante (botón) - compatible y robusto
+      iaBtn.addEventListener('click', function(e) {
+        // Solo expandir si el click es sobre el círculo, el logo, o el botón flotante
+        const isCircle = e.target.classList.contains('ia-circle-icon');
+        const isLogo = e.target.tagName === 'IMG' && e.target.closest('.ia-circle-icon');
+        const isBtn = e.target === iaBtn;
+        if (!iaBtn.classList.contains('expanded') && (isCircle || isLogo || isBtn)) {
+          iaBtn.classList.add('expanded');
+          iaCircleIcon.style.display = 'none';
+          iaChatContent.style.display = 'flex';
+          iaChatHeader.style.display = 'flex';
+          iaChatMessages.style.display = 'flex';
+          iaChatInput.style.display = 'flex';
+          iaInput.disabled = false;
+          iaInput.style.display = '';
+          setTimeout(() => iaInput.focus(), 100);
+          blockReload = true;
+        }
+      });
+
+      // Cerrar chat móvil
+      iaChatClose.addEventListener('click', function(e) {
+        e.stopPropagation(); // Evita que el click reabra el chat
+        if (iaBtn.classList.contains('expanded')) {
+          iaBtn.classList.remove('expanded');
+          iaCircleIcon.style.display = 'flex';
+          iaChatContent.style.display = 'none';
+          iaChatHeader.style.display = 'none';
+          iaChatMessages.style.display = 'none';
+          iaChatInput.style.display = 'none';
+          iaInput.blur();
+          blockReload = false;
+          // Al cerrar el chat, volver a pedir captcha en la próxima sesión
+          captchaValidated = false;
+        }
+      });
+
+      // FlorIA chat memory implementation + reCAPTCHA
+      const SYSTEM_INSTRUCTION = `Eres FlorIA, asistente oficial de webspty Tu misión: vender servicios con respuestas ultra-concisas.\n\nREGLAS DE ORO:\n- Máximo 20 palabras por respuesta a no ser que el usuario pregunte algo, ahi si tu limite es mayor.\n- No hablar del programa de afiliados salvo que lo pidan.\n- Siempre termina con una pregunta relacionada.\n- Solo respondes sobre webspty.dev. Si preguntan otra cosa, di que no puedes ayudar.\n\nSERVICIOS Y PRECIOS:\n- Tarjeta Digital: $125\n- Landing page Express: $250\n- Web Profesional: $480 (SEO + dominio .com gratis 1 año)\n- E-commerce: $1250\n- IA Extra: $150 implementación + $30/mes hosting exclusivo\n\nMANTENIMIENTO:\nPlanes de $30, $50 y $90 mensuales.\n -plan tecnico: 30$ incluye hoosting asociado a tu dominio, actualizaciones de seguridad y soporte técnico.\n -plan seguro: 50$ incluye todo lo del plan técnico más optimizaciones de rendimiento, hosting propio de alto nivel y monitoreo proactivo.\n -plan de crecimiento: 90$ incluye todo lo del plan seguro mas actualizaciones de hasta 3 secciones mensuales, hosting premium con recursos dedicados, plan de IA y soporte prioritario.\n -plan de IA: 30$ incluye el hosting de una inteligencia artificial dedicada al sitio web\n\nAFILIADOS (solo si preguntan):\n- $20 por Tarjeta Digital\n- $40 por Landing page Express\n- $60 por Web Profesional\n- Pago inmediato: efectivo, transferencia o yappy\n\nCONTACTO:\nCarlos Mc Taggart | WhatsApp: +507 6204-9480`;
+      let chatHistory = [
+        { role: 'user', parts: [{ text: SYSTEM_INSTRUCTION }] }
+      ];
+      let chatProcessing = false;
+  // Generar identificador de sesión único al abrir el chat
+  let sessionId = window.crypto && window.crypto.randomUUID ? window.crypto.randomUUID() : (Date.now() + '-' + Math.random().toString(36).substr(2, 9));
+
+      // reCAPTCHA v2
+
+      let recaptchaWidgetId = null;
+      let captchaValidated = false;
+      function loadRecaptcha(attempt=0) {
+        // Forzar visibilidad y tamaño correcto
+        const recaptchaContainer = document.getElementById('recaptcha-container');
+        const recaptchaWidget = document.getElementById('recaptcha-widget');
+        if (recaptchaContainer) {
+          recaptchaContainer.style.display = 'flex';
+          recaptchaContainer.style.justifyContent = 'center';
+          recaptchaContainer.style.alignItems = 'center';
+          recaptchaContainer.style.minHeight = '78px';
+        }
+        if (recaptchaWidget) {
+          recaptchaWidget.style.width = '100%';
+          recaptchaWidget.style.maxWidth = '320px';
+          recaptchaWidget.style.minWidth = '180px';
+          recaptchaWidget.style.display = 'flex';
+          recaptchaWidget.style.justifyContent = 'center';
+        }
+        if (window.grecaptcha) {
+          if (recaptchaWidgetId === null) {
+            recaptchaWidgetId = window.grecaptcha.render('recaptcha-widget', {
+              'sitekey': '6LfKqm8sAAAAALUNBqk_O9kVbJ5LOSL3Vt1FlaB-',
+              'theme': 'light'
+            });
+          }
+        } else {
+          // Si tras 10 intentos (5s) no carga, muestra mensaje de error
+          if (attempt > 10) {
+            if (recaptchaWidget) recaptchaWidget.innerHTML = '<span style="color:red;font-size:14px;">No se pudo cargar el captcha. Refresca la página.</span>';
+            return;
+          }
+          setTimeout(()=>loadRecaptcha(attempt+1), 500);
+        }
+      }
+      // Esperar a que el script de reCAPTCHA esté listo antes de cargar el widget
+      loadRecaptcha();
+      // CSS para captcha debe ir fuera del bloque <script>, no dentro
+
+      iaChatInput.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        if (chatProcessing) return;
+        chatProcessing = true;
+        iaSubmitBtn.disabled = true;
+        const val = iaInput.value.trim();
+        if(!val) {
+          chatProcessing = false;
+          iaSubmitBtn.disabled = false;
+          return;
+        }
+        // Solo pedir captcha en el primer mensaje, luego marcar como validado permanentemente
+        let recaptchaToken = null;
+        if (!captchaValidated) {
+          try {
+            if (window.grecaptcha && recaptchaWidgetId !== null) {
+              recaptchaToken = window.grecaptcha.getResponse(recaptchaWidgetId);
+            }
+          } catch (err) {
+            appendMsg('Error al obtener el captcha. Intenta de nuevo.', 'bot');
+            chatProcessing = false;
+            iaSubmitBtn.disabled = false;
+            return;
+          }
+          if (!recaptchaToken) {
+            appendMsg('Por favor completa el captcha antes de enviar.', 'bot');
+            chatProcessing = false;
+            iaSubmitBtn.disabled = false;
+            return;
+          }
+        }
+        appendMsg(val, 'user');
+        iaInput.value = '';
+        // Add user message to chatHistory
+        chatHistory.push({ role: 'user', parts: [{ text: val }] });
+        // Limit to last 10 messages (excluding SYSTEM_INSTRUCTION)
+        if (chatHistory.length > 11) {
+          chatHistory = [chatHistory[0], ...chatHistory.slice(-10)];
+        }
+        // Feedback visual: FlorIA está pensando...
+        let thinkingDiv = document.createElement('div');
+        thinkingDiv.style.display = 'flex';
+        thinkingDiv.style.width = '100%';
+        thinkingDiv.style.marginBottom = '0.1em';
+        thinkingDiv.style.justifyContent = 'flex-start';
+        let thinkingBubble = document.createElement('span');
+        thinkingBubble.style.display = 'inline-block';
+        thinkingBubble.style.padding = '0.5em 1em';
+        thinkingBubble.style.borderRadius = '1em';
+        thinkingBubble.style.maxWidth = '80%';
+        thinkingBubble.style.wordBreak = 'break-word';
+        thinkingBubble.style.boxSizing = 'border-box';
+        setBubbleStyle(thinkingBubble, 'bot');
+        thinkingBubble.textContent = 'FlorIA está pensando...';
+        thinkingBubble.setAttribute('data-from', 'bot');
+        thinkingBubble.setAttribute('data-thinking', 'true');
+        thinkingDiv.appendChild(thinkingBubble);
+        iaChatMessages.appendChild(thinkingDiv);
+        iaChatMessages.scrollTop = iaChatMessages.scrollHeight;
+
+        try {
+          const apiUrl = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+            ? 'http://localhost:8080/api/chat'
+            : 'https://www.webspty.dev/api/chat';
+          const resp = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-session-id': sessionId
+            },
+            body: JSON.stringify({ history: chatHistory, recaptchaToken })
+          });
+          const data = await resp.json();
+          iaChatMessages.removeChild(thinkingDiv);
+          if (!captchaValidated) {
+            if (window.grecaptcha && recaptchaWidgetId !== null) {
+              window.grecaptcha.reset(recaptchaWidgetId);
+            }
+            // Si el captcha fue válido, ocultar el widget y marcar validado para toda la sesión
+            if (resp.ok && data.response) {
+              captchaValidated = true;
+              const recaptchaContainer = document.getElementById('recaptcha-container');
+              if (recaptchaContainer) recaptchaContainer.style.display = 'none';
+            }
+          }
+          if (resp.ok && data.response) {
+            appendMsg(data.response, 'bot');
+            // Add bot response to chatHistory
+            chatHistory.push({ role: 'model', parts: [{ text: data.response }] });
+            if (chatHistory.length > 11) {
+              chatHistory = [chatHistory[0], ...chatHistory.slice(-10)];
+            }
+          } else if (data.error) {
+            appendMsg(data.error, 'bot');
+          } else {
+            appendMsg('FlorIA no pudo responder en este momento. Intenta de nuevo más tarde.', 'bot');
+          }
+        } catch (err) {
+          iaChatMessages.removeChild(thinkingDiv);
+          appendMsg('FlorIA no pudo responder en este momento. Intenta de nuevo más tarde.', 'bot');
+        }
+        chatProcessing = false;
+        iaSubmitBtn.disabled = false;
+      });
+          // Cargar script de reCAPTCHA v2
+          if (!document.getElementById('recaptcha-script')) {
+            const recaptchaScript = document.createElement('script');
+            recaptchaScript.id = 'recaptcha-script';
+            recaptchaScript.src = 'https://www.google.com/recaptcha/api.js';
+            recaptchaScript.async = true;
+            recaptchaScript.defer = true;
+            document.body.appendChild(recaptchaScript);
+          }
+      function setBubbleStyle(bubble, from) {
+        if (from === 'user') {
+          bubble.style.background = '#6366f1';
+          bubble.style.color = '#fff';
+        } else {
+          if (document.documentElement.classList.contains('dark')) {
+            bubble.style.background = '#23232b';
+            bubble.style.color = '#e5e7eb';
+          } else {
+            bubble.style.background = '#f1f5f9';
+            bubble.style.color = '#222';
+          }
+        }
+      }
+
+      function escapeHTML(str) {
+        return str.replace(/[&<>'"`]/g, function (c) {
+          return ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;',
+            '`': '&#96;'
+          })[c];
+        });
+      }
+
+      function appendMsg(msg, from) {
+        const div = document.createElement('div');
+        div.style.display = 'flex';
+        div.style.width = '100%';
+        div.style.marginBottom = '0.1em';
+        div.style.justifyContent = from === 'user' ? 'flex-end' : 'flex-start';
+        const bubble = document.createElement('span');
+        bubble.style.display = 'inline-block';
+        bubble.style.padding = '0.5em 1em';
+        bubble.style.borderRadius = '1em';
+        bubble.style.maxWidth = '80%';
+        bubble.style.wordBreak = 'break-word';
+        bubble.style.boxSizing = 'border-box';
+        setBubbleStyle(bubble, from);
+        bubble.textContent = escapeHTML(msg);
+        // Guardar el tipo de burbuja para actualización
+        bubble.setAttribute('data-from', from);
+        div.appendChild(bubble);
+        iaChatMessages.appendChild(div);
+        iaChatMessages.scrollTop = iaChatMessages.scrollHeight;
+      }
+
+      // Actualizar burbujas existentes al cambiar el modo
+      function updateAllBubbles() {
+        iaChatMessages.querySelectorAll('span[data-from]').forEach(bubble => {
+          setBubbleStyle(bubble, bubble.getAttribute('data-from'));
+        });
+      }
+
+      // Detectar cambio de modo oscuro
+      const observer = new MutationObserver(() => {
+        updateAllBubbles();
+      });
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    });
+  </script>
+ </body>
+</html>

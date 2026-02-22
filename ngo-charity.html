@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>EcoEarth - Juntos por el Planeta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#2d6a4f',
+                        'eco-light': '#d8f3dc',
+                        'eco-accent': '#40916c',
+                    },
+                    fontFamily: {
+                        'sans': ['Nunito', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'blob': '30% 70% 70% 30% / 30% 30% 70% 70%',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+
+        /* PREVIEW IFRAME MODES */
+        .preview-shell {
+            width: 100%;
+            max-width: 1400px;
+            height: 900px;
+            border: 1px solid rgba(15, 23, 42, 0.12);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 24px 70px rgba(15, 23, 42, 0.25);
+            transition: width 0.25s ease, max-width 0.25s ease, height 0.25s ease;
+            background: #ffffff;
+        }
+
+        .preview-shell.preview-phone {
+            width: 390px;
+            max-width: 390px;
+            height: 844px;
+        }
+
+        .preview-shell.preview-tablet {
+            width: 820px;
+            max-width: 820px;
+            height: 1180px;
+        }
+
+        .preview-shell.preview-desktop {
+            width: 100%;
+            max-width: 1400px;
+            height: 100%;
+            max-height: none;
+        }
+
+        .preview-iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background: #ffffff;
+        }
+
+        .preview-fullscreen {
+            width: 100vw !important;
+            max-width: 100vw !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            height: calc(100vh - 4rem);
+        }
+
+        .preview-fullscreen .w-full {
+            height: 100%;
+        }
+
+        .preview-fullscreen .preview-shell {
+            height: 100%;
+            border-radius: 0;
+            border-left: 0;
+            border-right: 0;
+        }
+
+        .preview-fullscreen .preview-shell.preview-desktop {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* LIGHTBOX */
+        #lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 23, 42, 0.8);
+            z-index: 99999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 220ms ease;
+        }
+
+        #lightbox-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 95%;
+            max-height: 90%;
+            border-radius: 1rem;
+            overflow: hidden;
+            transform: scale(0.96);
+            opacity: 0;
+            transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 260ms ease;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.4);
+            background: #ffffff;
+        }
+
+        #lightbox-overlay.show .lightbox-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .lightbox-content img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 90vh;
+            object-fit: contain;
+            background: #ffffff;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: rgba(15, 23, 42, 0.6);
+            color: #fff;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 140ms ease, background 140ms ease;
+        }
+
+        .lightbox-close:hover { transform: scale(1.08); background: rgba(15, 23, 42, 0.8); }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-700 font-sans">
+<!-- Portfolio Top Bar -->
+<nav id="portfolio-topbar" class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                    <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+                </a>
+                <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                    <span>&larr;</span> Volver al Portafolio
+                </a>
+            </div>
+            <div class="hidden lg:flex items-center gap-2">
+                <button type="button" data-preview="phone" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">Teléfono</button>
+                <button type="button" data-preview="tablet" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">Tablet</button>
+                <button type="button" data-preview="desktop" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-900 text-white">Escritorio</button>
+            </div>
+        </div>
+    </div>
+</nav>
+<div id="portfolio-spacer" class="h-16 w-full relative z-[9998]"></div>
+
+<div id="preview-frame" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="w-full flex justify-center">
+        <div id="preview-shell" class="preview-shell preview-desktop">
+            <iframe id="preview-iframe" class="preview-iframe" title="Vista previa NGO"></iframe>
+        </div>
+    </div>
+</div>
+
+<div id="page-content" class="hidden" style="display: none;">
+
+    <!-- Navbar -->
+    <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-2 text-eco-green font-extrabold text-2xl">
+            🌱 EcoEarth
+        </div>
+        <div class="hidden md:flex gap-8 font-bold text-stone-500">
+            <a href="#" class="hover:text-eco-green transition">Nuestra Misión</a>
+            <a href="#" class="hover:text-eco-green transition">Proyectos</a>
+            <a href="#" class="hover:text-eco-green transition">Voluntariado</a>
+            <a href="index.html" class="hover:text-eco-green transition">Volver</a>
+        </div>
+        <a href="#" class="bg-eco-green text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-eco-green/40 hover:-translate-y-1 transition transform">
+            Donar Ahora
+        </a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="max-w-7xl mx-auto px-6 py-12 md:py-20 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+            <div class="inline-block bg-eco-light text-eco-green font-bold px-4 py-2 rounded-full mb-6 text-sm">
+                501(c)(3) Organización Sin Fines de Lucro
+            </div>
+            <h1 class="text-5xl md:text-6xl font-extrabold text-stone-800 mb-6 leading-tight">
+                Plantar árboles es plantar <span class="text-eco-green">esperanza</span>.
+            </h1>
+            <p class="text-xl text-stone-500 mb-8 leading-relaxed">
+                Trabajamos con comunidades locales para reforestar el Amazonas y proteger la biodiversidad en peligro. Cada dólar cuenta.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                 <a href="#" class="bg-eco-green text-white px-8 py-4 rounded-full font-bold text-lg text-center shadow-xl hover:bg-eco-accent transition">
+                    Apoya la Causa
+                </a>
+                <a href="#" class="bg-white text-stone-600 border border-stone-200 px-8 py-4 rounded-full font-bold text-lg text-center hover:bg-stone-50 transition">
+                    Ver Video
+                </a>
+            </div>
+            <div class="mt-12 flex items-center gap-4 text-sm font-bold text-stone-400">
+                <span>ALIADOS:</span>
+                <span class="text-stone-600">WWF</span>
+                <span class="text-stone-600">UNICEF</span>
+                <span class="text-stone-600">NATGEO</span>
+            </div>
+        </div>
+        <div class="relative">
+            <div class="absolute inset-0 bg-eco-light rounded-blob transform rotate-6 scale-95 opacity-50 z-0"></div>
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                 class="relative z-10 w-full rounded-[2rem] shadow-2xl skew-y-2">
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="bg-eco-green text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-4xl font-extrabold mb-1">10M+</div>
+                <div class="text-eco-light font-bold text-sm">Árboles Plantados</div>
+            </div>
+            <div>
+                <div class="text-4xl font-extrabold mb-1">50</div>
+                <div class="text-eco-light font-bold text-sm">Países Activos</div>
+            </div>
+            <div>
+                <div class="text-4xl font-extrabold mb-1">100%</div>
+                <div class="text-eco-light font-bold text-sm">Transparencia</div>
+            </div>
+            <div>
+                <div class="text-4xl font-extrabold mb-1">500k</div>
+                <div class="text-eco-light font-bold text-sm">Voluntarios</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stories -->
+    <section class="py-24 max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl font-extrabold text-stone-800 mb-4">Historias de Impacto</h2>
+            <p class="text-stone-500">
+                Tu ayuda no solo planta un árbol, transforma comunidades enteras dando trabajo, comida y un futuro sostenible.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition border border-stone-100">
+                <div class="h-48 rounded-xl bg-stone-200 mb-6 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1534081333815-ae5019106622?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-stone-800">Reforestación Urbana</h3>
+                <p class="text-stone-500 text-sm mb-4">Llevando pulmones verdes a las ciudades más contaminadas de Latinoamérica.</p>
+                <a href="#" class="text-eco-green font-bold text-sm hover:underline">Leer Más →</a>
+            </div>
+             <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition border border-stone-100">
+                <div class="h-48 rounded-xl bg-stone-200 mb-6 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-stone-800">Protección del Agua</h3>
+                <p class="text-stone-500 text-sm mb-4">Sistemas de filtrado natural para proveer agua limpia a comunidades rurales.</p>
+                <a href="#" class="text-eco-green font-bold text-sm hover:underline">Leer Más →</a>
+            </div>
+             <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition border border-stone-100">
+                <div class="h-48 rounded-xl bg-stone-200 mb-6 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-stone-800">Educación Ambiental</h3>
+                <p class="text-stone-500 text-sm mb-4">Enseñando a la próxima generación a cuidar y respetar nuestro hogar.</p>
+                <a href="#" class="text-eco-green font-bold text-sm hover:underline">Leer Más →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos Activos -->
+    <section class="bg-gradient-to-br from-eco-light to-white py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl font-extrabold text-stone-800 mb-4">Proyectos Activos 2026</h2>
+                <p class="text-stone-600 text-lg">
+                    En este momento estamos trabajando en iniciativas ambientales críticas alrededor del mundo.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl">
+                    <div class="h-64 bg-eco-green relative">
+                        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                             class="w-full h-full object-cover opacity-80">
+                        <div class="absolute top-4 right-4 bg-yellow-400 text-stone-900 px-4 py-2 rounded-full font-bold text-sm">
+                            🔥 Urgente
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-3">Salvemos el Amazonas</h3>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-xs bg-eco-light text-eco-green px-3 py-1 rounded-full font-bold">Brasil</span>
+                            <span class="text-xs bg-eco-light text-eco-green px-3 py-1 rounded-full font-bold">Reforestación</span>
+                        </div>
+                        <p class="text-stone-600 mb-6">
+                            Plantación de 2 millones de árboles nativos en áreas deforestadas del Amazonas brasileño. Trabajamos con comunidades indígenas para restaurar ecosistemas críticos.
+                        </p>
+                        <div class="mb-6">
+                            <div class="flex justify-between text-sm font-bold mb-2">
+                                <span class="text-stone-600">Progreso</span>
+                                <span class="text-eco-green">67%</span>
+                            </div>
+                            <div class="w-full bg-stone-200 rounded-full h-3">
+                                <div class="bg-eco-green h-3 rounded-full" style="width: 67%"></div>
+                            </div>
+                        </div>
+                        <a href="#" class="text-eco-green font-bold hover:text-eco-accent transition">
+                            Ver detalles del proyecto →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl overflow-hidden shadow-xl">
+                    <div class="h-64 bg-blue-500 relative">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                             class="w-full h-full object-cover opacity-90">
+                        <div class="absolute top-4 right-4 bg-blue-400 text-white px-4 py-2 rounded-full font-bold text-sm">
+                            💧 En Progreso
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-stone-800 mb-3">Océanos Limpios</h3>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-bold">Global</span>
+                            <span class="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-bold">Conservación</span>
+                        </div>
+                        <p class="text-stone-600 mb-6">
+                            Limpieza de plásticos en océanos y costas. Colaboración con pescadores locales para recolectar residuos y educar sobre la importancia de proteger la vida marina.
+                        </p>
+                        <div class="mb-6">
+                            <div class="flex justify-between text-sm font-bold mb-2">
+                                <span class="text-stone-600">Progreso</span>
+                                <span class="text-blue-600">42%</span>
+                            </div>
+                            <div class="w-full bg-stone-200 rounded-full h-3">
+                                <div class="bg-blue-500 h-3 rounded-full" style="width: 42%"></div>
+                            </div>
+                        </div>
+                        <a href="#" class="text-blue-600 font-bold hover:text-blue-700 transition">
+                            Ver detalles del proyecto →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-24 max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-4xl font-extrabold text-stone-800 mb-4">Lo Que Dicen Nuestros Voluntarios</h2>
+            <p class="text-stone-500 text-lg">
+                Miles de personas alrededor del mundo están comprometidas con nuestra misión.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-100">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-eco-green to-eco-accent flex items-center justify-center text-white text-2xl font-bold">
+                        M
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-stone-800">María González</h4>
+                        <p class="text-sm text-stone-500">Voluntaria en Colombia</p>
+                    </div>
+                </div>
+                <p class="text-stone-600 italic mb-4">
+                    "Trabajar con EcoEarth cambió mi vida. Ver cómo nuestros esfuerzos transforman comunidades es increíble. Cada árbol plantado es un paso hacia un futuro mejor."
+                </p>
+                <div class="flex text-yellow-400">
+                    ⭐⭐⭐⭐⭐
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-100">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-2xl font-bold">
+                        J
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-stone-800">João Silva</h4>
+                        <p class="text-sm text-stone-500">Líder de Proyecto en Brasil</p>
+                    </div>
+                </div>
+                <p class="text-stone-600 italic mb-4">
+                    "La organización es transparente y eficiente. He visto de primera mano cómo cada dólar donado se convierte en impacto real en el Amazonas."
+                </p>
+                <div class="flex text-yellow-400">
+                    ⭐⭐⭐⭐⭐
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-100">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-2xl font-bold">
+                        S
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-stone-800">Sarah Johnson</h4>
+                        <p class="text-sm text-stone-500">Donante Mensual desde 2023</p>
+                    </div>
+                </div>
+                <p class="text-stone-600 italic mb-4">
+                    "Me encanta recibir actualizaciones sobre el impacto de mi donación. Es inspirador saber que estoy contribuyendo a salvar el planeta para las futuras generaciones."
+                </p>
+                <div class="flex text-yellow-400">
+                    ⭐⭐⭐⭐⭐
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formas de Donar -->
+    <section class="bg-white py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl font-extrabold text-stone-800 mb-4">Elige Cómo Ayudar</h2>
+                <p class="text-stone-500 text-lg">
+                    Hay muchas formas de apoyar nuestra causa. Encuentra la que mejor se adapte a ti.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-eco-light to-white p-8 rounded-3xl border-2 border-eco-green hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="text-4xl mb-4">🌳</div>
+                    <h3 class="text-2xl font-bold text-stone-800 mb-3">Donación Única</h3>
+                    <p class="text-stone-600 mb-6">
+                        Haz una contribución puntual del monto que desees. Cada dólar ayuda a plantar más árboles.
+                    </p>
+                    <ul class="space-y-2 mb-6 text-stone-600">
+                        <li class="flex items-center gap-2">✓ $10 = 5 árboles</li>
+                        <li class="flex items-center gap-2">✓ $50 = 25 árboles</li>
+                        <li class="flex items-center gap-2">✓ $100 = 50 árboles</li>
+                    </ul>
+                    <a href="#" class="block w-full bg-eco-green text-white text-center py-4 rounded-full font-bold hover:bg-eco-accent transition">
+                        Donar Ahora
+                    </a>
+                </div>
+
+                <div class="bg-gradient-to-br from-yellow-50 to-white p-8 rounded-3xl border-2 border-yellow-400 hover:shadow-2xl transition transform hover:-translate-y-2 relative">
+                    <div class="absolute -top-4 right-8 bg-yellow-400 text-stone-900 px-4 py-2 rounded-full font-bold text-sm shadow-lg">
+                        ⭐ Más Popular
+                    </div>
+                    <div class="text-4xl mb-4">💚</div>
+                    <h3 class="text-2xl font-bold text-stone-800 mb-3">Donación Mensual</h3>
+                    <p class="text-stone-600 mb-6">
+                        Únete a nuestra comunidad de donantes mensuales y recibe actualizaciones exclusivas.
+                    </p>
+                    <ul class="space-y-2 mb-6 text-stone-600">
+                        <li class="flex items-center gap-2">✓ Impacto sostenido</li>
+                        <li class="flex items-center gap-2">✓ Reportes mensuales</li>
+                        <li class="flex items-center gap-2">✓ Certificado digital</li>
+                    </ul>
+                    <a href="#" class="block w-full bg-yellow-400 text-stone-900 text-center py-4 rounded-full font-bold hover:bg-yellow-500 transition">
+                        Suscribirse
+                    </a>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-3xl border-2 border-blue-400 hover:shadow-2xl transition transform hover:-translate-y-2">
+                    <div class="text-4xl mb-4">🎁</div>
+                    <h3 class="text-2xl font-bold text-stone-800 mb-3">Donación en Honor</h3>
+                    <p class="text-stone-600 mb-6">
+                        Dedica tu donación a alguien especial. Enviaremos un certificado personalizado.
+                    </p>
+                    <ul class="space-y-2 mb-6 text-stone-600">
+                        <li class="flex items-center gap-2">✓ Regalo significativo</li>
+                        <li class="flex items-center gap-2">✓ Certificado digital</li>
+                        <li class="flex items-center gap-2">✓ Carta personalizada</li>
+                    </ul>
+                    <a href="#" class="block w-full bg-blue-500 text-white text-center py-4 rounded-full font-bold hover:bg-blue-600 transition">
+                        Dedicar Donación
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Voluntariado -->
+    <section class="bg-gradient-to-br from-eco-green to-eco-accent text-white py-24">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <div class="text-6xl mb-6">🙌</div>
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6">
+                ¿Quieres Ser Parte del Cambio?
+            </h2>
+            <p class="text-xl text-eco-light mb-8 max-w-3xl mx-auto">
+                Únete a nuestra red global de voluntarios. No necesitas experiencia previa, solo ganas de hacer la diferencia. Tenemos oportunidades presenciales y remotas.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#" class="bg-white text-eco-green px-8 py-4 rounded-full font-bold text-lg hover:bg-eco-light transition shadow-xl">
+                    Aplicar como Voluntario
+                </a>
+                <a href="#" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-eco-green transition">
+                    Ver Oportunidades
+                </a>
+            </div>
+            <div class="mt-12 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+                <div>
+                    <div class="text-3xl font-bold mb-1">500+</div>
+                    <div class="text-eco-light text-sm">Voluntarios Activos</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold mb-1">40+</div>
+                    <div class="text-eco-light text-sm">Países</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold mb-1">24/7</div>
+                    <div class="text-eco-light text-sm">Soporte</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-24 max-w-4xl mx-auto px-6">
+        <div class="bg-gradient-to-br from-stone-100 to-white p-12 rounded-3xl shadow-xl text-center">
+            <h2 class="text-3xl font-extrabold text-stone-800 mb-4">
+                Mantente Informado
+            </h2>
+            <p class="text-stone-600 mb-8 text-lg">
+                Recibe noticias mensuales sobre nuestro impacto, historias inspiradoras y formas de involucrarte.
+            </p>
+            <form class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                <input type="email" placeholder="tu@email.com" 
+                       class="flex-1 px-6 py-4 rounded-full border-2 border-stone-200 focus:border-eco-green focus:outline-none text-stone-700">
+                <button type="submit" 
+                        class="bg-eco-green text-white px-8 py-4 rounded-full font-bold hover:bg-eco-accent transition whitespace-nowrap">
+                    Suscribirse
+                </button>
+            </form>
+            <p class="text-xs text-stone-400 mt-4">
+                📧 Sin spam. Cancela cuando quieras.
+            </p>
+        </div>
+    </section>
+
+    <footer class="bg-stone-800 text-stone-400 py-12 text-center">
+        <p class="mb-4">© 2026 EcoEarth Foundation. Registered non-profit.</p>
+        <div class="flex justify-center gap-4">
+            <div class="w-8 h-8 bg-stone-700 rounded-full flex items-center justify-center hover:bg-eco-green transition cursor-pointer">IG</div>
+            <div class="w-8 h-8 bg-stone-700 rounded-full flex items-center justify-center hover:bg-eco-green transition cursor-pointer">TW</div>
+            <div class="w-8 h-8 bg-stone-700 rounded-full flex items-center justify-center hover:bg-eco-green transition cursor-pointer">FB</div>
+        </div>
+    </footer>
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox-overlay" class="hidden" aria-hidden="true">
+    <div class="lightbox-content">
+        <button class="lightbox-close" type="button" aria-label="Cerrar">✕</button>
+        <img id="lightbox-img" src="" alt="" />
+    </div>
+</div>
+
+<script>
+    const previewFrame = document.getElementById("preview-frame");
+    const previewShell = document.getElementById("preview-shell");
+    const previewIframe = document.getElementById("preview-iframe");
+    const previewButtons = document.querySelectorAll(".preview-btn");
+    const pageContent = document.getElementById("page-content");
+    const portfolioTopbar = document.getElementById("portfolio-topbar");
+    const portfolioSpacer = document.getElementById("portfolio-spacer");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const isPreview = urlParams.get("preview") === "1";
+
+    if (isPreview) {
+        portfolioTopbar?.classList.add("hidden");
+        portfolioSpacer?.classList.add("hidden");
+        previewFrame?.classList.add("hidden");
+        pageContent?.classList.remove("hidden");
+        if (pageContent) pageContent.style.display = 'block';
+    } else {
+        previewFrame?.classList.remove("hidden");
+        pageContent?.classList.add("hidden");
+        if (pageContent) pageContent.style.display = 'none';
+
+        if (previewIframe) {
+            const previewUrl = new URL(window.location.href);
+            previewUrl.searchParams.set("preview", "1");
+            previewIframe.src = previewUrl.toString();
+        }
+
+        const setPreview = (mode) => {
+            previewShell?.classList.remove("preview-phone", "preview-tablet", "preview-desktop");
+            previewShell?.classList.add(`preview-${mode}`);
+
+            const frameLayoutClasses = ["max-w-7xl", "mx-auto", "px-4", "sm:px-6", "lg:px-8"]; 
+
+            if (mode === "desktop") {
+                previewFrame?.classList.add("preview-fullscreen");
+                previewFrame?.classList.remove(...frameLayoutClasses);
+            } else {
+                previewFrame?.classList.remove("preview-fullscreen");
+                previewFrame?.classList.add(...frameLayoutClasses);
+            }
+
+            previewButtons.forEach((btn) => {
+                const isActive = btn.dataset.preview === mode;
+                btn.classList.toggle("bg-gray-900", isActive);
+                btn.classList.toggle("text-white", isActive);
+                btn.classList.toggle("bg-gray-100", !isActive);
+                btn.classList.toggle("text-gray-700", !isActive);
+            });
+        };
+
+        previewButtons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                setPreview(btn.dataset.preview);
+            });
+        });
+
+        setPreview("desktop");
+    }
+
+    // LIGHTBOX
+    (() => {
+        const overlay = document.getElementById("lightbox-overlay");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeBtn = overlay?.querySelector(".lightbox-close");
+
+        if (!overlay || !lightboxImg) return;
+
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || "";
+            overlay.classList.remove("hidden");
+            requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add("show")));
+            overlay.setAttribute("aria-hidden", "false");
+        }
+
+        function closeLightbox() {
+            overlay.classList.remove("show");
+            overlay.setAttribute("aria-hidden", "true");
+            const once = () => {
+                overlay.classList.add("hidden");
+                overlay.removeEventListener("transitionend", once);
+            };
+            overlay.addEventListener("transitionend", once);
+        }
+
+        document.querySelectorAll("img").forEach((img) => {
+            img.style.cursor = "zoom-in";
+            img.addEventListener("click", (e) => {
+                const target = e.currentTarget;
+                openLightbox(target.src, target.alt || "");
+            });
+        });
+
+        overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) closeLightbox();
+        });
+
+        closeBtn?.addEventListener("click", closeLightbox);
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && overlay.classList.contains("show")) closeLightbox();
+        });
+    })();
+</script>
+
+</body>
+</html>

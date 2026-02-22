@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>La Esquina Napolitana | Pizzería Premium</title>
+  <meta name="description" content="Esta es una página de demostración del portafolio de Carlos Mc Taggart. Ejemplo de diseño web adaptable y moderno.">
+  <link rel="canonical" href="https://www.webspty.dev/pizzeria.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    },
+                    colors: {
+                        'napoli-red': '#8B0000',
+                        'napoli-cream': '#F5F5DC',
+                        'napoli-green': '#556B2F',
+                        'charcoal': '#1A1A1A',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .pizza-card:hover .pizza-img {
+            transform: scale(1.1) rotate(2deg);
+        }
+    </style>
+</head>
+<body class="bg-charcoal text-napoli-cream font-sans antialiased">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/90 border-b border-white/10 backdrop-blur-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <span class="text-3xl">🍕</span>
+                    <span class="font-serif text-2xl font-bold text-white tracking-wider">LA ESQUINA</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#inicio" class="text-white hover:text-napoli-red px-3 py-2 rounded-md text-sm font-bold uppercase tracking-widest transition-colors">Inicio</a>
+                        <a href="#menu" class="text-white hover:text-napoli-red px-3 py-2 rounded-md text-sm font-bold uppercase tracking-widest transition-colors">Nuestras Pizzas</a>
+                        <a href="#extra" class="text-white hover:text-napoli-red px-3 py-2 rounded-md text-sm font-bold uppercase tracking-widest transition-colors">Pastas & Más</a>
+                        <a href="#contacto" class="bg-napoli-red hover:bg-red-700 text-white px-5 py-2 rounded-full text-sm font-bold uppercase tracking-widest transition-colors">Reservar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="relative h-screen flex items-center justify-center parallax" style="background-image: url('https://images.unsplash.com/photo-1579751626657-72bc17010498?q=80&w=2069&auto=format&fit=crop');">
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <span class="text-napoli-red font-bold tracking-[0.3em] uppercase mb-4 block animate-pulse">Auténtica Tradición Italiana</span>
+            <h1 class="font-serif text-6xl md:text-8xl text-white mb-6 leading-tight">
+                El Arte de la <br> <span class="italic text-napoli-green">Vera Pizza</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-10 font-light max-w-2xl mx-auto">
+                Masa madre fermentada 48 horas. Horno de leña a 485°C. Ingredientes D.O.P.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#menu" class="px-8 py-4 bg-white text-black font-bold uppercase tracking-widest hover:bg-napoli-red hover:text-white transition-all duration-300">
+                    Ver Carta
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Pizzas Section -->
+    <section id="menu" class="py-24 bg-charcoal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-5xl text-white mb-4">Nuestras Obras Maestras</h2>
+                <div class="w-24 h-1 bg-napoli-red mx-auto"></div>
+                <p class="mt-4 text-gray-400">Selección de 10 variedades clásicas y de autor</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-12 gap-y-16">
+                <!-- Pizza Item Template -->
+                <div class="group flex items-center gap-6 pizza-card">
+                    <div class="w-32 h-32 flex-shrink-0 overflow-hidden rounded-full border-2 border-napoli-cream/20 relative">
+                        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=2069&auto=format&fit=crop" class="w-full h-full object-cover pizza-img transition-transform duration-500" alt="Margherita">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-baseline border-b border-dashed border-gray-700 pb-2 mb-2">
+                            <h3 class="text-2xl font-serif text-white group-hover:text-napoli-red transition-colors">1. Margherita D.O.P</h3>
+                            <span class="text-xl font-bold text-napoli-green">$12</span>
+                        </div>
+                        <p class="text-gray-400 text-sm italic">San Marzano, Mozzarella di Bufala, Albahaca fresca, Aceite de Oliva.</p>
+                    </div>
+                </div>
+
+                <div class="group flex items-center gap-6 pizza-card">
+                    <div class="w-32 h-32 flex-shrink-0 overflow-hidden rounded-full border-2 border-napoli-cream/20 relative">
+                        <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=2080&auto=format&fit=crop" class="w-full h-full object-cover pizza-img transition-transform duration-500" alt="Pepperoni">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-baseline border-b border-dashed border-gray-700 pb-2 mb-2">
+                            <h3 class="text-2xl font-serif text-white group-hover:text-napoli-red transition-colors">2. Diavola Picante</h3>
+                            <span class="text-xl font-bold text-napoli-green">$15</span>
+                        </div>
+                        <p class="text-gray-400 text-sm italic">Salsa pomodoro, mozzarella fior di latte, salami picante napolitano, peperoncino.</p>
+                    </div>
+                </div>
+
+                <div class="group flex items-center gap-6 pizza-card">
+                    <div class="w-32 h-32 flex-shrink-0 overflow-hidden rounded-full border-2 border-napoli-cream/20 relative">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover pizza-img transition-transform duration-500" alt="Veggie">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-baseline border-b border-dashed border-gray-700 pb-2 mb-2">
+                            <h3 class="text-2xl font-serif text-white group-hover:text-napoli-red transition-colors">3. Ortolana</h3>
+                            <span class="text-xl font-bold text-napoli-green">$14</span>
+                        </div>
+                        <p class="text-gray-400 text-sm italic">Berenjenas, calabacín asado, pimientos, setas, mozzarella, pesto.</p>
+                    </div>
+                </div>
+
+                 <div class="group flex items-center gap-6 pizza-card">
+                    <div class="w-32 h-32 flex-shrink-0 overflow-hidden rounded-full border-2 border-napoli-cream/20 relative">
+                        <img src="https://images.unsplash.com/photo-1555072956-7758afb20e8f?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover pizza-img transition-transform duration-500" alt="Prosciutto">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-baseline border-b border-dashed border-gray-700 pb-2 mb-2">
+                            <h3 class="text-2xl font-serif text-white group-hover:text-napoli-red transition-colors">4. Prosciutto e Funghi</h3>
+                            <span class="text-xl font-bold text-napoli-green">$16</span>
+                        </div>
+                        <p class="text-gray-400 text-sm italic">Jamón cocido italiano, champiñones frescos, mozzarella, albahaca.</p>
+                    </div>
+                </div>
+
+                 <div class="group flex items-center gap-6 pizza-card">
+                    <div class="w-32 h-32 flex-shrink-0 overflow-hidden rounded-full border-2 border-napoli-cream/20 relative">
+                        <img src="https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover pizza-img transition-transform duration-500" alt="Cheese">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-baseline border-b border-dashed border-gray-700 pb-2 mb-2">
+                            <h3 class="text-2xl font-serif text-white group-hover:text-napoli-red transition-colors">5. Quattro Formaggi</h3>
+                            <span class="text-xl font-bold text-napoli-green">$15</span>
+                        </div>
+                        <p class="text-gray-400 text-sm italic">Mozzarella, gorgonzola, parmesano reggiano, provolone. Sin salsa de tomate.</p>
+                    </div>
+                </div>
+
+                <div class="group flex items-center gap-6 pizza-card">
+                    <div class="w-32 h-32 flex-shrink-0 overflow-hidden rounded-full border-2 border-napoli-cream/20 relative">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1981&auto=format&fit=crop" class="w-full h-full object-cover pizza-img transition-transform duration-500" alt="Carbonara">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-baseline border-b border-dashed border-gray-700 pb-2 mb-2">
+                            <h3 class="text-2xl font-serif text-white group-hover:text-napoli-red transition-colors">6. Carbonara</h3>
+                            <span class="text-xl font-bold text-napoli-green">$17</span>
+                        </div>
+                        <p class="text-gray-400 text-sm italic">Base blanca, guanciale crujiente, crema de pecorino, pimienta negra.</p>
+                    </div>
+                </div>
+                
+                <div class="group flex items-center gap-6 pizza-card">
+                    <div class="w-32 h-32 flex-shrink-0 overflow-hidden rounded-full border-2 border-napoli-cream/20 relative">
+                        <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover pizza-img transition-transform duration-500" alt="Marinara">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-baseline border-b border-dashed border-gray-700 pb-2 mb-2">
+                            <h3 class="text-2xl font-serif text-white group-hover:text-napoli-red transition-colors">7. Marinara Clásica</h3>
+                            <span class="text-xl font-bold text-napoli-green">$10</span>
+                        </div>
+                        <p class="text-gray-400 text-sm italic">Tomate San Marzano, ajo laminado, orégano, aceite de oliva extra virgen. (Vegana)</p>
+                    </div>
+                </div>
+
+                 <div class="group flex items-center gap-6 pizza-card">
+                    <div class="w-32 h-32 flex-shrink-0 overflow-hidden rounded-full border-2 border-napoli-cream/20 relative">
+                        <img src="https://images.unsplash.com/photo-1589187151053-5ec8818e661b?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover pizza-img transition-transform duration-500" alt="Truffle">
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-baseline border-b border-dashed border-gray-700 pb-2 mb-2">
+                            <h3 class="text-2xl font-serif text-white group-hover:text-napoli-red transition-colors">8. Tartufata</h3>
+                            <span class="text-xl font-bold text-napoli-green">$19</span>
+                        </div>
+                        <p class="text-gray-400 text-sm italic">Crema de trufa negra, setas porcini, mozzarella, rúcula fresca.</p>
+                    </div>
+                </div>
+
+                <!-- 9 and 10 hidden to save space visually in demo, adding text note -->
+                 <div class="col-span-1 md:col-span-2 text-center mt-8">
+                    <p class="text-gray-500 italic">+ Pregunta por nuestras especialidades de temporada: <span class="text-napoli-cream">9. Capricciosa</span> y <span class="text-napoli-cream">10. Calzone Relleno</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pastas, Calzones & Malteadas -->
+    <section id="extra" class="py-20 bg-stone-900 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-serif text-3xl md:text-4xl text-white mb-12 text-center">Más allá del Horno</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-black p-8 border border-gray-800 hover:border-napoli-red transition-colors text-center group">
+                    <div class="text-4xl mb-4">🍝</div>
+                    <h3 class="text-2xl font-serif text-white mb-4">Pastas Frescas</h3>
+                    <ul class="text-gray-400 space-y-2 text-sm">
+                        <li class="border-b border-gray-800 pb-1">Fettuccine Alfredo con Tartufo</li>
+                        <li class="border-b border-gray-800 pb-1">Lasagna de la Nonna</li>
+                        <li class="border-b border-gray-800 pb-1">Spaghetti Frutti di Mare</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                 <div class="bg-black p-8 border border-gray-800 hover:border-napoli-red transition-colors text-center group">
+                    <div class="text-4xl mb-4">🥟</div>
+                    <h3 class="text-2xl font-serif text-white mb-4">Calzones</h3>
+                    <ul class="text-gray-400 space-y-2 text-sm">
+                        <li class="border-b border-gray-800 pb-1">Clásico: Jamón y Queso</li>
+                        <li class="border-b border-gray-800 pb-1">Napolitano: Ricotta y Salami</li>
+                        <li class="border-b border-gray-800 pb-1">Veggie Explosion</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                 <div class="bg-black p-8 border border-gray-800 hover:border-napoli-red transition-colors text-center group">
+                    <div class="text-4xl mb-4">🥤</div>
+                    <h3 class="text-2xl font-serif text-white mb-4">Malteadas Premium</h3>
+                    <ul class="text-gray-400 space-y-2 text-sm">
+                        <li class="border-b border-gray-800 pb-1">Tiramisú Shake</li>
+                        <li class="border-b border-gray-800 pb-1">Gelato alla Fragola</li>
+                        <li class="border-b border-gray-800 pb-1">Pistacho Siciliano</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+                <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+                    <span>✉️</span> mctaggart.dev@gmail.com
+                </a>
+                <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+                    <span>📱</span> +507 6204-9480
+                </a>
+            </div>
+            <p class="text-gray-500 text-sm">
+                Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+            </p>
+        </div>
+    </footer>
+
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

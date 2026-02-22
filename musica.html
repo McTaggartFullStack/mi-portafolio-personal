@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>Neon Beat Festival 2024</title>
+    <meta name="description" content="Festival de música electrónica y arte digital. Compra tus entradas para el evento del año.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Rajdhani', sans-serif; background-color: #050505; }
+        h1, h2, h3, .cyber-font { font-family: 'Orbitron', sans-serif; }
+        .neon-text {
+            text-shadow: 0 0 10px rgba(236, 72, 153, 0.7),
+                         0 0 20px rgba(236, 72, 153, 0.5),
+                         0 0 30px rgba(236, 72, 153, 0.3);
+        }
+        .neon-border {
+            box-shadow: 0 0 10px rgba(34, 211, 238, 0.5),
+                        inset 0 0 10px rgba(34, 211, 238, 0.2);
+        }
+        .glitch-bg {
+            background: 
+                linear-gradient(90deg, #000000 50%, transparent 50%),
+                linear-gradient(90deg, transparent 50%, #000000 50%);
+            background-size: 4px 4px;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body class="text-white overflow-x-hidden">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <div class="fixed inset-0 pointer-events-none z-0 glitch-bg"></div>
+
+    <!-- Nav -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-pink-500/30">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="text-2xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-cyan-400 cyber-font">
+                NEON<span class="text-white">BEAT</span>
+            </div>
+            <div class="flex gap-6 items-center">
+                <a href="#" class="hidden md:block text-gray-300 hover:text-cyan-400 uppercase tracking-widest text-sm font-bold">Lineup</a>
+                <a href="#" class="hidden md:block text-gray-300 hover:text-pink-500 uppercase tracking-widest text-sm font-bold">Experiencia</a>
+                <a href="index.html" class="hidden md:block text-gray-500 text-xs uppercase tracking-widest hover:text-white">← Volver</a>
+                <a href="#" class="px-6 py-2 bg-pink-600 hover:bg-pink-500 text-white font-bold uppercaseSkew-x-12 transform skew-x-[-10deg] border border-pink-400">
+                    <span class="block transform skew-x-[10deg] cyber-font text-sm">Tickets</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Video/Img Placeholder -->
+         <div class="absolute inset-0 z-0">
+             <img src="https://images.unsplash.com/photo-1470229722913-7ea05107f5c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover opacity-40 mix-blend-luminosity">
+             <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent"></div>
+         </div>
+
+         <div class="relative z-10 text-center max-w-4xl px-4">
+            <div class="mb-4 inline-block px-4 py-1 border border-cyan-500 text-cyan-400 rounded bg-cyan-900/20 backdrop-blur font-mono text-sm tracking-widest">
+                15 - 17 AGOSTO 2036 • CDP
+            </div>
+            <h1 class="text-7xl md:text-[10rem] font-black leading-none mb-2 neon-text cyber-font">
+                FUTURE
+                <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500">SOUND</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto font-light tracking-wide">
+                La convergencia definitiva entre música electrónica, arte digital y tecnología inmersiva.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <button class="px-10 py-5 bg-cyan-500 text-black font-black text-xl uppercase tracking-widest hover:bg-cyan-400 transition-colors cyber-font clip-path-polygon" style="clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);">
+                    Comprar Pase 3 Días
+                </button>
+                <button class="px-10 py-5 border border-pink-500 text-pink-500 font-bold text-xl uppercase tracking-widest hover:bg-pink-500/10 transition-colors cyber-font">
+                    Ver Lineup
+                </button>
+            </div>
+         </div>
+    </header>
+
+    <!-- Countdown / Info Grid -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-gray-900/50 border border-gray-800 p-8 hover:border-pink-500 transition-colors group">
+                <h3 class="text-pink-500 text-sm font-bold uppercase tracking-widest mb-2">Escenarios</h3>
+                <div class="text-4xl font-bold mb-4 cyber-font group-hover:text-pink-400">04 STAGES</div>
+                <p class="text-gray-500 text-sm">Desde el Main Stage inmersivo hasta el Techno Bunker subterráneo.</p>
+            </div>
+            <div class="bg-gray-900/50 border border-gray-800 p-8 hover:border-cyan-500 transition-colors group">
+                <h3 class="text-cyan-500 text-sm font-bold uppercase tracking-widest mb-2">Artistas</h3>
+                <div class="text-4xl font-bold mb-4 cyber-font group-hover:text-cyan-400">80+ DJ'S</div>
+                <p class="text-gray-500 text-sm">Los mejores talentos internacionales y locales en un solo lugar.</p>
+            </div>
+            <div class="bg-gray-900/50 border border-gray-800 p-8 hover:border-purple-500 transition-colors group">
+                <h3 class="text-purple-500 text-sm font-bold uppercase tracking-widest mb-2">Experiencias</h3>
+                <div class="text-4xl font-bold mb-4 cyber-font group-hover:text-purple-400">VR & ART</div>
+                <p class="text-gray-500 text-sm">Instalaciones de arte lumínico y zonas de realidad virtual.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Artists (Marquee) -->
+    <div class="bg-pink-600 py-4 overflow-hidden transform rotate-1 scale-105 border-y-4 border-black">
+        <div class="whitespace-nowrap animate-[marquee_20s_linear_infinite] cyber-font text-2xl font-bold text-black flex gap-10">
+            <span>SKRILLEX</span> • <span>MARTIN GARRIX</span> • <span>TALE OF US</span> • <span>CHARLOTTE DE WITTE</span> • <span>ERIC PRYDZ</span> • <span>TESTPILOT</span> • <span>REZZ</span> • <span>FISHER</span> • <span>SKRILLEX</span> • <span>MARTIN GARRIX</span>
+        </div>
+    </div>
+    <div class="bg-cyan-500 py-4 overflow-hidden transform -rotate-1 scale-105 mt-2 border-y-4 border-black">
+        <div class="whitespace-nowrap animate-[marquee_25s_linear_infinite] cyber-font text-2xl font-bold text-black flex gap-10" style="animation-direction: reverse;">
+            <span>TECHNO</span> • <span>HOUSE</span> • <span>DUBSTEP</span> • <span>TRANCE</span> • <span>DRUM & BASS</span> • <span>HARDSTYLE</span> • <span>AMBIENT</span> • <span>TECHNO</span> • <span>HOUSE</span>
+        </div>
+    </div>
+
+    <!-- Gallery Grid -->
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <h2 class="text-4xl cyber-font mb-10 text-center">Galería <span class="text-pink-500">Inmersiva</span></h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 grid-rows-2 gap-4 h-[600px]">
+            <div class="col-span-2 row-span-2 relative overflow-hidden group border border-gray-800 rounded">
+                <img src="img/eventos/fiesta2.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100">
+                <div class="absolute bottom-0 left-0 p-6 bg-gradient-to-t from-black to-transparent w-full">
+                    <h4 class="text-xl font-bold">Main Stage</h4>
+                </div>
+            </div>
+            <div class="relative overflow-hidden group border border-gray-800 rounded">
+                 <img src="img/eventos/fiesta4.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100">
+            </div>
+            <div class="relative overflow-hidden group border border-gray-800 rounded">
+                 <img src="img/eventos/fiesta1.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100">
+            </div>
+            <div class="col-span-2 relative overflow-hidden group border border-gray-800 rounded">
+                 <img src="img/eventos/fiesta3.webp" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100">
+                 <div class="absolute bottom-0 left-0 p-6 bg-gradient-to-t from-black to-transparent w-full">
+                    <h4 class="text-xl font-bold">Camping Zone</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black border-t border-gray-900 py-12 text-center text-gray-600">
+        <p class="cyber-font text-2xl text-white mb-4">NEONBEAT</p>
+        <p class="text-sm">COPYRIGHT © 2024. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

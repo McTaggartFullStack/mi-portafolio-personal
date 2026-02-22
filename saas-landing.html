@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>FlowTask - Gestión de Proyectos Simplificada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-bg': '#0f172a',
+                        'brand-primary': '#6366f1',
+                        'brand-secondary': '#a855f7',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15), transparent 60%);
+        }
+
+        /* PREVIEW IFRAME MODES */
+        .preview-shell {
+            width: 100%;
+            max-width: 1400px;
+            height: 900px;
+            border: 1px solid rgba(15, 23, 42, 0.12);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 24px 70px rgba(15, 23, 42, 0.25);
+            transition: width 0.25s ease, max-width 0.25s ease, height 0.25s ease;
+            background: #0f172a;
+        }
+
+        .preview-shell.preview-phone {
+            width: 390px;
+            max-width: 390px;
+            height: 844px;
+        }
+
+        .preview-shell.preview-tablet {
+            width: 820px;
+            max-width: 820px;
+            height: 1180px;
+        }
+
+        .preview-shell.preview-desktop {
+            width: 100%;
+            max-width: 1400px;
+            height: 100%;
+            max-height: none;
+        }
+
+        .preview-iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background: #0f172a;
+        }
+
+        .preview-fullscreen {
+            width: 100vw !important;
+            max-width: 100vw !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            height: calc(100vh - 4rem);
+        }
+
+        .preview-fullscreen .w-full {
+            height: 100%;
+        }
+
+        .preview-fullscreen .preview-shell {
+            height: 100%;
+            border-radius: 0;
+            border-left: 0;
+            border-right: 0;
+        }
+
+        .preview-fullscreen .preview-shell.preview-desktop {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* LIGHTBOX */
+        #lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 23, 42, 0.8);
+            z-index: 60;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 220ms ease;
+        }
+
+        #lightbox-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 95%;
+            max-height: 90%;
+            border-radius: 1rem;
+            overflow: hidden;
+            transform: scale(0.96);
+            opacity: 0;
+            transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 260ms ease;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.4);
+            background: #0f172a;
+        }
+
+        #lightbox-overlay.show .lightbox-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .lightbox-content img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 90vh;
+            object-fit: contain;
+            background: #0f172a;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: rgba(15, 23, 42, 0.6);
+            color: #fff;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 140ms ease, background 140ms ease;
+        }
+
+        .lightbox-close:hover { transform: scale(1.08); background: rgba(15, 23, 42, 0.8); }
+    </style>
+</head>
+<body class="bg-brand-bg text-slate-300">
+<!-- Portfolio Top Bar -->
+<nav id="portfolio-topbar" class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                    <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+                </a>
+                <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                    <span>&larr;</span> Volver al Portafolio
+                </a>
+            </div>
+            <div class="hidden lg:flex items-center gap-2">
+                <button type="button" data-preview="phone" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">Teléfono</button>
+                <button type="button" data-preview="tablet" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">Tablet</button>
+                <button type="button" data-preview="desktop" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-900 text-white">Escritorio</button>
+            </div>
+        </div>
+    </div>
+</nav>
+<div id="portfolio-spacer" class="h-16 w-full relative z-[9998]"></div>
+
+<div id="preview-frame" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="w-full flex justify-center">
+        <div id="preview-shell" class="preview-shell preview-desktop">
+            <iframe id="preview-iframe" class="preview-iframe" title="Vista previa SaaS"></iframe>
+        </div>
+    </div>
+</div>
+
+<div id="page-content" class="hidden" style="display: none;">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 backdrop-blur-lg bg-brand-bg/80 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-primary to-brand-secondary flex items-center justify-center text-white font-bold">F</div>
+                <span class="text-white font-bold text-xl tracking-tight">FlowTask</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#" class="hover:text-white transition">Funciones</a>
+                <a href="#" class="hover:text-white transition">Precios</a>
+                <a href="#" class="hover:text-white transition">Blog</a>
+                <a href="index.html" class="hover:text-white transition">Volver</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#" class="hidden md:block text-sm font-medium hover:text-white">Login</a>
+                <a href="#" class="bg-white text-brand-bg px-4 py-2 rounded-full text-sm font-bold hover:bg-slate-200 transition">Empezar Gratis</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative pt-20 pb-32 overflow-hidden hero-glow">
+        <div class="max-w-7xl mx-auto px-6 text-center z-10 relative">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-xs font-medium text-brand-secondary mb-8">
+                <span class="w-2 h-2 rounded-full bg-brand-secondary animate-pulse"></span>
+                V2.0 ya está disponible
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white tracking-tight mb-8 leading-tight">
+                El caos mata la productividad.<br>
+                <span class="gradient-text">FlowTask la recupera.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Deja de perder horas buscando correos y archivos dispersos. FlowTask centraliza tus tareas, plazos y equipo en un solo lugar visual. 
+                <span class="block mt-2 text-slate-300 font-medium">Porque tu energía debe estar en crear, no en organizar.</span>
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-20">
+                <button class="px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-brand-primary/25 transition transform hover:-translate-y-1">
+                    Prueba Gratis 14 días
+                </button>
+                <button class="px-8 py-4 bg-slate-800 border border-slate-700 text-white rounded-full font-semibold text-lg hover:bg-slate-700 transition flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    Ver Demo
+                </button>
+            </div>
+
+            <!-- UI Mockup -->
+            <div class="relative mx-auto max-w-5xl">
+                <div class="absolute -inset-1 bg-gradient-to-r from-brand-primary to-brand-secondary rounded-2xl blur opacity-30"></div>
+                <div class="relative bg-slate-900 border border-slate-800 rounded-xl shadow-2xl overflow-hidden h-[600px] md:h-auto md:aspect-video flex flex-col md:flex-row items-stretch md:items-stretch justify-start">
+                    <!-- Simulated Dashboard -->
+                        
+                        <!-- Sidebar -->
+                        <div class="w-full md:w-64 border-b md:border-b-0 md:border-r border-slate-800 bg-slate-900/50 p-3 md:p-4 flex flex-col gap-4 shrink-0 z-20">
+                            <div class="hidden md:flex items-center gap-2 mb-4">
+                                <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                                <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+                                <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                            </div>
+                            <div class="flex flex-row md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-1 md:pb-0" id="sidebar-menu">
+                                <div onclick="switchTab('projects', this)" class="menu-item shrink-0 px-3 py-2 bg-brand-primary/10 text-brand-primary rounded-lg font-medium cursor-pointer transition whitespace-nowrap text-sm">🚀 Proyectos</div>
+                                <div onclick="switchTab('tasks', this)" class="menu-item shrink-0 px-3 py-2 text-slate-400 hover:text-white cursor-pointer transition whitespace-nowrap text-sm">✅ Mis Tareas</div>
+                                <div onclick="switchTab('calendar', this)" class="menu-item shrink-0 px-3 py-2 text-slate-400 hover:text-white cursor-pointer transition whitespace-nowrap text-sm">📅 Calendario</div>
+                                <div onclick="switchTab('team', this)" class="menu-item shrink-0 px-3 py-2 text-slate-400 hover:text-white cursor-pointer transition whitespace-nowrap text-sm">👥 Equipo</div>
+                            </div>
+                            <div class="mt-auto hidden md:block">
+                                <div class="px-3 py-2 bg-slate-800 rounded-lg">
+                                    <div class="text-xs text-slate-400 mb-1">Almacenamiento</div>
+                                    <div class="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
+                                        <div class="bg-brand-secondary w-3/4 h-full"></div>
+                                    </div>
+                                    <div class="text-xs text-right text-brand-secondary mt-1">75%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Main Content -->
+                        <div class="flex-1 p-4 md:p-6 overflow-y-auto md:overflow-hidden flex flex-col relative bg-slate-900/50">
+                            <!-- Header -->
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 md:gap-0">
+                                <div>
+                                    <h3 class="text-white font-bold text-lg" id="view-title">Lanzamiento Marketing Q3</h3>
+                                    <p class="text-slate-500 text-xs">Actualizado hace 2 min</p>
+                                </div>
+                                <div class="flex -space-x-2">
+                                    <div class="w-8 h-8 rounded-full bg-purple-500 border-2 border-slate-900 flex items-center justify-center text-xs font-bold text-white" title="Ana">A</div>
+                                    <div class="w-8 h-8 rounded-full bg-blue-500 border-2 border-slate-900 flex items-center justify-center text-xs font-bold text-white" title="Carlos">C</div>
+                                    <div class="w-8 h-8 rounded-full bg-green-500 border-2 border-slate-900 flex items-center justify-center text-xs font-bold text-white" title="Luis">L</div>
+                                    <button class="w-8 h-8 rounded-full bg-slate-800 border-2 border-slate-900 flex items-center justify-center text-slate-400 hover:text-white">+</button>
+                                </div>
+                            </div>
+
+                            <!-- Views Container -->
+                            
+                            <!-- VIEW 1: PROJECTS (KANBAN) -->
+                            <div id="view-projects" class="dashboard-view w-full h-full">
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 h-auto md:h-full">
+                                    <!-- Columna 1: Por Hacer -->
+                                    <div class="bg-slate-800/30 rounded-lg p-3 border border-slate-800 flex flex-col gap-3 h-full">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="font-semibold text-slate-300 text-xs uppercase tracking-wide">Por Hacer</span>
+                                            <span class="bg-slate-800 text-slate-400 px-1.5 rounded text-xs">3</span>
+                                        </div>
+                                        <!-- Cards -->
+                                        <div class="bg-slate-800 p-3 rounded border border-slate-700 hover:border-brand-primary/50 cursor-pointer shadow-sm group">
+                                            <div class="text-slate-200 font-medium mb-2 group-hover:text-brand-primary transition">Redactar copy web</div>
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-[10px] bg-red-500/10 text-red-400 px-1.5 py-0.5 rounded">Urgente</span>
+                                                <span class="text-slate-500 text-xs">🕔 Mañana</span>
+                                            </div>
+                                        </div>
+                                        <div class="bg-slate-800 p-3 rounded border border-slate-700 hover:border-brand-primary/50 cursor-pointer shadow-sm group">
+                                            <div class="text-slate-200 font-medium mb-2 group-hover:text-brand-primary transition">Investigación keywords</div>
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-5 h-5 rounded-full bg-purple-500 text-[10px] flex items-center justify-center text-white">A</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Columna 2: En Progreso -->
+                                    <div class="bg-slate-800/30 rounded-lg p-3 border border-slate-800 flex flex-col gap-3 h-full">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="font-semibold text-brand-primary text-xs uppercase tracking-wide">En Progreso</span>
+                                            <span class="bg-brand-primary/10 text-brand-primary px-1.5 rounded text-xs">2</span>
+                                        </div>
+                                        <!-- Cards -->
+                                        <div class="bg-slate-800 p-3 rounded border-l-2 border-l-brand-primary border-t border-r border-b border-t-slate-700 border-r-slate-700 border-b-slate-700 shadow-lg">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <div class="text-white font-medium">Diseño de Interfaz</div>
+                                                <svg class="w-4 h-4 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                                            </div>
+                                            <div class="w-full bg-slate-700 h-1.5 rounded-full overflow-hidden mb-3">
+                                                <div class="bg-brand-primary w-2/3 h-full"></div>
+                                            </div>
+                                            <div class="flex items-center justify-between text-xs text-slate-400">
+                                                <span>6/10 Subtareas</span>
+                                                <div class="flex -space-x-1">
+                                                    <div class="w-5 h-5 bg-blue-500 rounded-full border border-slate-800"></div>
+                                                    <div class="w-5 h-5 bg-green-500 rounded-full border border-slate-800"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bg-slate-800 p-3 rounded border border-slate-700 hover:border-brand-primary/50 cursor-pointer shadow-sm opacity-60">
+                                            <div class="text-slate-200 font-medium mb-2">Aprobación Legal</div>
+                                            <div class="text-xs text-slate-500">Esperando feedback...</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Columna 3: Completado -->
+                                    <div class="hidden md:flex bg-slate-800/30 rounded-lg p-3 border border-slate-800 flex-col gap-3 h-full">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="font-semibold text-green-500 text-xs uppercase tracking-wide">Listo</span>
+                                            <span class="bg-green-500/10 text-green-500 px-1.5 rounded text-xs">1</span>
+                                        </div>
+                                        <!-- Cards -->
+                                        <div class="bg-slate-800 p-3 rounded border border-slate-700 opacity-50 hover:opacity-100 transition">
+                                            <div class="text-slate-200 font-medium mb-2 line-through text-slate-500">Briefing inicial</div>
+                                            <div class="text-xs text-green-500 flex items-center gap-1">
+                                                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                                Completado ayer
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- VIEW 2: TASKS (LIST) -->
+                            <div id="view-tasks" class="dashboard-view w-full h-full hidden fade-in">
+                                <div class="bg-slate-800/30 rounded-lg border border-slate-800 overflow-hidden">
+                                    <div class="p-4 border-b border-slate-800 flex justify-between bg-slate-800/50">
+                                        <span class="font-semibold text-white">Mis Tareas Pendientes</span>
+                                        <button class="text-xs bg-brand-primary text-white px-2 py-1 rounded hover:bg-brand-primary/80">+ Nueva Tarea</button>
+                                    </div>
+                                    <div class="divide-y divide-slate-800">
+                                        <div class="p-4 flex items-center gap-4 hover:bg-slate-800/50 transition cursor-pointer group">
+                                            <div class="w-5 h-5 rounded border border-slate-600 group-hover:border-brand-primary flex items-center justify-center"></div>
+                                            <div class="flex-1">
+                                                <div class="text-slate-200 font-medium">Revisar métricas Q2</div>
+                                                <div class="text-xs text-slate-500">Marketing • Hoy</div>
+                                            </div>
+                                            <div class="bg-red-500/10 text-red-400 text-xs px-2 py-1 rounded">Alta</div>
+                                        </div>
+                                        <div class="p-4 flex items-center gap-4 hover:bg-slate-800/50 transition cursor-pointer group">
+                                            <div class="w-5 h-5 rounded border border-slate-600 group-hover:border-brand-primary flex items-center justify-center">
+                                                <svg class="w-3 h-3 text-brand-primary hidden group-hover:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div class="text-slate-200 font-medium">Actualizar documentación API</div>
+                                                <div class="text-xs text-slate-500">Desarrollo • Mañana</div>
+                                            </div>
+                                            <div class="bg-blue-500/10 text-blue-400 text-xs px-2 py-1 rounded">Media</div>
+                                        </div>
+                                        <div class="p-4 flex items-center gap-4 hover:bg-slate-800/50 transition cursor-pointer group">
+                                            <div class="w-5 h-5 rounded border border-slate-600 group-hover:border-brand-primary flex items-center justify-center"></div>
+                                            <div class="flex-1">
+                                                <div class="text-slate-200 font-medium">Entrevista candidato UX</div>
+                                                <div class="text-xs text-slate-500">Recursos Humanos • Vie 24</div>
+                                            </div>
+                                            <div class="bg-green-500/10 text-green-400 text-xs px-2 py-1 rounded">Baja</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- VIEW 3: CALENDAR -->
+                            <div id="view-calendar" class="dashboard-view w-full h-full hidden fade-in">
+                                <div class="bg-slate-800/30 rounded-lg p-4 border border-slate-800 h-full">
+                                    <div class="grid grid-cols-7 gap-1 text-center mb-2">
+                                        <div class="text-xs text-slate-500 font-bold p-2">LUN</div>
+                                        <div class="text-xs text-slate-500 font-bold p-2">MAR</div>
+                                        <div class="text-xs text-slate-500 font-bold p-2">MIE</div>
+                                        <div class="text-xs text-slate-500 font-bold p-2">JUE</div>
+                                        <div class="text-xs text-slate-500 font-bold p-2">VIE</div>
+                                        <div class="text-xs text-slate-500 font-bold p-2">SAB</div>
+                                        <div class="text-xs text-slate-500 font-bold p-2">DOM</div>
+                                    </div>
+                                    <div class="grid grid-cols-7 gap-1 h-64">
+                                        <!-- Empty Days -->
+                                        <div class="bg-slate-800/20 rounded p-1 text-slate-600 text-xs">28</div>
+                                        <div class="bg-slate-800/20 rounded p-1 text-slate-600 text-xs">29</div>
+                                        <div class="bg-slate-800/20 rounded p-1 text-slate-600 text-xs">30</div>
+                                        <div class="bg-slate-800/50 rounded p-1 text-slate-400 text-xs">1</div>
+                                        <div class="bg-slate-800/50 rounded p-1 text-slate-400 text-xs relative">
+                                            2
+                                            <div class="mt-1 bg-brand-primary text-[8px] text-white px-1 rounded truncate">Lanzamiento</div>
+                                        </div>
+                                        <div class="bg-slate-800/50 rounded p-1 text-slate-400 text-xs">3</div>
+                                        <div class="bg-slate-800/50 rounded p-1 text-slate-400 text-xs">4</div>
+                                        
+                                        <div class="bg-slate-800/50 rounded p-1 text-slate-400 text-xs">5</div>
+                                        <div class="bg-slate-800/50 rounded p-1 text-slate-400 text-xs">6</div>
+                                        <div class="bg-slate-800/50 rounded p-1 text-slate-400 text-xs relative">
+                                            7
+                                            <div class="mt-1 bg-purple-500 text-[8px] text-white px-1 rounded truncate">Reunión Q3</div>
+                                        </div>
+                                        <div class="bg-brand-secondary/20 border border-brand-secondary rounded p-1 text-white text-xs font-bold relative">
+                                            8
+                                            <div class="mt-1 bg-green-500 text-[8px] text-white px-1 rounded truncate">Entrega Mockups</div>
+                                        </div>
+                                        <div class="bg-slate-800/50 rounded p-1 text-slate-400 text-xs">9</div>
+                                        <div class="bg-slate-800/50 rounded p-1 text-slate-400 text-xs">10</div>
+                                        <div class="bg-slate-800/50 rounded p-1 text-slate-400 text-xs">11</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                             <!-- VIEW 4: TEAM -->
+                            <div id="view-team" class="dashboard-view w-full h-full hidden fade-in">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-slate-800 p-4 rounded-lg flex items-center gap-4 border border-slate-700 hover:border-brand-secondary transition group">
+                                        <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center text-white font-bold text-lg">A</div>
+                                        <div>
+                                            <div class="text-white font-bold group-hover:text-brand-secondary transition">Valentina Botero</div>
+                                            <div class="text-xs text-slate-400">Product Manager</div>
+                                            <div class="flex mt-1 gap-1">
+                                                <span class="w-2 h-2 rounded-full bg-green-400"></span>
+                                                <span class="text-[10px] text-green-400">Online</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-slate-800 p-4 rounded-lg flex items-center gap-4 border border-slate-700 hover:border-brand-secondary transition group">
+                                        <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-lg">C</div>
+                                        <div>
+                                            <div class="text-white font-bold group-hover:text-brand-secondary transition">Carlos Mc Taggart</div>
+                                            <div class="text-xs text-slate-400">Lead Developer</div>
+                                            <div class="flex mt-1 gap-1">
+                                                <span class="w-2 h-2 rounded-full bg-orange-400"></span>
+                                                <span class="text-[10px] text-orange-400">En reunión</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-slate-800 p-4 rounded-lg flex items-center gap-4 border border-slate-700 hover:border-brand-secondary transition group">
+                                        <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-lg">L</div>
+                                        <div>
+                                            <div class="text-white font-bold group-hover:text-brand-secondary transition">Alberto Montes</div>
+                                            <div class="text-xs text-slate-400">UX Designer</div>
+                                            <div class="flex mt-1 gap-1">
+                                                <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                                                <span class="text-[10px] text-slate-400">Offline</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-slate-800/30 p-4 rounded-lg flex items-center justify-center gap-2 border border-dashed border-slate-600 hover:border-white hover:text-white text-slate-400 cursor-pointer transition">
+                                        <span class="text-2xl">+</span>
+                                        <span class="text-sm font-medium">Invitar Miembro</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script para cambiar pestañas -->
+    <script>
+        function switchTab(tabId, element) {
+            // 1. Ocultar todas las vistas
+            document.querySelectorAll('.dashboard-view').forEach(view => {
+                view.classList.add('hidden');
+            });
+            
+            // 2. Mostrar la vista seleccionada
+            document.getElementById('view-' + tabId).classList.remove('hidden');
+            
+            // 3. Actualizar estilos del menú
+            document.querySelectorAll('.menu-item').forEach(item => {
+                // Resetear a estilos inactivos
+                item.className = 'menu-item shrink-0 px-3 py-2 text-slate-400 hover:text-white cursor-pointer transition whitespace-nowrap text-sm rounded-lg';
+            });
+            
+            // 4. Activar el elemento clickeado
+            element.className = 'menu-item shrink-0 px-3 py-2 bg-brand-primary/10 text-brand-primary rounded-lg font-medium cursor-pointer transition whitespace-nowrap text-sm';
+            
+            // 5. Actualizar título (Opcional)
+            const titles = {
+                'projects': 'Lanzamiento Marketing Q3',
+                'tasks': 'Mis Tareas Pendientes',
+                'calendar': 'Calendario de Equipo - Octubre',
+                'team': 'Miembros del Equipo'
+            };
+            document.getElementById('view-title').innerText = titles[tabId];
+        }
+    </script>
+
+    <!-- Features -->
+    <section class="py-24 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 px-4">Herramientas poderosas,<br>diseño simple.</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-8 bg-slate-900 rounded-2xl border border-slate-800 hover:border-brand-primary/50 transition duration-300">
+                    <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center text-brand-primary mb-6 text-2xl">⚡</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Automatización</h3>
+                    <p class="text-slate-400">Deja de realizar tareas repetitivas. Configura reglas simples para mover tarjetas, asignar responsabilidades y más.</p>
+                </div>
+                <div class="p-8 bg-slate-900 rounded-2xl border border-slate-800 hover:border-brand-secondary/50 transition duration-300">
+                    <div class="w-12 h-12 bg-brand-secondary/10 rounded-lg flex items-center justify-center text-brand-secondary mb-6 text-2xl">📊</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Analytics</h3>
+                    <p class="text-slate-400">Visualiza el progreso de tu equipo en tiempo real con dashboards personalizables y reportes de velocidad.</p>
+                </div>
+                <div class="p-8 bg-slate-900 rounded-2xl border border-slate-800 hover:border-blue-500/50 transition duration-300">
+                    <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center text-blue-500 mb-6 text-2xl">🔒</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Seguridad Enterprise</h3>
+                    <p class="text-slate-400">Tus datos están seguros con encriptación de extremo a extremo, SSO y cumplimiento de normativas globales.</p>
+                </div>
+                <div class="p-8 bg-slate-900 rounded-2xl border border-slate-800 hover:border-green-500/50 transition duration-300">
+                    <div class="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center text-green-500 mb-6 text-2xl">🔗</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Integraciones Ilimitadas</h3>
+                    <p class="text-slate-400">Conecta FlowTask con Slack, Google Drive, GitHub, Figma y más de 1,000 herramientas que ya usas.</p>
+                </div>
+                <div class="p-8 bg-slate-900 rounded-2xl border border-slate-800 hover:border-orange-500/50 transition duration-300">
+                    <div class="w-12 h-12 bg-orange-500/10 rounded-lg flex items-center justify-center text-orange-500 mb-6 text-2xl">📱</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Apps Móviles Nativas</h3>
+                    <p class="text-slate-400">Trabaja desde cualquier lugar con aplicaciones optimizadas para iOS y Android con sincronización en tiempo real.</p>
+                </div>
+                <div class="p-8 bg-slate-900 rounded-2xl border border-slate-800 hover:border-pink-500/50 transition duration-300">
+                    <div class="w-12 h-12 bg-pink-500/10 rounded-lg flex items-center justify-center text-pink-500 mb-6 text-2xl">💬</div>
+                    <h3 class="text-xl font-bold text-white mb-3">Colaboración en Tiempo Real</h3>
+                    <p class="text-slate-400">Comenta, menciona y comparte archivos directamente en las tareas. Tu equipo siempre estará sincronizado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 bg-brand-bg border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold gradient-text mb-2">50K+</div>
+                    <div class="text-slate-400">Equipos Activos</div>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold gradient-text mb-2">2M+</div>
+                    <div class="text-slate-400">Tareas Completadas</div>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold gradient-text mb-2">99.9%</div>
+                    <div class="text-slate-400">Uptime</div>
+                </div>
+                <div>
+                    <div class="text-4xl md:text-5xl font-bold gradient-text mb-2">4.9/5</div>
+                    <div class="text-slate-400">Rating G2</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrations -->
+    <section class="py-24 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Se integra con tus herramientas favoritas</h2>
+                <p class="text-slate-400 text-lg">Conecta FlowTask con el ecosistema que tu equipo ya domina</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex items-center justify-center hover:border-brand-primary/50 transition group">
+                    <div class="text-center">
+                        <div class="text-4xl mb-2 group-hover:scale-110 transition">💬</div>
+                        <div class="text-sm text-slate-400">Slack</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex items-center justify-center hover:border-brand-primary/50 transition group">
+                    <div class="text-center">
+                        <div class="text-4xl mb-2 group-hover:scale-110 transition">📧</div>
+                        <div class="text-sm text-slate-400">Gmail</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex items-center justify-center hover:border-brand-primary/50 transition group">
+                    <div class="text-center">
+                        <div class="text-4xl mb-2 group-hover:scale-110 transition">📂</div>
+                        <div class="text-sm text-slate-400">Google Drive</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex items-center justify-center hover:border-brand-primary/50 transition group">
+                    <div class="text-center">
+                        <div class="text-4xl mb-2 group-hover:scale-110 transition">🐙</div>
+                        <div class="text-sm text-slate-400">GitHub</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex items-center justify-center hover:border-brand-primary/50 transition group">
+                    <div class="text-center">
+                        <div class="text-4xl mb-2 group-hover:scale-110 transition">🎨</div>
+                        <div class="text-sm text-slate-400">Figma</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex items-center justify-center hover:border-brand-primary/50 transition group">
+                    <div class="text-center">
+                        <div class="text-4xl mb-2 group-hover:scale-110 transition">💳</div>
+                        <div class="text-sm text-slate-400">Stripe</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex items-center justify-center hover:border-brand-primary/50 transition group">
+                    <div class="text-center">
+                        <div class="text-4xl mb-2 group-hover:scale-110 transition">📊</div>
+                        <div class="text-sm text-slate-400">Analytics</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex items-center justify-center hover:border-brand-primary/50 transition group">
+                    <div class="text-center">
+                        <div class="text-4xl mb-2 group-hover:scale-110 transition">☁️</div>
+                        <div class="text-sm text-slate-400">Dropbox</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex items-center justify-center hover:border-brand-primary/50 transition group">
+                    <div class="text-center">
+                        <div class="text-4xl mb-2 group-hover:scale-110 transition">📅</div>
+                        <div class="text-sm text-slate-400">Calendar</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex items-center justify-center hover:border-brand-primary/50 transition group">
+                    <div class="text-center">
+                        <div class="text-4xl mb-2 group-hover:scale-110 transition">🎯</div>
+                        <div class="text-sm text-slate-400">Jira</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex items-center justify-center hover:border-brand-primary/50 transition group">
+                    <div class="text-center">
+                        <div class="text-4xl mb-2 group-hover:scale-110 transition">📝</div>
+                        <div class="text-sm text-slate-400">Notion</div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex items-center justify-center hover:border-brand-primary/50 transition">
+                    <div class="text-center">
+                        <div class="text-sm font-medium text-brand-primary">+1,000 más</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="py-24 bg-brand-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Precios transparentes, sin sorpresas</h2>
+                <p class="text-slate-400 text-lg">Elige el plan perfecto para tu equipo. Cambia o cancela cuando quieras.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Plan Starter -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-slate-700 transition">
+                    <div class="text-slate-400 text-sm uppercase tracking-wide font-semibold mb-2">Starter</div>
+                    <div class="mb-6">
+                        <span class="text-5xl font-bold text-white">$0</span>
+                        <span class="text-slate-400">/mes</span>
+                    </div>
+                    <p class="text-slate-400 mb-8">Ideal para equipos pequeños que están comenzando</p>
+                    <button class="w-full py-3 bg-slate-800 text-white rounded-lg font-semibold hover:bg-slate-700 transition mb-8">Empezar Gratis</button>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-300">Hasta 5 miembros</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-300">3 proyectos activos</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-300">2 GB de almacenamiento</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-300">Soporte por email</span>
+                        </li>
+                        <li class="flex items-start gap-3 opacity-50">
+                            <svg class="w-5 h-5 text-slate-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            <span class="text-slate-500">Automatizaciones</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Plan Pro (Destacado) -->
+                <div class="bg-gradient-to-br from-brand-primary/10 to-brand-secondary/10 border-2 border-brand-primary rounded-2xl p-8 relative transform scale-105 shadow-2xl shadow-brand-primary/20">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-primary to-brand-secondary text-white px-4 py-1 rounded-full text-sm font-bold">
+                        Más Popular
+                    </div>
+                    <div class="text-brand-primary text-sm uppercase tracking-wide font-semibold mb-2">Pro</div>
+                    <div class="mb-6">
+                        <span class="text-5xl font-bold text-white">$12</span>
+                        <span class="text-slate-400">/usuario/mes</span>
+                    </div>
+                    <p class="text-slate-300 mb-8">Para equipos en crecimiento que necesitan más poder</p>
+                    <button class="w-full py-3 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-brand-primary/30 transition mb-8">Prueba 14 días gratis</button>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-white font-medium">Usuarios ilimitados</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-white font-medium">Proyectos ilimitados</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-white font-medium">100 GB de almacenamiento</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-white font-medium">Automatizaciones avanzadas</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-white font-medium">Soporte prioritario 24/7</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-white font-medium">Integraciones ilimitadas</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Plan Enterprise -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-slate-700 transition">
+                    <div class="text-slate-400 text-sm uppercase tracking-wide font-semibold mb-2">Enterprise</div>
+                    <div class="mb-6">
+                        <span class="text-5xl font-bold text-white">Custom</span>
+                    </div>
+                    <p class="text-slate-400 mb-8">Para grandes organizaciones con necesidades específicas</p>
+                    <button class="w-full py-3 bg-white text-brand-bg rounded-lg font-semibold hover:bg-slate-200 transition mb-8">Contactar Ventas</button>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-300">Todo de Pro +</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-300">SSO / SAML</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-300">Almacenamiento ilimitado</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-300">Account Manager dedicado</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-300">SLA 99.99% uptime</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-300">Auditoría y cumplimiento</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Lo que dicen nuestros usuarios</h2>
+                <p class="text-slate-400 text-lg">Más de 50,000 equipos confían en FlowTask</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-8 hover:border-brand-primary/50 transition">
+                    <div class="flex items-center gap-1 mb-4">
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-slate-300 mb-6 leading-relaxed">"FlowTask cambió completamente cómo trabaja nuestro equipo. Pasamos de caos total a una máquina bien aceitada en solo semanas. La automatización nos ahorra horas cada día."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold">SR</div>
+                        <div>
+                            <div class="text-white font-semibold">Sarah Rodriguez</div>
+                            <div class="text-slate-500 text-sm">VP Product, TechCorp</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-8 hover:border-brand-primary/50 transition">
+                    <div class="flex items-center gap-1 mb-4">
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-slate-300 mb-6 leading-relaxed">"La interfaz es increíblemente intuitiva. Nuestro equipo remoto lo adoptó sin necesitar capacitación. Las integraciones con Slack y GitHub son perfectas para desarrolladores."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold">MK</div>
+                        <div>
+                            <div class="text-white font-semibold">Marcus Kim</div>
+                            <div class="text-slate-500 text-sm">Engineering Lead, DevStack</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-8 hover:border-brand-primary/50 transition">
+                    <div class="flex items-center gap-1 mb-4">
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-slate-300 mb-6 leading-relaxed">"Como agencia, manejamos 20+ clientes simultáneamente. FlowTask nos permite mantener todo organizado y entregar proyectos a tiempo. Los reportes visuales son perfectos para clientes."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white font-bold">AL</div>
+                        <div>
+                            <div class="text-white font-semibold">Ana López</div>
+                            <div class="text-slate-500 text-sm">CEO, Creative Studio</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24 bg-brand-bg">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Preguntas Frecuentes</h2>
+                <p class="text-slate-400 text-lg">Todo lo que necesitas saber sobre FlowTask</p>
+            </div>
+            <div class="space-y-6">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-slate-700 transition">
+                    <h3 class="text-lg font-semibold text-white mb-2">¿Necesito tarjeta de crédito para el plan gratuito?</h3>
+                    <p class="text-slate-400">No. El plan Starter es 100% gratuito y no requiere tarjeta de crédito. Puedes usarlo indefinidamente sin compromiso.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-slate-700 transition">
+                    <h3 class="text-lg font-semibold text-white mb-2">¿Puedo cambiar de plan en cualquier momento?</h3>
+                    <p class="text-slate-400">Sí, puedes actualizar, degradar o cancelar tu plan cuando quieras. Los cambios se aplican inmediatamente y ajustamos la facturación proporcionalmente.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-slate-700 transition">
+                    <h3 class="text-lg font-semibold text-white mb-2">¿Cómo funciona la prueba gratuita de 14 días?</h3>
+                    <p class="text-slate-400">Durante 14 días tienes acceso completo al plan Pro sin restricciones. No cobramos hasta que termine el período de prueba, y puedes cancelar en cualquier momento sin cargos.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-slate-700 transition">
+                    <h3 class="text-lg font-semibold text-white mb-2">¿Mis datos están seguros?</h3>
+                    <p class="text-slate-400">Absolutamente. Usamos encriptación AES-256, cumplimos con GDPR y SOC 2, y nuestros servidores están alojados en centros de datos certificados. Tus datos son tuyos y nunca los compartimos.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-slate-700 transition">
+                    <h3 class="text-lg font-semibold text-white mb-2">¿Ofrecen soporte técnico?</h3>
+                    <p class="text-slate-400">Todos los planes incluyen soporte por email. Los usuarios Pro y Enterprise tienen acceso a soporte prioritario 24/7 por chat y videollamada.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-slate-700 transition">
+                    <h3 class="text-lg font-semibold text-white mb-2">¿Puedo importar datos de otras herramientas?</h3>
+                    <p class="text-slate-400">Sí, ofrecemos importación nativa desde Trello, Asana, Monday, Jira y más. También puedes importar archivos CSV. Nuestro equipo puede ayudarte con migraciones grandes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-32 bg-gradient-to-br from-brand-primary/20 via-brand-bg to-brand-secondary/20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-primary/10 to-brand-secondary/10 blur-3xl"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Listo para recuperar tu productividad?</h2>
+            <p class="text-xl text-slate-300 mb-10">Únete a 50,000+ equipos que ya trabajan mejor con FlowTask</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="px-10 py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-brand-primary/30 transition transform hover:-translate-y-1">
+                    Empezar Gratis Ahora
+                </button>
+                <button class="px-10 py-4 bg-white text-brand-bg rounded-full font-bold text-lg hover:bg-slate-200 transition">
+                    Agenda una Demo
+                </button>
+            </div>
+            <p class="text-slate-500 mt-6 text-sm">Sin tarjeta de crédito • Configuración en 2 minutos • Cancela cuando quieras</p>
+        </div>
+    </section>
+
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox-overlay" class="hidden" aria-hidden="true">
+    <div class="lightbox-content">
+        <button class="lightbox-close" type="button" aria-label="Cerrar">✕</button>
+        <img id="lightbox-img" src="" alt="" />
+    </div>
+</div>
+
+<script>
+    const previewFrame = document.getElementById("preview-frame");
+    const previewShell = document.getElementById("preview-shell");
+    const previewIframe = document.getElementById("preview-iframe");
+    const previewButtons = document.querySelectorAll(".preview-btn");
+    const pageContent = document.getElementById("page-content");
+    const portfolioTopbar = document.getElementById("portfolio-topbar");
+    const portfolioSpacer = document.getElementById("portfolio-spacer");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const isPreview = urlParams.get("preview") === "1";
+
+    if (isPreview) {
+        portfolioTopbar?.classList.add("hidden");
+        portfolioSpacer?.classList.add("hidden");
+        previewFrame?.classList.add("hidden");
+        pageContent?.classList.remove("hidden");
+        if (pageContent) pageContent.style.display = 'block';
+    } else {
+        previewFrame?.classList.remove("hidden");
+        pageContent?.classList.add("hidden");
+        if (pageContent) pageContent.style.display = 'none';
+
+        if (previewIframe) {
+            const previewUrl = new URL(window.location.href);
+            previewUrl.searchParams.set("preview", "1");
+            previewIframe.src = previewUrl.toString();
+        }
+
+        const setPreview = (mode) => {
+            previewShell?.classList.remove("preview-phone", "preview-tablet", "preview-desktop");
+            previewShell?.classList.add(`preview-${mode}`);
+
+            const frameLayoutClasses = ["max-w-7xl", "mx-auto", "px-4", "sm:px-6", "lg:px-8"]; 
+
+            if (mode === "desktop") {
+                previewFrame?.classList.add("preview-fullscreen");
+                previewFrame?.classList.remove(...frameLayoutClasses);
+            } else {
+                previewFrame?.classList.remove("preview-fullscreen");
+                previewFrame?.classList.add(...frameLayoutClasses);
+            }
+
+            previewButtons.forEach((btn) => {
+                const isActive = btn.dataset.preview === mode;
+                btn.classList.toggle("bg-gray-900", isActive);
+                btn.classList.toggle("text-white", isActive);
+                btn.classList.toggle("bg-gray-100", !isActive);
+                btn.classList.toggle("text-gray-700", !isActive);
+            });
+        };
+
+        previewButtons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                setPreview(btn.dataset.preview);
+            });
+        });
+
+        setPreview("desktop");
+    }
+
+    // LIGHTBOX
+    (() => {
+        const overlay = document.getElementById("lightbox-overlay");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeBtn = overlay?.querySelector(".lightbox-close");
+
+        if (!overlay || !lightboxImg) return;
+
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || "";
+            overlay.classList.remove("hidden");
+            requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add("show")));
+            overlay.setAttribute("aria-hidden", "false");
+        }
+
+        function closeLightbox() {
+            overlay.classList.remove("show");
+            overlay.setAttribute("aria-hidden", "true");
+            const once = () => {
+                overlay.classList.add("hidden");
+                overlay.removeEventListener("transitionend", once);
+            };
+            overlay.addEventListener("transitionend", once);
+        }
+
+        document.querySelectorAll("img").forEach((img) => {
+            img.style.cursor = "zoom-in";
+            img.addEventListener("click", (e) => {
+                const target = e.currentTarget;
+                openLightbox(target.src, target.alt || "");
+            });
+        });
+
+        overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) closeLightbox();
+        });
+
+        closeBtn?.addEventListener("click", closeLightbox);
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && overlay.classList.contains("show")) closeLightbox();
+        });
+    })();
+</script>
+
+</body>
+</html>

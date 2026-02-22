@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>Miel & Pan | Café & Bakery</title>
+  <meta name="description" content="Esta es una página de demostración del portafolio de Carlos Mc Taggart. Ejemplo de diseño web adaptable y moderno.">
+  <link rel="canonical" href="https://www.webspty.dev/miel-pan.html">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'hand': ['"Dancing Script"', 'cursive'],
+                        'body': ['"Lato"', 'sans-serif'],
+                    },
+                    colors: {
+                        'cream': '#FDFBF7',
+                        'honey': '#D4A373',
+                        'sage': '#CCD5AE',
+                        'mocha': '#4A4A4A',
+                        'foam': '#FAEDCD'
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'fade-in': 'fadeIn 1.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                         fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-cream text-mocha font-body flex flex-col min-h-screen">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-cream/90 backdrop-blur-sm border-b border-honey/20">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-hand text-3xl text-honey font-bold">Miel & Pan</a>
+            <div class="hidden md:flex gap-8 text-sm tracking-widest font-light">
+                <a href="#menu" class="hover:text-honey transition-colors">MENÚ</a>
+                <a href="#bakery" class="hover:text-honey transition-colors">HORNEADOS</a>
+                <a href="#ambiente" class="hover:text-honey transition-colors">AMBIENTE</a>
+            </div>
+            <a href="#" class="bg-sage text-white px-5 py-2 rounded-full text-xs font-bold tracking-widest hover:bg-honey transition-colors">PEDIR ONLINE</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+               <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop" class="w-full h-full object-cover opacity-90" alt="Interior de cafetería" aria-hidden="true">
+             <div class="absolute inset-0 bg-white/30 mix-blend-overlay"></div>
+        </div>
+
+        <div class="relative z-10 text-center bg-white/90 p-12 rounded-2xl shadow-xl max-w-2xl mx-4 border border-white">
+            <h1 class="font-hand text-6xl md:text-8xl mb-4 text-mocha">Miel & Pan</h1>
+            <p class="text-xl font-light italic mb-8 text-gray-600">"Momentos dulces, conversaciones lentas"</p>
+            <div class="flex justify-center gap-4">
+                <a href="#menu" class="px-8 py-3 bg-honey text-white rounded-full hover:bg-sage transition-colors shadow-lg">Ver Carta</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Intro Text -->
+    <section class="py-20 px-6 max-w-4xl mx-auto text-center">
+        <p class="text-2xl font-light leading-relaxed text-gray-500 animate-fade-in">
+            En un rincón donde el tiempo se detiene, horneamos felicidad cada mañana. <br>
+            <span class="text-honey font-hand text-3xl">Café de especialidad</span> y masa madre fermentada con paciencia.
+        </p>
+    </section>
+
+    <!-- Menu Highlights -->
+    <section id="menu" class="py-16 bg-foam/30">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-center font-hand text-5xl mb-12 text-honey">Nuestros Cafés</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Visual Coffee -->
+                 <div class="relative h-96 rounded-2xl overflow-hidden shadow-xl order-2 md:order-1 group">
+                    <img id="coffeeCarouselImg" src="img/latte.jpg" class="w-full h-full object-cover transition-opacity duration-500 scale-90" style="object-position: center 30%;" alt="Café del día">
+                    <!-- Carousel Indicators -->
+                     <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2" id="carouselIndicators">
+                        <!-- JS creates dots here -->
+                     </div>
+                </div>
+                
+                <div class="text-center md:text-left order-1 md:order-2">
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between items-baseline mb-2 border-b border-dashed border-gray-300 pb-2">
+                                <h3 class="text-xl font-bold text-gray-700">Latte de Lavanda</h3>
+                                <span class="text-honey font-bold">$4.50</span>
+                            </div>
+                            <p class="text-gray-500 text-sm">Espresso suave con sirope artesanal de lavanda y espuma de leche.</p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-baseline mb-2 border-b border-dashed border-gray-300 pb-2">
+                                <h3 class="text-xl font-bold text-gray-700">Miel Cappuccino</h3>
+                                <span class="text-honey font-bold">$4.75</span>
+                            </div>
+                            <p class="text-gray-500 text-sm">Nuestro clásico con miel orgánica local y canela espolvoreada.</p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-baseline mb-2 border-b border-dashed border-gray-300 pb-2">
+                                <h3 class="text-xl font-bold text-gray-700">Cold Brew Tonic</h3>
+                                <span class="text-honey font-bold">$5.00</span>
+                            </div>
+                            <p class="text-gray-500 text-sm">Extracción en frío de 12 horas, agua tónica y un toque de cítricos.</p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-baseline mb-2 border-b border-dashed border-gray-300 pb-2">
+                                <h3 class="text-xl font-bold text-gray-700">Matcha Ceremonial</h3>
+                                <span class="text-honey font-bold">$5.50</span>
+                            </div>
+                            <p class="text-gray-500 text-sm">Té verde japonés grado ceremonial batido con leche de avena.</p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-baseline mb-2 border-b border-dashed border-gray-300 pb-2">
+                                <h3 class="text-xl font-bold text-gray-700">Affogato al Caramello</h3>
+                                <span class="text-honey font-bold">$6.00</span>
+                            </div>
+                            <p class="text-gray-500 text-sm">Doble shot de espresso vertido sobre helado de vainilla artesanal y caramelo.</p>
+                        </div>
+                        <button onclick="toggleBottomMenu()" class="w-full mt-4 py-3 border-2 border-honey text-honey font-bold tracking-widest hover:bg-honey hover:text-white transition-colors uppercase text-sm">
+                            Ver Menú Completo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bakery Section with Grid -->
+    <section id="bakery" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-center font-hand text-5xl mb-16 text-sage">Del Horno</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="bg-cream rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+                    <div class="h-48 rounded-lg overflow-hidden mb-4 relative">
+                        <img src="img/almendras.JPG" class="w-full h-full object-cover scale-90" alt="Croissant de almendra">
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Croissant de Almendra</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed">Mantequilla francesa laminada a mano, relleno de crema de almendras y tostado a la perfección.</p>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-cream rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+                    <div class="h-48 rounded-lg overflow-hidden mb-4 relative">
+                        <img src="img/tostada.jpg" class="w-full h-full object-cover scale-90" alt="Tostada de aguacate">
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Tostada de Aguacate</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed">Pan de masa madre, aguacate smash, rabanitos, semillas de girasol y aceite de oliva.</p>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-cream rounded-xl p-6 hover:shadow-lg transition-all duration-300 group">
+                    <div class="h-48 rounded-lg overflow-hidden mb-4 relative">
+                         <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover scale-90" alt="Cupcake de zanahoria">
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Cupcake de Zanahoria</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed">Húmedo, especiado y cubierto con nuestro frosting especial de queso crema y nueces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Atmosphere / Quote -->
+    <section id="ambiente" class="py-24 bg-sage/10 relative overflow-hidden">
+        <div class="absolute top-0 right-0 opacity-10 transform translate-x-1/2 -translate-y-1/2 pointer-events-none">
+            <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#CCD5AE" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-5.4C93.5,8.4,82.2,21.1,70.9,31.4C59.6,41.7,48.3,49.6,37.1,56.5C25.9,63.4,14.8,69.3,-0.7,70.5C-16.2,71.7,-37.1,68.2,-52.4,58.3C-67.7,48.4,-77.4,32.1,-81.8,14.8C-86.2,-2.5,-85.3,-20.8,-76.2,-36.8C-67.1,-52.8,-49.8,-66.5,-32.8,-71.8C-15.8,-77.1,0.9,-74,17.6,-71" transform="translate(100 100)" />
+            </svg>
+        </div>
+        
+        <div class="max-w-3xl mx-auto text-center relative z-10 px-6">
+            <h2 class="font-hand text-6xl text-honey mb-8">"Slow Living"</h2>
+            <p class="text-gray-600 font-light text-lg mb-8">
+                Creemos que el buen café no debe apresurarse. Ven con tu libro favorito, tu portátil o tu mejor compañía. Aquí, la prisa se queda en la puerta.
+            </p>
+            <div class="flex justify-center gap-4">
+                 <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=2070&auto=format&fit=crop" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md" alt="Ambiente de cafetería">
+                 <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md mt-4" alt="Mesa con café">
+                 <img src="https://images.unsplash.com/photo-1463797221720-6b07e6426c24?q=80&w=2071&auto=format&fit=crop" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-md" alt="Interior de cafetería elegante">
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+                <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+                    <span>✉️</span> mctaggart.dev@gmail.com
+                </a>
+                <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+                    <span>📱</span> +507 6204-9480
+                </a>
+            </div>
+            <p class="text-gray-500 text-sm">
+                Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bottom Sheet Menu -->
+    <div id="bottomMenu" class="fixed inset-x-0 bottom-0 z-50 transform translate-y-full transition-transform duration-500 ease-in-out">
+        <!-- Handle for dragging/visual cue -->
+        <div class="flex justify-center -mb-4 relative z-10">
+             <button onclick="toggleBottomMenu()" class="bg-gray-900 text-white rounded-t-xl px-6 py-2 shadow-lg text-sm font-bold uppercase tracking-widest hover:bg-honey transition-colors">
+                Cerrar Menú
+             </button>
+        </div> 
+        
+        <div class="bg-white h-[60vh] md:h-[50vh] shadow-[0_-10px_40px_rgba(0,0,0,0.2)] rounded-t-3xl overflow-hidden border-t-4 border-honey relative">
+            <div class="h-full overflow-y-auto p-8 custom-scrollbar">
+                <h3 class="text-center font-hand text-4xl text-honey mb-8">Carta Completa</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Dynamic Content populated by JS could go here, but for static site we hardcode listing -->
+                    
+                    <!-- Café -->
+                    <div class="flex gap-4 items-start p-4 hover:bg-cream rounded-xl transition-colors">
+                        <img src="img/latte.jpg" class="w-20 h-20 object-cover rounded-lg" alt="Latte de lavanda">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Latte de Lavanda</h4>
+                            <p class="text-xs text-gray-500 mt-1">Espresso, leche vaporizada, sirope de lavanda.</p>
+                            <span class="text-honey font-bold text-sm block mt-2">$4.50</span>
+                        </div>
+                    </div>
+                     <div class="flex gap-4 items-start p-4 hover:bg-cream rounded-xl transition-colors">
+                        <img src="img/te.webp" class="w-20 h-20 object-cover rounded-lg" alt="Cold brew tonic">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Cold Brew Tonic</h4>
+                            <p class="text-xs text-gray-500 mt-1">Café macerado en frío 12h, tónica premium, limón.</p>
+                            <span class="text-honey font-bold text-sm block mt-2">$5.00</span>
+                        </div>
+                    </div>
+                     <div class="flex gap-4 items-start p-4 hover:bg-cream rounded-xl transition-colors">
+                        <img src="img/moca.webp" class="w-20 h-20 object-cover rounded-lg" alt="Mocha blanco">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Mocha Blanco</h4>
+                            <p class="text-xs text-gray-500 mt-1">Chocolate blanco suizo, espresso doble, crema.</p>
+                            <span class="text-honey font-bold text-sm block mt-2">$5.25</span>
+                        </div>
+                    </div>
+
+                    <!-- Bakery -->
+                     <div class="flex gap-4 items-start p-4 hover:bg-cream rounded-xl transition-colors">
+                        <img src="img/almendras.JPG" class="w-20 h-20 object-cover rounded-lg" alt="Croissant de almendra">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Croissant Almendra</h4>
+                            <p class="text-xs text-gray-500 mt-1">Mantequilla DOP, almendras tostadas.</p>
+                            <span class="text-honey font-bold text-sm block mt-2">$3.80</span>
+                        </div>
+                    </div>
+                     <div class="flex gap-4 items-start p-4 hover:bg-cream rounded-xl transition-colors">
+                        <img src="img/tostada.jpg" class="w-20 h-20 object-cover rounded-lg" alt="Tostada de aguacate">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Tostada Aguacate</h4>
+                            <p class="text-xs text-gray-500 mt-1">Masa madre, aguacate, aceite oliva virgen.</p>
+                            <span class="text-honey font-bold text-sm block mt-2">$8.50</span>
+                        </div>
+                    </div>
+                     <div class="flex gap-4 items-start p-4 hover:bg-cream rounded-xl transition-colors">
+                        <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=200&auto=format&fit=crop" class="w-20 h-20 object-cover rounded-lg" alt="Carrot cake">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Carrot Cake</h4>
+                            <p class="text-xs text-gray-500 mt-1">Especiado, nueces pecanas, frosting.</p>
+                            <span class="text-honey font-bold text-sm block mt-2">$4.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Bottom Menu Logic
+        function toggleBottomMenu() {
+            const menu = document.getElementById('bottomMenu');
+            // Check if class contains translate-y-full (hidden state)
+            if (menu.classList.contains('translate-y-full')) {
+                menu.classList.remove('translate-y-full');
+            } else {
+                menu.classList.add('translate-y-full');
+            }
+        }
+
+        // Carousel Logic
+        const carouselImages = [
+            "img/latte.jpg",
+            "img/capuchino.webp",
+            "img/affogato.jpg",
+            "img/te.webp",
+            "img/matcha.webp"
+        ];
+        
+        let currentIndex = 0;
+        const imgElement = document.getElementById('coffeeCarouselImg');
+        const indicatorsContainer = document.getElementById('carouselIndicators');
+
+        // Create indicators
+        carouselImages.forEach((_, idx) => {
+            const dot = document.createElement('button');
+            dot.className = `w-2 h-2 rounded-full transition-all ${idx === 0 ? 'bg-white w-4' : 'bg-white/50'}`;
+            dot.onclick = () => setSlide(idx);
+            indicatorsContainer.appendChild(dot);
+        });
+
+        function updateIndicators() {
+            const dots = indicatorsContainer.children;
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = `w-2 h-2 rounded-full transition-all ${i === currentIndex ? 'bg-white w-4' : 'bg-white/50'}`;
+            }
+        }
+
+        function setSlide(index) {
+            currentIndex = index;
+            imgElement.style.opacity = 0; // fade out
+            setTimeout(() => {
+                imgElement.src = carouselImages[currentIndex];
+                imgElement.style.opacity = 1; // fade in
+                updateIndicators();
+            }, 500);
+        }
+
+        setInterval(() => {
+            setSlide((currentIndex + 1) % carouselImages.length);
+        }, 5000);
+
+    </script>
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>Programa de Afiliados | Carlos Mc Taggart</title>
+    <meta name="description" content="Gana dinero promocionando mis servicios. Comisiones por venta: Tarjetas Digitales ($20), Landing Pages ($40) y Webs Profesionales ($60).">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .collaborator-card {
+            transition: all 0.3s ease;
+        }
+
+        .collaborator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+</head>
+<body class="bg-gray-50">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Header -->
+    <header class="gradient-bg text-white pt-32 pb-24 px-4">
+        <div class="max-w-4xl mx-auto text-center fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Programa de Afiliados</h1>
+            <p class="text-xl md:text-2xl opacity-90">Gana comisiones en efectivo por cada cliente que refieras.</p>
+        </div>
+    </header>
+
+    <!-- Welcome Message -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 -mt-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="bg-gradient-to-br from-white via-purple-50 to-indigo-50 rounded-3xl shadow-2xl p-8 md:p-12 border-2 border-purple-100 fade-in">
+                <div class="flex items-start gap-6">
+                    <div class="hidden md:block text-6xl">💰</div>
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">¡Empieza a Ganar Hoy Mismo!</h2>
+                        <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+                            ¿Conoces emprendedores, dueños de negocios o profesionales que necesitan presencia digital? 
+                            <span class="font-bold text-purple-700">Únete a nuestro programa de afiliados</span> y convierte esas conexiones en ingresos reales.
+                        </p>
+                        <p class="text-base text-gray-600 mb-6">
+                            Es simple: tú recomiendas mis servicios, yo cierro la venta, y tú recibes tu comisión en yappy o transferencia de inmediato. 
+                            <span class="font-semibold">Sin cuotas, sin complicaciones, solo ganancias directas.</span>
+                        </p>
+                        <div class="flex flex-wrap gap-4 items-center">
+                            <a href="https://whatsapp.com/channel/0029VbCe25P6rsQoFg3kgK3P" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-green-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+                                <span>Únete Ahora</span>
+                                <span>→</span>
+                            </a>
+                            <div class="flex items-center gap-2 text-sm text-gray-600">
+                                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                <span class="font-semibold">Ya hay afiliados ganando</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaborators Grid -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl font-bold text-gray-900">Tu Tabla de Comisiones</h2>
+                <p class="text-gray-600 mt-4 text-lg">Recibe tu pago inmediato una vez cerrada la venta.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg collaborator-card fade-in border border-gray-100 flex flex-col" style="animation-delay: 0.2s;">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full mx-auto mb-6 flex items-center justify-center text-4xl">
+                        📇
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 text-center mb-2">Tarjeta Digital</h3>
+                    <p class="text-gray-500 text-center mb-6">Ideal para presentación rápida</p>
+                    
+                    <div class="mt-auto bg-green-50 rounded-xl p-4 text-center border border-green-200">
+                        <p class="text-sm text-green-700 font-bold uppercase mb-1">Tu Comisión</p>
+                        <span class="text-4xl font-extrabold text-green-600">$20.00</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg collaborator-card fade-in border border-gray-100 flex flex-col items-center relative" style="animation-delay: 0.4s;">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full mx-auto mb-6 flex items-center justify-center text-4xl">
+                        🚀
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 text-center mb-2">Landing Page</h3>
+                    <p class="text-gray-500 text-center mb-6">Página de ventas optimizada</p>
+                    
+                    <div class="mt-auto bg-purple-50 rounded-xl p-4 text-center border border-purple-200 w-full">
+                        <p class="text-sm text-purple-700 font-bold uppercase mb-1">Tu Comisión</p>
+                        <span class="text-4xl font-extrabold text-purple-600">$40.00</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg collaborator-card fade-in border-2 border-indigo-500 transform md:-translate-y-4 flex flex-col items-center relative" style="animation-delay: 0.6s;">
+                    <span class="absolute top-0 bg-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-b-lg">Más Popular</span>
+                    <div class="w-20 h-20 bg-indigo-100 rounded-full mx-auto mb-6 flex items-center justify-center text-4xl">
+                        💻
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 text-center mb-2">Web Profesional</h3>
+                    <p class="text-gray-500 text-center mb-6">Sitio corporativo completo</p>
+                    
+                    <div class="mt-auto bg-indigo-50 rounded-xl p-4 text-center border border-indigo-200 w-full">
+                        <p class="text-sm text-indigo-700 font-bold uppercase mb-1">Tu Comisión</p>
+                        <span class="text-4xl font-extrabold text-indigo-600">$60.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detalles de los Planes -->
+            <div class="mt-20 fade-in">
+                <h3 class="text-3xl font-bold text-gray-900 mb-10 text-center">Detalles y Diferencias de los Planes</h3>
+                <div class="space-y-8">
+                    <!-- Detalle Tarjeta Digital -->
+                    <div class="bg-gray-50 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 border border-gray-100">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex-shrink-0 flex items-center justify-center text-3xl text-blue-600">📇</div>
+                        <div class="flex-grow text-center md:text-left">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">1. Tarjeta Digital ($125 USD)</h4>
+                            <p class="text-gray-600 mb-3">El punto de entrada. Una presentación rápida y efectiva.</p>
+                            <ul class="text-sm text-gray-500 space-y-1">
+                                <li>✨ Diseño basado en plantillas probadas</li>
+                                <li>📱 Botones de contacto directo (WhatsApp, Llamada)</li>
+                                <li>🔗 Enlaces a Redes Sociales</li>
+                                <li>⚡ Entrega rápida en 48 horas</li>
+                                <li>📄 1 Sola Página (Scroll corto)</li>
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-blue-200 text-blue-800 px-2 py-0.5 rounded text-xs font-bold">EXTRA</span>
+                                    <span>➕ Página adicional: $75 USD</span>
+                                </li>
+                                <li class="text-blue-600 font-medium">🎁 Incluye 1 mes gratis del Plan Técnico</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Detalle Landing Page -->
+                    <div class="bg-purple-50 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 border border-purple-100 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-purple-200 text-purple-800 text-xs px-2 py-1 rounded-bl-lg font-bold">MEJORA LA ANTERIOR</div>
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex-shrink-0 flex items-center justify-center text-3xl text-purple-600">🚀</div>
+                        <div class="flex-grow text-center md:text-left">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">2. Landing Page Express ($250 USD)</h4>
+                            <p class="text-gray-600 mb-3">Diseñada para vender. <span class="font-semibold text-purple-700">Incluye todo lo de la Tarjeta Digital, más:</span></p>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-purple-200 text-purple-700 px-2 py-0.5 rounded text-xs font-bold">MEJORA</span>
+                                    <span>🎨 Diseño 100% Personalizado a la marca (No plantillas)</span>
+                                </li>
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-purple-200 text-purple-700 px-2 py-0.5 rounded text-xs font-bold">NUEVO</span>
+                                    <span>📝 Formulario de captación de clientes potenciales</span>
+                                </li>
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-purple-200 text-purple-700 px-2 py-0.5 rounded text-xs font-bold">NUEVO</span>
+                                    <span>📊 Integración con Google Analytics (Métricas)</span>
+                                </li>
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-purple-200 text-purple-700 px-2 py-0.5 rounded text-xs font-bold">EXTRA</span>
+                                    <span>➕ Página adicional: $75 USD</span>
+                                </li>
+                                 <li class="text-purple-700 font-medium mt-1">🎁 Mantenimiento mejorado: 1 mes gratis del Plan Seguridad</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Detalle Web Profesional -->
+                    <div class="bg-indigo-50 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 border-2 border-indigo-100 shadow-md relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-indigo-500 text-white text-xs px-3 py-1 rounded-bl-lg font-bold">PLAN MÁXIMO</div>
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex-shrink-0 flex items-center justify-center text-3xl text-indigo-600">💻</div>
+                        <div class="flex-grow text-center md:text-left">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">3. Web Profesional ($480 USD)</h4>
+                            <p class="text-gray-600 mb-3">Sitio corporativo completo. <span class="font-semibold text-indigo-700">Incluye todo lo de la Landing Page, más:</span></p>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-indigo-200 text-indigo-800 px-2 py-0.5 rounded text-xs font-bold">MEJORA</span>
+                                    <span>🏢 Estructura Multi-página (Hasta 5 secciones: Inicio, Nosotros...)</span>
+                                </li>
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-indigo-200 text-indigo-800 px-2 py-0.5 rounded text-xs font-bold">EXTRA</span>
+                                    <span>➕ Página adicional: $75 USD</span>
+                                </li>
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-indigo-200 text-indigo-800 px-2 py-0.5 rounded text-xs font-bold">NUEVO</span>
+                                    <span>🔍 Optimización SEO Profesional para aparecer en Google</span>
+                                </li>
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-indigo-200 text-indigo-800 px-2 py-0.5 rounded text-xs font-bold">NUEVO</span>
+                                    <span>📧 Correos Corporativos Profesionales</span>
+                                </li>
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-indigo-200 text-indigo-800 px-2 py-0.5 rounded text-xs font-bold">AHORRO</span>
+                                    <span>🌐 Dominio .com GRATIS por 1 año</span>
+                                </li>
+                                <li class="text-indigo-700 font-medium mt-1">🎁 Mantenimiento VIP: 1 mes gratis del Plan Crecimiento</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Complementos Extra -->
+            <div class="mt-20 fade-in">
+                <h3 class="text-3xl font-bold text-gray-900 mb-10 text-center">Complementos Extra</h3>
+                
+                <div class="max-w-3xl mx-auto">
+                    <!-- Complemento IA -->
+                    <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 border border-indigo-100 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-indigo-600 text-white text-xs px-3 py-1 rounded-bl-lg font-bold">NUEVO</div>
+                        <div class="w-16 h-16 bg-white rounded-full flex-shrink-0 flex items-center justify-center text-3xl shadow-sm">🤖</div>
+                        <div class="flex-grow text-center md:text-left">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">Implementación de IA (+$150 USD)</h4>
+                            <p class="text-gray-600 mb-3">Potencia tu sitio con inteligencia artificial.</p>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span>💬 Chatbot de IA entrenado con tu información</span>
+                                </li>
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span>📝 Generación de contenido automático para blog</span>
+                                </li>
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span>⚙️ Automatización de respuestas a clientes</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Planes de Mantenimiento -->
+            <div class="mt-20 fade-in">
+                <h3 class="text-3xl font-bold text-gray-900 mb-10 text-center">Planes Mensuales de Mantenimiento</h3>
+                <div class="space-y-8">
+                    <!-- Plan Técnico -->
+                    <div class="bg-gray-50 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 border border-gray-100">
+                        <div class="w-16 h-16 bg-gray-200 rounded-full flex-shrink-0 flex items-center justify-center text-3xl text-gray-600">🛠️</div>
+                        <div class="flex-grow text-center md:text-left">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">1. Plan Técnico ($30/mes)</h4>
+                            <p class="text-gray-600 mb-3">Lo esencial para mantener el sitio online y estable.</p>
+                            <ul class="text-sm text-gray-500 space-y-1">
+                                <li>✨ Hosting Confiable (Sincronizado con WebsPTY)</li>
+                                <li>🔒 Certificado de Seguridad SSL</li>
+                                <li>👀 Monitoreo 24/7</li>
+                                <li>📞 Soporte vía Email (Respuesta 24h)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Plan Seguro -->
+                    <div class="bg-blue-50 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 border border-blue-100 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-blue-200 text-blue-800 text-xs px-2 py-1 rounded-bl-lg font-bold">MEJORA EL ANTERIOR</div>
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex-shrink-0 flex items-center justify-center text-3xl text-blue-600">🛡️</div>
+                        <div class="flex-grow text-center md:text-left">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">2. Plan Seguro ($50/mes)</h4>
+                            <p class="text-gray-600 mb-3">Mayor velocidad y protección. <span class="font-semibold text-blue-700">Incluye todo lo del Plan Técnico, más:</span></p>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-blue-200 text-blue-700 px-2 py-0.5 rounded text-xs font-bold">MEJORA</span>
+                                    <span>🚀 Hosting de Alta Velocidad (NVMe)</span>
+                                </li>
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-blue-200 text-blue-700 px-2 py-0.5 rounded text-xs font-bold">NUEVO</span>
+                                    <span>💾 Copias de Seguridad Semanales</span>
+                                </li>
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-blue-200 text-blue-700 px-2 py-0.5 rounded text-xs font-bold">CRÍTICO</span>
+                                    <span>🚫 Protección Anti-Hackeos</span>
+                                </li>
+                                <li class="text-blue-700 font-medium">✨ Soporte Prioritario</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Plan IA Hosting -->
+                    <div class="bg-indigo-50 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 border border-indigo-200 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-indigo-600 text-white text-xs px-3 py-1 rounded-bl-lg font-bold">NUEVO</div>
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex-shrink-0 flex items-center justify-center text-3xl text-indigo-600">🤖</div>
+                        <div class="flex-grow text-center md:text-left">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">4. Plan IA Hosting ($30/mes)</h4>
+                            <p class="text-gray-600 mb-3">Infraestructura optimizada para proyectos con inteligencia artificial.</p>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>✨ Servidor dedicado para IA</li>
+                                <li>🤖 Soporte para chatbots y generación de contenido</li>
+                                <li>🔒 Seguridad avanzada y backups automáticos</li>
+                                <li>📞 Soporte especializado IA</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Plan Crecimiento -->
+                    <div class="bg-purple-50 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 border-2 border-purple-100 shadow-md relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-purple-500 text-white text-xs px-3 py-1 rounded-bl-lg font-bold">RECOMENDADO</div>
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex-shrink-0 flex items-center justify-center text-3xl text-purple-600">📈</div>
+                        <div class="flex-grow text-center md:text-left">
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">5. Plan Crecimiento ($90/mes)</h4>
+                            <p class="text-gray-600 mb-3">Tu equipo de desarrollo disponible. <span class="font-semibold text-purple-700">Incluye todo lo del Plan Seguro y Plan IA Hosting, más:</span></p>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-purple-200 text-purple-800 px-2 py-0.5 rounded text-xs font-bold">VALOR</span>
+                                    <span>🔄 Hasta 3 secciones de cambios mensuales (Fotos/Texto)</span>
+                                </li>
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-purple-200 text-purple-800 px-2 py-0.5 rounded text-xs font-bold">NUEVO</span>
+                                    <span>📊 Reporte Mensual de Rendimiento</span>
+                                </li>
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-purple-200 text-purple-800 px-2 py-0.5 rounded text-xs font-bold">VIP</span>
+                                    <span>🌟 Soporte Directo por WhatsApp</span>
+                                </li>
+                                <li class="flex items-center gap-2 justify-center md:justify-start">
+                                    <span class="bg-purple-200 text-purple-800 px-2 py-0.5 rounded text-xs font-bold">INCLUYE</span>
+                                    <span>🤖 Hosting IA incluido</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicios y Estrategia de Venta -->
+            <div class="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12 fade-in">
+                <!-- Que ofrecemos -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                        <span class="bg-purple-100 p-2 rounded-lg text-purple-600">💎</span>
+                        ¿Qué ofrece WebsPTY?
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-sm">✓</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Calidad Premium</h4>
+                                <p class="text-gray-600 text-sm">Sitios web ultra-rápidos, seguros y con diseño moderno que destaca sobre la competencia.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-sm">✓</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Todo Incluido</h4>
+                                <p class="text-gray-600 text-sm">Hosting, dominio, correos corporativos y mantenimiento. El cliente no se preocupa por nada técnica.</p>
+                            </div>
+                        </div>
+                         <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-sm">✓</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Soporte Local</h4>
+                                <p class="text-gray-600 text-sm">Atención personalizada en Panamá. Hablamos su idioma y entendemos el mercado local.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Como ofrecerlo -->
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                        <span class="bg-blue-100 p-2 rounded-lg text-blue-600">📢</span>
+                        ¿Cómo ofrecerlo?
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3 items-start">
+                            <span class="text-xl">🎯</span>
+                            <div>
+                                <strong class="block text-gray-800">Identifica la necesidad</strong>
+                                <p class="text-gray-600 text-sm">Busca negocios que solo usen Instagram o tengan una web vieja y lenta.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-3 items-start">
+                            <span class="text-xl">💬</span>
+                            <div>
+                                <strong class="block text-gray-800">El Gancho</strong>
+                                <p class="text-gray-600 text-sm italic">"¿Sabías que el 80% de los clientes busca en Google antes de comprar? Si no tienes web, estás perdiendo ventas."</p>
+                            </div>
+                        </li>
+                         <li class="flex gap-3 items-start">
+                            <span class="text-xl">🤝</span>
+                            <div>
+                                <strong class="block text-gray-800">Cierra la cita</strong>
+                                <p class="text-gray-600 text-sm">No necesitas vender la web técnica. Solo consigue que se interesen y pásame el contacto. Yo me encargo del resto.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FAQ Section for Collaborators -->
+            <div class="mt-20 fade-in">
+                <h3 class="text-3xl font-bold text-gray-900 mb-10 text-center">Preguntas Frecuentes de Colaboradores</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <h4 class="font-bold text-gray-800 mb-2">¿Cuándo recibo mi pago?</h4>
+                        <p class="text-gray-600 text-sm">El mismo día que el cliente realiza el primer pago del proyecto (generalmente el 50% de anticipo). No tienes que esperar a que termine la web.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <h4 class="font-bold text-gray-800 mb-2">¿Cómo me pagan?</h4>
+                        <p class="text-gray-600 text-sm">Inmediato vía Yappy o transferencia bancaria local.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <h4 class="font-bold text-gray-800 mb-2">¿Necesito saber de código?</h4>
+                        <p class="text-gray-600 text-sm">¡Para nada! Tu trabajo es solo conectar al cliente conmigo. Yo me encargo de explicarle la parte técnica, venderle la solución y desarrollarla.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <h4 class="font-bold text-gray-800 mb-2">¿Hay límite de comisiones?</h4>
+                        <p class="text-gray-600 text-sm">No. Puedes traer tantos clientes como quieras. Si traes 5 clientes de Web Profesional en un mes, te llevas $300 directo a tu bolsillo.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-20 fade-in bg-gray-900 rounded-3xl p-8 md:p-12 text-white shadow-xl text-center relative overflow-hidden" style="animation-delay: 0.8s;">
+                <div class="relative z-10 w-full flex flex-col items-center">
+                    <h3 class="text-3xl font-bold mb-4">¿Listo para empezar a ganar?</h3>
+                    <p class="text-gray-300 mb-8 max-w-2xl">
+                        Contáctame para darte de alta como colaborador y recibir material de apoyo para tus ventas.
+                    </p>
+                    <a href="https://wa.me/50762049480?text=Hola,%20quiero%20ser%20colaborador%20y%20ganar%20comisiones" target="_blank" class="inline-flex items-center px-8 py-4 bg-green-500 text-white font-bold rounded-full hover:bg-green-600 transition-all transform hover:scale-105 shadow-lg gap-2">
+                        <span>💬</span> Chatear en WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-400">© 2026 Carlos Mc Taggart. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+<style>
+    /* Flotante IA */
+    #ia-assistant-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #6366f1 0%, #a21caf 100%);
+      border-radius: 50%;
+      box-shadow: 0 8px 32px 0 rgba(99,102,241,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: box-shadow 0.2s, transform 0.2s, width 0.3s, height 0.3s, border-radius 0.3s;
+    }
+    #ia-assistant-btn.expanded {
+      width: 340px;
+      max-width: 95vw;
+      height: 340px;
+      border-radius: 1.2rem;
+      right: 2.5vw;
+      bottom: 2.5vw;
+      box-shadow: 0 8px 32px 0 rgba(99,102,241,0.25);
+      background: #fff;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 0;
+    }
+    .dark #ia-assistant-btn.expanded {
+      background: #18181b;
+    }
+    @media (max-width: 768px) {
+      #ia-assistant-btn.expanded {
+        width: 95vw;
+      }
+    }
+    #ia-assistant-btn.expanded .ia-circle-icon {
+      display: none;
+    }
+    #ia-assistant-btn .ia-chat-content {
+      display: none;
+    }
+    #ia-assistant-btn.expanded .ia-chat-content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      padding: 1rem;
+    }
+    #ia-assistant-btn.expanded .ia-chat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: bold;
+      color: #6366f1;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-header {
+      color: #a5b4fc;
+    }
+    #ia-assistant-btn.expanded .ia-chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      background: #f8fafc;
+      border-radius: 0.8rem;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.97rem;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-messages {
+      background: #27272a;
+      color: #e5e7eb;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input {
+      display: flex;
+      border-top: 1px solid #444;
+      background: #fff;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input {
+      background: #18181b;
+      border-top: 1px solid #27272a;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input input {
+      flex: 1;
+      border: none;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      outline: none;
+      background: transparent;
+      color: #222;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input input {
+      color: #e5e7eb;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input button {
+      background: #6366f1;
+      color: #fff;
+      border: none;
+      padding: 0 1.2rem;
+      font-size: 1.2rem;
+      border-radius: 0 0 1.2rem 0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #ia-assistant-btn.expanded .ia-chat-input button:hover {
+      background: #a21caf;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input button {
+      background: #6366f1;
+      color: #fff;
+    }
+    .dark #ia-assistant-btn.expanded .ia-chat-input button:hover {
+      background: #a21caf;
+    }
+    
+    #ia-assistant-btn svg {
+      width: 2rem;
+      height: 2rem;
+      color: #fff;
+    }
+    @media (max-width: 768px) {
+      #ia-assistant-btn {
+        display: flex;
+      }
+    }
+  </style>
+  
+  <div id="ia-assistant-btn" title="Habla con FlorIA">
+    <span class="ia-circle-icon">
+      <img src="img/principal/logoIA.webp" alt="Logo IA" style="width: 58px; height: 58px; border-radius: 50%; object-fit: cover; display: block; box-shadow: 0 2px 8px rgba(0,0,0,0.10);" />
+    </span>
+    <div class="ia-chat-content">
+      <div class="ia-chat-header">
+        FlorIA - Tu Asistente Virtual
+        <button class="ia-chat-close" style="background:transparent;border:none;color:#6366f1;font-size:1.3rem;cursor:pointer;">×</button>
+      </div>
+      <div class="ia-chat-messages"></div>
+      <form class="ia-chat-input" autocomplete="off">
+        <input type="text" placeholder="Escribe tu pregunta..." required />
+        <button type="submit">➤</button>
+      </form>
+    </div>
+  </div>
+  
+ <script>
+      document.addEventListener('DOMContentLoaded', function() {
+      // IA: círculo flotante y chat unificado
+      const iaBtn = document.getElementById('ia-assistant-btn');
+      if (!iaBtn) return;
+      const iaCircleIcon = iaBtn.querySelector('.ia-circle-icon');
+      const iaChatContent = iaBtn.querySelector('.ia-chat-content');
+      const iaChatHeader = iaBtn.querySelector('.ia-chat-header');
+      const iaChatClose = iaBtn.querySelector('.ia-chat-close');
+      const iaChatMessages = iaBtn.querySelector('.ia-chat-messages');
+      if (!iaCircleIcon || !iaChatContent || !iaChatHeader || !iaChatClose || !iaChatMessages) return;
+      iaChatMessages.style.display = 'flex';
+      iaChatMessages.style.flexDirection = 'column';
+      iaChatMessages.style.gap = '0.3em';
+      const iaChatInput = iaBtn.querySelector('.ia-chat-input');
+      const iaInput = iaChatInput.querySelector('input');
+      const iaSubmitBtn = iaChatInput.querySelector('button[type="submit"]');
+      if (!iaChatInput || !iaInput || !iaSubmitBtn) return;
+
+      // Protección extrema: bloquear recarga accidental
+      let blockReload = false;
+      window.addEventListener('beforeunload', function(e) {
+        if (blockReload) {
+          e.preventDefault();
+          e.returnValue = '';
+          return '';
+        }
+      });
+
+      function isMobile() {
+        return window.innerWidth <= 768;
+      }
+
+      function setChatVisibility() {
+        iaBtn.style.display = 'flex';
+        if (!iaBtn.classList.contains('expanded')) {
+          iaCircleIcon.style.display = 'flex';
+          iaChatContent.style.display = 'none';
+        }
+      }
+      window.addEventListener('resize', setChatVisibility);
+      setChatVisibility();
+
+      // Cerrar chat IA al hacer click fuera
+      document.addEventListener('mousedown', function(e) {
+        if (
+          iaBtn.classList.contains('expanded') &&
+          !iaBtn.contains(e.target)
+        ) {
+          iaBtn.classList.remove('expanded');
+          iaCircleIcon.style.display = 'flex';
+          iaChatContent.style.display = 'none';
+          iaChatHeader.style.display = 'none';
+          iaChatMessages.style.display = 'none';
+          iaChatInput.style.display = 'none';
+          iaInput.blur();
+          blockReload = false;
+        }
+      });
+
+      // Abrir chat móvil
+      iaBtn.addEventListener('click', function(e) {
+        if (!iaBtn.classList.contains('expanded')) {
+          iaBtn.classList.add('expanded');
+          iaCircleIcon.style.display = 'none';
+          iaChatContent.style.display = 'flex';
+          // Restaurar display flex de los elementos internos
+          iaChatHeader.style.display = 'flex';
+          iaChatMessages.style.display = 'flex';
+          iaChatInput.style.display = 'flex';
+          iaInput.disabled = false;
+          iaInput.style.display = '';
+          iaInput.focus();
+          blockReload = true;
+        }
+      });
+      // Cerrar chat móvil
+      iaChatClose.addEventListener('click', function(e) {
+        e.stopPropagation(); // Evita que el click reabra el chat
+        if (iaBtn.classList.contains('expanded')) {
+          iaBtn.classList.remove('expanded');
+          iaCircleIcon.style.display = 'flex';
+          iaChatContent.style.display = 'none';
+          iaChatHeader.style.display = 'none';
+          iaChatMessages.style.display = 'none';
+          iaChatInput.style.display = 'none';
+          iaInput.blur();
+          blockReload = false;
+        }
+      });
+
+      // Integración real con backend de FlorIA
+      let chatProcessing = false;
+      iaChatInput.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        if (chatProcessing) return;
+        chatProcessing = true;
+        iaSubmitBtn.disabled = true;
+        const val = iaInput.value.trim();
+        if(!val) {
+          chatProcessing = false;
+          iaSubmitBtn.disabled = false;
+          return;
+        }
+        appendMsg(val, 'user');
+        iaInput.value = '';
+        // Feedback visual: FlorIA está pensando...
+        const thinkingId = Symbol('thinking');
+        let thinkingDiv = document.createElement('div');
+        thinkingDiv.style.display = 'flex';
+        thinkingDiv.style.width = '100%';
+        thinkingDiv.style.marginBottom = '0.1em';
+        thinkingDiv.style.justifyContent = 'flex-start';
+        let thinkingBubble = document.createElement('span');
+        thinkingBubble.style.display = 'inline-block';
+        thinkingBubble.style.padding = '0.5em 1em';
+        thinkingBubble.style.borderRadius = '1em';
+        thinkingBubble.style.maxWidth = '80%';
+        thinkingBubble.style.wordBreak = 'break-word';
+        thinkingBubble.style.boxSizing = 'border-box';
+        setBubbleStyle(thinkingBubble, 'bot');
+        thinkingBubble.textContent = 'FlorIA está pensando...';
+        thinkingBubble.setAttribute('data-from', 'bot');
+        thinkingBubble.setAttribute('data-thinking', 'true');
+        thinkingDiv.appendChild(thinkingBubble);
+        iaChatMessages.appendChild(thinkingDiv);
+        iaChatMessages.scrollTop = iaChatMessages.scrollHeight;
+
+        // Lazy loading: solo hace fetch al enviar
+        try {
+          const resp = await fetch('http://localhost:3001/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: val })
+          });
+          const data = await resp.json();
+          // Eliminar burbuja de pensando
+          iaChatMessages.removeChild(thinkingDiv);
+          if (resp.ok && data.response) {
+            appendMsg(data.response, 'bot');
+          } else if (data.error) {
+            appendMsg('Vas muy rápido, respira un poco e intenta de nuevo en un momento.', 'bot');
+          } else {
+            appendMsg('FlorIA no pudo responder en este momento. Intenta de nuevo más tarde.', 'bot');
+          }
+        } catch (err) {
+          iaChatMessages.removeChild(thinkingDiv);
+          appendMsg('FlorIA no pudo responder en este momento. Intenta de nuevo más tarde.', 'bot');
+        }
+        chatProcessing = false;
+        iaSubmitBtn.disabled = false;
+      });
+      function setBubbleStyle(bubble, from) {
+        if (from === 'user') {
+          bubble.style.background = '#6366f1';
+          bubble.style.color = '#fff';
+        } else {
+          if (document.documentElement.classList.contains('dark')) {
+            bubble.style.background = '#23232b';
+            bubble.style.color = '#e5e7eb';
+          } else {
+            bubble.style.background = '#f1f5f9';
+            bubble.style.color = '#222';
+          }
+        }
+      }
+
+      function escapeHTML(str) {
+        return str.replace(/[&<>'"`]/g, function (c) {
+          return ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;',
+            '`': '&#96;'
+          })[c];
+        });
+      }
+
+      function appendMsg(msg, from) {
+        const div = document.createElement('div');
+        div.style.display = 'flex';
+        div.style.width = '100%';
+        div.style.marginBottom = '0.1em';
+        div.style.justifyContent = from === 'user' ? 'flex-end' : 'flex-start';
+        const bubble = document.createElement('span');
+        bubble.style.display = 'inline-block';
+        bubble.style.padding = '0.5em 1em';
+        bubble.style.borderRadius = '1em';
+        bubble.style.maxWidth = '80%';
+        bubble.style.wordBreak = 'break-word';
+        bubble.style.boxSizing = 'border-box';
+        setBubbleStyle(bubble, from);
+        bubble.textContent = escapeHTML(msg);
+        // Guardar el tipo de burbuja para actualización
+        bubble.setAttribute('data-from', from);
+        div.appendChild(bubble);
+        iaChatMessages.appendChild(div);
+        iaChatMessages.scrollTop = iaChatMessages.scrollHeight;
+      }
+
+      // Actualizar burbujas existentes al cambiar el modo
+      function updateAllBubbles() {
+        iaChatMessages.querySelectorAll('span[data-from]').forEach(bubble => {
+          setBubbleStyle(bubble, bubble.getAttribute('data-from'));
+        });
+      }
+
+      // Detectar cambio de modo oscuro
+      const observer = new MutationObserver(() => {
+        updateAllBubbles();
+      });
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    });
+  </script>
+
+</body>
+</html>
