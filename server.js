@@ -18,31 +18,6 @@ if (process.env.SENTRY_DSN) {
 }
 
 const app = express();
-// Endpoint para obtener el sitekey de reCAPTCHA de forma segura
-app.get('/api/recaptcha-sitekey', (req, res) => {
-  const sitekey = process.env.RECAPTCHA_SITE_KEY || '';
-  if (!sitekey) {
-    return res.status(404).json({ error: 'Sitekey no configurado' });
-  }
-  res.json({ sitekey });
-});
-if (Sentry) {
-  app.use(Sentry.Handlers.requestHandler());
-}
-
-// 4. HTTPS obligatorio en producción
-if (process.env.NODE_ENV === 'production') {
-  app.use((req, res, next) => {
-    if (req.headers['x-forwarded-proto'] !== 'https') {
-      return res.redirect('https://' + req.headers.host + req.url);
-    }
-    next();
-  });
-}
-
-// 1. Configuraciones de seguridad
-app.use(helmet());
-app.use(express.json());
 
 // 2. CORS (Permitiendo tus puertos locales y tu dominio)
 if (process.env.NODE_ENV !== 'production') {
@@ -74,6 +49,41 @@ if (process.env.NODE_ENV !== 'production') {
     next();
   });
 }
+
+// Handler global para OPTIONS (preflight CORS)
+app.options('*', (req, res) => {
+  res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization,x-session-id');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.sendStatus(204);
+});
+
+// Endpoint para obtener el sitekey de reCAPTCHA de forma segura
+app.get('/api/recaptcha-sitekey', (req, res) => {
+  const sitekey = process.env.RECAPTCHA_SITE_KEY || '';
+  if (!sitekey) {
+    return res.status(404).json({ error: 'Sitekey no configurado' });
+  }
+  res.json({ sitekey });
+});
+if (Sentry) {
+  app.use(Sentry.Handlers.requestHandler());
+}
+
+// 4. HTTPS obligatorio en producción
+if (process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+      return res.redirect('https://' + req.headers.host + req.url);
+    }
+    next();
+  });
+}
+
+// 1. Configuraciones de seguridad
+app.use(helmet());
+app.use(express.json());
 
 // 3. Rate Limit (10 mensajes cada 2 minutos)
 const chatLimiter = rateLimit({
