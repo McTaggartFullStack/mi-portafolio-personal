@@ -22,7 +22,7 @@ steps:
     args:
       [
         'run', 'deploy', '${_SERVICE_NAME}',
-        '--image', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:latest',
+        '--image', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$SHORT_SHA',
         '--platform', 'managed',
         '--region', '${_REGION}',
         '--set-env-vars', 'NODE_ENV=production',
