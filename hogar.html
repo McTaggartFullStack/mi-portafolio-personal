@@ -1010,7 +1010,8 @@
 
         // Lazy loading: solo hace fetch al enviar
         try {
-          const resp = await fetch('http://localhost:3001/api/chat', {
+                    const apiBase = (window.WEBSPTY_API_BASE || 'https://mi-portafolio-personal-252448748566.us-east1.run.app').replace(/\/$/, '');
+                    const resp = await fetch(`${apiBase}/api/chat`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: val })
