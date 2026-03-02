@@ -44,7 +44,12 @@
   <script>
     // Configura aquí la URL pública real de tu backend (Cloud Run / API)
     // Ejemplo: window.WEBSPTY_API_BASE = 'https://mi-portafolio-personal-xxxxx-ue.a.run.app';
-    window.WEBSPTY_API_BASE = window.WEBSPTY_API_BASE || 'https://mi-portafolio-personal-252448748566.us-east1.run.app';
+    const __isLocalHost = !window.location.hostname || ['localhost', '127.0.0.1'].includes(window.location.hostname);
+    window.WEBSPTY_API_BASE = window.WEBSPTY_API_BASE || (
+      __isLocalHost
+        ? 'http://localhost:8080'
+        : 'https://mi-portafolio-personal-252448748566.us-east1.run.app'
+    );
   </script>
 
   <style>
@@ -2826,7 +2831,7 @@
       async function getRecaptchaSiteKey() {
         if (recaptchaSiteKey) return recaptchaSiteKey;
         const isGithubPages = /github\.io$/i.test(window.location.hostname);
-        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const isLocal = !window.location.hostname || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         const configuredBase = (window.WEBSPTY_API_BASE || '').trim().replace(/\/$/, '');
         const autoBase = isLocal ? 'http://localhost:8080' : window.location.origin;
         const backendBase = configuredBase || autoBase;
@@ -3022,7 +3027,7 @@
         try {
           const configuredBase = (window.WEBSPTY_API_BASE || '').trim().replace(/\/$/, '');
           const apiBase = configuredBase || (
-            (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+            (!window.location.hostname || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
               ? 'http://localhost:8080'
               : window.location.origin
           );

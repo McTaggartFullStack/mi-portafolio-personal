@@ -14,6 +14,7 @@ const logPath = path.join(__dirname, 'chat.log');
 const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET_KEY;
 const RECAPTCHA_SITE_KEY = process.env.RECAPTCHA_SITE_KEY;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_MODEL = 'gemini-2.5-flash';
 
 // Sentry opcional
 let Sentry;
@@ -273,14 +274,30 @@ app.post('/api/chat', dailyLimiter, chatLimiter, async (req, res) => {
   }
 
   try {
-    const model = genAI.getGenerativeModel({ model: 'models/gemini-2.5-flash' });
+    const candidateModels = [GEMINI_MODEL];
+
+    let response = null;
+    let lastModelError = null;
     const lastText = normalizedHistory[normalizedHistory.length - 1]?.parts?.[0]?.text || '';
-    const chat = model.startChat({ history: normalizedHistory.slice(0, -1) });
-    const result = await chat.sendMessage(lastText);
-    const response =
-      result?.response?.candidates?.[0]?.content?.parts?.[0]?.text ||
-      result?.response?.text?.() ||
-      'No se pudo obtener respuesta.';
+
+    for (const modelName of candidateModels) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName.startsWith('models/') ? modelName : `models/${modelName}` });
+        const chat = model.startChat({ history: normalizedHistory.slice(0, -1) });
+        const result = await chat.sendMessage(lastText);
+        response =
+          result?.response?.candidates?.[0]?.content?.parts?.[0]?.text ||
+          result?.response?.text?.() ||
+          'No se pudo obtener respuesta.';
+        break;
+      } catch (modelErr) {
+        lastModelError = modelErr;
+      }
+    }
+
+    if (!response) {
+      throw lastModelError || new Error('No hay modelos Gemini disponibles');
+    }
 
     return res.json({ response });
   } catch (err) {
@@ -295,8 +312,8 @@ app.post('/api/chat', dailyLimiter, chatLimiter, async (req, res) => {
       return res.status(429).json({ error: 'Has alcanzado el límite de peticiones de la IA. Espera unos minutos y vuelve a intentarlo.' });
     }
 
-    if (err?.message && err.message.includes('models/gemini-2.5-flash')) {
-      return res.status(500).json({ error: 'El modelo Gemini no está disponible. Revisa clave, permisos o cuota.' });
+    if (err?.message && /(model|gemini|not found|permission|quota|api key)/i.test(err.message)) {
+      return res.status(500).json({ error: 'Gemini no disponible. Verifica API key, modelo permitido y cuota del proyecto.' });
     }
 
     return res.status(500).json({ error: 'Error al procesar la solicitud.' });
