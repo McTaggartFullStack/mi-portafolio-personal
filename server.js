@@ -112,6 +112,14 @@ app.get('/api/health', (req, res) => {
   return res.json({ ok: true, service: 'backend', ts: new Date().toISOString() });
 });
 
+// Ayuda para navegadores: /api/chat solo acepta POST
+app.get('/api/chat', (req, res) => {
+  return res.status(405).json({
+    error: 'Método no permitido',
+    detail: 'Usa POST /api/chat con JSON { history, recaptchaToken } y header x-session-id.',
+  });
+});
+
 // Configuración IA
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY || '');
 const SYSTEM_INSTRUCTION = `

@@ -2921,6 +2921,25 @@
       }
 
       function loadRecaptcha(attempt=0) {
+        const getRecaptchaApi = () => {
+          if (!window.grecaptcha) return null;
+          if (typeof window.grecaptcha.render === 'function') {
+            return {
+              render: (id, opts) => window.grecaptcha.render(id, opts),
+              getResponse: (widgetId) => window.grecaptcha.getResponse(widgetId),
+              reset: (widgetId) => window.grecaptcha.reset(widgetId),
+            };
+          }
+          if (window.grecaptcha.enterprise && typeof window.grecaptcha.enterprise.render === 'function') {
+            return {
+              render: (id, opts) => window.grecaptcha.enterprise.render(id, opts),
+              getResponse: (widgetId) => window.grecaptcha.enterprise.getResponse(widgetId),
+              reset: (widgetId) => window.grecaptcha.enterprise.reset(widgetId),
+            };
+          }
+          return null;
+        };
+
         // Forzar visibilidad y tamaño correcto
         const recaptchaContainer = document.getElementById('recaptcha-container');
         const recaptchaWidget = document.getElementById('recaptcha-widget');
@@ -2937,14 +2956,15 @@
           recaptchaWidget.style.display = 'flex';
           recaptchaWidget.style.justifyContent = 'center';
         }
-        if (window.grecaptcha) {
+        const recaptchaApi = getRecaptchaApi();
+        if (recaptchaApi) {
           if (recaptchaWidgetId === null) {
             if (!recaptchaSiteKey) {
               setRecaptchaLoading(false);
               if (recaptchaWidget) recaptchaWidget.innerHTML = '<span style="color:red;font-size:14px;">Sitekey de captcha no disponible.</span>';
               return;
             }
-            recaptchaWidgetId = window.grecaptcha.render('recaptcha-widget', {
+            recaptchaWidgetId = recaptchaApi.render('recaptcha-widget', {
               'sitekey': recaptchaSiteKey,
               'theme': 'light'
             });
@@ -2956,7 +2976,7 @@
           // Si tras 10 intentos (5s) no carga, muestra mensaje de error
           if (attempt > 10) {
             setRecaptchaLoading(false);
-            if (recaptchaWidget) recaptchaWidget.innerHTML = '<span style="color:red;font-size:14px;">No se pudo cargar el captcha. Refresca la página.</span>';
+            if (recaptchaWidget) recaptchaWidget.innerHTML = '<span style="color:red;font-size:14px;">No se pudo inicializar el captcha. Refresca la página.</span>';
             return;
           }
           setTimeout(()=>loadRecaptcha(attempt+1), 500);
@@ -2980,7 +3000,11 @@
         if (!captchaValidated) {
           try {
             if (window.grecaptcha && recaptchaWidgetId !== null) {
-              recaptchaToken = window.grecaptcha.getResponse(recaptchaWidgetId);
+              if (typeof window.grecaptcha.getResponse === 'function') {
+                recaptchaToken = window.grecaptcha.getResponse(recaptchaWidgetId);
+              } else if (window.grecaptcha.enterprise && typeof window.grecaptcha.enterprise.getResponse === 'function') {
+                recaptchaToken = window.grecaptcha.enterprise.getResponse(recaptchaWidgetId);
+              }
             }
           } catch (err) {
             appendMsg('Error al obtener el captcha. Intenta de nuevo.', 'bot');
@@ -3046,7 +3070,11 @@
           }
           if (!captchaValidated) {
             if (window.grecaptcha && recaptchaWidgetId !== null) {
-              window.grecaptcha.reset(recaptchaWidgetId);
+              if (typeof window.grecaptcha.reset === 'function') {
+                window.grecaptcha.reset(recaptchaWidgetId);
+              } else if (window.grecaptcha.enterprise && typeof window.grecaptcha.enterprise.reset === 'function') {
+                window.grecaptcha.enterprise.reset(recaptchaWidgetId);
+              }
             }
             // Si el captcha fue válido, ocultar el widget y marcar validado para toda la sesión
             if (resp.ok && data.response) {
