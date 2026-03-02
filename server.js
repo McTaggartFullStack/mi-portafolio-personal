@@ -5,110 +5,119 @@ const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
+const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
+
+const app = express();
 const logPath = path.join(__dirname, 'chat.log');
+const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET_KEY;
+const RECAPTCHA_SITE_KEY = process.env.RECAPTCHA_SITE_KEY;
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
-
-// 6. Monitorización de errores con Sentry (opcional)
+// Sentry opcional
 let Sentry;
 if (process.env.SENTRY_DSN) {
   Sentry = require('@sentry/node');
   Sentry.init({ dsn: process.env.SENTRY_DSN });
 }
 
-const app = express();
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+}
 
-// 2. CORS (Permitiendo tus puertos locales y tu dominio)
+function appendLog(message) {
+  fs.appendFile(logPath, `${message}\n`, () => {});
+}
+
+// CORS
 if (process.env.NODE_ENV !== 'production') {
-  // Permitir cualquier origen en desarrollo
   app.use(cors({ origin: true }));
 } else {
-  // Producción: solo orígenes permitidos (con y sin www)
-  const allowedOrigins = [
+  const allowedOrigins = new Set([
     'https://www.webspty.dev',
     'https://webspty.dev',
-    'http://webspty.dev',
-    'http://www.webspty.dev',
-    'webspty.dev',
-    'www.webspty.dev',
-  ];
+  ]);
+
   app.use((req, res, next) => {
     const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
+    if (origin && allowedOrigins.has(origin)) {
       res.header('Access-Control-Allow-Origin', origin);
       res.header('Vary', 'Origin');
-      res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+      res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
       res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization,x-session-id');
       res.header('Access-Control-Allow-Credentials', 'true');
     }
-    if (req.method === 'OPTIONS') {
-      // Siempre responder a preflight con los headers
-      return res.sendStatus(204);
-    }
+    if (req.method === 'OPTIONS') return res.sendStatus(204);
     next();
   });
 }
 
-// Handler global para OPTIONS (preflight CORS)
-
-// Endpoint para obtener el sitekey de reCAPTCHA de forma segura
-app.get('/api/recaptcha-sitekey', (req, res) => {
-  const sitekey = process.env.RECAPTCHA_SITE_KEY || '';
-  if (!sitekey) {
-    return res.status(404).json({ error: 'Sitekey no configurado' });
-  }
-  res.json({ sitekey });
-});
-if (Sentry) {
+if (Sentry?.Handlers?.requestHandler) {
   app.use(Sentry.Handlers.requestHandler());
 }
 
-// 4. HTTPS obligatorio en producción
+// Forzar HTTPS en producción
 if (process.env.NODE_ENV === 'production') {
   app.use((req, res, next) => {
-    if (req.headers['x-forwarded-proto'] !== 'https') {
-      return res.redirect('https://' + req.headers.host + req.url);
+    if (req.headers['x-forwarded-proto'] && req.headers['x-forwarded-proto'] !== 'https') {
+      return res.redirect(`https://${req.headers.host}${req.url}`);
     }
     next();
   });
 }
 
-// 1. Configuraciones de seguridad
+// Seguridad
 app.use(helmet());
-app.use(express.json());
+app.use(express.json({ limit: '32kb' }));
 
-// 3. Rate Limit (10 mensajes cada 2 minutos)
+// Rate limits
 const chatLimiter = rateLimit({
-  windowMs: 2 * 60 * 10, 
-  max: 100,
+  windowMs: 60 * 1000,
+  max: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
   handler: function (req, res) {
-    // Log rate limit event
-    const logEntry = `[${new Date().toISOString()}] RATE LIMIT | IP: ${req.ip}\n`;
-    fs.appendFile(logPath, logEntry, () => {});
-    res.status(429).json({ error: 'Límite de 5 mensajes por minuto alcanzado. Esto asegura respuestas óptimas y sin demoras. En 60 segundos continuamos. Gracias por la comprensión. 😌 Alternativa: mctaggart.dev@gmail.com' });
-  }
+    appendLog(`[${new Date().toISOString()}] RATE LIMIT | IP: ${req.ip}`);
+    res.status(429).json({
+      error: 'Límite de 5 mensajes por minuto alcanzado. Intenta nuevamente en 60 segundos.',
+    });
+  },
 });
 
-// Rate limit diario por IP (30 mensajes por día)
 const dailyLimiter = rateLimit({
-  windowMs: 24 * 60 * 60 * 1000, // 24 horas
+  windowMs: 24 * 60 * 60 * 1000,
   max: 30,
+  standardHeaders: true,
+  legacyHeaders: false,
   handler: function (req, res) {
-    const logEntry = `[${new Date().toISOString()}] DAILY LIMIT | IP: ${req.ip}\n`;
-    fs.appendFile(logPath, logEntry, () => {});
-    res.status(429).json({ error: 'Límite diario de 30 mensajes alcanzado. Vuelve mañana o contáctame por WhatsApp al +507 6204-9480 o Gmail mctaggart.dev@gmail.com.' });
-  }
+    appendLog(`[${new Date().toISOString()}] DAILY LIMIT | IP: ${req.ip}`);
+    res.status(429).json({
+      error: 'Límite diario de 30 mensajes alcanzado. Vuelve mañana o contáctame por WhatsApp al +507 6204-9480.',
+    });
+  },
 });
 
-// 4. Inicialización de Google AI
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+// Endpoint para exponer sitekey segura al frontend
+app.get('/api/recaptcha-sitekey', (req, res) => {
+  if (!RECAPTCHA_SITE_KEY) {
+    return res.status(404).json({ error: 'Sitekey no configurado.' });
+  }
+  return res.json({ sitekey: RECAPTCHA_SITE_KEY });
+});
 
+// Health check
+app.get('/api/health', (req, res) => {
+  return res.json({ ok: true, service: 'backend', ts: new Date().toISOString() });
+});
+
+// Configuración IA
+const genAI = new GoogleGenerativeAI(GEMINI_API_KEY || '');
 const SYSTEM_INSTRUCTION = `
-Eres FlorIA, asistente oficial de webspty Tu misión: vender servicios con respuestas ultra-concisas.
+Eres FlorIA, asistente oficial de webspty. Tu misión: vender servicios con respuestas ultra-concisas.
 
 REGLAS DE ORO:
-- Máximo 20 palabras por respuesta a no ser que el usuario pregunte algo, ahi si tu limite es mayor.
+- Máximo 20 palabras por respuesta a no ser que el usuario pregunte algo, ahí sí tu límite es mayor.
 - No hablar del programa de afiliados salvo que lo pidan.
 - Siempre termina con una pregunta relacionada.
 - Solo respondes sobre webspty.dev. Si preguntan otra cosa, di que no puedes ayudar.
@@ -118,157 +127,195 @@ SERVICIOS Y PRECIOS:
 - Landing page Express: $250
 - Web Profesional: $480 (SEO + dominio .com gratis 1 año)
 - E-commerce: $1250
-- IA Extra: $150 implementación + $30/mes hosting exclusivo
+- IA Extra: $350 implementación + $30/mes hosting exclusivo
 
 MANTENIMIENTO:
 Planes de $30, $50 y $90 mensuales.
- -plan tecnico: 30$ incluye hoosting asociado a tu dominio, actualizaciones de seguridad y soporte técnico.
- -plan seguro: 50$ incluye todo lo del plan técnico más optimizaciones de rendimiento, hosting propio de alto nivel y monitoreo proactivo.
- -plan de crecimiento: 90$ incluye todo lo del plan seguro mas actualizaciones de hasta 3 secciones mensuales, hosting premium con recursos dedicados, plan de IA y soporte prioritario.
- -plan de IA: 30$ incluye el hosting de una inteligencia artificial dedicada al sitio web
+- plan técnico: $30 incluye hosting asociado a tu dominio, actualizaciones de seguridad y soporte técnico.
+- plan seguro: $50 incluye todo lo del plan técnico más optimizaciones de rendimiento, hosting propio de alto nivel y monitoreo proactivo.
+- plan de crecimiento: $90 incluye todo lo del plan seguro más actualizaciones de hasta 3 secciones mensuales, hosting premium con recursos dedicados, plan de IA y soporte prioritario.
+- plan de IA: $30 incluye el hosting de una inteligencia artificial dedicada al sitio web.
 
 AFILIADOS (solo si preguntan):
 - $20 por Tarjeta Digital
 - $40 por Landing page Express
 - $60 por Web Profesional
-- Pago inmediato: efectivo, transferencia o yappy
-
 
 CONTACTO:
 Carlos Mc Taggart | WhatsApp: +507 6204-9480
 `;
 
-
-// Utilidad para limpiar el mensaje
 function sanitizeMessage(msg) {
   if (typeof msg !== 'string') return '';
-  // Limpiar HTML, eliminar scripts, filtrar caracteres peligrosos y normalizar espacios
   let clean = validator.stripLow(msg, true);
-  clean = validator.escape(clean);
   clean = clean.replace(/<script.*?>.*?<\/script>/gi, '');
+  clean = clean.replace(/<[^>]+>/g, '');
+  clean = validator.escape(clean);
   clean = validator.trim(clean);
-  // Limitar tamaño
-  if (clean.length > 100) {
-    clean = clean.slice(0, 100);
-  }
+  if (clean.length > 100) clean = clean.slice(0, 100);
   return clean;
 }
 
-// 5. RUTA DEL CHAT (Con sistema de reintento automático y validación reCAPTCHA)
-const axios = require('axios');
-const RECAPTCHA_SECRET = '6LfKqm8sAAAAAN7Kakn9lPSRiyaMjze3WPo38JWr';
-// Simple in-memory session validation store
-const validatedSessions = {};
+function isValidHistory(arr) {
+  if (!Array.isArray(arr)) return false;
+  return arr.every((msg) =>
+    (msg.role === 'user' || msg.role === 'model') &&
+    Array.isArray(msg.parts) &&
+    msg.parts.every((part) => typeof part.text === 'string')
+  );
+}
+
+// Sesiones captcha con TTL
+const SESSION_TTL_MS = 30 * 60 * 1000;
+const validatedSessions = new Map();
+
+function isSessionValidated(sessionId) {
+  const expiresAt = validatedSessions.get(sessionId);
+  if (!expiresAt) return false;
+  if (Date.now() > expiresAt) {
+    validatedSessions.delete(sessionId);
+    return false;
+  }
+  return true;
+}
+
+function markSessionValidated(sessionId) {
+  validatedSessions.set(sessionId, Date.now() + SESSION_TTL_MS);
+}
+
+setInterval(() => {
+  const now = Date.now();
+  for (const [sessionId, expiresAt] of validatedSessions.entries()) {
+    if (expiresAt <= now) validatedSessions.delete(sessionId);
+  }
+}, 5 * 60 * 1000).unref();
 
 app.post('/api/chat', dailyLimiter, chatLimiter, async (req, res) => {
   let { message, history, recaptchaToken } = req.body;
-  // Session ID from header (frontend must send this)
   const sessionId = req.headers['x-session-id'];
-  if (!sessionId) {
+
+  if (!GEMINI_API_KEY) {
+    return res.status(500).json({ error: 'GEMINI_API_KEY no configurado en el servidor.' });
+  }
+
+  if (!sessionId || typeof sessionId !== 'string' || sessionId.length < 8 || sessionId.length > 200) {
     return res.status(400).json({ error: 'Falta el identificador de sesión.' });
   }
-  // Only require captcha if session is not validated
-  if (!validatedSessions[sessionId]) {
+
+  if (!RECAPTCHA_SECRET) {
+    return res.status(500).json({ error: 'reCAPTCHA no configurado en el servidor.' });
+  }
+
+  if (!isSessionValidated(sessionId)) {
     if (!recaptchaToken) {
       return res.status(400).json({ error: 'Falta el token de reCAPTCHA.' });
     }
+
     try {
-      const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET}&response=${recaptchaToken}`;
-      const verifyResp = await axios.post(verifyUrl);
-      if (!verifyResp.data.success) {
+      const verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
+      const body = new URLSearchParams({
+        secret: RECAPTCHA_SECRET,
+        response: recaptchaToken,
+      }).toString();
+
+      const verifyResp = await axios.post(verifyUrl, body, {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        timeout: 8000,
+      });
+
+      if (!verifyResp?.data?.success) {
         return res.status(403).json({ error: 'No se pudo verificar el captcha. Intenta de nuevo.' });
       }
-      // Mark session as validated
-      validatedSessions[sessionId] = true;
+
+      markSessionValidated(sessionId);
     } catch (captchaErr) {
+      appendLog(`[${new Date().toISOString()}] CAPTCHA ERROR | IP: ${req.ip} | ${captchaErr.message || captchaErr}`);
       return res.status(500).json({ error: 'Error al verificar el captcha.' });
     }
   }
 
-  // ...existing code...
-  // message: string (optional, for legacy)
-  // history: array of { role: 'user'|'model', parts: [{ text: string }] }
-  // 8. Validación de estructura de history
-  function isValidHistory(arr) {
-    if (!Array.isArray(arr)) return false;
-    return arr.every(msg =>
-      (msg.role === 'user' || msg.role === 'model') &&
-      Array.isArray(msg.parts) &&
-      msg.parts.every(part => typeof part.text === 'string')
-    );
-  }
+  let normalizedHistory;
+
   if (!history || !isValidHistory(history)) {
-    // Fallback: legacy single-message mode
     if (!message || typeof message !== 'string') {
       return res.status(400).json({ error: 'Falta el mensaje del usuario.' });
     }
+
     message = sanitizeMessage(message);
     if (!message.trim()) {
       return res.status(400).json({ error: 'El mensaje no es válido.' });
     }
-    if (message.length > 100) {
-      return res.status(400).json({ error: 'El mensaje es demasiado largo. Máximo 100 caracteres.' });
-    }
-    history = [
-      { role: 'user', parts: [{ text: SYSTEM_INSTRUCTION }] },
-      { role: 'user', parts: [{ text: message }] }
+
+    normalizedHistory = [
+      { role: 'user', parts: [{ text: SYSTEM_INSTRUCTION.trim() }] },
+      { role: 'user', parts: [{ text: message }] },
     ];
   } else {
-    // Sanitize all user messages in history
-    history = history.map((msg, idx) => {
-      if (msg.role === 'user' && msg.parts && Array.isArray(msg.parts)) {
-        return {
-          ...msg,
-          parts: msg.parts.map(part => {
-            let sanitized = sanitizeMessage(part.text);
-            if (sanitized.length > 100) {
-              sanitized = sanitized.slice(0, 100);
-            }
-            return { ...part, text: sanitized };
-          })
-        };
-      }
-      return msg;
+    normalizedHistory = history.map((msg) => {
+      if (msg.role !== 'user') return msg;
+      return {
+        ...msg,
+        parts: msg.parts.map((part) => ({ ...part, text: sanitizeMessage(part.text) })),
+      };
     });
-    // Always prepend SYSTEM_INSTRUCTION as the first message
-    if (!history.length || history[0].parts[0].text !== SYSTEM_INSTRUCTION.trim()) {
-      history = [
+
+    const firstHistoryText = normalizedHistory?.[0]?.parts?.[0]?.text || '';
+    if (firstHistoryText.trim() !== SYSTEM_INSTRUCTION.trim()) {
+      normalizedHistory = [
         { role: 'user', parts: [{ text: SYSTEM_INSTRUCTION.trim() }] },
-        ...history
+        ...normalizedHistory,
       ];
     }
-    // Limit to last 10 messages (excluding SYSTEM_INSTRUCTION)
-    if (history.length > 11) {
-      history = [history[0], ...history.slice(-10)];
+
+    if (normalizedHistory.length > 11) {
+      normalizedHistory = [normalizedHistory[0], ...normalizedHistory.slice(-10)];
     }
   }
+
   try {
-    const model = genAI.getGenerativeModel({ model: "models/gemini-2.5-flash" });
-    const chat = model.startChat({ history });
-    const result = await chat.sendMessage(history[history.length - 1].parts[0].text);
-    const response = result?.response?.candidates?.[0]?.content?.parts?.[0]?.text || 'No se pudo obtener respuesta.';
-    res.json({ response });
+    const model = genAI.getGenerativeModel({ model: 'models/gemini-2.5-flash' });
+    const lastText = normalizedHistory[normalizedHistory.length - 1]?.parts?.[0]?.text || '';
+    const chat = model.startChat({ history: normalizedHistory.slice(0, -1) });
+    const result = await chat.sendMessage(lastText);
+    const response =
+      result?.response?.candidates?.[0]?.content?.parts?.[0]?.text ||
+      result?.response?.text?.() ||
+      'No se pudo obtener respuesta.';
+
+    return res.json({ response });
   } catch (err) {
-    // Log error event
-    const logEntry = `[${new Date().toISOString()}] ERROR | IP: ${req.ip} | ${err.message || err.toString()}\n`;
-    fs.appendFile(logPath, logEntry, () => {});
+    appendLog(`[${new Date().toISOString()}] ERROR | IP: ${req.ip} | ${err.message || err.toString()}`);
     if (Sentry) Sentry.captureException(err);
-    console.error('Error en /api/chat:', err);
-    // Manejo específico para errores de cuota/429
-    if (err.status === 429 || (err.message && err.message.includes('429')) || (err.statusText && err.statusText.includes('Too Many Requests'))) {
+
+    if (
+      err?.status === 429 ||
+      (err?.message && err.message.includes('429')) ||
+      (err?.statusText && err.statusText.includes('Too Many Requests'))
+    ) {
       return res.status(429).json({ error: 'Has alcanzado el límite de peticiones de la IA. Espera unos minutos y vuelve a intentarlo.' });
     }
-    if (err.message && err.message.includes('models/gemini-pro')) {
-      return res.status(500).json({ error: 'El modelo Gemini no está disponible. Por favor, revisa tu clave o cuota.' });
+
+    if (err?.message && err.message.includes('models/gemini-2.5-flash')) {
+      return res.status(500).json({ error: 'El modelo Gemini no está disponible. Revisa clave, permisos o cuota.' });
     }
-    res.status(500).json({ error: 'Error al procesar la solicitud.' });
+
+    return res.status(500).json({ error: 'Error al procesar la solicitud.' });
   }
-if (Sentry) {
+});
+
+if (Sentry?.Handlers?.errorHandler) {
   app.use(Sentry.Handlers.errorHandler());
 }
-});
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
+
+process.on('unhandledRejection', (reason) => {
+  appendLog(`[${new Date().toISOString()}] UNHANDLED_REJECTION | ${reason?.stack || reason}`);
+});
+
+process.on('uncaughtException', (err) => {
+  appendLog(`[${new Date().toISOString()}] UNCAUGHT_EXCEPTION | ${err?.stack || err}`);
 });

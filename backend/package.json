@@ -1,5 +1,6 @@
 {
-  "dependencies": {
-    "dotenv": "^17.3.1"
-  }
+  "name": "backend-deprecated",
+  "private": true,
+  "description": "Deprecated folder. Use root server.js and root package.json",
+  "version": "0.0.0"
 }

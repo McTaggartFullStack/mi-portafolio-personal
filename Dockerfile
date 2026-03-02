@@ -1,23 +1,20 @@
-# Usa una imagen oficial de Node.js
-FROM node:18
+FROM node:20-alpine
 
-# Crea directorio de trabajo
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Copia package.json y package-lock.json primero (para aprovechar cache de dependencias)
-COPY package*.json ./
-
-# Instala dependencias
-RUN npm install --omit=dev
-
-# Copia el resto del código
-COPY . .
-
-# Expone el puerto que Cloud Run usará
-EXPOSE 8080
-
-# Define la variable de entorno PORT
+ENV NODE_ENV=production
 ENV PORT=8080
 
-# Comando de inicio
-CMD [ "npm", "start" ]
+# Dependencias (usa lockfile para builds reproducibles)
+COPY package*.json ./
+RUN npm ci --omit=dev && npm cache clean --force
+
+# Solo backend necesario
+COPY server.js ./
+
+# Usuario no-root
+USER node
+
+EXPOSE 8080
+
+CMD ["npm", "start"]

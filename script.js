@@ -47,6 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // Navbar background change on scroll
 let lastScroll = 0;
 const navbar = document.getElementById('navbar');
+const heroSection = document.querySelector('#inicio');
+const parallaxElements = heroSection ? heroSection.querySelectorAll('.blob') : [];
 let ticking = false; // Optimization variable
 
 window.addEventListener('scroll', () => {
@@ -54,19 +56,28 @@ window.addEventListener('scroll', () => {
     if (!ticking) {
         window.requestAnimationFrame(() => {
             const currentScroll = window.pageYOffset;
-            
-            if (currentScroll <= 0) {
-                navbar.classList.remove('shadow-md');
-                navbar.style.transform = 'translateY(0)';
-            } else if (currentScroll > lastScroll && currentScroll > 100) {
-                // Scrolling down
-                navbar.style.transform = 'translateY(-100%)';
-            } else {
-                // Scrolling up
-                navbar.style.transform = 'translateY(0)';
-                navbar.classList.add('shadow-md');
+
+            if (navbar) {
+                if (currentScroll <= 0) {
+                    navbar.classList.remove('shadow-md');
+                    navbar.style.transform = 'translateY(0)';
+                } else if (currentScroll > lastScroll && currentScroll > 100) {
+                    // Scrolling down
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    // Scrolling up
+                    navbar.style.transform = 'translateY(0)';
+                    navbar.classList.add('shadow-md');
+                }
             }
-            
+
+            if (heroSection && window.innerWidth >= 768) {
+                parallaxElements.forEach((element, index) => {
+                    const speed = 0.5 + (index * 0.1);
+                    element.style.transform = `translateY(${currentScroll * speed}px)`;
+                });
+            }
+
             lastScroll = currentScroll;
             ticking = false;
         });
@@ -74,21 +85,6 @@ window.addEventListener('scroll', () => {
         ticking = true;
     }
 });
-
-// Parallax effect for hero section
-const heroSection = document.querySelector('#inicio');
-if (heroSection) {
-    window.addEventListener('scroll', () => {
-        if (window.innerWidth < 768) return; // Optimization: Disable on mobile
-        const scrolled = window.pageYOffset;
-        const parallaxElements = heroSection.querySelectorAll('.blob');
-        
-        parallaxElements.forEach((element, index) => {
-            const speed = 0.5 + (index * 0.1);
-            element.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    });
-}
 
 // Add shimmer effect to buttons on hover
 const buttons = document.querySelectorAll('a[class*="bg-gradient"], a[class*="bg-purple"], a[class*="bg-white"]');

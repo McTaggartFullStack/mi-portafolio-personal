@@ -1,0 +1,25 @@
+# Dependencies and VCS
+node_modules/
+backend/node_modules/
+.git/
+.vscode/
+
+# Secrets/logs/env
+.env
+.env.*
+chat.log
+backend/chat.log
+
+# OS noise
+.DS_Store
+
+# Frontend/static heavy files not required for API container
+img/
+*.html
+*.py
+CNAME
+robots.txt
+sitemap.xml
+
+# Legacy backend folder
+backend/
