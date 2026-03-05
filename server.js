@@ -339,7 +339,18 @@ app.post('/api/chat', dailyLimiter, chatLimiter, async (req, res) => {
 
 // Catch-all route para SPA y servir index.html por defecto para cualquier ruta no mapeada
 app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(process.cwd(), 'index.html'));
+  const pathsToTry = [
+    path.join(process.cwd(), 'index.html'),
+    path.join(__dirname, 'index.html'),
+    '/workspace/index.html' // típica en Cloud Build / Cloud Run
+  ];
+  
+  for (let p of pathsToTry) {
+    if (fs.existsSync(p)) {
+      return res.sendFile(p);
+    }
+  }
+  res.status(404).send(`Archivo index.html no encontrado. Rutas probadas: ${pathsToTry.join(', ')}`);
 });
 
 if (Sentry?.Handlers?.errorHandler) {
