@@ -14,7 +14,7 @@ const logPath = path.join(__dirname, 'chat.log');
 const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET_KEY;
 const RECAPTCHA_SITE_KEY = process.env.RECAPTCHA_SITE_KEY;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_MODEL = 'gemini-2.5-flash';
+const GEMINI_MODEL = 'gemini-3.1-flash-lite';
 
 // Sentry opcional
 let Sentry;
@@ -333,8 +333,8 @@ if (Sentry?.Handlers?.errorHandler) {
 }
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Servidor corriendo en el puerto ${PORT} (0.0.0.0)`);
 });
 
 process.on('unhandledRejection', (reason) => {
