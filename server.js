@@ -31,14 +31,14 @@ function appendLog(message) {
   fs.appendFile(logPath, `${message}\n`, () => {});
 }
 
-// CORS (Comentado temporalmente por depuración radical)
-/*
+// CORS
 if (process.env.NODE_ENV !== 'production') {
   app.use(cors({ origin: true }));
 } else {
   const allowedOrigins = new Set([
     'https://www.webspty.dev',
     'https://webspty.dev',
+    'https://mi-portafolio-personal-252448748566.us-east1.run.app'
   ]);
 
   app.use((req, res, next) => {
@@ -54,7 +54,6 @@ if (process.env.NODE_ENV !== 'production') {
     next();
   });
 }
-*/
 
 if (Sentry?.Handlers?.requestHandler) {
   app.use(Sentry.Handlers.requestHandler());
