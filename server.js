@@ -69,8 +69,13 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Seguridad
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: false, // Desactivado para no bloquear scripts o estilos en el frontend si no están configurados explicitamente
+}));
 app.use(express.json({ limit: '32kb' }));
+
+// Archivos estáticos
+app.use(express.static(__dirname));
 
 // Rate limits
 const chatLimiter = rateLimit({
@@ -326,6 +331,11 @@ app.post('/api/chat', dailyLimiter, chatLimiter, async (req, res) => {
 
     return res.status(500).json({ error: 'Error al procesar la solicitud.' });
   }
+});
+
+// Catch-all route para SPA y servir index.html por defecto para cualquier ruta no mapeada
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 if (Sentry?.Handlers?.errorHandler) {
