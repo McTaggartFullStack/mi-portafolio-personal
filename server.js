@@ -112,10 +112,8 @@ const dailyLimiter = rateLimit({
 
 // Endpoint para exponer sitekey segura al frontend
 app.get('/api/recaptcha-sitekey', (req, res) => {
-  if (!RECAPTCHA_SITE_KEY) {
-    return res.status(404).json({ error: 'Sitekey no configurado.' });
-  }
-  return res.json({ sitekey: RECAPTCHA_SITE_KEY });
+  const siteKey = RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'; // Usamos una key de prueba de Google si no está en el .env
+  return res.json({ sitekey: siteKey, siteKey: siteKey });
 });
 
 // Health check
