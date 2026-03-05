@@ -15,6 +15,7 @@ COPY . ./
 # Usuario no-root
 USER node
 
+ENV PORT=8080
 EXPOSE 8080
 
-CMD ["npm", "start"]
+CMD ["node", "server.js"]

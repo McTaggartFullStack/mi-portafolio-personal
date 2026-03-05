@@ -346,9 +346,9 @@ if (Sentry?.Handlers?.errorHandler) {
   app.use(Sentry.Handlers.errorHandler());
 }
 
-const port = process.env.PORT || 8080;
+const port = parseInt(process.env.PORT) || 8080;
 app.listen(port, '0.0.0.0', () => {
-  console.log('Servidor listo en el puerto ' + port);
+  console.log('Servidor en ejecución en puerto: ' + port);
 });
 
 process.on('unhandledRejection', (reason) => {
