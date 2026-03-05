@@ -44,7 +44,7 @@
   <script>
     // Configura aquí la URL pública real de tu backend (Cloud Run / API)
     const __isLocalHost = !window.location.hostname || ['localhost', '127.0.0.1'].includes(window.location.hostname);
-    window.WEBSPTY_API_BASE = __isLocalHost ? 'http://localhost:8080' : window.location.origin;
+    window.WEBSPTY_API_BASE = __isLocalHost ? 'http://localhost:8080' : 'https://mi-portafolio-personal-shmbrxxiia-ue.a.run.app';
   </script>
 
   <style>
@@ -2835,7 +2835,10 @@
         // Prioridad 1: backend configurado o autodetectado
         endpoints.push(`${backendBase}/api/recaptcha-sitekey`);
 
-        // Prioridad 2: mismo origen (solo si no es GitHub Pages)
+        // Prioridad 2: Cloud Run directamente (como fallback seguro)
+        endpoints.push('https://mi-portafolio-personal-shmbrxxiia-ue.a.run.app/api/recaptcha-sitekey');
+
+        // Prioridad 3: mismo origen (solo si no es GitHub Pages)
         if (!isGithubPages) {
           endpoints.push(`${window.location.origin}/api/recaptcha-sitekey`);
         }
