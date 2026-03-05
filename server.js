@@ -350,7 +350,19 @@ app.get(/.*/, (req, res) => {
       return res.sendFile(p);
     }
   }
-  res.status(404).send(`Archivo index.html no encontrado. Rutas probadas: ${pathsToTry.join(', ')}`);
+
+  // Debugging radical para ver qué hay realmente en el contenedor
+  let debugHtml = `<h2>Archivo index.html no encontrado</h2><p>Rutas probadas:</p><ul>`;
+  pathsToTry.forEach(p => debugHtml += `<li>${p}</li>`);
+  debugHtml += `</ul><h3>Contenido de process.cwd() [${process.cwd()}]:</h3><pre>`;
+  try {
+    debugHtml += fs.readdirSync(process.cwd()).join('\n');
+  } catch(e) {
+    debugHtml += 'Error leyendo directorio: ' + e.message;
+  }
+  debugHtml += `</pre>`;
+
+  res.status(404).send(debugHtml);
 });
 
 if (Sentry?.Handlers?.errorHandler) {

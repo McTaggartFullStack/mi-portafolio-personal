@@ -9,8 +9,8 @@ ENV PORT=8080
 COPY package*.json ./
 RUN npm ci --omit=dev && npm cache clean --force
 
-# Solo backend necesario
-COPY server.js ./
+# Copiar código fuente y todos los archivos estáticos (HTML, JS, img, etc)
+COPY . ./
 
 # Usuario no-root
 USER node
