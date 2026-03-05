@@ -14,7 +14,7 @@ const logPath = path.join(__dirname, 'chat.log');
 const RECAPTCHA_SECRET = process.env.RECAPTCHA_SECRET_KEY;
 const RECAPTCHA_SITE_KEY = process.env.RECAPTCHA_SITE_KEY;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_MODEL = 'gemini-3.1-flash-lite';
+const GEMINI_MODEL = 'gemini-2.5-flash';
 
 // Sentry opcional
 let Sentry;
@@ -78,9 +78,6 @@ app.use(helmet({
 }));
 */
 app.use(express.json({ limit: '32kb' }));
-
-// Archivos estáticos configurados con process.cwd() asegurando que esté antes de las API
-app.use(express.static(process.cwd()));
 
 // Rate limits
 const chatLimiter = rateLimit({
@@ -317,6 +314,7 @@ app.post('/api/chat', dailyLimiter, chatLimiter, async (req, res) => {
 
     return res.json({ response });
   } catch (err) {
+    console.error('ERROR DETALLADO DE GEMINI:', err);
     appendLog(`[${new Date().toISOString()}] ERROR | IP: ${req.ip} | ${err.message || err.toString()}`);
     if (Sentry) Sentry.captureException(err);
 
@@ -335,6 +333,9 @@ app.post('/api/chat', dailyLimiter, chatLimiter, async (req, res) => {
     return res.status(500).json({ error: 'Error al procesar la solicitud.' });
   }
 });
+
+// Archivos estáticos
+app.use(express.static(process.cwd()));
 
 // Catch-all route para SPA y servir index.html por defecto para cualquier ruta no mapeada
 app.get(/.*/, (req, res) => {
