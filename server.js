@@ -339,39 +339,16 @@ app.post('/api/chat', dailyLimiter, chatLimiter, async (req, res) => {
 
 // Catch-all route para SPA y servir index.html por defecto para cualquier ruta no mapeada
 app.get(/.*/, (req, res) => {
-  const pathsToTry = [
-    path.join(process.cwd(), 'index.html'),
-    path.join(__dirname, 'index.html'),
-    '/workspace/index.html' // típica en Cloud Build / Cloud Run
-  ];
-  
-  for (let p of pathsToTry) {
-    if (fs.existsSync(p)) {
-      return res.sendFile(p);
-    }
-  }
-
-  // Debugging radical para ver qué hay realmente en el contenedor
-  let debugHtml = `<h2>Archivo index.html no encontrado</h2><p>Rutas probadas:</p><ul>`;
-  pathsToTry.forEach(p => debugHtml += `<li>${p}</li>`);
-  debugHtml += `</ul><h3>Contenido de process.cwd() [${process.cwd()}]:</h3><pre>`;
-  try {
-    debugHtml += fs.readdirSync(process.cwd()).join('\n');
-  } catch(e) {
-    debugHtml += 'Error leyendo directorio: ' + e.message;
-  }
-  debugHtml += `</pre>`;
-
-  res.status(404).send(debugHtml);
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 if (Sentry?.Handlers?.errorHandler) {
   app.use(Sentry.Handlers.errorHandler());
 }
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log('Servidor arriba en puerto', PORT);
+const port = process.env.PORT || 8080;
+app.listen(port, '0.0.0.0', () => {
+  console.log('Servidor listo en el puerto ' + port);
 });
 
 process.on('unhandledRejection', (reason) => {
