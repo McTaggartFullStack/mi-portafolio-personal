@@ -339,7 +339,7 @@ app.post('/api/chat', dailyLimiter, chatLimiter, async (req, res) => {
 
 // Catch-all route para SPA y servir index.html por defecto para cualquier ruta no mapeada
 app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.resolve(process.cwd(), 'index.html'));
 });
 
 if (Sentry?.Handlers?.errorHandler) {

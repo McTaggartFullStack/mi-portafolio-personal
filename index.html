@@ -2833,7 +2833,7 @@
         const isGithubPages = /github\.io$/i.test(window.location.hostname);
         const isLocal = !window.location.hostname || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         const configuredBase = (window.WEBSPTY_API_BASE || '').trim().replace(/\/$/, '');
-        const autoBase = isLocal ? 'http://localhost:8080' : window.location.origin;
+        const autoBase = isLocal ? 'http://localhost:8080' : 'https://mi-portafolio-personal-252448748566.us-east1.run.app';
         const backendBase = configuredBase || autoBase;
 
         const endpoints = [];
