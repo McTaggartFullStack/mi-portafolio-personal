@@ -42,7 +42,7 @@
     }
   </script>
   <script>
-    // Configura aquí la URL pública real de tu backend (Cloud Run / API)
+    // CACHE BUSTER - Forzamos versión v2 - Configura aquí la URL pública real de tu backend (Cloud Run / API)
     const __isLocalHost = !window.location.hostname || ['localhost', '127.0.0.1'].includes(window.location.hostname);
     window.WEBSPTY_API_BASE = __isLocalHost ? 'http://localhost:8080' : 'https://mi-portafolio-personal-shmbrxxiia-ue.a.run.app';
   </script>
