@@ -5,7 +5,7 @@ steps:
       [
         'build',
         '-t', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:latest',
-        '-t', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$SHORT_SHA',
+        '-t', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:latest',
         '.'
       ]
 
@@ -13,16 +13,13 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:latest']
 
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$SHORT_SHA']
-
   # Paso 3: Desplegar en Cloud Run
-  - name: 'gcr.io/google-cloud-sdk:latest'
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:latest'
     entrypoint: gcloud
     args:
       [
         'run', 'deploy', '${_SERVICE_NAME}',
-        '--image', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$SHORT_SHA',
+        '--image', 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:latest',
         '--platform', 'managed',
         '--region', '${_REGION}',
         '--set-env-vars', 'NODE_ENV=production',
@@ -31,7 +28,6 @@ steps:
 
 images:
   - 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:latest'
-  - 'gcr.io/$PROJECT_ID/${_SERVICE_NAME}:$SHORT_SHA'
 
 substitutions:
   _SERVICE_NAME: 'mi-portafolio-personal'
