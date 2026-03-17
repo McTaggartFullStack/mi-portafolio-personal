@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nation Sunshine Demo</title>
+    <title>Nature Sunshine Demo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
     <style>
@@ -119,6 +119,25 @@
         html {
             scroll-behavior: smooth;
         }
+        /* Added CSS for smaller roulette size on mobile devices */
+        @media (max-width: 640px) {
+            #rouletteCanvas {
+                width: 250px; /* Further reduce size for very small screens */
+                height: 250px;
+            }
+        }
+
+        /* Fix for extra space on the right in mobile view */
+        html, body {
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding-left: 1rem; /* Reduce padding for small screens */
+                padding-right: 1rem;
+            }
+        }
     </style>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
@@ -182,9 +201,9 @@
                     </ul>
                 </div>
 
-                <!-- Column B: Ventaja Nation Sunshine -->
+                <!-- Column B: Ventaja Nature Sunshine -->
                 <div class="bg-[#e6f7f4] p-6 rounded-lg shadow-md relative">
-                    <h3 class="text-2xl font-bold mb-4">Ventaja Nation Sunshine</h3>
+                    <h3 class="text-2xl font-bold mb-4">Ventaja Nature Sunshine</h3>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-4">
                             <span class="text-[#2ecc71]">&#8226;</span>
@@ -298,7 +317,7 @@
                     </div>
                     <div>
                         <h4 class="text-xl font-bold text-[#00473e]">Asistentes Virtuales (Centralización de Flujo)</h4>
-                        <p class="text-gray-700">Raydarian Tamoy integrará RAG (Retrieval-Augmented Generation) para que la IA responda basándose exclusivamente en documentos oficiales de Nation Sunshine.</p>
+                        <p class="text-gray-700">Raydarian Tamoy integrará RAG (Retrieval-Augmented Generation) para que la IA responda basándose exclusivamente en documentos oficiales de Nature Sunshine.</p>
                         <span class="inline-block mt-2 px-3 py-1 text-sm font-medium text-white bg-[#00473e] rounded-full">Herramienta Clave: RAG</span>
                         <span class="inline-block mt-2 px-3 py-1 text-sm font-medium text-white bg-[#00473e] rounded-full">Responsable: Raydarian Tamoy</span>
                     </div>
@@ -409,19 +428,19 @@
                     <!-- Progress Bars -->
                     <div class="w-full px-6">
                         <div class="mb-4">
-                            <label class="block text-white font-bold mb-2">Optimización de Flujo: 94%</label>
+                            <label class="block text-white font-bold mb-2">Optimización de Flujo de hasta un: 74%</label>
                             <div class="w-full bg-gray-300 rounded-full h-4">
                                 <div class="bg-white h-4 rounded-full progress-bar" data-width="94%"></div>
                             </div>
                         </div>
                         <div class="mb-4">
-                            <label class="block text-white font-bold mb-2">Detección de Riesgos: 99%</label>
+                            <label class="block text-white font-bold mb-2">Detección de Riesgos de hasta un: 60%</label>
                             <div class="w-full bg-gray-300 rounded-full h-4">
                                 <div class="bg-white h-4 rounded-full progress-bar" data-width="99%"></div>
                             </div>
                         </div>
                         <div>
-                            <label class="block text-white font-bold mb-2">Eficacia de Respuesta: 88%</label>
+                            <label class="block text-white font-bold mb-2">Eficacia de Respuesta de hasta un: 88%</label>
                             <div class="w-full bg-gray-300 rounded-full h-4">
                                 <div class="bg-white h-4 rounded-full progress-bar" data-width="88%"></div>
                             </div>
@@ -444,7 +463,7 @@
                 <!-- Phase 1 -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow card">
                     <h3 class="text-xl font-bold text-[#00473e] mb-2">Fase 1: Diagnóstico y Cimentación</h3>
-                    <p class="text-sm text-gray-500 mb-4">Mes 1</p>
+                    <p class="text-sm text-gray-500 mb-4">semana 1</p>
                     <p class="text-gray-700">Carlos Mc Taggart liderará la auditoría de datos y la identificación de brechas críticas. Se establecerán los protocolos éticos para el uso de IA.</p>
                     <span class="inline-block mt-4 px-3 py-1 text-sm font-medium text-white bg-[#00473e] rounded-full">Liderado por Carlos</span>
                 </div>
@@ -452,7 +471,7 @@
                 <!-- Phase 2 -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow card">
                     <h3 class="text-xl font-bold text-[#00473e] mb-2">Fase 2: Integración de Ecosistema</h3>
-                    <p class="text-sm text-gray-500 mb-4">Mes 2-3</p>
+                    <p class="text-sm text-gray-500 mb-4">semana 2</p>
                     <p class="text-gray-700">Raydarian Tamoy supervisará el despliegue de los Asistentes Virtuales y la centralización de los flujos de comunicación interna mediante NLP.</p>
                     <span class="inline-block mt-4 px-3 py-1 text-sm font-medium text-white bg-[#00473e] rounded-full">Liderado por Raydarian</span>
                 </div>
@@ -460,7 +479,7 @@
                 <!-- Phase 3 -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow card">
                     <h3 class="text-xl font-bold text-[#00473e] mb-2">Fase 3: Blindaje y Optimización Continua</h3>
-                    <p class="text-sm text-gray-500 mb-4">Mes 4+</p>
+                    <p class="text-sm text-gray-500 mb-4">semana 3</p>
                     <p class="text-gray-700">Activación del centro de mando de crisis y análisis de sentimiento en tiempo real. Evaluación de métricas predictivas para el ajuste fino de la estrategia 360°.</p>
                     <span class="inline-block mt-4 px-3 py-1 text-sm font-medium text-white bg-[#00473e] rounded-full">Liderado por Carlos y Raydarian</span>
                 </div>
@@ -474,12 +493,48 @@
     </section>
 
 
+    <!-- New Section: ¿Cómo se ve esto en acción? -->
+    <section id="use-cases" class="py-12 bg-[#fdfbf7]">
+        <div class="container mx-auto px-6 md:px-12 lg:px-20">
+            <h2 class="text-3xl font-bold text-[#00473e] mb-8">¿Cómo se ve esto en acción?</h2>
+            <ul class="space-y-6">
+                <li class="flex items-start gap-4 p-4 rounded-lg hover:border hover:border-[#2ecc71] transition-all">
+                    <div class="text-[#00473e]">
+                        <i class="fas fa-headset fa-2x"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-[#00473e]">Soporte al Cliente</h3>
+                        <p class="text-gray-700">Un cliente escribe al soporte y la IA responde en 30 segundos con información precisa y alineada con los valores de la empresa.</p>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4 p-4 rounded-lg hover:border hover:border-[#2ecc71] transition-all">
+                    <div class="text-[#00473e]">
+                        <i class="fas fa-file-alt fa-2x"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-[#00473e]">Generación de Comunicados</h3>
+                        <p class="text-gray-700">Un gerente necesita un comunicado urgente y la IA genera un borrador alineado con los valores corporativos en segundos.</p>
+                    </div>
+                </li>
+                <li class="flex items-start gap-4 p-4 rounded-lg hover:border hover:border-[#2ecc71] transition-all">
+                    <div class="text-[#00473e]">
+                        <i class="fas fa-lightbulb fa-2x"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-[#00473e]">Creatividad en Marketing</h3>
+                        <p class="text-gray-700">El equipo de marketing utiliza la IA para automatizar tareas repetitivas, liberando tiempo para enfocarse en la creatividad e innovación.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
     <!-- Footer Section -->
     <footer class="bg-[#00473e] text-white py-8">
         <div class="container mx-auto px-6 md:px-12 lg:px-20 flex flex-wrap justify-between items-center">
             <!-- Logo -->
             <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                <img src="img/nature/logo.webp" alt="Nation Sunshine Logo" class="h-12 w-auto">
+                <img src="img/nature/logo.webp" alt="Nature Sunshine Logo" class="h-12 w-auto">
             </div>
 
             <!-- Links -->
@@ -515,7 +570,8 @@
         </div>
         <!-- Copyright -->
         <div class="mt-8 border-t border-gray-600 pt-4 text-center text-sm">
-            © 2026 Nation Sunshine - Liderando la Comunicación con IA
+            <p>Nature Sunshine será pionera en comunicación inteligente, donde cada interacción fortalece la confianza.</p>
+            <p>© 2026 Nature Sunshine - Liderando la Comunicación con IA</p>
         </div>
     </footer>
 
@@ -648,6 +704,31 @@
                     } else {
                         statusElement.remove();
                     }
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const tooltips = {
+                'RAG': 'RAG: IA que responde solo con documentos oficiales.',
+                'Prompt Engineering': 'Prompt Engineering: Técnicas para optimizar las respuestas de IA.',
+                'Sentiment Analysis': 'Sentiment Analysis: Análisis de emociones en texto.'
+            };
+
+            document.querySelectorAll('.tooltip').forEach(el => {
+                el.addEventListener('mouseover', () => {
+                    const term = el.dataset.term;
+                    if (tooltips[term]) {
+                        const tooltip = document.createElement('div');
+                        tooltip.className = 'tooltip-box';
+                        tooltip.textContent = tooltips[term];
+                        el.appendChild(tooltip);
+                    }
+                });
+
+                el.addEventListener('mouseout', () => {
+                    const tooltip = el.querySelector('.tooltip-box');
+                    if (tooltip) tooltip.remove();
                 });
             });
         });
