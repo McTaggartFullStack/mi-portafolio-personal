@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Crecimiento Digital - Nature Sunshine</title>
+    <link rel="icon" href="img/principal/favicon.webp" type="image/webp">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #00473e;
+            --color-accent: #2ecc71;
+            --color-light: #fdfbf7;
+            --color-earth: #8b7355;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 71, 62, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 71, 62, 0.4);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .benefit-card {
+            background: white;
+            border-left: 4px solid var(--color-accent);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .zoomable-image {
+            cursor: zoom-in;
+        }
+
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.88);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .lightbox-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: min(1000px, 95vw);
+            max-height: 90vh;
+            width: fit-content;
+        }
+
+        .lightbox-image {
+            display: block;
+            max-width: 100%;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -14px;
+            right: -14px;
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 999px;
+            background: white;
+            color: #111827;
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.05);
+        }
+
+        .lightbox-caption {
+            color: #f3f4f6;
+            text-align: center;
+            margin-top: 0.9rem;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 640px) {
+            .lightbox-overlay {
+                padding: 1rem;
+            }
+
+            .lightbox-close {
+                top: 8px;
+                right: 8px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Portada -->
+    <section class="min-h-screen bg-gradient-to-br from-[#00473e] via-[#004d44] to-[#003d34] flex flex-col items-center justify-center text-white px-6">
+        <div class="text-center">
+            <!-- Logos -->
+            <div class="flex justify-center items-center gap-8 mb-12">
+                <div class="bg-white p-4 rounded-lg">
+                    <img src="img/principal/favicon.webp" alt="WebsPTY Logo" class="h-16 w-auto">
+                </div>
+                <div class="text-4xl font-bold">+</div>
+                <div class="bg-white p-4 rounded-lg">
+                    <img src="img/nature/logo.webp" alt="Nature Sunshine Logo" class="h-16 w-auto">
+                </div>
+            </div>
+            
+            <!-- Título -->
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Propuesta de Crecimiento Digital</h1>
+            <p class="text-xl md:text-2xl text-[#2ecc71] mb-8">Transformando Nature Sunshine en el referente digital del mercado</p>
+            
+            <!-- Subtítulo -->
+            <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-12">Una estrategia integral de SEO e IA para aumentar visibilidad, alcance y conversiones</p>
+            
+            <!-- Scroll Indicator -->
+            <div class="mt-16">
+                <div class="animate-bounce">
+                    <i class="fas fa-chevron-down text-3xl text-[#2ecc71]"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: SEO Optimizado para IA -->
+    <section class="py-20 px-6 bg-gradient-to-br from-[#f0f8f5] to-[#fdfbf7]">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">¿Qué es el SEO optimizado para la IA?</h2>
+            
+            <!-- Explicación Principal -->
+            <div class="bg-white rounded-lg p-8 shadow-lg mb-12">
+                <h3 class="text-2xl font-bold text-[#00473e] mb-4">Estructura clara que la IA entiende</h3>
+                <p class="text-gray-700 text-lg mb-4">
+                    El SEO optimizado para la IA significa estructurar tu sitio con datos claros (JSON, metadatos y esquemas) para que las inteligencias artificiales comprendan exactamente qué ofrece tu marca, tus productos y tu propuesta de valor.
+                </p>
+                <div class="bg-[#e6f7f4] border-l-4 border-[#2ecc71] p-4 rounded">
+                    <p class="text-gray-800 font-semibold">
+                        <i class="fas fa-exclamation-circle text-[#00473e] mr-3"></i>
+                        Nature Sunshine lo necesita urgentemente porque hoy los buscadores y asistentes inteligentes (como Google Gemini, ChatGPT o Copilot) recomiendan marcas que comprenden bien. Si tu sitio no está optimizado, la IA simplemente ignora tu marca y recomienda a la competencia.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Comparativa Visual -->
+            <h3 class="text-2xl font-bold text-[#00473e] mb-8 text-center">El impacto real en las recomendaciones de IA</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Caso Sin Optimizar -->
+                <div class="flex flex-col">
+                    <div class="bg-red-50 border-2 border-red-300 rounded-lg p-6 shadow-lg mb-4 flex-1">
+                        <h4 class="text-lg font-bold text-red-700 mb-4 text-center">
+                            <i class="fas fa-times-circle mr-2"></i>Sin SEO Optimizado
+                        </h4>
+                        <div class="bg-white rounded p-4 border border-gray-300 min-h-64 flex flex-col items-center justify-center">
+                            <img src="img/nature/caso1.webp" alt="Recomendación de Gemini sin optimización - Nature Sunshine no aparece" class="w-full h-full object-cover rounded zoomable-image" data-zoomable="true">
+                        </div>
+                    </div>
+                    <div class="bg-red-100 rounded p-3 text-center mb-4">
+                        <p class="text-red-800 font-bold">❌ La IA recomienda a la competencia</p>
+                    </div>
+                    <div class="bg-gray-50 rounded p-4 border border-gray-200">
+                        <p class="text-sm text-gray-700"><strong>¡Esto es terrible!</strong></p>
+                        <p class="text-xs text-gray-600 mt-2">Gemini, el modelo de IA mas usado en el mundo recomienda a competencia antes que a Nature´s sunshine pese a que esta es internacional y fue la pionera en este ambito</p>
+                    </div>
+                </div>
+
+                <!-- Caso Optimizado -->
+                <div class="flex flex-col">
+                    <div class="bg-green-50 border-2 border-green-300 rounded-lg p-6 shadow-lg mb-4 flex-1">
+                        <h4 class="text-lg font-bold text-green-700 mb-4 text-center">
+                            <i class="fas fa-check-circle mr-2"></i>Con SEO Optimizado para IA
+                        </h4>
+                        <div class="bg-white rounded p-4 border border-gray-300 min-h-64 flex flex-col items-center justify-center">
+                
+                            <img src="img/nature/caso2.webp" alt="Recomendación de Gemini con optimización - Nature Sunshine aparece primero" class="w-full h-full object-cover rounded zoomable-image" data-zoomable="true">
+                        </div>
+                    </div>
+                    <div class="bg-green-100 rounded p-3 text-center mb-4">
+                        <p class="text-green-800 font-bold">✅ La IA te recomienda</p>
+                    </div>
+                    <div class="bg-green-50 rounded p-4 border border-green-200">
+                        <p class="text-sm text-green-800"><strong>La otra cara de la moneda</strong></p>
+                        <p class="text-xs text-green-700 mt-2">La IA recomienda a un emprendimiento optimizado para IA de un universitario el cual tiene poco tiempo para dedicarle al emprendimiento</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Central de Texto Editable -->
+            <div class="mt-12 bg-white rounded-lg p-8 shadow-lg border-2 border-[#2ecc71]">
+                <h3 class="text-2xl font-bold text-[#00473e] mb-4 text-center">El Factor Decisivo</h3>
+                <p class="text-gray-700 text-lg text-center">
+                    Mientras competidores pequeños con sitios optimizados para IA captan clientes de marcas reconocidas, Nature Sunshine pierde oportunidades diarias. 
+                    <strong class="text-[#00473e]">La diferencia no es el producto, sino la visibilidad ante la IA.</strong>
+                </p>
+            </div>
+
+            <!-- Mensaje Final -->
+            <div class="mt-12 bg-[#00473e] text-white rounded-lg p-8 text-center">
+                <h3 class="text-2xl font-bold mb-4">La realidad actual</h3>
+                <p class="text-lg mb-4">
+                    Cada día más usuarios consultan a asistentes de IA antes de tomar decisiones de compra. 
+                    Si Nature Sunshine no está optimizado, la IA simplemente recomienda a otros.
+                </p>
+                <p class="text-lg font-semibold text-[#2ecc71]">
+                    Con WebsPTY, Nature Sunshine será la primera recomendación de las IA.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficios SEO -->
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">Beneficios del SEO Estratégico</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#00473e] mb-3">Mayor Visibilidad</h3>
+                    <p class="text-gray-700">Tu sitio aparecerá en los primeros resultados de búsqueda cuando tus clientes busquen productos naturales y suplementos de calidad.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#00473e] mb-3">Tráfico Orgánico</h3>
+                    <p class="text-gray-700">Incrementa visitas naturales sin pagar por publicidad. Clientes que llegan buscando exactamente lo que ofreces.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#00473e] mb-3">Conversiones Reales</h3>
+                    <p class="text-gray-700">Más visitantes calificados significa más ventas. Usuarios genuinamente interesados en tus productos.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#00473e] mb-3">Autoridad de Marca</h3>
+                    <p class="text-gray-700">Posiciónate como líder en tu industria. Nature Sunshine como referente confiable y experto.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#00473e] mb-3">Optimización Móvil</h3>
+                    <p class="text-gray-700">Funciona perfecto en todos los dispositivos. Tus clientes pueden comprar desde cualquier lugar.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[#00473e] mb-3">Crecimiento Continuo</h3>
+                    <p class="text-gray-700">Resultados que mejoran mes a mes. Un proceso sostenible que genera ROI real a largo plazo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficios IA -->
+    <section class="py-20 px-6 bg-[#fdfbf7]">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">IA que Entiende tu Negocio</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-[#00473e] mb-6">Atención al Cliente 24/7</h3>
+                    <div class="bg-[#f0f8f5] p-4 rounded-lg mb-4 font-mono text-sm">
+                        <pre>{
+  "chatbot": {
+    "disponibilidad": "24/7",
+    "respuesta_tiempo": "segundos",
+    "idiomas": ["español", "inglés"],
+    "precision": "99%"
+  }
+}</pre>
+                    </div>
+                    <p class="text-gray-700">Un asistente inteligente que responde preguntas, explica productos y guía compras automáticamente.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-[#00473e] mb-6">Análisis de Comportamiento</h3>
+                    <div class="bg-[#f0f8f5] p-4 rounded-lg mb-4 font-mono text-sm">
+                        <pre>{
+  "analytics": {
+    "patrones": "detectados",
+    "tendencias": "en_tiempo_real",
+    "recomendaciones": "personalizadas",
+    "efectividad": "97%"
+  }
+}</pre>
+                    </div>
+                    <p class="text-gray-700">Entiende qué buscan tus clientes y qué los motiva a comprar para optimizar constantemente.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-[#00473e] mb-6">Contenido Inteligente</h3>
+                    <div class="bg-[#f0f8f5] p-4 rounded-lg mb-4 font-mono text-sm">
+                        <pre>{
+  "contenido": {
+    "generacion": "automatica",
+    "personalizacion": "por_usuario",
+    "optimizacion": "seo",
+    "engagement": "+85%"
+  }
+}</pre>
+                    </div>
+                    <p class="text-gray-700">Descripciones de productos, artículos y publicaciones que convencen y posicionan en buscadores.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-[#00473e] mb-6">Prevención de Crisis</h3>
+                    <div class="bg-[#f0f8f5] p-4 rounded-lg mb-4 font-mono text-sm">
+                        <pre>{
+  "monitoreo": {
+    "sentimiento": "en_vivo",
+    "alertas": "instantaneas",
+    "respuesta_rapida": true,
+    "proteccion": "reputacion"
+  }
+}</pre>
+                    </div>
+                    <p class="text-gray-700">Detecta y responde a comentarios negativos antes de que se conviertan en problemas reales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Propuesta -->
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title">Lo que WebsPTY hará por Nature Sunshine</h2>
+            <div class="space-y-6">
+                <div class="flex gap-6 items-start">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[#2ecc71] text-white">
+                            <i class="fas fa-check text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-[#00473e] mb-2">Auditoría SEO Completa</h3>
+                        <p class="text-gray-700">Analizamos tu sitio actual, competencia y oportunidades de mercado para crear una estrategia personalizada.</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-6 items-start">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[#2ecc71] text-white">
+                            <i class="fas fa-check text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-[#00473e] mb-2">Optimización Técnica</h3>
+                        <p class="text-gray-700">Velocidad, seguridad, estructuras de datos y metaetiquetas perfectas para que Google ame tu sitio.</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-6 items-start">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[#2ecc71] text-white">
+                            <i class="fas fa-check text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-[#00473e] mb-2">Contenido Estratégico</h3>
+                        <p class="text-gray-700">Artículos, descripciones y publicaciones que posicionan en buscadores y convencen a tus clientes.</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-6 items-start">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[#2ecc71] text-white">
+                            <i class="fas fa-check text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-[#00473e] mb-2">Chatbot IA Personalizado</h3>
+                        <p class="text-gray-700">Asistente inteligente que atiende clientes 24/7, responde preguntas y facilita compras automáticamente.</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-6 items-start">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[#2ecc71] text-white">
+                            <i class="fas fa-check text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-[#00473e] mb-2">Monitoreo y Reportes</h3>
+                        <p class="text-gray-700">Dashboards en tiempo real para que veas exactamente cómo crece tu negocio semana a semana.</p>
+                    </div>
+                </div>
+                
+                <div class="flex gap-6 items-start">
+                    <div class="flex-shrink-0">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-[#2ecc71] text-white">
+                            <i class="fas fa-check text-xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-[#00473e] mb-2">Soporte Continuo</h3>
+                        <p class="text-gray-700">Acompañamiento constante para optimizar resultados y adaptarnos a cambios del mercado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Llamado a la Acción -->
+    <section class="py-24 px-6 bg-gradient-to-br from-[#00473e] to-[#003d34] text-white">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">¿Listo para crecer digitalmente?</h2>
+            <p class="text-xl md:text-2xl mb-12 text-gray-200">Nature Sunshine merece estar en el primer lugar de búsquedas y captar a cada cliente potencial.</p>
+            
+            <button class="btn-primary text-lg md:text-xl px-10 py-4 mb-6">
+                <i class="fas fa-rocket mr-3"></i>Quiero mejorar mi sitio con WebsPTY
+            </button>
+            
+            <p class="text-gray-300 text-sm">Consultación inicial gratuita • Sin compromisos • Resultados garantizados</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#00000] text-white py-12 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="flex justify-center items-center gap-8 mb-8">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-auto">
+                <span class="text-gray-400">|</span>
+                <img src="img/nature/logo.webp" alt="Nature Sunshine" class="h-10 w-auto">
+            </div>
+            <p class="text-gray-500 mb-4">Transformando negocios con estrategia digital e IA</p>
+            <p class="text-gray-500 text-sm">© 2026 WebsPTY - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <div id="lightboxOverlay" class="lightbox-overlay" aria-hidden="true" role="dialog" aria-label="Imagen ampliada">
+        <div class="lightbox-content">
+            <button id="lightboxClose" class="lightbox-close" aria-label="Cerrar imagen">&times;</button>
+            <img id="lightboxImage" class="lightbox-image" src="" alt="">
+            <p id="lightboxCaption" class="lightbox-caption"></p>
+        </div>
+    </div>
+
+    <script>
+        const lightboxOverlay = document.getElementById('lightboxOverlay');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const zoomableImages = document.querySelectorAll('[data-zoomable="true"]');
+
+        function openLightbox(imageElement) {
+            lightboxImage.src = imageElement.src;
+            lightboxImage.alt = imageElement.alt || 'Imagen ampliada';
+            lightboxCaption.textContent = imageElement.alt || '';
+            lightboxOverlay.classList.add('active');
+            lightboxOverlay.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightboxOverlay.classList.remove('active');
+            lightboxOverlay.setAttribute('aria-hidden', 'true');
+            lightboxImage.src = '';
+            lightboxCaption.textContent = '';
+            document.body.style.overflow = '';
+        }
+
+        zoomableImages.forEach((imageElement) => {
+            imageElement.addEventListener('click', () => openLightbox(imageElement));
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxOverlay.addEventListener('click', (event) => {
+            if (event.target === lightboxOverlay) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && lightboxOverlay.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
