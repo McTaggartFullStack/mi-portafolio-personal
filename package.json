@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "start:sunny": "node server-sunny.js",
+    "dev:sunny": "nodemon server-sunny.js"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +21,8 @@
     "express-rate-limit": "^8.2.1",
     "helmet": "^8.1.0",
     "validator": "^13.15.26"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
