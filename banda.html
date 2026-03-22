@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>THE VOID | Official Band Site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Mono:wght@300;400;500&display=swap');
+        
+        body { 
+            background-color: #000; 
+            color: #fff; 
+            font-family: 'Roboto Mono', monospace; 
+        }
+        
+        h1, h2, .band-font { 
+            font-family: 'Anton', sans-serif; 
+            text-transform: uppercase; 
+        }
+
+        .noise-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .glitch-hover:hover {
+            animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+            color: #ef4444;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+
+        /* --- STANDARD PREVIEW SHELL & LIGHTBOX --- */
+        .preview-shell {
+            background: #fff;
+            box-shadow: 0 24px 70px rgba(15, 23, 42, 0.25);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            margin: 0 auto;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(15, 23, 42, 0.12);
+        }
+
+        .preview-shell.preview-phone {
+            width: 390px;
+            height: 844px;
+            border-radius: 40px;
+            border-width: 8px;
+            border-color: #1f2937;
+        }
+
+        .preview-shell.preview-tablet {
+            width: 820px;
+            height: 1180px;
+            border-radius: 24px;
+            border-width: 8px;
+            border-color: #1f2937;
+        }
+
+        .preview-shell.preview-desktop {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .preview-fullscreen {
+            width: 100% !important;
+            height: calc(100vh - 4rem) !important;
+            max-width: none !important;
+            padding: 0 !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f3f4f6;
+        }
+
+        /* Lightbox */
+        #lightbox-overlay {
+            backdrop-filter: blur(5px);
+        }
+        #lightbox-overlay.show {
+            opacity: 1;
+        }
+        .lightbox-content {
+            transition: transform 0.3s ease-out;
+            transform: scale(0.95);
+        }
+        #lightbox-overlay.show .lightbox-content {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="selection:bg-red-600 selection:text-white">
+<!-- Portfolio Top Bar -->
+<nav id="portfolio-topbar" class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                    <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+                </a>
+                <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                    <span>&larr;</span> Volver al Portafolio
+                </a>
+            </div>
+            <div class="hidden lg:flex items-center gap-2">
+              <button type="button" data-preview="phone" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">Teléfono</button>
+              <button type="button" data-preview="tablet" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">Tablet</button>
+              <button type="button" data-preview="desktop" class="preview-btn px-3 py-1.5 text-xs font-semibold rounded-full bg-gray-900 text-white">Escritorio</button>
+            </div>
+        </div>
+    </div>
+</nav>
+<div id="portfolio-spacer" class="h-16 w-full relative z-[9998]"></div>
+
+<!-- Preview Iframe Container -->
+<div id="preview-frame" class="w-full h-[calc(100vh-4rem)] bg-gray-100 hidden flex items-center justify-center overflow-hidden">
+    <div id="preview-shell" class="preview-shell preview-desktop shadow-2xl bg-white overflow-hidden mx-auto">
+        <iframe id="preview-iframe" class="w-full h-full border-0" src="about:blank"></iframe>
+    </div>
+</div>
+
+    <!-- Original Content Wrapper -->
+    <div id="page-content">
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <div class="noise-bg"></div>
+
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-40 border-b border-white/10 bg-black/80 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-4 h-20 flex justify-between items-center bg-black/80"> <!-- bg-black added to ensure contrast if needed, though parent has it -->
+            <span class="text-3xl band-font tracking-widest text-red-600">THE VOID</span>
+            
+            <!-- Desktop Links -->
+            <div class="hidden md:flex gap-10 text-sm tracking-widest">
+                <a href="#" class="hover:text-red-500 transition-colors">TOUR</a>
+                <a href="#" class="hover:text-red-500 transition-colors">MUSIC</a>
+                <a href="#" class="hover:text-red-500 transition-colors">MERCH</a>
+                <a href="#" class="hover:text-red-500 transition-colors">VIDEOS</a>
+            </div>
+            <button class="hidden md:block border border-white/30 px-6 py-2 text-xs hover:bg-white hover:text-black transition-all">SUBSCRIBE</button>
+
+            <!-- Mobile Hamburger -->
+            <button id="band-mobile-toggle" class="md:hidden text-white p-2 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="band-mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-black border-b border-white/10 p-6 flex flex-col gap-6 text-center shadow-2xl">
+            <a href="#" class="text-xl hover:text-red-500 transition-colors tracking-widest band-font">TOUR</a>
+            <a href="#" class="text-xl hover:text-red-500 transition-colors tracking-widest band-font">MUSIC</a>
+            <a href="#" class="text-xl hover:text-red-500 transition-colors tracking-widest band-font">MERCH</a>
+            <a href="#" class="text-xl hover:text-red-500 transition-colors tracking-widest band-font">VIDEOS</a>
+            <button class="border border-white/30 px-6 py-3 text-sm hover:bg-white hover:text-black transition-all w-full uppercase tracking-widest">SUBSCRIBE</button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="h-screen relative flex items-center justify-center overflow-hidden">
+        <!-- Background Image overlay -->
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=2600&auto=format&fit=crop')] bg-cover bg-center grayscale brightness-50"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/50"></div>
+        
+        <div class="relative z-10 text-center px-4">
+            <p class="text-red-500 tracking-[0.5em] text-sm mb-4 animate-pulse">NEW ALBUM OUT NOW</p>
+            <h1 class="text-7xl md:text-9xl mb-6 glitch-hover cursor-default select-none">ECLIPSE</h1>
+            <div class="flex flex-col md:flex-row gap-4 justify-center mt-8">
+                <a href="#" class="bg-red-600 text-black border border-red-600 px-8 py-4 band-font text-2xl tracking-wide hover:bg-transparent hover:text-red-600 transition-all">LISTEN ON SPOTIFY</a>
+                <a href="#" class="bg-transparent border border-white px-8 py-4 band-font text-2xl tracking-wide hover:bg-white hover:text-black transition-all">WATCH VIDEO</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tour Dates -->
+    <section class="max-w-5xl mx-auto py-24 px-4">
+        <h2 class="text-5xl md:text-7xl mb-16 text-center text-white/90">WORLD TOUR 2026</h2>
+        
+        <div class="border-t border-white/20">
+            <!-- Show 1 -->
+            <div class="group flex flex-col md:flex-row items-center border-b border-white/20 py-8 hover:bg-white/5 transition-colors cursor-pointer">
+                <div class="md:w-1/4 text-center md:text-left">
+                    <div class="text-3xl font-bold">FEB 12</div>
+                    <div class="text-gray-500 text-xs">20:00</div>
+                </div>
+                <div class="md:w-1/2 text-center md:text-left my-4 md:my-0">
+                    <div class="text-2xl band-font tracking-wide">LOS ANGELES, CA</div>
+                    <div class="text-gray-400 text-sm">The Wiltern Theatre</div>
+                </div>
+                <div class="md:w-1/4 flex justify-end">
+                    <button class="bg-white text-black px-6 py-2 text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-4 group-hover:translate-x-0">TICKETS</button>
+                </div>
+            </div>
+
+            <!-- Show 2 -->
+            <div class="group flex flex-col md:flex-row items-center border-b border-white/20 py-8 hover:bg-white/5 transition-colors cursor-pointer">
+                <div class="md:w-1/4 text-center md:text-left">
+                    <div class="text-3xl font-bold">FEB 15</div>
+                    <div class="text-gray-500 text-xs text-red-500">SOLD OUT</div>
+                </div>
+                <div class="md:w-1/2 text-center md:text-left my-4 md:my-0">
+                    <div class="text-2xl band-font tracking-wide">NEW YORK, NY</div>
+                    <div class="text-gray-400 text-sm">Madison Square Garden</div>
+                </div>
+                <div class="md:w-1/4 flex justify-end">
+                    <span class="text-red-500 font-bold border border-red-500/50 px-6 py-2 text-sm">SOLD OUT</span>
+                </div>
+            </div>
+
+            <!-- Show 3 -->
+            <div class="group flex flex-col md:flex-row items-center border-b border-white/20 py-8 hover:bg-white/5 transition-colors cursor-pointer">
+                <div class="md:w-1/4 text-center md:text-left">
+                    <div class="text-3xl font-bold">FEB 20</div>
+                    <div class="text-gray-500 text-xs">21:00</div>
+                </div>
+                <div class="md:w-1/2 text-center md:text-left my-4 md:my-0">
+                    <div class="text-2xl band-font tracking-wide">LONDON, UK</div>
+                    <div class="text-gray-400 text-sm">O2 Arena</div>
+                </div>
+                <div class="md:w-1/4 flex justify-end">
+
+
+                    <button class="bg-white text-black px-6 py-2 text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-4 group-hover:translate-x-0">TICKETS</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+</div>
+
+<!-- LIGHBOX -->
+<div id="lightbox-overlay" class="hidden" aria-hidden="true">
+    <div class="lightbox-content">
+        <button class="lightbox-close" type="button" aria-label="Cerrar">✕</button>
+        <img id="lightbox-img" src="" alt="" />
+    </div>
+</div>
+<!-- End Lightbox -->
+
+<script>
+    const previewFrame = document.getElementById("preview-frame");
+    const previewShell = document.getElementById("preview-shell");
+    const previewIframe = document.getElementById("preview-iframe");
+    const previewButtons = document.querySelectorAll(".preview-btn");
+    const pageContent = document.getElementById("page-content");
+    const portfolioTopbar = document.getElementById("portfolio-topbar");
+    const portfolioSpacer = document.getElementById("portfolio-spacer");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const isPreview = urlParams.get("preview") === "1";
+
+    if (isPreview) {
+        if (portfolioTopbar) portfolioTopbar.style.display = "none";
+        if (portfolioSpacer) portfolioSpacer.style.display = "none";
+        if (previewFrame) previewFrame.style.display = "none";
+        if (pageContent) pageContent.style.display = "block";
+    } else {
+        if (previewFrame) previewFrame.style.display = "flex";
+        if (pageContent) pageContent.style.display = "none";
+
+        if (previewIframe) {
+            const previewUrl = new URL(window.location.href);
+            previewUrl.searchParams.set("preview", "1");
+            previewIframe.src = previewUrl.toString();
+        }
+
+        const setPreview = (mode) => {
+            previewShell.classList.remove("preview-phone", "preview-tablet", "preview-desktop");
+            previewShell.classList.add(`preview-${mode}`);
+
+            previewButtons.forEach((btn) => {
+                const isActive = btn.dataset.preview === mode;
+                if (isActive) {
+                    btn.classList.remove("bg-gray-100", "text-gray-700");
+                    btn.classList.add("bg-gray-900", "text-white");
+                } else {
+                    btn.classList.add("bg-gray-100", "text-gray-700");
+                    btn.classList.remove("bg-gray-900", "text-white");
+                }
+            });
+        };
+
+        previewButtons.forEach((btn) => {
+            btn.addEventListener("click", () => setPreview(btn.dataset.preview));
+        });
+        
+        setPreview("desktop");
+    }
+
+    // Band Mobile Menu Toggle
+    const bandMobileToggle = document.getElementById('band-mobile-toggle');
+    const bandMobileMenu = document.getElementById('band-mobile-menu');
+    if (bandMobileToggle && bandMobileMenu) {
+        bandMobileToggle.addEventListener('click', () => {
+             bandMobileMenu.classList.toggle('hidden');
+        });
+        
+        bandMobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                bandMobileMenu.classList.add('hidden');
+            });
+        });
+    }
+
+    // LIGHTBOX
+    (() => {
+        const overlay = document.getElementById("lightbox-overlay");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeBtn = overlay?.querySelector(".lightbox-close");
+
+        if (!overlay || !lightboxImg) return;
+
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || "";
+            overlay.classList.remove("hidden");
+            void overlay.offsetWidth; 
+            overlay.classList.add("show"); // Standard CSS uses .show or .opacity-100 depending on implementation. 
+            // Banda CSS uses .show
+            overlay.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeLightbox() {
+            overlay.classList.remove("show");
+            overlay.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+            
+            setTimeout(() => {
+                overlay.classList.add("hidden");
+            }, 300);
+        }
+
+        document.querySelectorAll("img").forEach((img) => {
+            if (img.closest("nav") || img.closest("#portfolio-topbar") || img.classList.contains("no-lightbox") || img.closest(".lightbox-content")) return;
+            
+            img.style.cursor = "zoom-in";
+            img.addEventListener("click", (e) => {
+                e.preventDefault();
+                // Banda is desktop-heavy, but let's allow lightbox everywhere or restrict? 
+                // Let's allow everywhere for now.
+                const target = e.currentTarget;
+                openLightbox(target.src, target.alt || "");
+            });
+        });
+
+        overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) closeLightbox();
+        });
+
+        closeBtn?.addEventListener("click", closeLightbox);
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && !overlay.classList.contains("hidden")) closeLightbox();
+        });
+    })();
+</script>
+</body>
+</html>

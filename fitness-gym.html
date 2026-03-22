@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>IronForce Gym - Entrena Sin Límites</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-lime': '#ccff00',
+                        'dark-metal': '#1a1a1a',
+                    },
+                    fontFamily: {
+                        'teko': ['Teko', 'sans-serif'],
+                        'condensed': ['Roboto Condensed', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Roboto Condensed', sans-serif; }
+        h1, h2, h3, .heading { font-family: 'Teko', sans-serif; }
+        .skewed-bg {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        .text-outline {
+            -webkit-text-stroke: 1px #ccff00;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-black text-gray-200">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Navbar -->
+    <nav class="absolute w-full z-50 px-6 py-4 flex justify-between items-center">
+        <div class="text-3xl font-bold tracking-tighter uppercase heading italic text-white">
+            Iron<span class="text-neon-lime">Force</span>
+        </div>
+        <div class="hidden md:flex space-x-8 text-sm uppercase font-bold tracking-wider">
+            <a href="#" class="hover:text-neon-lime transition">Clases</a>
+            <a href="#" class="hover:text-neon-lime transition">Entrenadores</a>
+             <a href="index.html" class="text-gray-500 hover:text-white transition">Volver</a>
+        </div>
+        <a href="#" class="bg-neon-lime text-black px-6 py-2 uppercase font-bold text-sm hover:bg-white transition duration-300 transform skew-x-[-10deg]">
+            <span class="block skew-x-[10deg]">Únete Hoy</span>
+        </a>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+             class="absolute inset-0 w-full h-full object-cover opacity-40">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
+        
+        <div class="relative z-10 text-center px-4">
+            <h2 class="text-neon-lime uppercase tracking-[0.2em] font-bold text-lg mb-2">No Excuses. Just Results.</h2>
+            <h1 class="heading text-7xl md:text-9xl font-bold uppercase leading-none mb-6">
+                Build Your<br><span class="text-outline">Legacy</span>
+            </h1>
+            <p class="max-w-xl mx-auto text-gray-400 mb-8 text-lg">
+                Equipamiento de élite, entrenadores expertos y una comunidad que te empuja a superar tus límites. 
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <button class="bg-neon-lime text-black px-8 py-4 uppercase font-bold text-xl tracking-wide hover:bg-white hover:scale-105 transition transform">
+                    Clase de Prueba Gratis
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <div class="bg-dark-metal border-y border-gray-800 py-6">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-800">
+            <div>
+                <div class="heading text-4xl text-white font-bold">24/7</div>
+                <div class="text-xs uppercase text-gray-500 font-bold tracking-widest">Acceso</div>
+            </div>
+            <div>
+                <div class="heading text-4xl text-white font-bold">50+</div>
+                <div class="text-xs uppercase text-gray-500 font-bold tracking-widest">Clases Semanales</div>
+            </div>
+             <div>
+                <div class="heading text-4xl text-white font-bold">TOP</div>
+                <div class="text-xs uppercase text-gray-500 font-bold tracking-widest">Equipamiento</div>
+            </div>
+             <div>
+                <div class="heading text-4xl text-white font-bold">100%</div>
+                <div class="text-xs uppercase text-gray-500 font-bold tracking-widest">Compromiso</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Programs -->
+    <section class="py-24 max-w-7xl mx-auto px-4">
+        <div class="flex items-end justify-between mb-12">
+            <div>
+                <h2 class="heading text-5xl md:text-6xl uppercase font-bold text-white mb-2">Programas <span class="text-neon-lime">Elite</span></h2>
+                <div class="h-1 w-24 bg-neon-lime"></div>
+            </div>
+            <a href="#" class="hidden md:block uppercase font-bold text-sm tracking-widest text-gray-400 hover:text-white">Ver Todo →</a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="group relative h-96 overflow-hidden border border-gray-800 hover:border-neon-lime transition duration-300">
+                <img src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 p-6">
+                    <h3 class="heading text-4xl uppercase font-bold text-white mb-1 italic">Cross Training</h3>
+                    <p class="text-gray-400 text-sm mb-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-300">Alta intensidad para un rendimiento total.</p>
+                    <span class="text-neon-lime text-xl font-bold">→</span>
+                </div>
+            </div>
+             <!-- Card 2 -->
+             <div class="group relative h-96 overflow-hidden border border-gray-800 hover:border-neon-lime transition duration-300">
+                <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 p-6">
+                    <h3 class="heading text-4xl uppercase font-bold text-white mb-1 italic">Power Lifting</h3>
+                    <p class="text-gray-400 text-sm mb-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-300">Fuerza bruta y técnica precisa.</p>
+                    <span class="text-neon-lime text-xl font-bold">→</span>
+                </div>
+            </div>
+             <!-- Card 3 -->
+             <div class="group relative h-96 overflow-hidden border border-gray-800 hover:border-neon-lime transition duration-300">
+                <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 p-6">
+                    <h3 class="heading text-4xl uppercase font-bold text-white mb-1 italic">Cardio Box</h3>
+                    <p class="text-gray-400 text-sm mb-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-300">Resistencia, agilidad y quema de calorías.</p>
+                    <span class="text-neon-lime text-xl font-bold">→</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Entrenadores -->
+    <section class="py-24 bg-black border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="heading text-5xl md:text-6xl uppercase font-bold text-white mb-2">Team <span class="text-neon-lime">IronForce</span></h2>
+                <p class="text-gray-500 uppercase tracking-widest text-sm">Coaches certificados y enfocados en resultados</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="border border-gray-800 p-6 bg-[#0a0a0a]">
+                    <div class="h-40 bg-dark-metal mb-4 flex items-center justify-center text-3xl">🏋️</div>
+                    <h3 class="heading text-3xl uppercase text-white">Leo Stone</h3>
+                    <p class="text-neon-lime text-sm uppercase tracking-widest">Power Coach</p>
+                    <p class="text-gray-500 text-sm mt-2">Especialista en fuerza máxima y técnica olímpica.</p>
+                </div>
+                <div class="border border-gray-800 p-6 bg-[#0a0a0a]">
+                    <div class="h-40 bg-dark-metal mb-4 flex items-center justify-center text-3xl">🔥</div>
+                    <h3 class="heading text-3xl uppercase text-white">Vera Steel</h3>
+                    <p class="text-neon-lime text-sm uppercase tracking-widest">Hypertrophy</p>
+                    <p class="text-gray-500 text-sm mt-2">Programas de volumen y definición por fases.</p>
+                </div>
+                <div class="border border-gray-800 p-6 bg-[#0a0a0a]">
+                    <div class="h-40 bg-dark-metal mb-4 flex items-center justify-center text-3xl">⚡</div>
+                    <h3 class="heading text-3xl uppercase text-white">Max Fury</h3>
+                    <p class="text-neon-lime text-sm uppercase tracking-widest">Conditioning</p>
+                    <p class="text-gray-500 text-sm mt-2">HIIT, movilidad y rendimiento competitivo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horarios -->
+    <section class="py-24 bg-dark-metal border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="heading text-5xl md:text-6xl uppercase font-bold text-white mb-2">Horarios <span class="text-neon-lime">Semanal</span></h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="border border-gray-800 p-6 bg-black">
+                    <h3 class="heading text-3xl uppercase text-white mb-3">Lun - Mié</h3>
+                    <ul class="text-gray-500 text-sm space-y-2">
+                        <li>06:00 AM • Power Lifting</li>
+                        <li>12:00 PM • Cardio Box</li>
+                        <li>07:00 PM • Cross Training</li>
+                    </ul>
+                </div>
+                <div class="border border-gray-800 p-6 bg-black">
+                    <h3 class="heading text-3xl uppercase text-white mb-3">Mar - Jue</h3>
+                    <ul class="text-gray-500 text-sm space-y-2">
+                        <li>06:00 AM • Strength Basics</li>
+                        <li>05:00 PM • HIIT</li>
+                        <li>08:00 PM • Mobility</li>
+                    </ul>
+                </div>
+                <div class="border border-gray-800 p-6 bg-black">
+                    <h3 class="heading text-3xl uppercase text-white mb-3">Vie - Sáb</h3>
+                    <ul class="text-gray-500 text-sm space-y-2">
+                        <li>07:00 AM • Olympic Lifts</li>
+                        <li>12:00 PM • Full Body</li>
+                        <li>05:00 PM • Strongman</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-24 bg-black border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="heading text-5xl md:text-6xl uppercase font-bold text-white mb-2">Resultados <span class="text-neon-lime">Reales</span></h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="border border-gray-800 p-6 bg-[#0a0a0a]">
+                    <div class="text-neon-lime text-xl mb-2">★★★★★</div>
+                    <p class="text-gray-400 text-sm">“Subí 40kg en sentadilla en 3 meses. Ambiente brutal.”</p>
+                    <div class="text-white mt-4">— Kevin R.</div>
+                </div>
+                <div class="border border-gray-800 p-6 bg-[#0a0a0a]">
+                    <div class="text-neon-lime text-xl mb-2">★★★★★</div>
+                    <p class="text-gray-400 text-sm">“Rutinas precisas y coaches presentes. Recomiendo.”</p>
+                    <div class="text-white mt-4">— Alejandra M.</div>
+                </div>
+                <div class="border border-gray-800 p-6 bg-[#0a0a0a]">
+                    <div class="text-neon-lime text-xl mb-2">★★★★★</div>
+                    <p class="text-gray-400 text-sm">“El mejor gimnasio para fuerza y rendimiento.”</p>
+                    <div class="text-white mt-4">— Diego S.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Banner -->
+    <section class="bg-neon-lime text-black py-16 text-center clip-diagonal">
+        <h2 class="heading text-6xl md:text-8xl font-bold uppercase leading-none mb-4">Start Now</h2>
+        <p class="text-xl font-bold uppercase tracking-widest mb-8">Primer mes 50% OFF - Oferta Limitada</p>
+        <button class="bg-black text-white px-10 py-3 uppercase font-bold hover:bg-gray-800 transition">Obtener Promoción</button>
+    </section>
+
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

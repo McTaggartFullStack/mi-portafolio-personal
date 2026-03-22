@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>Oxford Heights University</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'uni-blue': '#002147',
+                        'uni-gold': '#B38B59',
+                        'uni-gray': '#F4F4F4',
+                    },
+                    fontFamily: {
+                        'serif': ['Crimson Text', 'serif'],
+                        'sans': ['Source Sans Pro', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 50%, #d4dce6 100%);
+            background-attachment: fixed;
+        }
+        .hero-pattern {
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(0, 33, 71, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(179, 139, 89, 0.08) 0%, transparent 50%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 40px rgba(0, 33, 71, 0.15);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #002147 0%, #B38B59 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+
+    <!-- Top Bar -->
+    <div class="bg-uni-blue text-white text-xs py-2 px-6 flex justify-between items-center">
+        <div class="hidden md:flex gap-4">
+            <a href="#" class="hover:text-uni-gold">Alumni</a>
+            <a href="#" class="hover:text-uni-gold">Staff</a>
+            <a href="#" class="hover:text-uni-gold">Parents</a>
+        </div>
+        <div class="flex gap-4 ml-auto">
+            <a href="#" class="font-bold hover:text-uni-gold">APPLY NOW</a>
+            <span>|</span>
+            <a href="#" class="hover:text-uni-gold">Portal Login</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center h-20">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-uni-blue flex items-center justify-center text-white font-serif font-bold text-xl rounded-sm">
+                    H
+                </div>
+                <div>
+                    <h1 class="font-serif font-bold text-2xl leading-none text-uni-blue tracking-wide">OXFORD HEIGHTS</h1>
+                    <p class="text-xs uppercase tracking-widest text-gray-500">University</p>
+                </div>
+            </div>
+            
+            <nav class="hidden lg:flex gap-8 font-semibold text-sm uppercase text-gray-600">
+                <a href="#" class="hover:text-uni-blue transition">Academics</a>
+                <a href="#" class="hover:text-uni-blue transition">Admissions</a>
+                <a href="#" class="hover:text-uni-blue transition">Research</a>
+                <a href="#" class="hover:text-uni-blue transition">Campus Life</a>
+                <a href="index.html" class="text-uni-gold hover:text-uni-blue transition">Back to Main</a>
+            </nav>
+
+            <button class="lg:hidden text-2xl text-uni-blue">☰</button>
+        </div>
+    </header>
+
+    <!-- Hero Slider (Static) -->
+    <section class="relative h-[700px] w-full bg-uni-blue overflow-hidden">
+        
+        <div class="absolute inset-0 flex items-center justify-center max-w-7xl mx-auto px-6">
+            <div class="max-w-4xl w-full bg-white/95 backdrop-blur-sm p-12 md:p-20 shadow-2xl border-l-8 border-uni-gold rounded-r-2xl">
+                <span class="text-uni-gold font-bold uppercase tracking-widest text-base mb-4 block">Established 1895</span>
+                <h2 class="font-serif font-bold text-5xl md:text-7xl text-uni-blue mb-8 leading-tight">
+                    Shaping the Future <br>of Leadership
+                </h2>
+                <p class="text-xl text-gray-700 mb-10 leading-relaxed max-w-3xl">
+                    Join a community of innovators and scholars dedicated to solving the world's most pressing challenges.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                     <a href="#" class="bg-uni-blue text-white px-10 py-4 font-bold uppercase text-sm tracking-wider hover:bg-black transition text-center">
+                        Explore Programs
+                    </a>
+                    <a href="#" class="border-2 border-uni-blue text-uni-blue px-10 py-4 font-bold uppercase text-sm tracking-wider hover:bg-uni-blue hover:text-white transition text-center">
+                        Virtual Tour
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="relative bg-uni-blue text-white py-12 border-b-4 border-uni-gold overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/20 relative z-10">
+            <div>
+                <div class="font-serif text-4xl md:text-5xl font-bold mb-2">12:1</div>
+                <div class="text-uni-gold text-xs uppercase tracking-widest">Student-Faculty Ratio</div>
+            </div>
+            <div>
+                <div class="font-serif text-4xl md:text-5xl font-bold mb-2">95%</div>
+                <div class="text-uni-gold text-xs uppercase tracking-widest">Employment Rate</div>
+            </div>
+             <div>
+                <div class="font-serif text-4xl md:text-5xl font-bold mb-2">150+</div>
+                <div class="text-uni-gold text-xs uppercase tracking-widest">Majors & Minors</div>
+            </div>
+             <div>
+                <div class="font-serif text-4xl md:text-5xl font-bold mb-2">#1</div>
+                <div class="text-uni-gold text-xs uppercase tracking-widest">Innovation Ranking</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Grid -->
+    <section class="py-24 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="font-serif font-bold text-4xl text-uni-blue mb-4">Areas of Study</h2>
+            <div class="w-20 h-1 bg-uni-gold mx-auto mb-6"></div>
+            <p class="max-w-2xl mx-auto text-gray-600">Discover your passion across our six colleges and schools, renowned for academic excellence and research impact.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <a href="#" class="group relative h-64 overflow-hidden shadow-lg">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-uni-blue/90 to-transparent flex flex-col justify-end p-6">
+                    <h3 class="text-white font-serif font-bold text-2xl mb-1 group-hover:text-uni-gold transition">Engineering & Tech</h3>
+                    <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition translate-y-4 group-hover:translate-y-0">Robotics, AI, Civil, Mechanical</p>
+                </div>
+            </a>
+            <!-- Card 2 -->
+            <a href="#" class="group relative h-64 overflow-hidden shadow-lg">
+                <img src="https://images.unsplash.com/photo-1576085898323-218337e3e43c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-uni-blue/90 to-transparent flex flex-col justify-end p-6">
+                    <h3 class="text-white font-serif font-bold text-2xl mb-1 group-hover:text-uni-gold transition">Medicine & Health</h3>
+                    <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition translate-y-4 group-hover:translate-y-0">Nursing, Public Health, Biology</p>
+                </div>
+            </a>
+            <!-- Card 3 -->
+            <a href="#" class="group relative h-64 overflow-hidden shadow-lg">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-uni-blue/90 to-transparent flex flex-col justify-end p-6">
+                    <h3 class="text-white font-serif font-bold text-2xl mb-1 group-hover:text-uni-gold transition">Business & Law</h3>
+                    <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition translate-y-4 group-hover:translate-y-0">Finance, MBA, International Law</p>
+                </div>
+            </a>
+            <!-- Card 4 -->
+            <a href="#" class="group relative h-64 overflow-hidden shadow-lg">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-uni-blue/90 to-transparent flex flex-col justify-end p-6">
+                    <h3 class="text-white font-serif font-bold text-2xl mb-1 group-hover:text-uni-gold transition">Arts & Humanities</h3>
+                    <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition translate-y-4 group-hover:translate-y-0">Literature, History, Philosophy</p>
+                </div>
+            </a>
+            <!-- Card 5 -->
+            <a href="#" class="group relative h-64 overflow-hidden shadow-lg">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-uni-blue/90 to-transparent flex flex-col justify-end p-6">
+                    <h3 class="text-white font-serif font-bold text-2xl mb-1 group-hover:text-uni-gold transition">Sciences & Math</h3>
+                    <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition translate-y-4 group-hover:translate-y-0">Physics, Chemistry, Data Science</p>
+                </div>
+            </a>
+            <!-- Card 6 -->
+            <a href="#" class="group relative h-64 overflow-hidden shadow-lg">
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-uni-blue/90 to-transparent flex flex-col justify-end p-6">
+                    <h3 class="text-white font-serif font-bold text-2xl mb-1 group-hover:text-uni-gold transition">Education & Social Sciences</h3>
+                    <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition translate-y-4 group-hover:translate-y-0">Psychology, Sociology, Teaching</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Research Excellence -->
+    <section class="py-24 bg-white/70 backdrop-blur-sm hero-pattern">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif font-bold text-4xl text-uni-blue mb-4">World-Class Research</h2>
+                <div class="w-20 h-1 bg-uni-gold mx-auto mb-6"></div>
+                <p class="max-w-2xl mx-auto text-gray-600">Oxford Heights ranks among the top 10 universities globally for research output and innovation.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white card-shadow rounded-lg p-8 hover:transform hover:-translate-y-2 transition duration-300">
+                    <div class="text-5xl mb-4">🧬</div>
+                    <h3 class="font-serif font-bold text-2xl text-uni-blue mb-3">Biomedical Innovation</h3>
+                    <p class="text-gray-600 mb-4">$125M in annual funding for cancer research and gene therapy breakthroughs.</p>
+                    <a href="#" class="text-uni-gold font-bold text-sm hover:underline">Learn More →</a>
+                </div>
+                <div class="bg-white card-shadow rounded-lg p-8 hover:transform hover:-translate-y-2 transition duration-300">
+                    <div class="text-5xl mb-4">🤖</div>
+                    <h3 class="font-serif font-bold text-2xl text-uni-blue mb-3">AI & Machine Learning</h3>
+                    <p class="text-gray-600 mb-4">Leading research in ethical AI, natural language processing, and computer vision.</p>
+                    <a href="#" class="text-uni-gold font-bold text-sm hover:underline">Learn More →</a>
+                </div>
+                <div class="bg-white card-shadow rounded-lg p-8 hover:transform hover:-translate-y-2 transition duration-300">
+                    <div class="text-5xl mb-4">🌍</div>
+                    <h3 class="font-serif font-bold text-2xl text-uni-blue mb-3">Climate Solutions</h3>
+                    <p class="text-gray-600 mb-4">Pioneering sustainable energy systems and carbon capture technologies.</p>
+                    <a href="#" class="text-uni-gold font-bold text-sm hover:underline">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Life -->
+    <section class="py-24 bg-uni-blue text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-serif font-bold text-4xl mb-4">Life at Oxford Heights</h2>
+                <div class="w-20 h-1 bg-uni-gold mx-auto mb-6"></div>
+                <p class="max-w-2xl mx-auto text-gray-300">Beyond academics, discover a vibrant campus community with 400+ student organizations.</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="text-6xl mb-4">🏃</div>
+                    <h3 class="font-bold text-xl mb-2">24 Varsity Sports</h3>
+                    <p class="text-gray-300 text-sm">NCAA Division I athletics</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl mb-4">🎭</div>
+                    <h3 class="font-bold text-xl mb-2">Arts & Culture</h3>
+                    <p class="text-gray-300 text-sm">3 theaters, 2 galleries</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl mb-4">🌐</div>
+                    <h3 class="font-bold text-xl mb-2">Global Network</h3>
+                    <p class="text-gray-300 text-sm">Students from 95 countries</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl mb-4">💼</div>
+                    <h3 class="font-bold text-xl mb-2">Career Services</h3>
+                    <p class="text-gray-300 text-sm">4,000+ internship partners</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Testimonials -->
+    <section class="py-24 bg-white/70 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif font-bold text-4xl text-uni-blue mb-4">Student Voices</h2>
+                <div class="w-20 h-1 bg-uni-gold mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white card-shadow rounded-lg p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-uni-blue to-uni-gold flex items-center justify-center text-white font-bold text-xl">JS</div>
+                        <div>
+                            <div class="font-bold text-uni-blue">Jessica Song</div>
+                            <div class="text-sm text-gray-500">Computer Science '24</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-4">"The research opportunities here are incredible. I've published two papers and landed my dream job at Google before graduation."</p>
+                    <div class="flex gap-1 text-uni-gold">
+                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                    </div>
+                </div>
+                <div class="bg-white card-shadow rounded-lg p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-uni-blue to-uni-gold flex items-center justify-center text-white font-bold text-xl">MR</div>
+                        <div>
+                            <div class="font-bold text-uni-blue">Marcus Rivera</div>
+                            <div class="text-sm text-gray-500">Business Administration '25</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-4">"The professors genuinely care about your success. Small class sizes mean you're not just a number."</p>
+                    <div class="flex gap-1 text-uni-gold">
+                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                    </div>
+                </div>
+                <div class="bg-white card-shadow rounded-lg p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-uni-blue to-uni-gold flex items-center justify-center text-white font-bold text-xl">AP</div>
+                        <div>
+                            <div class="font-bold text-uni-blue">Amara Patel</div>
+                            <div class="text-sm text-gray-500">Pre-Med '26</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-4">"The diverse campus community opened my eyes. I've made lifelong friends from every corner of the globe."</p>
+                    <div class="flex gap-1 text-uni-gold">
+                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rankings & Accreditations -->
+    <section class="py-20 bg-uni-gray">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="font-serif font-bold text-3xl text-uni-blue mb-4">Rankings & Recognition</h2>
+                <div class="w-20 h-1 bg-uni-gold mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
+                <div>
+                    <div class="font-serif text-4xl font-bold gradient-text mb-2">#8</div>
+                    <div class="text-sm text-gray-600">U.S. News Overall</div>
+                </div>
+                <div>
+                    <div class="font-serif text-4xl font-bold gradient-text mb-2">#3</div>
+                    <div class="text-sm text-gray-600">Engineering Programs</div>
+                </div>
+                <div>
+                    <div class="font-serif text-4xl font-bold gradient-text mb-2">#5</div>
+                    <div class="text-sm text-gray-600">Business School</div>
+                </div>
+                <div>
+                    <div class="font-serif text-4xl font-bold gradient-text mb-2">#12</div>
+                    <div class="text-sm text-gray-600">World University Rankings</div>
+                </div>
+                <div>
+                    <div class="font-serif text-4xl font-bold gradient-text mb-2">Top 1%</div>
+                    <div class="text-sm text-gray-600">Global Universities</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions CTA -->
+    <section class="py-24 bg-gradient-to-br from-uni-blue via-uni-blue to-black text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-10 right-10 w-96 h-96 bg-uni-gold rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 left-10 w-96 h-96 bg-blue-600 rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <h2 class="font-serif font-bold text-4xl md:text-5xl mb-6">Ready to Join Oxford Heights?</h2>
+            <p class="text-xl text-gray-300 mb-10">Applications for Fall 2027 are now open. Start your journey to excellence today.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#" class="bg-uni-gold text-uni-blue px-10 py-4 font-bold uppercase text-sm tracking-wider hover:bg-white transition rounded shadow-lg">
+                    Apply Now
+                </a>
+                <a href="#" class="border-2 border-white text-white px-10 py-4 font-bold uppercase text-sm tracking-wider hover:bg-white hover:text-uni-blue transition rounded">
+                    Request Information
+                </a>
+            </div>
+            <p class="text-sm text-gray-400 mt-8">Application Deadline: January 15, 2027 • Early Decision: November 1, 2026</p>
+        </div>
+    </section>
+
+    <!-- News & Events -->
+    <section class="bg-uni-gray py-20 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
+            <div class="flex-1">
+                <h3 class="font-serif font-bold text-3xl text-uni-blue mb-8 border-l-4 border-uni-gold pl-4">University News</h3>
+                <div class="space-y-8">
+                    <!-- News Item -->
+                    <article class="flex gap-4 group">
+                        <div class="w-24 h-24 bg-gray-300 flex-shrink-0">
+                            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <div class="text-xs text-uni-gold font-bold uppercase mb-1">Research • Feb 02</div>
+                            <h4 class="font-bold text-lg leading-tight mb-2 group-hover:text-uni-blue transition"><a href="#">New Sustainable Energy Lab Opens on North Campus</a></h4>
+                            <p class="text-sm text-gray-600 line-clamp-2">A state-of-the-art facility dedicated to renewable energy research funded by a $10M grant.</p>
+                        </div>
+                    </article>
+                     <!-- News Item -->
+                     <article class="flex gap-4 group">
+                        <div class="w-24 h-24 bg-gray-300 flex-shrink-0">
+                             <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <div class="text-xs text-uni-gold font-bold uppercase mb-1">Campus • Jan 28</div>
+                            <h4 class="font-bold text-lg leading-tight mb-2 group-hover:text-uni-blue transition"><a href="#">Annual Student Art Exhibition Winners Announced</a></h4>
+                            <p class="text-sm text-gray-600 line-clamp-2">Celebrating the creativity and innovation of our Fine Arts department students.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            
+            <div class="lg:w-1/3">
+                 <h3 class="font-serif font-bold text-3xl text-uni-blue mb-8 border-l-4 border-uni-gold pl-4">Upcoming Events</h3>
+                 <div class="bg-white shadow-lg rounded-sm p-6 divide-y">
+                    <div class="py-4 flex gap-4">
+                        <div class="text-center w-12 flex-shrink-0">
+                            <span class="block text-2xl font-bold text-uni-blue">12</span>
+                            <span class="block text-xs uppercase font-bold text-gray-400">Feb</span>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-sm mb-1">Open House Day</h5>
+                            <p class="text-xs text-gray-500">10:00 AM • Main Hall</p>
+                        </div>
+                    </div>
+                    <div class="py-4 flex gap-4">
+                         <div class="text-center w-12 flex-shrink-0">
+                            <span class="block text-2xl font-bold text-uni-blue">15</span>
+                            <span class="block text-xs uppercase font-bold text-gray-400">Feb</span>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-sm mb-1">Guest Lecture: Dr. Chen</h5>
+                            <p class="text-xs text-gray-500">2:00 PM • Science Bldg</p>
+                        </div>
+                    </div>
+                    <div class="py-4 flex gap-4">
+                         <div class="text-center w-12 flex-shrink-0">
+                            <span class="block text-2xl font-bold text-uni-blue">20</span>
+                            <span class="block text-xs uppercase font-bold text-gray-400">Feb</span>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-sm mb-1">Varsity Basketball Game</h5>
+                            <p class="text-xs text-gray-500">7:00 PM • Sports Center</p>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-uni-blue text-white py-16 px-6 text-center md:text-left">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
+            <div>
+                 <div class="font-serif font-bold text-2xl leading-none text-white tracking-wide mb-6">OXFORD HEIGHTS<br><span class="text-sm uppercase font-sans tracking-widest text-uni-gold">University</span></div>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase tracking-widest text-sm text-uni-gold mb-6">Quick Links</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><a href="#" class="hover:text-white">Academic Calendar</a></li>
+                    <li><a href="#" class="hover:text-white">Library</a></li>
+                    <li><a href="#" class="hover:text-white">Directory</a></li>
+                    <li><a href="#" class="hover:text-white">Maps & Directions</a></li>
+                </ul>
+            </div>
+             <div>
+                <h4 class="font-bold uppercase tracking-widest text-sm text-uni-gold mb-6">Contact</h4>
+                <address class="not-italic text-sm text-gray-300 space-y-2">
+                    <p>123 University Ave</p>
+                    <p>Cambridge, MA 02138</p>
+                    <p>(555) 123-4567</p>
+                    <p>info@oxfordheights.edu</p>
+                </address>
+            </div>
+            <div class="flex flex-col gap-4">
+                <a href="#" class="bg-uni-gold text-uni-blue font-bold py-3 text-center hover:bg-white transition uppercase text-sm">Donate</a>
+                <div class="flex justify-center md:justify-start gap-4 text-2xl">
+                    <span>🏛️</span><span>🎓</span><span>📚</span>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/10 text-xs text-gray-500 text-center">
+            © 2026 Oxford Heights University. All rights reserved.
+        </div>
+    </footer>
+
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

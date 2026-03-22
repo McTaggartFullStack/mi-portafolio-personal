@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia en 21 Momentos ❤️</title>
+    <link rel="icon" type="image/png" href="img/valentina/favicon.png" sizes="32x32" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primario: #ff4d6d;
+            --color-secundario: #fff0f3;
+            --color-texto: #590d22;
+            --fuente-titulo: 'Dancing Script', cursive;
+            --fuente-cuerpo: 'Montserrat', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: var(--fuente-cuerpo); 
+            background-color: var(--color-secundario); 
+            color: var(--color-texto); 
+            line-height: 1.6; 
+            overflow-x: hidden;
+        }
+
+        /* Barra de progreso superior */
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 6px;
+            background: var(--color-primario); z-index: 9999; width: 0%;
+            transition: width 0.2s ease;
+        }
+
+        /* --- Hero --- */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(255, 240, 243, 0.7), rgba(255, 240, 243, 0.7)), url('img/valentina/foto-principal.jpg') center/cover;
+            padding: 20px;
+        }
+        h1 { font-family: var(--fuente-titulo); font-size: 5rem; color: var(--color-primario); animation: latido 2s infinite; }
+        header p { font-size: 1.1rem; max-width: 680px; }
+
+        /* --- Timeline --- */
+        .timeline { position: relative; max-width: 1100px; margin: 50px auto; padding: 20px; }
+        .timeline::after { content: ''; position: absolute; width: 6px; background: var(--color-primario); top: 0; bottom: 0; left: 50%; margin-left: -3px; border-radius: 10px; }
+
+        .container { padding: 20px 50px; position: relative; width: 50%; opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .container.show { opacity: 1; transform: translateY(0); }
+
+        .container::after { content: '❤️'; position: absolute; width: 35px; height: 35px; left: 100%; transform: translateX(-50%); background: var(--color-primario); color: white; top: 25px; border-radius: 50%; z-index: 1; text-align: center; font-size: 0.9rem; line-height: 35px; font-weight: bold; border: 3px solid white; }
+
+        .left { left: 0; text-align: right; }
+        .right { left: 50%; text-align: left; }
+        .right::after { left: 0; transform: translateX(-50%); }
+
+        .content { padding: 25px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #ffccd5; overflow: hidden; }
+        .content img { width: 100%; border-radius: 15px; margin-bottom: 15px; border: 2px solid var(--color-secundario); transition: transform 0.5s ease; cursor: zoom-in; }
+        .content img:hover { transform: scale(1.05); }
+        .content h2 { font-family: var(--fuente-titulo); font-size: 2.2rem; color: var(--color-primario); margin-bottom: 10px; }
+
+        /* --- Contador --- */
+        .contador-seccion { text-align: center; padding: 80px 20px; background: var(--color-primario); color: white; }
+        .contador-grid { display: flex; justify-content: center; gap: 20px; margin-top: 30px; }
+        .tiempo-box { background: rgba(255,255,255,0.25); padding: 30px; border-radius: 20px; min-width: 120px; backdrop-filter: blur(5px); }
+        .tiempo-box span { display: block; font-size: 3rem; font-weight: bold; }
+
+        #btnMusica { position: fixed; bottom: 30px; right: 30px; z-index: 1000; background: var(--color-primario); border: none; border-radius: 50%; width: 65px; height: 65px; cursor: pointer; font-size: 28px; box-shadow: 0 5px 20px rgba(0,0,0,0.4); transition: 0.3s; }
+
+        /* Lightbox */
+        #lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.75);
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 220ms ease;
+        }
+        #lightbox-overlay.show { opacity: 1; pointer-events: auto; }
+        .lightbox-content {
+            position: relative;
+            max-width: 95%;
+            max-height: 90%;
+            border-radius: 16px;
+            overflow: hidden;
+            transform: scale(0.96);
+            opacity: 0;
+            transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 260ms ease;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+            background: #000;
+        }
+        #lightbox-overlay.show .lightbox-content { transform: scale(1); opacity: 1; }
+        .lightbox-content img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 90vh;
+            object-fit: contain;
+            background: #000;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 140ms ease, background 140ms ease;
+        }
+        .lightbox-close:hover { transform: scale(1.08); background: rgba(0,0,0,0.7); }
+
+        @keyframes latido { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+
+        /* Corazones de fondo */
+        .heart-bg { position: fixed; top: -10vh; font-size: 20px; color: rgba(255, 77, 109, 0.2); z-index: -1; animation: fall linear forwards; }
+        @keyframes fall { to { transform: translateY(110vh); } }
+
+        @media (max-width: 768px) {
+            header { min-height: 100vh; padding: 24px 18px; }
+            .timeline::after { left: 31px; }
+            .container { width: 100%; padding: 0 0 0 70px; text-align: left; margin-bottom: 24px; }
+            .container::after { left: 31px; transform: translateX(-50%); }
+            .right::after { left: 31px; transform: translateX(-50%); }
+            .right { left: 0; }
+            h1 { font-size: 3.2rem; }
+            header p { font-size: 1rem; }
+            .content { padding: 20px; }
+            .content h2 { font-size: 1.8rem; }
+            .contador-grid { flex-direction: column; align-items: center; }
+            #btnMusica { width: 56px; height: 56px; font-size: 24px; bottom: 20px; right: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.7rem; }
+            .timeline { padding: 10px; }
+            .container { padding-left: 64px; }
+            .content img { margin-bottom: 12px; }
+            .content p { font-size: 0.98rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+    <audio id="musicaFondo" loop><source src="img/cancion/melendi.mp3" type="audio/mpeg"></audio>
+    <button id="btnMusica" onclick="controlarMusica()">🎵</button>
+
+    <header>
+        <h1>Nuestra Historia</h1>
+        <p>q lindos</p>
+    </header>
+
+    <section class="timeline">
+        
+        <div class="container left">
+            <div class="content">
+                <h2>El primer contacto</h2>
+                <img src="img/valentina/fecha.png" alt="Gelarti">
+                <p>Aquí comenzó todo, jamás imaginé que encontraría lo que más feliz me hace en Gelarti jaja.</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>Nuestra primera cita</h2>
+                <img src="img/valentina/peli.jpg" alt="Cine">
+                <p>nuestra primera cita fue viendo esta peli de terror medio funny jskdls</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>primera comida juntos</h2>
+                <img src="img/valentina/comida.png" alt="Whoppers">
+                <p>como olvidar que metimos 2 whoppers con su combo y que te dio hambre en el momento mas tenso de la peli.</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>jamas pense que volveriamos a trabajar juntos pero el destino tenia otros planes</h2>
+                <img src="img/valentina/gelartiii.jpg" alt="Recuerdo">
+                <p>fuiste lo mejor de ese mes en gelarti San Francisco❤️</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>segunda cita❤️</h2>
+                <img src="img/valentina/final.jpg" alt="Recuerdo">
+                <p>que lindo fue ver destino final juntos en nuestra segunda cita</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>tercera cita❤️</h2>
+                <img src="img/valentina/casco.jpeg" alt="Recuerdo">
+                <p>jamas olvidare esa goleada a venezuela que los dejo sin mundial jaja, todavia recuerdo q eramos los unicos colombianos en la 10</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>cuarta cita❤️</h2>
+                <img src="img/valentina/saber.jpeg" alt="Recuerdo">
+                <p>aqui recuerdo como me acompañaste a buscar mi record policivo y luego hicimos un picnic en ciudad del saber, vimos la naranja mecanica juntos, subimos un cerro muy lindo y finalmente tuvimos uno de los momentos mas lindos de nuestra relacion❤️, jamas olvidare nuestro primer beso donde te cargue en mis brazos mientras nos lo dabamos</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>aqui nuestro hijito mayor</h2>
+                <img src="img/valentina/dokisito.jpeg" alt="Recuerdo">
+                <p>DOKIII, ese lindo caramelito que a sus 60 años perrunos siga teniendo esa energia de cachorrito</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>nuestro segundo hijito</h2>
+                <img src="img/valentina/aresito.jpeg" alt="Recuerdo">
+                <p>un negro muy bonito y dormilon, como amo a aresito</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>Amor a distancia temporal</h2>
+                <img src="img/valentina/llamada.jpeg" alt="Recuerdo">
+                <p>fue lindo como durante mi viaje a medellin seguiamos hablando a cada momento❤️</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>primera comida romantica juntos</h2>
+                <img src="img/valentina/lagsaña.jpeg" alt="Recuerdo">
+                <p>q lindo fue ese dia donde hicimos nuestra primera comida juntos, la verdad nos lucimos con esa lasaña en salsa rosa y en ese rico brownie</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>fotito con nuestras camisas a juego de la seleccion</h2>
+                <img src="img/valentina/bañito.jpeg" alt="Recuerdo">
+                <p>que lindo como nos quedo a ambos nuestras camisas de la seleccion</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>paseos a aresito</h2>
+                <img src="img/valentina/besito.jpeg" alt="Recuerdo">
+                <p>aqui uno de nuestros muchos paseos a nuestro negro hermoso, siempre sera lindo caminar contigo mientras paseamos al bebesote de ares</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>nuestro primer arreglo</h2>
+                <img src="img/valentina/xboxx.jpeg" alt="Recuerdo">
+                <p>como olvidar esa noche que nos desvelamos arreglando el xbox juntos, fue una gran experiencia y me ha ayudado a forjar un nuevo camino en mi vida a tu lado</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>tacobell</h2>
+                <img src="img/valentina/tacobell.jpeg" alt="Recuerdo">
+                <p>como olvidar que el mismo dia que reparamos el xbox comimos bien rico en tacobell y desde ahi se convirtio en uno de nuestros restaurantes favoritos</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>miah....</h2>
+                <img src="img/valentina/miah.jpeg" alt="Recuerdo">
+                <p>parece ayer que fue que llego a la casa esa perrita linda pero muy bullera</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>primera pijamada en mi casa</h2>
+                <img src="img/valentina/metro.jpeg" alt="Recuerdo">
+                <p>aqui tristemente nos despediamos de la que fue una de mis mejores noches en mi vida, trasnocharnos toda la noche viendo pelis, jugando o simpelemte hablando fue algo realmente unico y lindo</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>te amoooo</h2>
+                <img src="img/valentina/teamo.jpeg" alt="Recuerdo">
+                <p>QUE TE AMOOOOOOO</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>dia de las velitas</h2>
+                <img src="img/valentina/velas.jpeg" alt="Recuerdo">
+                <p>jj pedi muchos deseos por los 2 ya q alguien se durmio</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>novia gamer</h2>
+                <img src="img/valentina/noviagamer.jpeg" alt="Recuerdo">
+                <p>que lindo ver como te chocabas con todo en gta v shvfjnd</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>mi hermosa flaca ❤️</h2>
+                <img src="img/valentina/culona.jpeg" alt="Final">
+                <p>y como ultimo una foto de la mujer que me tiene loco loco locooooo</p>
+            </div>
+        </div>
+
+        <!-- Nuevos momentos para pegar fotos (15 secciones) -->
+        <div class="container right">
+            <div class="content">
+                <h2>muestro angelito</h2>
+                <img src="img/valentina/hercules.jpeg" alt="Momento 1">
+                <p>una de las primeras fotos que le tomamos al bebe mas tierno del mundo</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>bebesitto bonitooooo</h2>
+                <img src="img/valentina/hercules2.jpeg" alt="Momento 2">
+                <p>mi foto favorita de hercules y lo lindo que fue❤️</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>nuestro dormilon</h2>
+                <img src="img/valentina/dormilon.jpeg" alt="Momento 3">
+                <p>hemos de aceptar que era hermoso y tierno cuando se dormia el bebe</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>ardillita</h2>
+                <img src="img/valentina/ardillita.jpeg" alt="Momento 4">
+                <p>la ardillita bonita de mi bebe hermosa</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>que linda las 2</h2>
+                <img src="img/valentina/ardilla.jpeg" alt="Momento 5">
+                <p>🐿️❤️</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>doki????</h2>
+                <img src="img/valentina/doki porro.jpeg" alt="Momento 6">
+                <p>que hacia doki????</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>¿dormilones?</h2>
+                <img src="img/valentina/dokid.jpeg" alt="Momento 7">
+                <p>lo chistoso aca son lo abiertos que estan los ojitos de caramelito que nunca duerme</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>jslsknt parece un preso</h2>
+                <img src="img/valentina/carcel.jpeg" alt="Momento 8">
+                <p>preso bonito esperandonos a q le abramos</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>que bonitoooooooo</h2>
+                <img src="img/valentina/ares.jpeg" alt="Momento 9">
+                <p>el negrito lindo hermoso precioso bonito tierno dormilon</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>uy quien me abra dejado asi</h2>
+                <img src="img/valentina/besos.jpeg" alt="Momento 10">
+                <p>jjjj</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>autora jsjsdk</h2>
+                <img src="img/valentina/autora.jpeg" alt="Momento 11">
+                <p>con que fue la chica mas hermosa del mundo❤️💋</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>la ultima vez que fuimos al gelarti de san francisco</h2>
+                <img src="img/valentina/gelarti.jpeg" alt="Momento 12">
+                <p>que bonito bebesita</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>esas hamburguesas estan buenisimassss</h2>
+                <img src="img/valentina/king.jpeg" alt="Momento 13">
+                <p>hay q seguir creando momentos ahi</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>DELISIOSO</h2>
+                <img src="img/valentina/salchipapa.jpeg" alt="Momento 14">
+                <p>LA MEJOR SALCHIPAPA DE MI VIDA</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>amo esta foto </h2>
+                <img src="img/valentina/nosotros.jpeg" alt="Momento 15">
+                <p>que lindos salimos siempre en las fotos juntos</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>mami moto</h2>
+                <img src="img/valentina/moto.jpeg" alt="Momento 16">
+                <p>grfdsj q tierna con su casquito</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>awwww</h2>
+                <img src="img/valentina/encima.jpeg" alt="Momento 17">
+                <p>amo cuando estas encima mio y cuando me haces masajes</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>la moto</h2>
+                <img src="img/valentina/bici.jpeg" alt="Momento 18">
+                <p>jdks la moto q me dio mi flaquita</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>qhfdjs pq tan seria mi bebe</h2>
+                <img src="img/valentina/seria.jpeg" alt="Momento 19">
+                <p>eres hermosamente seria tierna</p>
+            </div>
+        </div>
+
+        <div class="container left">
+            <div class="content">
+                <h2>💪🏻💪🏻💪🏻💪🏻💪🏻</h2>
+                <img src="img/valentina/fuerte.jpeg" alt="Momento 20">
+                <p>Eque fuerte esta el orgullo de la relacion</p>
+            </div>
+        </div>
+
+        <div class="container right">
+            <div class="content">
+                <h2>y para acabar esta segunda parte nuestra primera foto</h2>
+                <img src="img/valentina/primera.jpeg" alt="Momento 21">
+                <p>que lindo fue tomarla despues de ver destino final bloodlines</p>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="contador-seccion">
+        <h2>Llevamos juntos:</h2>
+        <div class="contador-grid">
+            <div class="tiempo-box"><span id="meses">3</span><p>Meses</p></div>
+            <div class="tiempo-box"><span id="dias">--</span><p>Días</p></div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 60px;">
+        <p style="font-family: var(--fuente-titulo); font-size: 2.5rem;">Te amo culona ❤️</p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox-overlay" class="hidden" aria-hidden="true">
+        <div class="lightbox-content">
+            <button class="lightbox-close" type="button" aria-label="Cerrar">✕</button>
+            <img id="lightbox-img" src="" alt="" />
+        </div>
+    </div>
+
+    <script>
+        // Animación de aparición al hacer scroll
+        const containers = document.querySelectorAll('.container');
+        const options = { threshold: 0.2 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('show');
+            });
+        }, options);
+        containers.forEach(c => observer.observe(c));
+
+        // Lógica de música
+        function controlarMusica() {
+            const audio = document.getElementById('musicaFondo');
+            const btn = document.getElementById('btnMusica');
+            if (audio.paused) { audio.play(); btn.innerText = '⏸️'; }
+            else { audio.pause(); btn.innerText = '🎵'; }
+        }
+
+        // Barra de progreso, corazones y confeti
+        let confettiLanzado = false;
+        function handleScroll() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+
+            if (Math.random() > 0.95) createHeart();
+
+            if (scrolled > 98 && !confettiLanzado) {
+                lanzarConfeti();
+                confettiLanzado = true;
+            }
+        }
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-bg');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        function lanzarConfeti() {
+            for(let i=0; i<80; i++) {
+                setTimeout(() => {
+                    const c = document.createElement('div');
+                    c.innerHTML = '❤️';
+                    c.style.position = 'fixed';
+                    c.style.left = Math.random() * 100 + 'vw';
+                    c.style.bottom = '-5vh';
+                    c.style.fontSize = Math.random() * 30 + 10 + 'px';
+                    c.style.zIndex = '10000';
+                    c.style.transition = 'all 3.5s ease-out';
+                    c.style.color = '#ff4d6d';
+                    document.body.appendChild(c);
+                    
+                    setTimeout(() => {
+                        c.style.transform = `translateY(-115vh) translateX(${Math.random() * 200 - 100}px) rotate(${Math.random() * 720}deg)`;
+                        c.style.opacity = '0';
+                    }, 50);
+                    setTimeout(() => c.remove(), 4000);
+                }, i * 60);
+            }
+        }
+        // Contador
+        const fechaInicio = new Date(2025, 8, 17);
+        const hoy = new Date();
+
+        let months = (hoy.getFullYear() - fechaInicio.getFullYear()) * 12;
+        months += hoy.getMonth() - fechaInicio.getMonth();
+
+        let tempDate = new Date(fechaInicio);
+        tempDate.setMonth(tempDate.getMonth() + months);
+
+        if (hoy < tempDate) {
+            months -= 1;
+            tempDate = new Date(fechaInicio);
+            tempDate.setMonth(tempDate.getMonth() + months);
+        }
+
+        const days = Math.floor((hoy - tempDate) / (1000 * 60 * 60 * 24));
+
+        document.getElementById('meses').innerText = months;
+        document.getElementById('dias').innerText = days;
+
+        // LIGHTBOX
+        (() => {
+            const overlay = document.getElementById('lightbox-overlay');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = overlay?.querySelector('.lightbox-close');
+
+            if (!overlay || !lightboxImg) return;
+
+            function openLightbox(src, alt) {
+                lightboxImg.src = src;
+                lightboxImg.alt = alt || '';
+                overlay.classList.remove('hidden');
+                requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('show')));
+                overlay.setAttribute('aria-hidden', 'false');
+            }
+
+            function closeLightbox() {
+                overlay.classList.remove('show');
+                overlay.setAttribute('aria-hidden', 'true');
+                const once = () => {
+                    overlay.classList.add('hidden');
+                    overlay.removeEventListener('transitionend', once);
+                };
+                overlay.addEventListener('transitionend', once);
+            }
+
+            document.querySelectorAll('.content img').forEach(img => {
+                img.addEventListener('click', (e) => {
+                    const target = e.currentTarget;
+                    openLightbox(target.src, target.alt || '');
+                });
+            });
+
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeLightbox();
+            });
+
+            closeBtn?.addEventListener('click', closeLightbox);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && overlay.classList.contains('show')) closeLightbox();
+            });
+        })();
+    </script>
+</body>
+</html>

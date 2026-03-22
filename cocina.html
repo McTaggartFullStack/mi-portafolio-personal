@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="img/principal/favicon.webp"/>
+    <title>ChefCorner | Todo para tu Cocina</title>
+  <meta name="description" content="Utensilios de cocina profesional y electrodomésticos de alta gama para tu hogar.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+    :root { color-scheme: light; }
+    body { background: #fdfbf7; }
+    
+    .product-card {
+      background: white;
+      border-radius: 16px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid #fed7aa;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -12px rgba(249, 115, 22, 0.15);
+      border-color: #f97316; /* Orange-500 */
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, #ea580c 0%, #f97316 50%, #fb923c 100%);
+    }
+    
+    .category-chip {
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .category-chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+    }
+    
+    .category-chip.active {
+      background: #f97316;
+      color: white;
+    }
+  </style>
+</head>
+<body class="text-gray-900">
+<!-- Portfolio Top Bar -->
+<nav class="fixed top-0 left-0 w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm z-[9999] h-16 border-b border-gray-200 dark:border-gray-800 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="block hover:scale-110 transition-transform duration-300">
+                <img src="img/principal/favicon.webp" alt="WebsPTY" class="h-10 w-10 rounded-full shadow-sm">
+            </a>
+            <a href="index.html" class="text-lg md:text-xl font-bold text-gray-800 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                <span>&larr;</span> Volver al Portafolio
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="h-16 w-full relative z-[9998]"></div>
+  
+  <!-- Navbar -->
+  <nav class="fixed w-full bg-white/95 backdrop-blur-md z-40 border-b border-orange-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center text-white font-bold">C</div>
+          <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-red-600">ChefCorner</span>
+        </div>
+        
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#" class="text-gray-600 hover:text-orange-600 transition-colors">Baterías</a>
+          <a href="#" class="text-gray-600 hover:text-orange-600 transition-colors">Cuchillos</a>
+          <a href="#" class="text-gray-600 hover:text-orange-600 transition-colors">Electro</a>
+          <a href="#" class="text-gray-600 hover:text-orange-600 transition-colors">Reposteria</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button class="p-2 text-gray-400 hover:text-orange-600 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </button>
+          <button class="relative p-2 text-gray-400 hover:text-orange-600 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            <span class="absolute top-0 right-0 w-4 h-4 bg-orange-600 text-white text-xs font-bold rounded-full flex items-center justify-center">1</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-orange-50 to-white">
+    <div class="max-w-7xl mx-auto rounded-3xl overflow-hidden shadow-2xl hero-gradient text-white relative">
+      <div class="absolute inset-0 bg-black/10"></div>
+      <div class="relative z-10 px-8 py-16 md:py-24 md:px-16 flex flex-col items-start max-w-2xl">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-sm text-sm font-semibold mb-6 border border-white/30">
+          Calidad Profesional
+        </span>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          Cocina Como un Chef Experto
+        </h1>
+        <p class="text-lg md:text-xl text-orange-50 mb-8 leading-relaxed max-w-lg">
+          Equipa tu cocina con herramientas de primera calidad diseñadas para durar y potenciar tu creatividad culinaria.
+        </p>
+        <button class="bg-white text-orange-600 px-8 py-4 rounded-xl font-bold shadow-lg hover:bg-gray-50 hover:scale-105 transition-all flex items-center gap-2 group">
+          Explorar Tienda
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Categories -->
+  <section class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="flex gap-4 overflow-x-auto pb-4 hide-scrollbar">
+      <button class="category-chip active px-6 py-2.5 rounded-full bg-orange-100 text-orange-800 font-medium whitespace-nowrap hover:bg-orange-200">Todo</button>
+      <button class="category-chip px-6 py-2.5 rounded-full bg-white border border-gray-200 text-gray-600 font-medium whitespace-nowrap hover:bg-orange-50 hover:border-orange-200 hover:text-orange-600">Sartenes</button>
+      <button class="category-chip px-6 py-2.5 rounded-full bg-white border border-gray-200 text-gray-600 font-medium whitespace-nowrap hover:bg-orange-50 hover:border-orange-200 hover:text-orange-600">Ollas</button>
+      <button class="category-chip px-6 py-2.5 rounded-full bg-white border border-gray-200 text-gray-600 font-medium whitespace-nowrap hover:bg-orange-50 hover:border-orange-200 hover:text-orange-600">Utensilios</button>
+      <button class="category-chip px-6 py-2.5 rounded-full bg-white border border-gray-200 text-gray-600 font-medium whitespace-nowrap hover:bg-orange-50 hover:border-orange-200 hover:text-orange-600">Electrodomésticos</button>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-20">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Product 1 -->
+      <div class="product-card group fade-in p-4">
+        <div class="relative bg-white rounded-xl overflow-hidden aspect-[4/3] mb-4 flex items-center justify-center border border-gray-100">
+           <span class="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-md mb-2">Más Vendido</span>
+          <img src="img/comida/sarten.webp" alt="Sartén Antiadherente" class="h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="space-y-2">
+          <h3 class="font-bold text-lg text-gray-900 leading-tight">Sartén Pro Antiadherente 28cm</h3>
+          <p class="text-gray-500 text-sm">Aluminio forjado con titanio</p>
+          <div class="flex items-center justify-between pt-2">
+            <span class="text-2xl font-bold text-orange-600">$49.99</span>
+            <button class="bg-gray-900 text-white p-3 rounded-full hover:bg-orange-600 transition-colors shadow-lg shadow-orange-200">
+               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+       <!-- Product 2 -->
+      <div class="product-card group fade-in p-4">
+        <div class="relative bg-white rounded-xl overflow-hidden aspect-[4/3] mb-4 flex items-center justify-center border border-gray-100">
+          <img src="img/comida/cuchillos.webp" alt="Set de Cuchillos" class="h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="space-y-2">
+          <h3 class="font-bold text-lg text-gray-900 leading-tight">Set Cuchillos Japonés Damasco</h3>
+          <p class="text-gray-500 text-sm">Acero inoxidable de 67 capas</p>
+          <div class="flex items-center justify-between pt-2">
+            <span class="text-2xl font-bold text-orange-600">$129.00</span>
+            <button class="bg-gray-900 text-white p-3 rounded-full hover:bg-orange-600 transition-colors shadow-lg shadow-orange-200">
+               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+       <!-- Product 3 -->
+      <div class="product-card group fade-in p-4">
+        <div class="relative bg-white rounded-xl overflow-hidden aspect-[4/3] mb-4 flex items-center justify-center border border-gray-100">
+          <img src="img/comida/carne.webp" alt="Batidora de Pie" class="h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="space-y-2">
+          <h3 class="font-bold text-lg text-gray-900 leading-tight">Batidora KitchenMaster Pro</h3>
+          <p class="text-gray-500 text-sm">500W de potencia, 5L</p>
+          <div class="flex items-center justify-between pt-2">
+            <span class="text-2xl font-bold text-orange-600">$249.99</span>
+            <button class="bg-gray-900 text-white p-3 rounded-full hover:bg-orange-600 transition-colors shadow-lg shadow-orange-200">
+               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </section>
+
+  <!-- Banner de Oferta -->
+  <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="bg-gradient-to-r from-red-500 to-orange-500 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+      <div class="relative z-10 max-w-3xl">
+        <span class="inline-block px-4 py-1.5 bg-white/20 backdrop-blur-sm rounded-full text-sm font-bold mb-4">
+          🔥 OFERTA LIMITADA
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          -30% en toda la colección de acero inoxidable
+        </h2>
+        <p class="text-orange-50 text-lg mb-6">
+          Baterías profesionales, sartenes premium y más. Válido hasta fin de mes o agotar existencias.
+        </p>
+        <button class="bg-white text-orange-600 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-all hover:scale-105 shadow-xl">
+          Ver Ofertas →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Más Productos -->
+  <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="mb-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-2">Productos Destacados</h2>
+      <p class="text-gray-600">Lo mejor de nuestra selección profesional</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Product 4 -->
+      <div class="product-card group fade-in p-4">
+        <div class="relative bg-white rounded-xl overflow-hidden aspect-square mb-4 flex items-center justify-center border border-gray-100">
+          <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md">-30%</span>
+          <img src="img/comida/olla.webp" alt="Olla Acero" class="h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="space-y-2">
+          <h3 class="font-bold text-base text-gray-900 leading-tight">Olla Acero Inoxidable 24cm</h3>
+          <p class="text-gray-500 text-sm">Tapa vidrio templado</p>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-bold text-orange-600">$69.99</span>
+            <span class="text-sm text-gray-400 line-through">$99.99</span>
+          </div>
+          <button class="w-full bg-orange-600 text-white py-2.5 rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+            Añadir al Carrito
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card group fade-in p-4">
+        <div class="relative bg-white rounded-xl overflow-hidden aspect-square mb-4 flex items-center justify-center border border-gray-100">
+          <img src="img/comida/tabla.webp" alt="Tabla de Cortar" class="h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="space-y-2">
+          <h3 class="font-bold text-base text-gray-900 leading-tight">Tabla de Cortar Bambú XL</h3>
+          <p class="text-gray-500 text-sm">Antibacteriana, 45x30cm</p>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-bold text-orange-600">$34.99</span>
+          </div>
+          <button class="w-full bg-orange-600 text-white py-2.5 rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+            Añadir al Carrito
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="product-card group fade-in p-4">
+        <div class="relative bg-white rounded-xl overflow-hidden aspect-square mb-4 flex items-center justify-center border border-gray-100">
+          <span class="absolute top-3 left-3 bg-purple-500 text-white text-xs font-bold px-2 py-1 rounded-md">Nuevo</span>
+          <img src="img/comida/espatulas.webp" alt="Espátulas" class="h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="space-y-2">
+          <h3 class="font-bold text-base text-gray-900 leading-tight">Set 5 Espátulas Silicón</h3>
+          <p class="text-gray-500 text-sm">Resistentes 250°C</p>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-bold text-orange-600">$19.99</span>
+          </div>
+          <button class="w-full bg-orange-600 text-white py-2.5 rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+            Añadir al Carrito
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="product-card group fade-in p-4">
+        <div class="relative bg-white rounded-xl overflow-hidden aspect-square mb-4 flex items-center justify-center border border-gray-100">
+          <img src="img/comida/batidora.webp" alt="Procesador" class="h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="space-y-2">
+          <h3 class="font-bold text-base text-gray-900 leading-tight">Procesador de Alimentos 8 en 1</h3>
+          <p class="text-gray-500 text-sm">800W, 12 velocidades</p>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-bold text-orange-600">$189.00</span>
+          </div>
+          <button class="w-full bg-orange-600 text-white py-2.5 rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+            Añadir al Carrito
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="product-card group fade-in p-4">
+        <div class="relative bg-white rounded-xl overflow-hidden aspect-square mb-4 flex items-center justify-center border border-gray-100">
+          <img src="img/comida/batidora.webp" alt="Tetera" class="h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="space-y-2">
+          <h3 class="font-bold text-base text-gray-900 leading-tight">Tetera Eléctrica Vidrio 1.7L</h3>
+          <p class="text-gray-500 text-sm">Control temperatura LED</p>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-bold text-orange-600">$54.99</span>
+          </div>
+          <button class="w-full bg-orange-600 text-white py-2.5 rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+            Añadir al Carrito
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 9 -->
+      <div class="product-card group fade-in p-4">
+        <div class="relative bg-white rounded-xl overflow-hidden aspect-square mb-4 flex items-center justify-center border border-gray-100">
+          <span class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md">-25%</span>
+          <img src="img/comida/bowls.webp" alt="Set Bowls" class="h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="space-y-2">
+          <h3 class="font-bold text-base text-gray-900 leading-tight">Set 6 Bowls Acero Inoxidable</h3>
+          <p class="text-gray-500 text-sm">Con tapas herméticas</p>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-bold text-orange-600">$44.99</span>
+            <span class="text-sm text-gray-400 line-through">$59.99</span>
+          </div>
+          <button class="w-full bg-orange-600 text-white py-2.5 rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+            Añadir al Carrito
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 10 -->
+      <div class="product-card group fade-in p-4">
+        <div class="relative bg-white rounded-xl overflow-hidden aspect-square mb-4 flex items-center justify-center border border-gray-100">
+          <img src="img/comida/moldes.webp" alt="Moldes Repostería" class="h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="space-y-2">
+          <h3 class="font-bold text-base text-gray-900 leading-tight">Set Moldes Repostería 12 Pzas</h3>
+          <p class="text-gray-500 text-sm">Antiadherentes premium</p>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-bold text-orange-600">$39.99</span>
+          </div>
+          <button class="w-full bg-orange-600 text-white py-2.5 rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+            Añadir al Carrito
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 11 -->
+      <div class="product-card group fade-in p-4">
+        <div class="relative bg-white rounded-xl overflow-hidden aspect-square mb-4 flex items-center justify-center border border-gray-100">
+          <span class="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-md">Top</span>
+          <img src="img/comida/cafetera.webp" alt="Cafetera" class="h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="space-y-2">
+          <h3 class="font-bold text-base text-gray-900 leading-tight">Cafetera Espresso Pro</h3>
+          <p class="text-gray-500 text-sm">15 bares presión, vaporizador</p>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-bold text-orange-600">$299.00</span>
+          </div>
+          <button class="w-full bg-orange-600 text-white py-2.5 rounded-lg font-semibold hover:bg-orange-700 transition-colors">
+            Añadir al Carrito
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Características -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center fade-in">
+          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Calidad Garantizada</h3>
+          <p class="text-gray-600 text-sm">Productos certificados de marcas líderes</p>
+        </div>
+        <div class="text-center fade-in">
+          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Pago Seguro</h3>
+          <p class="text-gray-600 text-sm">Compra 100% protegida y cifrada</p>
+        </div>
+        <div class="text-center fade-in">
+          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">Envío Express</h3>
+          <p class="text-gray-600 text-sm">Gratis en compras +$100</p>
+        </div>
+        <div class="text-center fade-in">
+          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2">30 Días Devolución</h3>
+          <p class="text-gray-600 text-sm">Sin preguntas, reembolso total</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reseñas -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="mb-12 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-2">Lo Que Dicen Nuestros Clientes</h2>
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <div class="flex text-yellow-400 text-xl">★★★★★</div>
+        <span class="text-gray-600 font-semibold">4.9/5.0 basado en 2,847 reseñas</span>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Reseña 1 -->
+      <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 fade-in">
+        <div class="flex text-yellow-400 mb-3">★★★★★</div>
+        <p class="text-gray-700 mb-4 italic">
+          "Las sartenes antiadherentes son increíbles. Llevo 6 meses usándolas todos los días y siguen como nuevas. Valió cada centavo."
+        </p>
+        <div class="flex items-center gap-3">
+          <img src="img/comida" class="w-12 h-12 rounded-full" alt="Cliente">
+          <div>
+            <div class="font-bold text-gray-900">Laura Martínez</div>
+            <div class="text-sm text-gray-500">Chef en Casa</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reseña 2 -->
+      <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 fade-in">
+        <div class="flex text-yellow-400 mb-3">★★★★★</div>
+        <p class="text-gray-700 mb-4 italic">
+          "El set de cuchillos japoneses cambió mi forma de cocinar. Cortan perfecto y el balance es excepcional. Los recomiendo 100%."
+        </p>
+        <div class="flex items-center gap-3">
+          <img src="img/comida" class="w-12 h-12 rounded-full" alt="Cliente">
+          <div>
+            <div class="font-bold text-gray-900">Carlos Ruiz</div>
+            <div class="text-sm text-gray-500">Chef Profesional</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reseña 3 -->
+      <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 fade-in">
+        <div class="flex text-yellow-400 mb-3">★★★★★</div>
+        <p class="text-gray-700 mb-4 italic">
+          "Compré la batidora y es una bestia. Preparo panes artesanales y funciona perfecto. Envío rápido y excelente atención al cliente."
+        </p>
+        <div class="flex items-center gap-3">
+          <img src="img/comida" class="w-12 h-12 rounded-full" alt="Cliente">
+          <div>
+            <div class="font-bold text-gray-900">Ana Soto</div>
+            <div class="text-sm text-gray-500">Repostera</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-3xl p-8 md:p-12 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Únete a ChefCorner Club
+      </h2>
+      <p class="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+        Recibe ofertas exclusivas, recetas profesionales y tips de cocina directamente en tu email. ¡Primer pedido con 15% descuento!
+      </p>
+      <form class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+        <input type="email" placeholder="tu@email.com" class="flex-1 px-6 py-4 rounded-xl border-2 border-orange-200 focus:border-orange-500 focus:outline-none text-gray-900">
+        <button type="submit" class="bg-orange-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-orange-700 transition-colors whitespace-nowrap">
+          Suscribirme →
+        </button>
+      </form>
+      <p class="text-xs text-gray-500 mt-4">
+        🔒 Tus datos están seguros. Puedes cancelar en cualquier momento.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    // Fade in animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+  </script>
+
+
+
+<!-- Footer WebsPTY -->
+<footer class="bg-gray-900 text-white py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h3 class="text-xl font-bold mb-2">Carlos Mc Taggart</h3>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-4">
+      <a href="mailto:mctaggart.dev@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>✉️</span> mctaggart.dev@gmail.com
+      </a>
+      <a href="https://wa.me/50762049480" class="hover:text-white transition-colors flex items-center gap-2">
+        <span>📱</span> +507 6204-9480
+      </a>
+    </div>
+    <p class="text-gray-500 text-sm">
+      Este sitio es una demostración con fines de portafolio y no tiene uso comercial real.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
