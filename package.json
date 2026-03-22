@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "start:sunny": "node server-sunny.js",
-    "dev:sunny": "nodemon server-sunny.js"
+    "start": "node backend/floria/server.js",
+    "start:sunny": "node backend/sunny/server-sunny.js",
+    "dev:sunny": "nodemon backend/sunny/server-sunny.js"
   },
   "keywords": [],
   "author": "",

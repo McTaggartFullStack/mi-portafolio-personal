@@ -13,5 +13,4 @@ backend/chat.log
 # OS noise
 .DS_Store
 
-# Legacy backend folder
-backend/
+

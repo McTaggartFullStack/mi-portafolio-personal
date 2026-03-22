@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const logos = [
+        'img/sea/logo.png',
+        'img/sea/logo1.png',
+        'img/sea/logo2.png',
+        'img/sea/logo3.png',
+        'img/sea/logo4.png',
+        'img/sea/logo5.png'
+      ];
+      let idx = 0;
+      const logoImg = document.getElementById('logo-carrusel');
+      if (logoImg) {
+        setInterval(() => {
+          logoImg.classList.add('fade');
+          setTimeout(() => {
+            idx = (idx + 1) % logos.length;
+            logoImg.src = logos[idx];
+            logoImg.classList.remove('fade');
+          }, 500);
+        }, 10000);
+      }
+    });
+    </script>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Creative Sea | Agencia de Marketing</title>
+  <meta name="description" content="Creative Sea: Agencia de marketing digital, creatividad y estrategia para tu marca."/>
+  <link rel="icon" type="image/png" href="../assets/img/principal/favicon.webp" sizes="32x32"/>
+  <link rel="apple-touch-icon" href="../assets/img/principal/favicon.webp"/>
+  <link rel="icon" sizes="192x192" href="../assets/img/principal/favicon.webp"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+      @media (max-width: 2000px) {
+        #logo-carrusel {
+          transform: scale(2.35) !important;
+          max-height: 170px !important;
+        }
+        .logo-box {
+          height: 240px !important;
+          padding: 12px !important;
+          margin-top: 36px !important;
+        }
+      }
+      @media (max-width: 200px) {
+        #logo-carrusel {
+          transform: scale(2.65) !important;
+          max-height: 180px !important;
+        }
+        .logo-box {
+          height: 250px !important;
+          padding: 10px !important;
+          margin-top: 22px !important;
+        }
+      }
+    /* Animación de desvanecimiento para el logo del carrusel */
+    #logo-carrusel.fade {
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    #logo-carrusel {
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
+    /* Siluetas para todos los elementos marinos */
+    .sea-fish, .crab, .bubble-svg, .bubble-emoji {
+      filter: grayscale(1) brightness(0) !important;
+      opacity: 0.7 !important;
+    }
+    /* Burbujas SVG animadas desde la arena */
+    .bubble-svg {
+      position: absolute;
+      z-index: 15;
+      left: 12vw;
+      bottom: 1vw;
+      width: 3vw;
+      min-width: 18px;
+      max-width: 40px;
+      pointer-events: none;
+      user-select: none;
+      animation: bubble-rise-1 16s linear infinite;
+    }
+    .bubble-svg.b2 { left: 32vw; animation-name: bubble-rise-2; animation-duration: 22s; }
+    .bubble-svg.b3 { left: 62vw; animation-name: bubble-rise-3; animation-duration: 28s; }
+    .bubble-svg.b4 { left: 82vw; animation-name: bubble-rise-4; animation-duration: 20s; }
+    @keyframes bubble-rise-1 {
+      0% { bottom: 1vw; opacity: 0.7; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { bottom: 80vh; opacity: 0; }
+    }
+    @keyframes bubble-rise-2 {
+      0% { bottom: 1vw; opacity: 0.7; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { bottom: 85vh; opacity: 0; }
+    }
+    @keyframes bubble-rise-3 {
+      0% { bottom: 1vw; opacity: 0.7; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { bottom: 90vh; opacity: 0; }
+    }
+    @keyframes bubble-rise-4 {
+      0% { bottom: 1vw; opacity: 0.7; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { bottom: 75vh; opacity: 0; }
+    }
+    /* Animación de cangrejos caminando por la arena */
+    .crab {
+      position: absolute;
+      bottom: 0.5vw;
+      z-index: 12;
+      width: 5vw;
+      min-width: 32px;
+      max-width: 60px;
+      pointer-events: none;
+      user-select: none;
+      animation: crab-bounce 300s linear infinite alternate;
+    }
+    .crab2 { left: 40vw; animation-delay: -10s; }
+    .crab3 { left: 80vw; animation-delay: -18s; animation: crab-left 300s linear infinite alternate; }
+    @keyframes crab-bounce {
+      0% { left: 0vw; transform: scaleX(1); }
+      49.999% { left: 90vw; transform: scaleX(1); }
+      50% { left: 90vw; transform: scaleX(-1); }
+      100% { left: 0vw; transform: scaleX(-1); }
+    }
+    @keyframes crab-left {
+      0% { left: 80vw; transform: scaleX(-1); }
+      49.999% { left: 0vw; transform: scaleX(-1); }
+      50% { left: 0vw; transform: scaleX(1); }
+      100% { left: 80vw; transform: scaleX(1); }
+    }
+    /* Mejorar fluidez de peces en móviles */
+    @media (max-width: 600px) {
+      .sea-fish.swim-right, .sea-fish.swim-left {
+        animation-duration: 30s !important;
+      }
+    }
+    .sea-hero-bg {
+      position: relative;
+      min-height: 60vh;
+      background: #0a2540;
+      overflow: hidden;
+    }
+    .sea-fish {
+      position: absolute;
+      user-select: none;
+      pointer-events: none;
+      z-index: 2;
+    }
+    /* Peces que nadan de izquierda a derecha (mirando a la derecha) */
+    .swim-right {
+      animation: swim-right 300s linear infinite;
+    }
+    @keyframes swim-right {
+      0% { left: -10vw; }
+      100% { left: 100vw; }
+    }
+    /* Peces que nadan de derecha a izquierda (mirando a la izquierda) */
+    .swim-left {
+      animation: swim-left 300s linear infinite;
+    }
+    @keyframes swim-left {
+      0% { left: 100vw; }
+      100% { left: -10vw; }
+    }
+    /* Tipografía más formal */
+    * {
+      font-family: 'Merriweather', 'Georgia', serif;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      overflow-x: clip;
+      overscroll-behavior-x: none;
+      touch-action: pan-y;
+    }
+    body {
+      position: relative;
+    }
+    body, header, section, div {
+      max-width: 100%;
+    }
+    .logo-box {
+      height: 220px;
+      max-width: 900px;
+      margin: 60px auto 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      padding: 16px;
+      background: transparent;
+    }
+    .gradient-bg { background: linear-gradient(135deg, #334155 0%, #4fd1c5 100%); }
+    .text-gradient { background: linear-gradient(135deg, #334155 0%, #4fd1c5 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.3;
+      z-index: 0;
+      pointer-events: none;
+    }
+    /* Burbujas emoji animadas */
+    .bubble-emoji {
+      position: absolute;
+      font-size: 1.5rem;
+      animation: bubbleUp 10s linear infinite;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .bubble-emoji.b1 { left: 12%; animation-delay: 0s; }
+    .bubble-emoji.b2 { left: 28%; animation-delay: 2s; }
+    .bubble-emoji.b3 { left: 44%; animation-delay: 4s; }
+    .bubble-emoji.b4 { left: 62%; animation-delay: 1s; }
+    .bubble-emoji.b5 { left: 78%; animation-delay: 3s; }
+    .bubble-emoji.b6 { left: 88%; animation-delay: 5s; }
+    @keyframes bubbleUp {
+      0% { bottom: 0; opacity: 0.2; }
+      10% { opacity: 0.7; }
+      80% { opacity: 1; }
+      100% { bottom: 90%; opacity: 0; }
+    }
+    .card-zoom:hover {
+      transform: scale(1.03) rotate(-1deg);
+      border-color: #334155;
+      box-shadow: 0 12px 32px 0 rgba(51, 65, 85, 0.18);
+    }
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hover-soft {
+      transition: transform .28s ease, box-shadow .28s ease;
+    }
+    .hover-soft:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(10, 37, 64, 0.18);
+    }
+    .pricing-shell {
+      background: linear-gradient(180deg, #f7efe2 0%, #ffffff 100%);
+    }
+    .launch-strip {
+      background: linear-gradient(135deg, #0a2540 0%, #113b63 100%);
+      color: #f7efe2;
+      border: 1px solid rgba(247, 239, 226, 0.25);
+    }
+    .plan-card {
+      background: #e6d5b8;
+      border: 1px solid #d7c3a2;
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+    .plan-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 34px rgba(10, 37, 64, 0.2);
+      border-color: #0a2540;
+    }
+    .plan-cta {
+      background: #0a2540;
+      color: #f7efe2;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .plan-cta:hover {
+      background: #113b63;
+      transform: translateY(-2px);
+    }
+    .marine-arrow-btn {
+      transition: transform .2s ease;
+    }
+    .marine-arrow-btn:hover {
+      transform: scale(1.1);
+    }
+    .whatsapp-float {
+      position: fixed;
+      width: 56px;
+      height: 56px;
+      bottom: 88px;
+      right: 24px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+      z-index: 10001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      animation: pulse-whatsapp 2s infinite;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4);
+    }
+    @keyframes pulse-whatsapp {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+    .logo-slide-track {
+      display: flex;
+      transition: transform .6s ease;
+      will-change: transform;
+    }
+    .logo-slide {
+      min-width: 100%;
+      padding: 0 6px;
+    }
+    @media (min-width: 768px) {
+      .logo-slide {
+        min-width: 50%;
+      }
+    }
+    @media (min-width: 1024px) {
+      .logo-slide {
+        min-width: 33.3333%;
+      }
+    }
+    @media (max-width: 1024px) {
+      .blob {
+        display: none;
+      }
+      header, section {
+        overflow-x: hidden;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white dark:bg-gray-900 min-h-screen">
+  <div class="blob" style="top:-80px; left:-80px; width:300px; height:300px; background: #4fd1c5;"></div>
+  <div class="blob" style="top:60vh; right:-100px; width:260px; height:260px; background: #667eea;"></div>
+  <header class="sea-hero-bg shadow-lg relative z-10 overflow-hidden flex flex-col justify-between min-h-[60vh]">
+      <!-- Elementos decorativos marinos -->
+        <!-- Cangrejos animados sobre la arena -->
+          <!-- Burbujas SVG animadas -->       
+      <img src="../assets/img/sea/bubbles.svg" alt="burbuja" class="bubble-svg" loading="lazy" />
+      <img src="../assets/img/sea/bubbles.svg" alt="burbuja" class="bubble-svg b2" loading="lazy" />
+      <img src="../assets/img/sea/bubbles.svg" alt="burbuja" class="bubble-svg b3" loading="lazy" />
+      <img src="../assets/img/sea/bubbles.svg" alt="burbuja" class="bubble-svg b4" loading="lazy" />
+      <img src="../assets/img/sea/crab.svg" alt="cangrejo" class="crab" style="left:10vw;" loading="lazy" />
+      <img src="../assets/img/sea/crab.svg" alt="cangrejo" class="crab crab2" style="left:40vw;" loading="lazy" />
+      <img src="../assets/img/sea/crab.svg" alt="cangrejo" class="crab crab3" style="left:80vw; transform:scaleX(-1);" loading="lazy" />
+    <!-- Fondo marino SVG agrandado y con arena -->
+    <svg class="absolute left-0 top-0 w-full h-full z-0" viewBox="0 0 1440 800" fill="none" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="seaGradient" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#4fd1c5"/>
+          <stop offset="100%" stop-color="#0a2540"/>
+        </linearGradient>
+        <linearGradient id="sandGradient" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#b6a77a"/>
+          <stop offset="100%" stop-color="#7c6f4c"/>
+        </linearGradient>
+      </defs>
+      <rect width="1440" height="800" fill="url(#seaGradient)"/>
+      <path d="M0,500 Q360,450 720,500 T1440,500 V800 H0 Z" fill="#3ec6e0" fill-opacity="0.18"/>
+      <path d="M0,540 Q360,490 720,540 T1440,540 V800 H0 Z" fill="#fff" fill-opacity="0.10"/>
+      <path d="M0,580 Q360,530 720,580 T1440,580 V800 H0 Z" fill="#667eea" fill-opacity="0.13"/>
+      <path d="M0,620 Q360,570 720,620 T1440,620 V800 H0 Z" fill="#4fd1c5" fill-opacity="0.10"/>
+      <!-- Arena -->
+      <path d="M0,740 Q360,780 720,760 T1440,740 V800 H0 Z" fill="url(#sandGradient)"/>
+    </svg>
+    <!-- Peces SVG animados: derecha (pez*.svg) y izquierda (pezz*.svg) -->
+    <!-- Ejemplo reducido de peces, solo uno por tipo/dirección para evitar duplicados -->
+    <img src="../assets/img/sea/pez1.svg" class="sea-fish swim-right" style="top:8%; left:2%; width:60px; animation-duration:75s; animation-delay:-12.5s; transform: scaleX(1);" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pez1.svg" class="sea-fish swim-left" style="top:8%; left:88%; width:60px; animation-delay:-12.5s; transform: scaleX(-1);" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pez2.svg" class="sea-fish swim-right" style="top:18%; left:18%; width:48px; animation-duration:93.75s; animation-delay:-25s; transform: scaleX(1);" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pez3.svg" class="sea-fish swim-left" style="top:28%; left:92%; width:54px; animation-delay:-50s; transform: scaleX(-1);" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pez5.svg" class="sea-fish swim-right" style="top:4%; left:72%; width:44px; animation-duration:100s; animation-delay:-31.25s; transform: scaleX(1);" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pez7.svg" class="sea-fish swim-left" style="top:58%; left:80%; width:38px; animation-delay:-18.75s; transform: scaleX(-1);" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pez8.svg" class="sea-fish swim-right" style="top:68%; left:28%; width:36px; animation-duration:118.75s; animation-delay:-37.5s; transform: scaleX(1);" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pez13.svg" class="sea-fish swim-left" style="top:78%; left:96%; width:42px; animation-delay:-56.25s; transform: scaleX(-1);" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pez14.svg" class="sea-fish swim-right" style="top:58%; left:68%; width:40px; animation-duration:125s; animation-delay:-25s; transform: scaleX(1);" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pez15.svg" class="sea-fish swim-left" style="top:68%; left:84%; width:38px; animation-delay:-43.75s; transform: scaleX(-1);" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pez16.svg" class="sea-fish swim-right" style="top:84%; left:12%; width:36px; animation-duration:175s; animation-delay:-62.5s; transform: scaleX(1);" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pez17.svg" class="sea-fish swim-left" style="top:86%; left:76%; width:34px; animation-delay:-75s; transform: scaleX(-1);" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pez18.svg" class="sea-fish swim-right" style="top:76%; left:52%; width:38px; animation-duration:143.75s; animation-delay:-87.5s; transform: scaleX(1);" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pez19.svg" class="sea-fish swim-left" style="top:86%; left:90%; width:36px; animation-delay:-100s; transform: scaleX(-1);" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pez20.svg" class="sea-fish swim-right" style="top:76%; left:92%; width:34px; animation-duration:168.75s; animation-delay:-112.5s; transform: scaleX(1);" alt="pez" loading="lazy" />
+    <!-- Peces mirando a la izquierda -->
+    <img src="../assets/img/sea/pezz4.svg" class="sea-fish swim-left" style="top:36%; left:12%; width:44px; animation-duration:87.5s; animation-delay:-125s;" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pezz6.svg" class="sea-fish swim-left" style="top:46%; left:32%; width:40px; animation-duration:112.5s; animation-delay:-137.5s;" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pezz9.svg" class="sea-fish swim-left" style="top:56%; left:52%; width:38px; animation-duration:137.5s; animation-delay:-150s;" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pezz10.svg" class="sea-fish swim-left" style="top:66%; left:72%; width:36px; animation-duration:162.5s; animation-delay:-162.5s;" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pezz11.svg" class="sea-fish swim-left" style="top:76%; left:92%; width:34px; animation-duration:187.5s; animation-delay:-175s;" alt="pez" loading="lazy" />
+    <img src="../assets/img/sea/pezz12.svg" class="sea-fish swim-left" style="top:72%; left:16%; width:38px; animation-duration:212.5s; animation-delay:-187.5s;" alt="pez" loading="lazy" />
+<div class="relative z-20">
+  <div class="logo-box">
+    
+    <img id="logo-carrusel" src="../assets/img/sea/logo.png" alt="Creative Sea logo"
+      class="object-contain"
+      style="height:100%; width:auto; display:block; transition:transform 0.5s, opacity 0.5s; transform:scale(2.0);" loading="lazy" />
+      
+  </div>
+  <div class="max-w-3xl mx-auto px-6 pb-10 text-center fade-in-section" style="margin-top: 6px;">
+    <h1 class="text-3xl md:text-5xl font-extrabold text-white drop-shadow mb-4">
+      Estrategias que hacen que tu marca domine el océano digital
+    </h1>
+    <p class="text-base md:text-xl text-cyan-100 mb-6">
+      En Creative Sea combinamos creatividad, análisis y ejecución para convertir visibilidad en resultados reales.
+    </p>
+    <a href="#contacto" class="inline-block px-7 py-3 rounded-xl font-bold text-white gradient-bg shadow-lg hover-soft">
+      Solicita tu consulta gratuita
+    </a>
+  </div>
+</div>
+    <div class="flex-1"></div>
+  </header>
+
+  <!-- 2) Carrusel de logos con eslogan y valor -->
+  <section class="relative py-16 bg-gradient-to-b from-cyan-50 to-white dark:from-cyan-900 dark:to-gray-900">
+    <div class="max-w-6xl mx-auto px-6 fade-in-section">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-cyan-900 dark:text-cyan-200 text-center mb-3">
+        Nuestros 6 conceptos de marca
+      </h2>
+      <p class="text-center text-gray-700 dark:text-gray-200 mb-8">
+        Cada animal expresa una forma distinta de generar valor para tu negocio.
+      </p>
+
+      <div class="relative overflow-hidden">
+        <div id="marine-logo-track" class="logo-slide-track">
+          <article class="logo-slide">
+            <div class="bg-[#e6d5b8] dark:bg-#e6d5b8]-100 rounded-2xl p-6 shadow-lg h-full hover-soft flex flex-col items-center text-center">
+              <img src="../assets/img/sea/tiburonc.png" alt="Tiburón" class="w-14 h-14 object-contain mb-4" loading="lazy" />
+              <h3 class="text-2xl font-bold text-cyan-800 dark:text-darkblue-500">Tiburón</h3>
+              <p class="font-semibold text-gray-700 dark:text-darkblue-500">Impacto con precisión</p>
+              <p class="text-gray-600 dark:text-darkblue-500 mt-2">Campañas directas para acelerar posicionamiento y conversión.</p>
+            </div>
+          </article>
+          <article class="logo-slide">
+            <div class="bg-[#e6d5b8] dark:bg-[#e6d5b8] rounded-2xl p-6 shadow-lg h-full hover-soft flex flex-col items-center text-center">
+              <img src="../assets/img/sea/delfinc.png" alt="Delfín" class="w-14 h-14 object-contain mb-4" loading="lazy" />
+              <h3 class="text-2xl font-bold text-cyan-800 dark:text-darkblue-500">Delfín</h3>
+              <p class="font-semibold text-black dark:text-black">Conecta con empatía</p>
+              <p class="text-black dark:text-black mt-2">Comunicación cercana para comunidades leales y activas.</p>
+            </div>
+          </article>
+          <article class="logo-slide">
+            <div class="bg-[#e6d5b8] dark:bg-[#e6d5b8] rounded-2xl p-6 shadow-lg h-full hover-soft flex flex-col items-center text-center">
+              <img src="../assets/img/sea/tortugac.png" alt="Tortuga" class="w-14 h-14 object-contain mb-4" loading="lazy" />
+              <h3 class="text-2xl font-bold text-cyan-800 dark:text-darkblue-500">Tortuga</h3>
+              <p class="font-semibold text-black dark:text-black">Crecimiento sostenible</p>
+              <p class="text-black dark:text-black mt-2">Estrategias sólidas para resultados consistentes en el tiempo.</p>
+            </div>
+          </article>
+          <article class="logo-slide">
+            <div class="bg-[#e6d5b8] dark:bg-[#e6d5b8] rounded-2xl p-6 shadow-lg h-full hover-soft flex flex-col items-center text-center">
+              <img src="../assets/img/sea/pulpoc.png" alt="Pulpo" class="w-14 h-14 object-contain mb-4" loading="lazy" />
+              <h3 class="text-2xl font-bold text-cyan-800 dark:text-darkblue-500">Pulpo</h3>
+              <p class="font-semibold text-black dark:text-black">Alcance multicanal</p>
+              <p class="text-black dark:text-black mt-2">Coordinamos varios canales para amplificar tu presencia digital.</p>
+            </div>
+          </article>
+          <article class="logo-slide">
+            <div class="bg-[#e6d5b8] dark:bg-[#e6d5b8] rounded-2xl p-6 shadow-lg h-full hover-soft flex flex-col items-center text-center">
+              <img src="../assets/img/sea/caballitoc.png" alt="Caballito de mar" class="w-14 h-14 object-contain mb-4" loading="lazy" />
+              <h3 class="text-2xl font-bold text-cyan-800 dark:text-darkblue-500">Caballito de mar</h3>
+              <p class="font-semibold text-black dark:text-black">Detalles que diferencian</p>
+              <p class="text-black dark:text-black mt-2">Diseño y mensaje de marca con foco en percepción premium.</p>
+            </div>
+          </article>
+          <article class="logo-slide">
+            <div class="bg-[#e6d5b8] dark:bg-[#e6d5b8] rounded-2xl p-6 shadow-lg h-full hover-soft flex flex-col items-center text-center">
+              <img src="../assets/img/sea/mantarrayac.png" alt="Mantarraya" class="w-14 h-14 object-contain mb-4" loading="lazy" />
+              <h3 class="text-2xl font-bold text-cyan-800 dark:text-darkblue-500">Mantarraya</h3>
+              <p class="font-semibold text-black dark:text-black">Fluidez estratégica</p>
+              <p class="text-black dark:text-black mt-2">Ejecución elegante y adaptable para mercados cambiantes.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="flex justify-center gap-3 mt-6">
+        <button id="marine-prev" class="marine-arrow-btn bg-transparent p-0 border-none flex items-center justify-center mx-8" type="button" style="box-shadow:none;">
+          <img src="../assets/img/sea/flecha1.png" alt="Flecha izquierda" class="w-24 h-18" style="transform: scaleX(-1);" />
+        </button>
+        <button id="marine-next" class="marine-arrow-btn bg-transparent p-0 border-none flex items-center justify-center mx-8" type="button" style="box-shadow:none;">
+          <img src="../assets/img/sea/flecha1.png" alt="Flecha derecha" class="w-24 h-18" />
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) Servicios principales -->
+  <section class="relative py-16 bg-white dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6 fade-in-section">
+      <h2 class="text-2xl md:text-3xl font-bold text-cyan-900 dark:text-cyan-200 text-center mb-10">
+        Servicios principales
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <article class="bg-cyan-50 dark:bg-cyan-900 rounded-2xl p-6 shadow-lg hover-soft">
+          <div class="flex flex-col items-center text-center">
+            <div class="text-4xl mb-3">🌊</div>
+            <h3 class="text-xl font-semibold text-cyan-800 dark:text-cyan-100 mb-2">Estrategia digital</h3>
+            <p class="text-gray-700 dark:text-gray-200">Definimos objetivos, ruta y métricas para crecer con foco comercial.</p>
+          </div>
+        </article>
+        <article class="bg-cyan-50 dark:bg-cyan-900 rounded-2xl p-6 shadow-lg hover-soft">
+          <div class="flex flex-col items-center text-center">
+            <div class="text-4xl mb-3">🐠</div>
+            <h3 class="text-xl font-semibold text-cyan-800 dark:text-cyan-100 mb-2">Redes sociales</h3>
+            <p class="text-gray-700 dark:text-gray-200">Contenido, pauta y comunidad para aumentar alcance y engagement.</p>
+          </div>
+        </article>
+        <article class="bg-cyan-50 dark:bg-cyan-900 rounded-2xl p-6 shadow-lg hover-soft">
+          <div class="flex flex-col items-center text-center">
+            <div class="text-4xl mb-3">🪸</div>
+            <h3 class="text-xl font-semibold text-cyan-800 dark:text-cyan-100 mb-2">Branding</h3>
+            <p class="text-gray-700 dark:text-gray-200">Construimos identidad de marca con personalidad y coherencia visual.</p>
+          </div>
+        </article>
+        <article class="bg-cyan-50 dark:bg-cyan-900 rounded-2xl p-6 shadow-lg hover-soft">
+          <div class="flex flex-col items-center text-center">
+            <div class="text-4xl mb-3">⚓</div>
+            <h3 class="text-xl font-semibold text-cyan-800 dark:text-cyan-100 mb-2">Optimización web</h3>
+            <p class="text-gray-700 dark:text-gray-200">Mejoramos velocidad, UX y estructura para convertir más visitas.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) Por qué elegir -->
+  <section class="relative py-16 bg-gradient-to-b from-cyan-50 to-white dark:from-gray-900 dark:to-gray-950">
+    <div class="max-w-5xl mx-auto px-6 fade-in-section">
+      <h2 class="text-2xl md:text-3xl font-bold text-cyan-900 dark:text-cyan-200 text-center mb-8">
+        ¿Por qué elegir Creative Sea?
+      </h2>
+      <p class="text-lg text-gray-700 dark:text-gray-200 text-center mb-8">
+        Nacimos para ayudar a marcas que se sentían invisibles en un mercado saturado. Hoy combinamos storytelling,
+        data y diseño para convertir negocios comunes en referentes memorables.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white dark:bg-cyan-950 rounded-2xl p-6 shadow-lg hover-soft">
+          <div class="flex flex-col items-center text-center">
+            <h3 class="text-xl font-semibold text-cyan-800 dark:text-cyan-100 mb-2">Enfoque estratégico</h3>
+            <p class="text-gray-700 dark:text-gray-200">No improvisamos: todo responde a objetivos y métricas claras.</p>
+          </div>
+        </div>
+        <div class="bg-white dark:bg-cyan-950 rounded-2xl p-6 shadow-lg hover-soft">
+          <div class="flex flex-col items-center text-center">
+            <h3 class="text-xl font-semibold text-cyan-800 dark:text-cyan-100 mb-2">Creatividad con propósito</h3>
+            <p class="text-gray-700 dark:text-gray-200">Cada pieza visual y cada texto están pensados para vender más.</p>
+          </div>
+        </div>
+        <div class="bg-white dark:bg-cyan-950 rounded-2xl p-6 shadow-lg hover-soft">
+          <div class="flex flex-col items-center text-center">
+            <h3 class="text-xl font-semibold text-cyan-800 dark:text-cyan-100 mb-2">Acompañamiento real</h3>
+            <p class="text-gray-700 dark:text-gray-200">Trabajamos contigo como aliados, no como proveedor temporal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) Blog / recursos -->
+  <section class="relative py-16 bg-white dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6 fade-in-section">
+      <h2 class="text-2xl md:text-3xl font-bold text-cyan-900 dark:text-cyan-200 text-center mb-10">
+        Blog y recursos gratuitos
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="bg-cyan-50 dark:bg-cyan-900 rounded-2xl p-6 shadow-lg hover-soft">
+          <div class="flex flex-col items-center text-center">
+            <p class="text-sm font-semibold text-cyan-700 dark:text-cyan-200 mb-2">Artículo inicial</p>
+            <h3 class="text-xl font-semibold text-cyan-800 dark:text-cyan-100 mb-2">Guía rápida de marketing para pymes</h3>
+            <p class="text-gray-700 dark:text-gray-200">Los pasos base para construir presencia digital sin perder presupuesto.</p>
+          </div>
+        </article>
+        <article class="bg-cyan-50 dark:bg-cyan-900 rounded-2xl p-6 shadow-lg hover-soft">
+          <div class="flex flex-col items-center text-center">
+            <p class="text-sm font-semibold text-cyan-700 dark:text-cyan-200 mb-2">Plantilla gratuita</p>
+            <h3 class="text-xl font-semibold text-cyan-800 dark:text-cyan-100 mb-2">Calendario de contenido mensual</h3>
+            <p class="text-gray-700 dark:text-gray-200">Organiza publicaciones y campañas por objetivos en un solo formato.</p>
+          </div>
+        </article>
+        <article class="bg-cyan-50 dark:bg-cyan-900 rounded-2xl p-6 shadow-lg hover-soft">
+          <div class="flex flex-col items-center text-center">
+            <p class="text-sm font-semibold text-cyan-700 dark:text-cyan-200 mb-2">Recurso práctico</p>
+            <h3 class="text-xl font-semibold text-cyan-800 dark:text-cyan-100 mb-2">Checklist de optimización web</h3>
+            <p class="text-gray-700 dark:text-gray-200">Revisa rendimiento, UX y SEO técnico antes de lanzar tu campaña.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6) Precios -->
+  <section id="precios" class="relative py-16 pricing-shell dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6 fade-in-section font-sans">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#062033] dark:text-[#0b2236] text-center mb-4">
+        Planes de crecimiento Creative Sea
+      </h2>
+      <p class="text-[#1c2f3e] dark:text-[#1c2f3e] text-center mb-8 font-medium">
+        Planes orientados a publicidad de sitios web con anuncios, manejo de redes sociales y estrategia digital con branding.
+      </p>
+
+      <div class="launch-strip rounded-2xl px-5 py-4 text-center font-semibold shadow-lg mb-8">
+        Descuento de lanzamiento: -30% durante los primeros 3 meses.
+      </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <article class="plan-card bg-white rounded-2xl p-6 shadow-lg hover-soft flex flex-col border-t-4 border-cyan-400">
+    <div class="flex items-center justify-center gap-3 mb-3">
+      <img src="../assets/img/sea/delfinc.png" alt="Delfín" class="w-12 h-12 object-contain" loading="lazy" />
+      <h3 class="text-2xl font-bold text-[#0a2540]">Delfín</h3>
+    </div>
+    <p class="text-center font-semibold text-[#113b63] mb-1">Plan Conexión</p>
+    <p class="text-center text-xs font-bold text-cyan-600 uppercase mb-4 tracking-wider">Social Media Base</p>
+    
+    <ul class="space-y-3 text-gray-700 mb-6 text-sm md:text-base flex-grow">
+      <li class="flex items-start gap-2"><span>•</span> Gestión de IG/FB (12 posts mensuales)</li>
+      <li class="flex items-start gap-2"><span>•</span> Creación de contenido visual y copys</li>
+      <li class="flex items-start gap-2"><span>•</span> Atención a comunidad e interacciones</li>
+      <li class="flex items-start gap-2"><span>•</span> <strong>Meta Ads Básico:</strong> Promoción de posts</li>
+    </ul>
+    
+    <p class="text-center text-2xl font-extrabold text-[#0a2540] mb-4">Desde $250<span class="text-sm font-normal text-gray-500">/mes</span></p>
+    <button type="button" class="plan-cta mt-auto bg-cyan-500 hover:bg-cyan-600 text-white rounded-xl py-3 px-4 font-bold transition-colors">Solicita este plan</button>
+  </article>
+
+  <article class="plan-card bg-white rounded-2xl p-6 shadow-lg hover-soft flex flex-col border-t-4 border-green-400">
+    <div class="flex items-center justify-center gap-3 mb-3">
+      <img src="../assets/img/sea/tortugac.png" alt="Tortuga" class="w-12 h-12 object-contain" loading="lazy" />
+      <h3 class="text-2xl font-bold text-[#0a2540]">Tortuga</h3>
+    </div>
+    <p class="text-center font-semibold text-[#113b63] mb-1">Plan Constancia</p>
+    <p class="text-center text-xs font-bold text-green-600 uppercase mb-4 tracking-wider">Posicionamiento Web</p>
+    
+    <ul class="space-y-3 text-gray-700 mb-6 text-sm md:text-base flex-grow">
+      <li class="flex items-start gap-2"><span>•</span> Todo lo del Plan Delfín (16 posts)</li>
+      <li class="flex items-start gap-2"><span>•</span> Optimización Google Business Profile</li>
+      <li class="flex items-start gap-2"><span>•</span> <strong>SEO On-Page:</strong> Mejora de ranking</li>
+      <li class="flex items-start gap-2"><span>•</span> Reporte de KPI's y mejora continua</li>
+    </ul>
+    
+    <p class="text-center text-2xl font-extrabold text-[#0a2540] mb-4">Desde $450<span class="text-sm font-normal text-gray-500">/mes</span></p>
+    <button type="button" class="plan-cta mt-auto bg-green-500 hover:bg-green-600 text-white rounded-xl py-3 px-4 font-bold transition-colors">Solicita este plan</button>
+  </article>
+
+  <article class="plan-card bg-[#0a2540] rounded-2xl p-6 shadow-lg hover-soft flex flex-col border-t-4 border-cyan-300">
+    <div class="flex items-center justify-center gap-3 mb-3">
+      <img src="../assets/img/sea/tiburonc.png" alt="Tiburón" class="w-12 h-12 object-contain" loading="lazy" />
+      <h3 class="text-2xl font-bold text-white">Tiburón</h3>
+    </div>
+    <p class="text-center font-semibold text-cyan-200 mb-1">Plan Impacto</p>
+    <p class="text-center text-xs font-bold text-cyan-400 uppercase mb-4 tracking-wider">Alta Conversión</p>
+    
+    <ul class="space-y-3 text-gray-200 mb-6 text-sm md:text-base flex-grow">
+      <li class="flex items-start gap-2"><span>•</span> Todo lo del Plan Tortuga (20 posts)</li>
+      <li class="flex items-start gap-2"><span>•</span> <strong>Meta Ads Pro:</strong> Campañas de ventas</li>
+      <li class="flex items-start gap-2"><span>•</span> <strong>Google Ads:</strong> Anuncios de búsqueda</li>
+      <li class="flex items-start gap-2"><span>•</span> Nota: Inversión en Ads no incluida</li>
+    </ul>
+    
+    <p class="text-center text-2xl font-extrabold text-white mb-4">Desde $700<span class="text-sm font-normal text-cyan-300">/mes</span></p>
+    <button type="button" class="plan-cta mt-auto bg-cyan-400 hover:bg-cyan-300 text-[#0a2540] rounded-xl py-3 px-4 font-bold transition-colors">Solicita este plan</button>
+  </article>
+
+  <article class="plan-card bg-white rounded-2xl p-6 shadow-lg hover-soft flex flex-col border-t-4 border-amber-400">
+    <div class="flex items-center justify-center gap-3 mb-3">
+      <img src="../assets/img/sea/caballitoc.png" alt="Plan Personalizado" class="w-12 h-12 object-contain" loading="lazy" />
+      <h3 class="text-2xl font-bold text-[#0a2540]">Personalizado</h3>
+    </div>
+    <p class="text-center font-semibold text-[#113b63] mb-1">Plan a tu medida</p>
+    <p class="text-center text-xs font-bold text-amber-600 uppercase mb-4 tracking-wider">100% Personalizable</p>
+
+    <ul class="space-y-3 text-gray-700 mb-6 text-sm md:text-base flex-grow">
+      <li class="flex items-start gap-2"><span>•</span> Beneficios según lo que necesite tu negocio</li>
+      <li class="flex items-start gap-2"><span>•</span> Combinación de servicios de branding, web y pauta</li>
+      <li class="flex items-start gap-2"><span>•</span> Escalable por objetivos y presupuesto</li>
+      <li class="flex items-start gap-2"><span>•</span> Cotizaciones gratis</li>
+    </ul>
+
+    <p class="text-center text-2xl font-extrabold text-[#0a2540] mb-4">100% personalizable</p>
+    <button type="button" class="plan-cta mt-auto bg-amber-500 hover:bg-amber-600 text-white rounded-xl py-3 px-4 font-bold transition-colors">Solicita este plan</button>
+  </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7) CTA final sin formulario -->
+  <section id="contacto" class="relative py-16 bg-gradient-to-b from-cyan-100 to-white dark:from-cyan-950 dark:to-gray-950">
+    <div class="max-w-4xl mx-auto px-6 fade-in-section">
+      <div class="bg-white dark:bg-cyan-950 rounded-2xl p-7 md:p-10 shadow-xl text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-cyan-900 dark:text-cyan-200 mb-3">
+          ¿Necesitas mas información?
+        </h2>
+        <p class="text-gray-700 dark:text-gray-200 mb-8">
+          Cuéntanos tu objetivo y te recomendamos el plan ideal para tu marca.
+        </p>
+       
+          <a href="mailto:creativeseapty@gmail.com" class="px-7 py-3 rounded-xl font-bold text-cyan-900 bg-cyan-100 border border-cyan-300 hover-soft w-full sm:w-auto">
+            Escríbenos por correo
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h3 class="text-2xl font-bold mb-2">Creative Sea</h3>
+      <p class="text-gray-400 mb-6">
+        Planes de branding y marketing digital para crecer con estrategia, diseño y campañas enfocadas en conversión.
+      </p>
+      <div class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-gray-400 mb-6">
+        <a href="mailto:creativeseapty@gmail.com" class="hover:text-white transition-colors flex items-center gap-2">
+          <span>✉️</span> creativeseapty@gmail.com
+        </a>
+        <a href="https://wa.me/50762544470" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-2">
+          <span>📱</span> +507 6254-4470
+        </a>
+      </div>
+      <div class="flex justify-center">
+        <a href="https://www.webspty.dev" target="_blank" rel="noopener noreferrer" class="inline-block px-7 py-3 rounded-xl font-bold text-white gradient-bg hover-soft">
+          Volver a webspty.dev
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/50762544470?text=Hola%2C%20tengo%20una%20consulta%20sobre%20los%20planes%20de%20Creative%20Sea" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-7 h-7 text-white" fill="currentColor" aria-hidden="true">
+      <path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .15 5.35.15 11.93c0 2.1.55 4.16 1.6 5.98L0 24l6.27-1.64a11.9 11.9 0 0 0 5.8 1.48h.01c6.57 0 11.92-5.35 11.92-11.93 0-3.18-1.24-6.18-3.48-8.43zM12.08 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.72.97.99-3.62-.24-.37a9.9 9.9 0 0 1-1.52-5.27c0-5.47 4.44-9.92 9.91-9.92 2.65 0 5.14 1.03 7.01 2.91a9.86 9.86 0 0 1 2.9 7.01c0 5.47-4.44 9.92-9.91 9.92zm5.43-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.66.15-.2.3-.76.97-.94 1.16-.17.2-.35.22-.65.08-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.66-1.6-.9-2.18-.24-.58-.49-.5-.66-.5h-.57c-.2 0-.52.08-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.48.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+    </svg>
+  </a>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const animated = document.querySelectorAll('.fade-in-section');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.15 });
+      animated.forEach((el) => observer.observe(el));
+
+      const track = document.getElementById('marine-logo-track');
+      const prev = document.getElementById('marine-prev');
+      const next = document.getElementById('marine-next');
+      if (!track || !prev || !next) return;
+
+      const slides = track.children.length;
+      let current = 0;
+
+      function perView() {
+        if (window.innerWidth >= 1024) return 3;
+        if (window.innerWidth >= 768) return 2;
+        return 1;
+      }
+
+      function maxIndex() {
+        return Math.max(0, slides - perView());
+      }
+
+      function updateTrack() {
+        const width = 100 / perView();
+        track.style.transform = `translateX(-${current * width}%)`;
+      }
+
+      next.addEventListener('click', () => {
+        current = current >= maxIndex() ? 0 : current + 1;
+        updateTrack();
+      });
+
+      prev.addEventListener('click', () => {
+        current = current <= 0 ? maxIndex() : current - 1;
+        updateTrack();
+      });
+
+      window.addEventListener('resize', () => {
+        current = Math.min(current, maxIndex());
+        updateTrack();
+      });
+
+      setInterval(() => {
+        current = current >= maxIndex() ? 0 : current + 1;
+        updateTrack();
+      }, 15000);
+
+      updateTrack();
+    });
+  </script>
+
+</body>
+</html>
